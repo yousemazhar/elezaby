@@ -4,9 +4,8 @@ import 'package:provider/provider.dart';
 import '../../core/constants/app_colors.dart';
 import '../../providers/auth_provider.dart';
 import '../../providers/product_provider.dart';
-import '../../providers/cart_provider.dart';
 import '../../providers/address_provider.dart';
-import '../../widgets/app_search_bar.dart';
+import '../../widgets/global_app_bar.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -30,103 +29,14 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final auth = context.watch<AuthProvider>();
-    final cart = context.watch<CartProvider>();
     final products = context.watch<ProductProvider>();
     final addressProvider = context.watch<AddressProvider>();
-    final userName = auth.appUser?.name.split(' ').first ?? 'there';
     final defaultAddress = addressProvider.defaultAddress;
 
     return Scaffold(
+      appBar: const GlobalAppBar(showGreeting: true, showSearch: true),
       body: CustomScrollView(
         slivers: [
-          SliverToBoxAdapter(
-            child: Container(
-              decoration: const BoxDecoration(gradient: AppColors.primaryGradient),
-              child: Column(
-                children: [
-                  const SafeArea(child: SizedBox.shrink()),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(20, 4, 20, 0),
-                    child: Row(
-                      children: [
-                        const SizedBox(width: 40),
-                        const Expanded(child: _ElezabyLogo()),
-                        GestureDetector(
-                          onTap: () => context.push('/cart'),
-                          child: Stack(
-                            clipBehavior: Clip.none,
-                            children: [
-                              Container(
-                                padding: const EdgeInsets.all(8),
-                                decoration: BoxDecoration(
-                                  color: Colors.white.withAlpha(46),
-                                  borderRadius: BorderRadius.circular(12),
-                                ),
-                                child: const Icon(Icons.shopping_bag_outlined,
-                                    color: Colors.white, size: 22),
-                              ),
-                              if (cart.itemCount > 0)
-                                Positioned(
-                                  top: -4,
-                                  right: -4,
-                                  child: Container(
-                                    width: 18,
-                                    height: 18,
-                                    decoration: const BoxDecoration(
-                                      color: AppColors.red,
-                                      shape: BoxShape.circle,
-                                    ),
-                                    child: Center(
-                                      child: Text(
-                                        '${cart.itemCount}',
-                                        style: const TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 10,
-                                          fontWeight: FontWeight.w700,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(height: 10),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        'Good day, $userName 👋',
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 10),
-                  GestureDetector(
-                    onTap: () => context.push('/search'),
-                    child: const AppSearchBar(),
-                  ),
-                  const SizedBox(height: 14),
-                  Container(
-                    height: 22,
-                    decoration: const BoxDecoration(
-                      color: Colors.white,
-                      borderRadius:
-                          BorderRadius.vertical(top: Radius.circular(18)),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
           SliverToBoxAdapter(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -282,47 +192,6 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
         ],
       ),
-    );
-  }
-}
-
-class _ElezabyLogo extends StatelessWidget {
-  const _ElezabyLogo();
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        RichText(
-          text: const TextSpan(
-            children: [
-              TextSpan(
-                text: 'el',
-                style: TextStyle(
-                  fontFamily: 'Georgia',
-                  fontStyle: FontStyle.italic,
-                  fontSize: 20,
-                  fontWeight: FontWeight.w800,
-                  color: Colors.white,
-                ),
-              ),
-              TextSpan(
-                text: 'ezaby',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w800,
-                  color: Colors.white,
-                ),
-              ),
-            ],
-          ),
-        ),
-        const Text(
-          'العزبي',
-          style: TextStyle(
-              fontSize: 11, color: Colors.white70, fontWeight: FontWeight.w600),
-        ),
-      ],
     );
   }
 }

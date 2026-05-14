@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import '../../core/constants/app_colors.dart';
 import '../../providers/product_provider.dart';
+import '../../widgets/global_app_bar.dart';
 
 class ShopScreen extends StatefulWidget {
   const ShopScreen({super.key});
@@ -42,55 +43,9 @@ class _ShopScreenState extends State<ShopScreen> {
     final active = _categories.firstWhere((c) => c.id == _activeCatId);
 
     return Scaffold(
+      appBar: const GlobalAppBar(title: 'Shop', showBackButton: true),
       body: Column(
         children: [
-          Container(
-            decoration: const BoxDecoration(gradient: AppColors.primaryGradient),
-            child: SafeArea(
-              bottom: false,
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
-                    child: Row(
-                      children: [
-                        IconButton(
-                          icon: const Icon(Icons.arrow_back_ios_new_rounded,
-                              color: Colors.white),
-                          onPressed: () => context.go('/home'),
-                        ),
-                        const Expanded(
-                          child: Text(
-                            'Shop',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w700,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                        IconButton(
-                          icon: const Icon(Icons.shopping_bag_outlined,
-                              color: Colors.white),
-                          onPressed: () => context.push('/cart'),
-                        ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(height: 8),
-                  Container(
-                    height: 20,
-                    decoration: const BoxDecoration(
-                      color: Colors.white,
-                      borderRadius:
-                          BorderRadius.vertical(top: Radius.circular(18)),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
           Expanded(
             child: Row(
               children: [

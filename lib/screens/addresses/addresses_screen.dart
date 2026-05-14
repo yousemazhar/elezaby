@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import '../../core/constants/app_colors.dart';
 import '../../models/address.dart';
 import '../../providers/address_provider.dart';
+import '../../widgets/global_app_bar.dart';
 
 class AddressesScreen extends StatelessWidget {
   const AddressesScreen({super.key});
@@ -13,23 +14,7 @@ class AddressesScreen extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_new_rounded,
-              color: AppColors.textDark, size: 20),
-          onPressed: () => Navigator.of(context).pop(),
-        ),
-        title: const Text(
-          'My Addresses',
-          style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.w700,
-              color: AppColors.textDark),
-        ),
-        centerTitle: true,
-      ),
+      appBar: const GlobalAppBar(title: 'My Addresses', showBackButton: true),
       body: provider.loading
           ? const Center(child: CircularProgressIndicator())
           : provider.addresses.isEmpty

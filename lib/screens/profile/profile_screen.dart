@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import '../../core/constants/app_colors.dart';
 import '../../providers/auth_provider.dart';
 import '../../services/seed_service.dart';
+import '../../widgets/global_app_bar.dart';
 import '../../widgets/reward_progress_card.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -34,6 +35,7 @@ class ProfileScreen extends StatelessWidget {
     }
 
     return Scaffold(
+      appBar: const GlobalAppBar(title: 'Profile'),
       body: CustomScrollView(
         slivers: [
           SliverToBoxAdapter(
@@ -43,15 +45,6 @@ class ProfileScreen extends StatelessWidget {
                 bottom: false,
                 child: Column(
                   children: [
-                    const SizedBox(height: 8),
-                    const Text(
-                      'Profile',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w700,
-                        color: Colors.white,
-                      ),
-                    ),
                     const SizedBox(height: 20),
                     // Avatar
                     Stack(

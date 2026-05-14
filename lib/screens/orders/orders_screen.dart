@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import '../../core/constants/app_colors.dart';
 import '../../models/app_order.dart';
 import '../../providers/auth_provider.dart';
 import '../../services/order_service.dart';
+import '../../widgets/global_app_bar.dart';
 
 class OrdersScreen extends StatefulWidget {
   const OrdersScreen({super.key});
@@ -28,23 +28,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_new_rounded,
-              color: AppColors.textDark, size: 20),
-          onPressed: () => context.pop(),
-        ),
-        title: const Text(
-          'My Orders',
-          style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.w700,
-              color: AppColors.textDark),
-        ),
-        centerTitle: true,
-      ),
+      appBar: const GlobalAppBar(title: 'My Orders', showBackButton: true),
       body: FutureBuilder<List<AppOrder>>(
         future: _future,
         builder: (context, snap) {

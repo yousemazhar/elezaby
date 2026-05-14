@@ -5,7 +5,7 @@ import '../../core/constants/app_colors.dart';
 import '../../models/product.dart';
 import '../../providers/product_provider.dart';
 import '../../widgets/product_card.dart';
-import '../../widgets/app_search_bar.dart';
+import '../../widgets/global_app_bar.dart';
 
 class ProductListScreen extends StatefulWidget {
   final String? categoryId;
@@ -50,60 +50,15 @@ class _ProductListScreenState extends State<ProductListScreen> {
     final displayList = _searchResults ?? provider.products;
 
     return Scaffold(
+      appBar: GlobalAppBar(
+        title: widget.title ?? 'All Products',
+        showBackButton: true,
+        showSearch: true,
+        searchController: _searchCtrl,
+        onSearchChanged: _onSearch,
+      ),
       body: Column(
         children: [
-          Container(
-            decoration: const BoxDecoration(gradient: AppColors.primaryGradient),
-            child: SafeArea(
-              bottom: false,
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(8, 8, 16, 0),
-                    child: Row(
-                      children: [
-                        IconButton(
-                          icon: const Icon(Icons.arrow_back_ios_new_rounded,
-                              color: Colors.white),
-                          onPressed: () => context.pop(),
-                        ),
-                        Expanded(
-                          child: Text(
-                            widget.title ?? 'All Products',
-                            textAlign: TextAlign.center,
-                            style: const TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w700,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                        IconButton(
-                          icon: const Icon(Icons.shopping_bag_outlined,
-                              color: Colors.white),
-                          onPressed: () => context.push('/cart'),
-                        ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(height: 10),
-                  AppSearchBar(
-                    controller: _searchCtrl,
-                    onChanged: _onSearch,
-                  ),
-                  const SizedBox(height: 12),
-                  Container(
-                    height: 20,
-                    decoration: const BoxDecoration(
-                      color: Colors.white,
-                      borderRadius:
-                          BorderRadius.vertical(top: Radius.circular(18)),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
           Padding(
             padding: const EdgeInsets.fromLTRB(20, 12, 20, 8),
             child: Row(

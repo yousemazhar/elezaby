@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import '../../core/constants/app_colors.dart';
+import '../../widgets/global_app_bar.dart';
 
 class NotificationsScreen extends StatelessWidget {
   const NotificationsScreen({super.key});
@@ -9,23 +9,7 @@ class NotificationsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_new_rounded,
-              color: AppColors.textDark, size: 20),
-          onPressed: () => context.pop(),
-        ),
-        title: const Text(
-          'Notifications',
-          style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.w700,
-              color: AppColors.textDark),
-        ),
-        centerTitle: true,
-      ),
+      appBar: const GlobalAppBar(title: 'Notifications', showBackButton: true),
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,

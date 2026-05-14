@@ -10,6 +10,7 @@ import '../../providers/favorites_provider.dart';
 import '../../providers/auth_provider.dart';
 import '../../services/product_service.dart';
 import '../../widgets/app_button.dart';
+import '../../widgets/global_app_bar.dart';
 
 class ProductDetailScreen extends StatefulWidget {
   final String productId;
@@ -49,9 +50,9 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
           body: Center(child: CircularProgressIndicator()));
     }
     if (_product == null) {
-      return Scaffold(
-        appBar: AppBar(title: const Text('Product')),
-        body: const Center(child: Text('Product not found')),
+      return const Scaffold(
+        appBar: GlobalAppBar(title: 'Product', showBackButton: true),
+        body: Center(child: Text('Product not found')),
       );
     }
     return _ProductDetailBody(product: _product!);
@@ -93,10 +94,12 @@ class _ProductDetailBody extends StatelessWidget {
                     ? null
                     : () => favs.toggleFavorite(uid, product.id),
               ),
-              IconButton(
-                icon: const Icon(Icons.shopping_bag_outlined,
-                    color: AppColors.textDark),
-                onPressed: () => context.push('/cart'),
+              const Padding(
+                padding: EdgeInsets.only(right: 8),
+                child: CartAppBarAction(
+                  iconColor: AppColors.textDark,
+                  backgroundColor: Colors.white,
+                ),
               ),
             ],
             flexibleSpace: FlexibleSpaceBar(

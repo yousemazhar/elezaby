@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import '../../core/constants/app_colors.dart';
 import '../../providers/product_provider.dart';
 import '../../widgets/product_card.dart';
+import '../../widgets/global_app_bar.dart';
 
 class OffersScreen extends StatefulWidget {
   const OffersScreen({super.key});
@@ -26,37 +27,9 @@ class _OffersScreenState extends State<OffersScreen> {
     final products = context.watch<ProductProvider>();
 
     return Scaffold(
+      appBar: const GlobalAppBar(title: 'Today\'s Offers'),
       body: Column(
         children: [
-          Container(
-            decoration: const BoxDecoration(gradient: AppColors.primaryGradient),
-            child: SafeArea(
-              bottom: false,
-              child: Column(
-                children: [
-                  const Padding(
-                    padding: EdgeInsets.fromLTRB(20, 8, 20, 12),
-                    child: Text(
-                      'Today\'s Offers 🔥',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w700,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                  Container(
-                    height: 20,
-                    decoration: const BoxDecoration(
-                      color: Colors.white,
-                      borderRadius:
-                          BorderRadius.vertical(top: Radius.circular(18)),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
           // Banner
           Container(
             margin: const EdgeInsets.fromLTRB(16, 16, 16, 8),

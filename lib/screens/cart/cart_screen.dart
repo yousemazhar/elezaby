@@ -6,6 +6,7 @@ import '../../providers/cart_provider.dart';
 import '../../providers/auth_provider.dart';
 import '../../widgets/free_shipping_card.dart';
 import '../../widgets/app_button.dart';
+import '../../widgets/global_app_bar.dart';
 
 class CartScreen extends StatelessWidget {
   const CartScreen({super.key});
@@ -17,51 +18,9 @@ class CartScreen extends StatelessWidget {
     final uid = auth.appUser?.uid ?? '';
 
     return Scaffold(
+      appBar: const GlobalAppBar(title: 'My Cart', showBackButton: true),
       body: Column(
         children: [
-          Container(
-            decoration: const BoxDecoration(gradient: AppColors.primaryGradient),
-            child: SafeArea(
-              bottom: false,
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(8, 8, 16, 0),
-                    child: Row(
-                      children: [
-                        IconButton(
-                          icon: const Icon(Icons.arrow_back_ios_new_rounded,
-                              color: Colors.white),
-                          onPressed: () => context.pop(),
-                        ),
-                        const Expanded(
-                          child: Text(
-                            'My Cart',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w700,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                        const SizedBox(width: 48),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(height: 12),
-                  Container(
-                    height: 20,
-                    decoration: const BoxDecoration(
-                      color: Colors.white,
-                      borderRadius:
-                          BorderRadius.vertical(top: Radius.circular(18)),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
           if (cart.items.isEmpty)
             const Expanded(
               child: Center(

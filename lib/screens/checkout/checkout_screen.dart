@@ -7,6 +7,7 @@ import '../../providers/cart_provider.dart';
 import '../../services/order_service.dart';
 import '../../services/reward_service.dart';
 import '../../widgets/app_button.dart';
+import '../../widgets/global_app_bar.dart';
 
 class CheckoutScreen extends StatefulWidget {
   const CheckoutScreen({super.key});
@@ -71,51 +72,9 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
     final cart = context.watch<CartProvider>();
 
     return Scaffold(
+      appBar: const GlobalAppBar(title: 'Checkout', showBackButton: true),
       body: Column(
         children: [
-          Container(
-            decoration: const BoxDecoration(gradient: AppColors.primaryGradient),
-            child: SafeArea(
-              bottom: false,
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(8, 8, 16, 0),
-                    child: Row(
-                      children: [
-                        IconButton(
-                          icon: const Icon(Icons.arrow_back_ios_new_rounded,
-                              color: Colors.white),
-                          onPressed: () => context.pop(),
-                        ),
-                        const Expanded(
-                          child: Text(
-                            'Checkout',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w700,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                        const SizedBox(width: 48),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(height: 12),
-                  Container(
-                    height: 20,
-                    decoration: const BoxDecoration(
-                      color: Colors.white,
-                      borderRadius:
-                          BorderRadius.vertical(top: Radius.circular(18)),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
           Expanded(
             child: ListView(
               padding: const EdgeInsets.fromLTRB(20, 8, 20, 100),

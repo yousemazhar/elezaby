@@ -40,14 +40,47 @@ class CartProvider extends ChangeNotifier {
   }
 
   Future<void> addToCart(String uid, Product product) async {
+    final previousItems = List<CartItem>.from(_items);
+    _items = _optimisticAdd(product);
     _loading = true;
     notifyListeners();
     try {
       await _cartService.addToCart(uid, product);
+    } catch (_) {
+      _items = previousItems;
+      rethrow;
     } finally {
       _loading = false;
       notifyListeners();
     }
+  }
+
+  List<CartItem> _optimisticAdd(Product product) {
+    final existingIndex =
+        _items.indexWhere((item) => item.productId == product.id);
+    if (existingIndex == -1) {
+      return [
+        ..._items,
+        CartItem(
+          id: 'pending-${product.id}',
+          productId: product.id,
+          productName: product.name,
+          imageUrl: product.imageUrl,
+          price: product.price,
+          quantity: 1,
+          rewardPoints: product.rewardPoints,
+          addedAt: DateTime.now(),
+        ),
+      ];
+    }
+
+    return [
+      for (var i = 0; i < _items.length; i++)
+        if (i == existingIndex)
+          _items[i].copyWith(quantity: _items[i].quantity + 1)
+        else
+          _items[i],
+    ];
   }
 
   Future<void> updateQuantity(String uid, String itemId, int quantity) async {

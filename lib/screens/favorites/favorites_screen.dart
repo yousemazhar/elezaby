@@ -5,6 +5,7 @@ import '../../core/constants/app_colors.dart';
 import '../../providers/auth_provider.dart';
 import '../../providers/favorites_provider.dart';
 import '../../widgets/product_card.dart';
+import '../../widgets/global_app_bar.dart';
 
 class FavoritesScreen extends StatefulWidget {
   const FavoritesScreen({super.key});
@@ -30,37 +31,9 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
     final favs = context.watch<FavoritesProvider>();
 
     return Scaffold(
+      appBar: const GlobalAppBar(title: 'Favourites'),
       body: Column(
         children: [
-          Container(
-            decoration: const BoxDecoration(gradient: AppColors.primaryGradient),
-            child: SafeArea(
-              bottom: false,
-              child: Column(
-                children: [
-                  const Padding(
-                    padding: EdgeInsets.fromLTRB(20, 8, 20, 12),
-                    child: Text(
-                      'Favourites',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w700,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                  Container(
-                    height: 20,
-                    decoration: const BoxDecoration(
-                      color: Colors.white,
-                      borderRadius:
-                          BorderRadius.vertical(top: Radius.circular(18)),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
           if (favs.loading)
             const Expanded(
                 child: Center(child: CircularProgressIndicator()))

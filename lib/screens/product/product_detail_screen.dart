@@ -319,59 +319,66 @@ class _ProductDetailBody extends StatelessWidget {
           ],
         ),
         child: inCart
-            ? Row(
-                children: [
-                  Container(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 6, vertical: 6),
-                    decoration: BoxDecoration(
-                      color: AppColors.primaryLight,
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    child: Row(
-                      children: [
-                        _QtyCircleButton(
-                          icon: Icons.remove,
-                          onTap: () {
-                            final newQty = cartItem!.quantity - 1;
-                            if (newQty <= 0) {
-                              cart.removeItem(uid, cartItem.id);
-                            } else {
-                              cart.updateQuantity(uid, cartItem.id, newQty);
-                            }
-                          },
+            ? SizedBox(
+                height: 52,
+                child: Material(
+                  color: AppColors.primary,
+                  borderRadius: BorderRadius.circular(26),
+                  clipBehavior: Clip.antiAlias,
+                  child: Row(
+                    children: [
+                      _QtyStepperButton(
+                        icon: Icons.remove,
+                        onTap: () {
+                          final newQty = cartItem!.quantity - 1;
+                          if (newQty <= 0) {
+                            cart.removeItem(uid, cartItem.id);
+                          } else {
+                            cart.updateQuantity(uid, cartItem.id, newQty);
+                          }
+                        },
+                      ),
+                      SizedBox(
+                        width: 36,
+                        child: Center(
+                          child: Text(
+                            '${cartItem.quantity}',
+                            style: const TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w800,
+                              color: Colors.white,
+                            ),
+                          ),
                         ),
-                        SizedBox(
-                          width: 40,
+                      ),
+                      _QtyStepperButton(
+                        icon: Icons.add,
+                        onTap: cartItem.quantity < product.stock
+                            ? () => cart.updateQuantity(
+                                uid, cartItem!.id, cartItem.quantity + 1)
+                            : null,
+                      ),
+                      const SizedBox(width: 4),
+                      Container(
+                          width: 1, height: 24, color: Colors.white24),
+                      Expanded(
+                        child: InkWell(
+                          onTap: () => context.push('/cart'),
                           child: Center(
                             child: Text(
-                              '${cartItem.quantity}',
+                              'Go to Cart  •  EGP ${(product.price * cartItem.quantity).toStringAsFixed(0)}',
                               style: const TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w800,
-                                color: AppColors.textDark,
+                                fontSize: 15,
+                                fontWeight: FontWeight.w700,
+                                color: Colors.white,
                               ),
                             ),
                           ),
                         ),
-                        _QtyCircleButton(
-                          icon: Icons.add,
-                          onTap: cartItem.quantity < product.stock
-                              ? () => cart.updateQuantity(
-                                  uid, cartItem!.id, cartItem.quantity + 1)
-                              : null,
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                  const SizedBox(width: 12),
-                  Expanded(
-                    child: AppButton(
-                      label: 'Go to Cart',
-                      onPressed: () => context.push('/cart'),
-                    ),
-                  ),
-                ],
+                ),
               )
             : AppButton(
                 label: product.stock > 0 ? 'Add to Cart' : 'Out of Stock',
@@ -384,24 +391,24 @@ class _ProductDetailBody extends StatelessWidget {
   }
 }
 
-class _QtyCircleButton extends StatelessWidget {
+class _QtyStepperButton extends StatelessWidget {
   final IconData icon;
   final VoidCallback? onTap;
-  const _QtyCircleButton({required this.icon, required this.onTap});
+  const _QtyStepperButton({required this.icon, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
     final enabled = onTap != null;
-    return GestureDetector(
+    return InkWell(
       onTap: onTap,
-      child: Container(
-        width: 36,
-        height: 36,
-        decoration: BoxDecoration(
-          color: enabled ? AppColors.primary : AppColors.divider,
-          shape: BoxShape.circle,
+      child: SizedBox(
+        width: 44,
+        height: 52,
+        child: Icon(
+          icon,
+          size: 22,
+          color: enabled ? Colors.white : Colors.white38,
         ),
-        child: Icon(icon, size: 20, color: Colors.white),
       ),
     );
   }

@@ -189,14 +189,17 @@ class _CartItemTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cart = context.read<CartProvider>();
-    return Container(
-      margin: const EdgeInsets.only(bottom: 12),
-      padding: const EdgeInsets.all(14),
-      decoration: BoxDecoration(
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 12),
+      child: Material(
         color: AppColors.surface,
         borderRadius: BorderRadius.circular(16),
-      ),
-      child: Row(
+        clipBehavior: Clip.antiAlias,
+        child: InkWell(
+          onTap: () => context.push('/product/${item.productId}'),
+          child: Padding(
+            padding: const EdgeInsets.all(14),
+            child: Row(
         children: [
           Container(
             width: 72,
@@ -261,6 +264,9 @@ class _CartItemTile extends StatelessWidget {
             onPressed: () => cart.removeItem(uid, item.id),
           ),
         ],
+            ),
+          ),
+        ),
       ),
     );
   }

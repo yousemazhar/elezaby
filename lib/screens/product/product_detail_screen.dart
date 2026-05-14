@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import '../../core/constants/app_colors.dart';
+import '../../models/cart_item.dart';
 import '../../models/product.dart';
 import '../../providers/product_provider.dart';
 import '../../providers/cart_provider.dart';
@@ -74,7 +75,14 @@ class _ProductDetailBody extends StatelessWidget {
     final favs = context.watch<FavoritesProvider>();
     final uid = auth.appUser?.uid ?? '';
     final isFav = favs.isFavorite(product.id);
-    final inCart = cart.items.any((i) => i.productId == product.id);
+    CartItem? cartItem;
+    for (final i in cart.items) {
+      if (i.productId == product.id) {
+        cartItem = i;
+        break;
+      }
+    }
+    final inCart = cartItem != null;
 
     return Scaffold(
       body: CustomScrollView(
@@ -313,6 +321,50 @@ class _ProductDetailBody extends StatelessWidget {
         child: inCart
             ? Row(
                 children: [
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 6, vertical: 6),
+                    decoration: BoxDecoration(
+                      color: AppColors.primaryLight,
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    child: Row(
+                      children: [
+                        _QtyCircleButton(
+                          icon: Icons.remove,
+                          onTap: () {
+                            final newQty = cartItem!.quantity - 1;
+                            if (newQty <= 0) {
+                              cart.removeItem(uid, cartItem.id);
+                            } else {
+                              cart.updateQuantity(uid, cartItem.id, newQty);
+                            }
+                          },
+                        ),
+                        SizedBox(
+                          width: 40,
+                          child: Center(
+                            child: Text(
+                              '${cartItem.quantity}',
+                              style: const TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w800,
+                                color: AppColors.textDark,
+                              ),
+                            ),
+                          ),
+                        ),
+                        _QtyCircleButton(
+                          icon: Icons.add,
+                          onTap: cartItem.quantity < product.stock
+                              ? () => cart.updateQuantity(
+                                  uid, cartItem!.id, cartItem.quantity + 1)
+                              : null,
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(width: 12),
                   Expanded(
                     child: AppButton(
                       label: 'Go to Cart',
@@ -327,6 +379,29 @@ class _ProductDetailBody extends StatelessWidget {
                     ? () => context.read<CartProvider>().addToCart(uid, product)
                     : null,
               ),
+      ),
+    );
+  }
+}
+
+class _QtyCircleButton extends StatelessWidget {
+  final IconData icon;
+  final VoidCallback? onTap;
+  const _QtyCircleButton({required this.icon, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    final enabled = onTap != null;
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        width: 36,
+        height: 36,
+        decoration: BoxDecoration(
+          color: enabled ? AppColors.primary : AppColors.divider,
+          shape: BoxShape.circle,
+        ),
+        child: Icon(icon, size: 20, color: Colors.white),
       ),
     );
   }

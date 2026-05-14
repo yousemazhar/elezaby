@@ -9,6 +9,7 @@ class Product {
   final String imageUrl;
   final String categoryId;
   final String subcategoryId;
+  final String subSubcategoryId;
   final String barcode;
   final String activeIngredient;
   final String concentration;
@@ -30,6 +31,7 @@ class Product {
     required this.imageUrl,
     required this.categoryId,
     required this.subcategoryId,
+    required this.subSubcategoryId,
     required this.barcode,
     required this.activeIngredient,
     required this.concentration,
@@ -54,6 +56,7 @@ class Product {
       imageUrl: data['imageUrl'] as String? ?? '',
       categoryId: data['categoryId'] as String? ?? '',
       subcategoryId: data['subcategoryId'] as String? ?? '',
+      subSubcategoryId: data['subSubcategoryId'] as String? ?? '',
       barcode: data['barcode'] as String? ?? '',
       activeIngredient: data['activeIngredient'] as String? ?? '',
       concentration: data['concentration'] as String? ?? '',
@@ -76,6 +79,7 @@ class Product {
         'imageUrl': imageUrl,
         'categoryId': categoryId,
         'subcategoryId': subcategoryId,
+        'subSubcategoryId': subSubcategoryId,
         'barcode': barcode,
         'activeIngredient': activeIngredient,
         'concentration': concentration,

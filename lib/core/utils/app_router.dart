@@ -55,8 +55,15 @@ GoRouter buildRouter(BuildContext context) {
         builder: (ctx, state) {
           final extra = state.extra as Map<String, dynamic>?;
           final catId = extra?['categoryId'] as String?;
+          final subId = extra?['subcategoryId'] as String?;
+          final subSubId = extra?['subSubcategoryId'] as String?;
           final title = extra?['title'] as String?;
-          return ProductListScreen(categoryId: catId, title: title);
+          return ProductListScreen(
+            categoryId: catId,
+            subcategoryId: subId,
+            subSubcategoryId: subSubId,
+            title: title,
+          );
         },
       ),
       GoRoute(

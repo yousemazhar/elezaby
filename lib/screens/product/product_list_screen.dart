@@ -9,9 +9,17 @@ import '../../widgets/global_app_bar.dart';
 
 class ProductListScreen extends StatefulWidget {
   final String? categoryId;
+  final String? subcategoryId;
+  final String? subSubcategoryId;
   final String? title;
 
-  const ProductListScreen({super.key, this.categoryId, this.title});
+  const ProductListScreen({
+    super.key,
+    this.categoryId,
+    this.subcategoryId,
+    this.subSubcategoryId,
+    this.title,
+  });
 
   @override
   State<ProductListScreen> createState() => _ProductListScreenState();
@@ -25,7 +33,11 @@ class _ProductListScreenState extends State<ProductListScreen> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      context.read<ProductProvider>().loadProducts(categoryId: widget.categoryId);
+      context.read<ProductProvider>().loadProducts(
+            categoryId: widget.categoryId,
+            subcategoryId: widget.subcategoryId,
+            subSubcategoryId: widget.subSubcategoryId,
+          );
     });
   }
 
@@ -64,7 +76,11 @@ class _ProductListScreenState extends State<ProductListScreen> {
             child: Row(
               children: [
                 Text(
-                  widget.categoryId != null ? 'Products' : 'All Products',
+                  (widget.categoryId != null ||
+                          widget.subcategoryId != null ||
+                          widget.subSubcategoryId != null)
+                      ? 'Products'
+                      : 'All Products',
                   style: const TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.w700,

@@ -1,11 +1,45 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'seed_taxonomy.dart';
 
 class SeedService {
   final FirebaseFirestore _db = FirebaseFirestore.instance;
 
   Future<void> seedAll() async {
     await _seedCategories();
+    await _seedSubcategories();
+    await _seedSubSubcategories();
     await _seedProducts();
+  }
+
+  Future<void> _seedSubcategories() async {
+    final batch = _db.batch();
+    for (final s in kSubcategories) {
+      final ref = _db.collection('subcategories').doc(s.id);
+      batch.set(ref, {
+        'categoryId': s.categoryId,
+        'name': s.name,
+        'emoji': s.emoji,
+        'imageUrl': '',
+        'sortOrder': s.sortOrder,
+      });
+    }
+    await batch.commit();
+  }
+
+  Future<void> _seedSubSubcategories() async {
+    final batch = _db.batch();
+    for (final s in kSubSubcategories) {
+      final ref = _db.collection('subsubcategories').doc(s.id);
+      batch.set(ref, {
+        'categoryId': s.categoryId,
+        'subcategoryId': s.subcategoryId,
+        'name': s.name,
+        'emoji': s.emoji,
+        'imageUrl': '',
+        'sortOrder': s.sortOrder,
+      });
+    }
+    await batch.commit();
   }
 
   Future<void> _seedCategories() async {
@@ -3895,6 +3929,13 @@ class SeedService {
         final data = Map<String, dynamic>.from(p)
           ..remove('docId');
         data['createdAt'] ??= Timestamp.fromDate(DateTime.now());
+        final assignment = classifyProduct(
+          categoryId: (data['categoryId'] as String?) ?? '',
+          activeIngredient: (data['activeIngredient'] as String?) ?? '',
+          dosageForm: (data['dosageForm'] as String?) ?? '',
+        );
+        data['subcategoryId'] = assignment.sub;
+        data['subSubcategoryId'] = assignment.subSub;
         batch.set(ref, data, SetOptions(merge: true));
       }
       await batch.commit();

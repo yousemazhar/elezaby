@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../models/product.dart';
 import '../models/category.dart';
+import '../models/subcategory.dart';
+import '../models/sub_subcategory.dart';
 
 class ProductService {
   final FirebaseFirestore _db = FirebaseFirestore.instance;
@@ -13,9 +15,44 @@ class ProductService {
     return snap.docs.map(Category.fromFirestore).toList();
   }
 
-  Future<List<Product>> fetchProducts({String? categoryId}) async {
-    Query<Map<String, dynamic>> q = _db.collection('products');
+  Future<List<Subcategory>> fetchSubcategories({String? categoryId}) async {
+    Query<Map<String, dynamic>> q = _db.collection('subcategories');
     if (categoryId != null) {
+      q = q.where('categoryId', isEqualTo: categoryId);
+    }
+    final snap = await q.get();
+    final list = snap.docs.map(Subcategory.fromFirestore).toList();
+    list.sort((a, b) => a.sortOrder.compareTo(b.sortOrder));
+    return list;
+  }
+
+  Future<List<SubSubcategory>> fetchSubSubcategories({
+    String? categoryId,
+    String? subcategoryId,
+  }) async {
+    Query<Map<String, dynamic>> q = _db.collection('subsubcategories');
+    if (subcategoryId != null) {
+      q = q.where('subcategoryId', isEqualTo: subcategoryId);
+    } else if (categoryId != null) {
+      q = q.where('categoryId', isEqualTo: categoryId);
+    }
+    final snap = await q.get();
+    final list = snap.docs.map(SubSubcategory.fromFirestore).toList();
+    list.sort((a, b) => a.sortOrder.compareTo(b.sortOrder));
+    return list;
+  }
+
+  Future<List<Product>> fetchProducts({
+    String? categoryId,
+    String? subcategoryId,
+    String? subSubcategoryId,
+  }) async {
+    Query<Map<String, dynamic>> q = _db.collection('products');
+    if (subSubcategoryId != null) {
+      q = q.where('subSubcategoryId', isEqualTo: subSubcategoryId);
+    } else if (subcategoryId != null) {
+      q = q.where('subcategoryId', isEqualTo: subcategoryId);
+    } else if (categoryId != null) {
       q = q.where('categoryId', isEqualTo: categoryId);
     }
     final snap = await q.get();

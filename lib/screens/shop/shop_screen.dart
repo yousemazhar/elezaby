@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import '../../core/constants/app_colors.dart';
+import '../../models/category.dart';
+import '../../models/subcategory.dart';
+import '../../models/sub_subcategory.dart';
 import '../../providers/product_provider.dart';
 import '../../widgets/global_app_bar.dart';
 
@@ -14,269 +17,292 @@ class ShopScreen extends StatefulWidget {
 
 class _ShopScreenState extends State<ShopScreen> {
   String? _activeCatId;
-
-  static const _categories = [
-    _Cat('cardiovascular', '❤️', 'Cardiovascular'),
-    _Cat('psychiatric_neuro', '🧠', 'Psychiatric'),
-    _Cat('respiratory_allergy', '🌬️', 'Respiratory'),
-    _Cat('diabetes_metabolism', '💉', 'Diabetes'),
-    _Cat('pain_inflammation', '💊', 'Pain & Inflammation'),
-    _Cat('antibiotics', '🦠', 'Antibiotics'),
-    _Cat('gastrointestinal', '🫃', 'Gastro'),
-    _Cat('vitamins_supplements', '🌟', 'Vitamins'),
-    _Cat('dermatology', '🧴', 'Dermatology'),
-    _Cat('oncology', '🎗️', 'Oncology'),
-    _Cat('other', '🏥', 'Other'),
-  ];
+  String? _expandedSubId;
 
   @override
   void initState() {
     super.initState();
-    _activeCatId = _categories.first.id;
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      context.read<ProductProvider>().loadProducts();
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      final provider = context.read<ProductProvider>();
+      if (provider.categories.isEmpty || provider.subcategories.isEmpty) {
+        await provider.loadShopTaxonomy();
+      }
+      if (!mounted) return;
+      if (_activeCatId == null && provider.categories.isNotEmpty) {
+        setState(() {
+          _activeCatId = provider.categories.first.id;
+          final subs = provider.subcategoriesFor(_activeCatId!);
+          _expandedSubId = subs.isNotEmpty ? subs.first.id : null;
+        });
+      }
+    });
+  }
+
+  void _onSelectCategory(String id, List<Subcategory> subsForCat) {
+    setState(() {
+      _activeCatId = id;
+      _expandedSubId = subsForCat.isNotEmpty ? subsForCat.first.id : null;
+    });
+  }
+
+  void _toggleSub(String id) {
+    setState(() {
+      _expandedSubId = _expandedSubId == id ? null : id;
+    });
+  }
+
+  void _goToSubcategoryProducts(String subcategoryId, String title) {
+    context.push('/products', extra: {
+      'subcategoryId': subcategoryId,
+      'title': title,
+    });
+  }
+
+  void _goToSubSubcategoryProducts(String subSubcategoryId, String title) {
+    context.push('/products', extra: {
+      'subSubcategoryId': subSubcategoryId,
+      'title': title,
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    final active = _categories.firstWhere((c) => c.id == _activeCatId);
+    final provider = context.watch<ProductProvider>();
+    final categories = provider.categories;
+    final loading = provider.loadingShopTaxonomy;
 
     return Scaffold(
       appBar: const GlobalAppBar(title: 'Shop', showBackButton: true),
-      body: Column(
-        children: [
-          Expanded(
-            child: Row(
-              children: [
-                // Sidebar
-                Container(
-                  width: 110,
-                  color: AppColors.surface,
-                  child: ListView.builder(
-                    itemCount: _categories.length,
-                    itemBuilder: (_, i) {
-                      final cat = _categories[i];
-                      final isActive = cat.id == _activeCatId;
-                      return GestureDetector(
-                        onTap: () => setState(() => _activeCatId = cat.id),
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 18, horizontal: 10),
-                          decoration: BoxDecoration(
-                            color: isActive
-                                ? AppColors.primary
-                                : Colors.transparent,
-                            borderRadius: isActive
-                                ? const BorderRadius.horizontal(
-                                    right: Radius.circular(8))
-                                : null,
-                          ),
-                          child: Column(
-                            children: [
-                              Text(cat.emoji,
-                                  style: const TextStyle(fontSize: 22)),
-                              const SizedBox(height: 4),
-                              Text(
-                                cat.name,
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontSize: 11,
-                                  fontWeight: FontWeight.w500,
-                                  color: isActive
-                                      ? Colors.white
-                                      : AppColors.textMuted,
-                                ),
-                              ),
-                            ],
-                          ),
+      body: loading && categories.isEmpty
+          ? const Center(child: CircularProgressIndicator())
+          : categories.isEmpty
+              ? const Center(
+                  child: Text('No categories yet',
+                      style: TextStyle(color: AppColors.textMuted)),
+                )
+              : _buildBody(provider, categories),
+    );
+  }
+
+  Widget _buildBody(ProductProvider provider, List<Category> categories) {
+    final activeCat = categories.firstWhere(
+      (c) => c.id == _activeCatId,
+      orElse: () => categories.first,
+    );
+    final subs = provider.subcategoriesFor(activeCat.id);
+
+    return Row(
+      children: [
+        // Sidebar
+        Container(
+          width: 120,
+          color: AppColors.surface,
+          child: ListView.builder(
+            padding: const EdgeInsets.symmetric(vertical: 8),
+            itemCount: categories.length,
+            itemBuilder: (_, i) {
+              final cat = categories[i];
+              final isActive = cat.id == activeCat.id;
+              return GestureDetector(
+                behavior: HitTestBehavior.opaque,
+                onTap: () => _onSelectCategory(
+                    cat.id, provider.subcategoriesFor(cat.id)),
+                child: Container(
+                  padding: const EdgeInsets.symmetric(
+                      vertical: 20, horizontal: 10),
+                  decoration: BoxDecoration(
+                    color: isActive ? AppColors.primary : Colors.transparent,
+                    borderRadius: isActive
+                        ? const BorderRadius.horizontal(
+                            right: Radius.circular(8))
+                        : null,
+                  ),
+                  child: Column(
+                    children: [
+                      Text(cat.emoji,
+                          style: const TextStyle(fontSize: 22)),
+                      const SizedBox(height: 4),
+                      Text(
+                        cat.name,
+                        textAlign: TextAlign.center,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          fontSize: 11,
+                          fontWeight: FontWeight.w500,
+                          color:
+                              isActive ? Colors.white : AppColors.textMuted,
                         ),
-                      );
-                    },
+                      ),
+                    ],
                   ),
                 ),
-                // Content
-                Expanded(
-                  child: _CategoryContent(
-                    category: active,
-                    onNavigate: (catId) =>
-                        context.push('/products', extra: {'categoryId': catId}),
-                  ),
-                ),
-              ],
-            ),
+              );
+            },
           ),
-        ],
-      ),
+        ),
+        // Content panel
+        Expanded(
+          child: subs.isEmpty
+              ? Center(
+                  child: Padding(
+                    padding: const EdgeInsets.all(24),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(activeCat.emoji,
+                            style: const TextStyle(fontSize: 36)),
+                        const SizedBox(height: 8),
+                        Text(activeCat.name,
+                            style: const TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w700,
+                                color: AppColors.textDark)),
+                        const SizedBox(height: 8),
+                        const Text('No subcategories yet',
+                            style:
+                                TextStyle(color: AppColors.textMuted)),
+                      ],
+                    ),
+                  ),
+                )
+              : ListView.builder(
+                  padding: const EdgeInsets.fromLTRB(12, 16, 12, 100),
+                  itemCount: subs.length,
+                  itemBuilder: (_, i) {
+                    final sub = subs[i];
+                    final isExpanded = _expandedSubId == sub.id;
+                    final subSubs = provider.subSubcategoriesFor(sub.id);
+                    return _SubcategoryCard(
+                      sub: sub,
+                      isExpanded: isExpanded,
+                      subSubs: subSubs,
+                      onHeaderTap: () => _toggleSub(sub.id),
+                      onSubSubTap: (ss) => _goToSubSubcategoryProducts(
+                          ss.id, ss.name),
+                      onSeeAll: () =>
+                          _goToSubcategoryProducts(sub.id, sub.name),
+                    );
+                  },
+                ),
+        ),
+      ],
     );
   }
 }
 
-class _Cat {
-  final String id, emoji, name;
-  const _Cat(this.id, this.emoji, this.name);
-}
+class _SubcategoryCard extends StatelessWidget {
+  final Subcategory sub;
+  final bool isExpanded;
+  final List<SubSubcategory> subSubs;
+  final VoidCallback onHeaderTap;
+  final VoidCallback onSeeAll;
+  final ValueChanged<SubSubcategory> onSubSubTap;
 
-class _CategoryContent extends StatelessWidget {
-  final _Cat category;
-  final ValueChanged<String> onNavigate;
-
-  const _CategoryContent(
-      {required this.category, required this.onNavigate});
-
-  static const _subMap = {
-    'cardiovascular': [
-      _Sub('Antihypertensives', '🩺'),
-      _Sub('Anticoagulants', '🩸'),
-      _Sub('Statins', '📊'),
-      _Sub('Diuretics', '💧'),
-      _Sub('Beta Blockers', '❤️‍🩹'),
-      _Sub('Antianginals', '💓'),
-    ],
-    'psychiatric_neuro': [
-      _Sub('Antipsychotics', '🧠'),
-      _Sub('Antidepressants', '💙'),
-      _Sub('Anti-epileptics', '⚡'),
-      _Sub('Anxiolytics', '😴'),
-      _Sub('ADHD', '🎯'),
-      _Sub('Neurology', '🔬'),
-    ],
-    'respiratory_allergy': [
-      _Sub('Antihistamines', '🌸'),
-      _Sub('Bronchodilators', '🫁'),
-      _Sub('Nasal Sprays', '💨'),
-      _Sub('Cold & Flu', '🤧'),
-      _Sub('Allergy', '🌿'),
-    ],
-    'diabetes_metabolism': [
-      _Sub('SGLT2 Inhibitors', '💉'),
-      _Sub('Glinides', '🔬'),
-      _Sub('Dopamine', '🧬'),
-      _Sub('Antidiabetics', '🩺'),
-    ],
-    'pain_inflammation': [
-      _Sub('Pain Relief', '💊'),
-      _Sub('NSAIDs', '🌡️'),
-      _Sub('Muscle Relaxants', '💪'),
-      _Sub('Local Anaesthetics', '🩺'),
-      _Sub('Anti-Rheumatic', '🦴'),
-      _Sub('Massage', '🤲'),
-    ],
-    'antibiotics': [
-      _Sub('Antibiotics', '🦠'),
-      _Sub('Antifungals', '🍄'),
-      _Sub('Topical Anti-inf.', '🧴'),
-    ],
-    'gastrointestinal': [
-      _Sub('Acid Relief', '🫀'),
-      _Sub('Antiemetics', '🤢'),
-      _Sub('Haemorrhoids', '💊'),
-      _Sub('Bladder Care', '💧'),
-      _Sub('Renal Stones', '🪨'),
-    ],
-    'vitamins_supplements': [
-      _Sub('Vitamins', '🌟'),
-      _Sub('Minerals', '💊'),
-      _Sub('Immunity', '🛡️'),
-      _Sub('Multivitamins', '🌈'),
-    ],
-    'dermatology': [
-      _Sub('Hair Care', '💇'),
-      _Sub('Skin Care', '🧴'),
-      _Sub('Shampoos', '🚿'),
-    ],
-    'oncology': [
-      _Sub('Cancer Care', '🎗️'),
-      _Sub('Anti-Estrogen', '🔬'),
-      _Sub('Aromatase Inh.', '💉'),
-    ],
-    'other': [
-      _Sub('General', '🏥'),
-    ],
-  };
+  const _SubcategoryCard({
+    required this.sub,
+    required this.isExpanded,
+    required this.subSubs,
+    required this.onHeaderTap,
+    required this.onSeeAll,
+    required this.onSubSubTap,
+  });
 
   @override
   Widget build(BuildContext context) {
-    final subs = _subMap[category.id] ?? [];
-    return ListView(
-      padding: const EdgeInsets.fromLTRB(14, 16, 14, 100),
-      children: [
-        Container(
-          decoration: BoxDecoration(
-            color: Colors.white,
+    return Container(
+      margin: const EdgeInsets.only(bottom: 14),
+      decoration: BoxDecoration(
+        color: isExpanded ? Colors.white : AppColors.surface,
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: AppColors.border),
+        boxShadow: isExpanded
+            ? const [
+                BoxShadow(
+                    color: Color(0x140087C8),
+                    blurRadius: 10,
+                    offset: Offset(0, 2)),
+              ]
+            : const [],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          InkWell(
+            onTap: onHeaderTap,
             borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: AppColors.border),
-            boxShadow: const [
-              BoxShadow(
-                  color: Color(0x140087C8),
-                  blurRadius: 10,
-                  offset: Offset(0, 2)),
-            ],
-          ),
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
+            child: Padding(
+              padding: const EdgeInsets.all(14),
+              child: Row(
                 children: [
                   Container(
-                    width: 36,
-                    height: 36,
+                    width: 40,
+                    height: 40,
                     decoration: BoxDecoration(
                       color: AppColors.primaryLight,
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Center(
-                        child: Text(category.emoji,
-                            style: const TextStyle(fontSize: 18))),
+                        child: Text(sub.emoji,
+                            style: const TextStyle(fontSize: 20))),
                   ),
                   const SizedBox(width: 10),
                   Expanded(
                     child: Text(
-                      category.name,
+                      sub.name,
                       style: const TextStyle(
-                          fontSize: 18,
+                          fontSize: 16,
                           fontWeight: FontWeight.w700,
                           color: AppColors.textDark),
                     ),
                   ),
+                  Icon(
+                    isExpanded
+                        ? Icons.keyboard_arrow_down
+                        : Icons.keyboard_arrow_left,
+                    color: AppColors.textDark,
+                  ),
                 ],
               ),
-              const SizedBox(height: 14),
-              GridView.builder(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: subs.length,
-                gridDelegate:
-                    const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 3,
-                  mainAxisExtent: 100,
-                  crossAxisSpacing: 10,
-                  mainAxisSpacing: 10,
-                ),
-                itemBuilder: (_, i) {
-                  final sub = subs[i];
-                  return GestureDetector(
-                    onTap: () => onNavigate(category.id),
-                    child: Center(
+            ),
+          ),
+          if (isExpanded) ...[
+            if (subSubs.isNotEmpty)
+              Padding(
+                padding: const EdgeInsets.fromLTRB(14, 0, 14, 8),
+                child: GridView.builder(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: subSubs.length,
+                  gridDelegate:
+                      const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 3,
+                    mainAxisExtent: 110,
+                    crossAxisSpacing: 10,
+                    mainAxisSpacing: 10,
+                  ),
+                  itemBuilder: (_, i) {
+                    final ss = subSubs[i];
+                    return GestureDetector(
+                      onTap: () => onSubSubTap(ss),
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Container(
-                            width: 54,
-                            height: 54,
+                            width: 56,
+                            height: 56,
                             decoration: BoxDecoration(
                               color: AppColors.surface,
                               borderRadius: BorderRadius.circular(12),
                               border: Border.all(color: AppColors.border),
                             ),
                             child: Center(
-                                child: Text(sub.emoji,
+                                child: Text(ss.emoji,
                                     style: const TextStyle(fontSize: 24))),
                           ),
-                          const SizedBox(height: 4),
+                          const SizedBox(height: 6),
                           Text(
-                            sub.name,
+                            ss.name,
                             style: const TextStyle(
                                 fontSize: 11, color: AppColors.textDark),
                             textAlign: TextAlign.center,
@@ -285,13 +311,14 @@ class _CategoryContent extends StatelessWidget {
                           ),
                         ],
                       ),
-                    ),
-                  );
-                },
+                    );
+                  },
+                ),
               ),
-              const SizedBox(height: 14),
-              GestureDetector(
-                onTap: () => onNavigate(category.id),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(14, 4, 14, 14),
+              child: GestureDetector(
+                onTap: onSeeAll,
                 child: const Center(
                   child: Text(
                     'SEE ALL PRODUCTS',
@@ -304,15 +331,10 @@ class _CategoryContent extends StatelessWidget {
                   ),
                 ),
               ),
-            ],
-          ),
-        ),
-      ],
+            ),
+          ],
+        ],
+      ),
     );
   }
-}
-
-class _Sub {
-  final String name, emoji;
-  const _Sub(this.name, this.emoji);
 }

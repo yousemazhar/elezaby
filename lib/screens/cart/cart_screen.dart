@@ -53,25 +53,8 @@ class CartScreen extends StatelessWidget {
               child: ListView(
                 padding: const EdgeInsets.fromLTRB(20, 8, 20, 0),
                 children: [
-                  FreeShippingCard(subtotal: cart.subtotal),
-                  const SizedBox(height: 12),
-                  const Text(
-                    'Items',
-                    style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w700,
-                        color: AppColors.textDark),
-                  ),
-                  const SizedBox(height: 10),
-                  ...cart.items.map(
-                    (item) => _CartItemTile(
-                      item: item,
-                      uid: uid,
-                    ),
-                  ),
-                  const SizedBox(height: 16),
                   // Points earned
-                  if (cart.totalRewardPoints > 0)
+                  if (cart.totalRewardPoints > 0) ...[
                     Container(
                       padding: const EdgeInsets.all(14),
                       decoration: BoxDecoration(
@@ -93,6 +76,25 @@ class CartScreen extends StatelessWidget {
                         ],
                       ),
                     ),
+                    const SizedBox(height: 12),
+                  ],
+                  FreeShippingCard(subtotal: cart.subtotal),
+                  const SizedBox(height: 12),
+                  const Text(
+                    'Items',
+                    style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w700,
+                        color: AppColors.textDark),
+                  ),
+                  const SizedBox(height: 10),
+                  ...cart.items.map(
+                    (item) => _CartItemTile(
+                      item: item,
+                      uid: uid,
+                    ),
+                  ),
+                  const SizedBox(height: 16),
                   const SizedBox(height: 100),
                 ],
               ),
@@ -282,14 +284,15 @@ class _QtyButton extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        width: 28,
-        height: 28,
+        width: 40,
+        height: 40,
+        alignment: Alignment.center,
         decoration: BoxDecoration(
           color: Colors.white,
           shape: BoxShape.circle,
           border: Border.all(color: AppColors.divider, width: 1.5),
         ),
-        child: Icon(icon, size: 16, color: AppColors.textDark),
+        child: Icon(icon, size: 20, color: AppColors.textDark),
       ),
     );
   }

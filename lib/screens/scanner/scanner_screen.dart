@@ -499,14 +499,10 @@ class _ArProductOverlayState extends State<_ArProductOverlay>
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final centerY = size.height / 2;
-    final centerX = size.width / 2;
     // Cutout is 240x170 centered.
-    const cutoutW = 240.0;
     const cutoutH = 170.0;
     final topOfCutout = centerY - cutoutH / 2;
     final bottomOfCutout = centerY + cutoutH / 2;
-    final leftOfCutout = centerX - cutoutW / 2;
-    final rightOfCutout = centerX + cutoutW / 2;
     final p = widget.product;
     final flag = p.origin.toLowerCase().contains('egypt') ? '🇪🇬' : '🌍';
 
@@ -573,79 +569,6 @@ class _ArProductOverlayState extends State<_ArProductOverlay>
           ),
         ),
 
-        // Right side: origin badge
-        Positioned(
-          top: topOfCutout - 4,
-          left: rightOfCutout + 6,
-          child: _ArPill(
-            color: const Color(0xFFFFC800),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(flag, style: const TextStyle(fontSize: 14)),
-                const SizedBox(width: 4),
-                Text(
-                  p.origin.isNotEmpty ? p.origin : 'Origin',
-                  style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 11,
-                      fontWeight: FontWeight.w700),
-                ),
-              ],
-            ),
-          ),
-        ),
-
-        // Right side: stock badge
-        Positioned(
-          top: topOfCutout + 30,
-          left: rightOfCutout + 6,
-          child: _ArPill(
-            color: p.stock > 0 ? AppColors.green : AppColors.red,
-            child: Text(
-              p.stock > 0 ? 'In Stock' : 'Out',
-              style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 11,
-                  fontWeight: FontWeight.w700),
-            ),
-          ),
-        ),
-
-        // Left side: manufacturer
-        if (p.manufacturer.isNotEmpty)
-          Positioned(
-            top: topOfCutout + 4,
-            right: size.width - leftOfCutout + 6,
-            child: _ArPill(
-              color: const Color(0xFF00BFEF),
-              child: Text(
-                p.manufacturer,
-                style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 11,
-                    fontWeight: FontWeight.w700),
-              ),
-            ),
-          ),
-
-        // Left side: dosage form
-        if (p.dosageForm.isNotEmpty)
-          Positioned(
-            top: topOfCutout + 38,
-            right: size.width - leftOfCutout + 6,
-            child: _ArPill(
-              color: AppColors.primary,
-              child: Text(
-                p.dosageForm,
-                style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 11,
-                    fontWeight: FontWeight.w700),
-              ),
-            ),
-          ),
-
         // Bottom: details card under barcode
         Positioned(
           top: bottomOfCutout + 24 - _anim.value,
@@ -677,6 +600,65 @@ class _ArProductOverlayState extends State<_ArProductOverlay>
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    Wrap(
+                      spacing: 8,
+                      runSpacing: 8,
+                      children: [
+                        if (p.manufacturer.isNotEmpty)
+                          _ArPill(
+                            color: const Color(0xFF00BFEF),
+                            child: Text(
+                              p.manufacturer,
+                              style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 11,
+                                  fontWeight: FontWeight.w700),
+                            ),
+                          ),
+                        if (p.dosageForm.isNotEmpty)
+                          _ArPill(
+                            color: AppColors.primary,
+                            child: Text(
+                              p.dosageForm,
+                              style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 11,
+                                  fontWeight: FontWeight.w700),
+                            ),
+                          ),
+                        _ArPill(
+                          color: const Color(0xFFFFC800),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text(flag, style: const TextStyle(fontSize: 14)),
+                              const SizedBox(width: 4),
+                              Flexible(
+                                child: Text(
+                                  p.origin.isNotEmpty ? p.origin : 'Origin',
+                                  overflow: TextOverflow.ellipsis,
+                                  style: const TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 11,
+                                      fontWeight: FontWeight.w700),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        _ArPill(
+                          color: p.stock > 0 ? AppColors.green : AppColors.red,
+                          child: Text(
+                            p.stock > 0 ? 'In Stock' : 'Out',
+                            style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 11,
+                                fontWeight: FontWeight.w700),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 8),
                     if (p.concentration.isNotEmpty)
                       _ArDetailRow(
                           icon: Icons.science_outlined,

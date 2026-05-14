@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import '../core/constants/app_colors.dart';
 import '../models/product.dart';
 import '../providers/cart_provider.dart';
 import '../providers/favorites_provider.dart';
 import '../providers/auth_provider.dart';
+import 'product_image.dart';
 
 class ProductCard extends StatelessWidget {
   final Product product;
@@ -49,7 +49,7 @@ class ProductCard extends StatelessWidget {
                     color: AppColors.primaryLight,
                     borderRadius: BorderRadius.circular(16),
                   ),
-                  child: _buildImage(),
+                  child: ProductImage(imageUrl: product.imageUrl),
                 ),
                 Positioned(
                   top: 6,
@@ -139,21 +139,6 @@ class ProductCard extends StatelessWidget {
       ),
     );
   }
-
-  Widget _buildImage() {
-    if (product.imageUrl.isNotEmpty) {
-      return CachedNetworkImage(
-        imageUrl: product.imageUrl,
-        fit: BoxFit.contain,
-        placeholder: (_, __) => const Icon(Icons.medication_rounded,
-            size: 40, color: AppColors.primary),
-        errorWidget: (_, __, ___) => const Icon(Icons.medication_rounded,
-            size: 40, color: AppColors.primary),
-      );
-    }
-    return const Icon(Icons.medication_rounded,
-        size: 40, color: AppColors.primary);
-  }
 }
 
 class _AddButton extends StatelessWidget {
@@ -196,8 +181,7 @@ class _QuantityBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cart = context.watch<CartProvider>();
-    final item =
-        cart.items.firstWhere((i) => i.productId == product.id);
+    final item = cart.items.firstWhere((i) => i.productId == product.id);
     return Container(
       decoration: BoxDecoration(
         gradient: AppColors.primaryGradient135,
@@ -222,9 +206,7 @@ class _QuantityBar extends StatelessWidget {
           Text(
             '${item.quantity}',
             style: const TextStyle(
-                color: Colors.white,
-                fontSize: 14,
-                fontWeight: FontWeight.w700),
+                color: Colors.white, fontSize: 14, fontWeight: FontWeight.w700),
           ),
           GestureDetector(
             onTap: () => context

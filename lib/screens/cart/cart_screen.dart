@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import '../../core/constants/app_colors.dart';
+import '../../models/cart_item.dart';
 import '../../providers/cart_provider.dart';
 import '../../providers/auth_provider.dart';
 import '../../widgets/free_shipping_card.dart';
 import '../../widgets/app_button.dart';
 import '../../widgets/global_app_bar.dart';
+import '../../widgets/product_image.dart';
 
 class CartScreen extends StatelessWidget {
   const CartScreen({super.key});
@@ -39,8 +41,8 @@ class CartScreen extends StatelessWidget {
                     SizedBox(height: 8),
                     Text(
                       'Add products to get started',
-                      style: TextStyle(
-                          fontSize: 14, color: AppColors.textMuted),
+                      style:
+                          TextStyle(fontSize: 14, color: AppColors.textMuted),
                     ),
                   ],
                 ),
@@ -103,8 +105,7 @@ class CartScreen extends StatelessWidget {
               padding: const EdgeInsets.fromLTRB(20, 16, 20, 28),
               decoration: const BoxDecoration(
                 color: AppColors.surface,
-                borderRadius:
-                    BorderRadius.vertical(top: Radius.circular(18)),
+                borderRadius: BorderRadius.vertical(top: Radius.circular(18)),
                 boxShadow: [
                   BoxShadow(
                       color: Color(0x14000000),
@@ -181,7 +182,7 @@ class CartScreen extends StatelessWidget {
 }
 
 class _CartItemTile extends StatelessWidget {
-  final dynamic item;
+  final CartItem item;
   final String uid;
   const _CartItemTile({required this.item, required this.uid});
 
@@ -204,10 +205,7 @@ class _CartItemTile extends StatelessWidget {
               color: AppColors.primaryLight,
               borderRadius: BorderRadius.circular(12),
             ),
-            child: const Center(
-              child: Icon(Icons.medication_rounded,
-                  size: 32, color: AppColors.primary),
-            ),
+            child: ProductImage(imageUrl: item.imageUrl, iconSize: 32),
           ),
           const SizedBox(width: 12),
           Expanded(
@@ -236,8 +234,8 @@ class _CartItemTile extends StatelessWidget {
                   children: [
                     _QtyButton(
                       icon: Icons.remove,
-                      onTap: () => cart.updateQuantity(
-                          uid, item.id, item.quantity - 1),
+                      onTap: () =>
+                          cart.updateQuantity(uid, item.id, item.quantity - 1),
                     ),
                     const SizedBox(width: 12),
                     Text(
@@ -250,8 +248,8 @@ class _CartItemTile extends StatelessWidget {
                     const SizedBox(width: 12),
                     _QtyButton(
                       icon: Icons.add,
-                      onTap: () => cart.updateQuantity(
-                          uid, item.id, item.quantity + 1),
+                      onTap: () =>
+                          cart.updateQuantity(uid, item.id, item.quantity + 1),
                     ),
                   ],
                 ),

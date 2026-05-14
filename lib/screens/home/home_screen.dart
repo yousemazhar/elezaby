@@ -6,6 +6,7 @@ import '../../providers/auth_provider.dart';
 import '../../providers/product_provider.dart';
 import '../../providers/address_provider.dart';
 import '../../widgets/global_app_bar.dart';
+import '../../widgets/product_image.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -52,7 +53,8 @@ class _HomeScreenState extends State<HomeScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 4),
               child: Row(
                 children: [
-                  const Icon(Icons.location_on, color: AppColors.primary, size: 14),
+                  const Icon(Icons.location_on,
+                      color: AppColors.primary, size: 14),
                   const SizedBox(width: 4),
                   const Text('Delivers to ',
                       style:
@@ -84,7 +86,8 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           // First Order Reward Banner
           SliverToBoxAdapter(
-            child: _FirstOrderBanner(completed: auth.appUser?.firstOrderCompleted ?? false),
+            child: _FirstOrderBanner(
+                completed: auth.appUser?.firstOrderCompleted ?? false),
           ),
           // Services
           const SliverToBoxAdapter(
@@ -171,18 +174,17 @@ class _HomeScreenState extends State<HomeScreen> {
                     return _SmallProductCard(
                       name: p.name,
                       price: p.price,
+                      imageUrl: p.imageUrl,
                       rewardPoints: p.rewardPoints,
                       isOffer: p.isOffer,
-                      onTap: () =>
-                          context.push('/product/${p.id}'),
+                      onTap: () => context.push('/product/${p.id}'),
                     );
                   },
                   childCount: products.products.length > 6
                       ? 6
                       : products.products.length,
                 ),
-                gridDelegate:
-                    const SliverGridDelegateWithFixedCrossAxisCount(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
                   childAspectRatio: 0.72,
                   crossAxisSpacing: 12,
@@ -228,8 +230,7 @@ class _Tab extends StatelessWidget {
   final String label;
   final bool active;
   final VoidCallback onTap;
-  const _Tab(
-      {required this.label, required this.active, required this.onTap});
+  const _Tab({required this.label, required this.active, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -286,7 +287,8 @@ class _FirstOrderBanner extends StatelessWidget {
               ),
               shape: BoxShape.circle,
             ),
-            child: const Center(child: Text('⭐', style: TextStyle(fontSize: 24))),
+            child:
+                const Center(child: Text('⭐', style: TextStyle(fontSize: 24))),
           ),
           const SizedBox(width: 14),
           Expanded(
@@ -456,6 +458,7 @@ class _CategoriesRow extends StatelessWidget {
 class _SmallProductCard extends StatelessWidget {
   final String name;
   final double price;
+  final String imageUrl;
   final int rewardPoints;
   final bool isOffer;
   final VoidCallback onTap;
@@ -463,6 +466,7 @@ class _SmallProductCard extends StatelessWidget {
   const _SmallProductCard({
     required this.name,
     required this.price,
+    required this.imageUrl,
     required this.rewardPoints,
     required this.isOffer,
     required this.onTap,
@@ -478,9 +482,7 @@ class _SmallProductCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(24),
           boxShadow: const [
             BoxShadow(
-                color: Color(0x140087C8),
-                blurRadius: 12,
-                offset: Offset(0, 2)),
+                color: Color(0x140087C8), blurRadius: 12, offset: Offset(0, 2)),
           ],
         ),
         padding: const EdgeInsets.all(12),
@@ -496,10 +498,7 @@ class _SmallProductCard extends StatelessWidget {
                     color: AppColors.primaryLight,
                     borderRadius: BorderRadius.circular(16),
                   ),
-                  child: const Center(
-                    child: Icon(Icons.medication_rounded,
-                        size: 36, color: AppColors.primary),
-                  ),
+                  child: ProductImage(imageUrl: imageUrl, iconSize: 36),
                 ),
                 if (rewardPoints > 0)
                   Positioned(

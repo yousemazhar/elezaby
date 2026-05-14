@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import '../../core/constants/app_colors.dart';
 import '../../models/product.dart';
 import '../../providers/product_provider.dart';
@@ -11,6 +10,7 @@ import '../../providers/auth_provider.dart';
 import '../../services/product_service.dart';
 import '../../widgets/app_button.dart';
 import '../../widgets/global_app_bar.dart';
+import '../../widgets/product_image.dart';
 
 class ProductDetailScreen extends StatefulWidget {
   final String productId;
@@ -40,14 +40,18 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
     } catch (_) {
       p = await ProductService().fetchById(widget.productId);
     }
-    if (mounted) setState(() { _product = p; _loading = false; });
+    if (mounted) {
+      setState(() {
+        _product = p;
+        _loading = false;
+      });
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     if (_loading) {
-      return const Scaffold(
-          body: Center(child: CircularProgressIndicator()));
+      return const Scaffold(body: Center(child: CircularProgressIndicator()));
     }
     if (_product == null) {
       return const Scaffold(
@@ -105,18 +109,7 @@ class _ProductDetailBody extends StatelessWidget {
             flexibleSpace: FlexibleSpaceBar(
               background: Container(
                 color: AppColors.primaryLight,
-                child: product.imageUrl.isNotEmpty
-                    ? CachedNetworkImage(
-                        imageUrl: product.imageUrl,
-                        fit: BoxFit.contain,
-                        placeholder: (_, __) => const Icon(
-                            Icons.medication_rounded,
-                            size: 80,
-                            color: AppColors.primary),
-                      )
-                    : const Center(
-                        child: Icon(Icons.medication_rounded,
-                            size: 80, color: AppColors.primary)),
+                child: ProductImage(imageUrl: product.imageUrl, iconSize: 80),
               ),
             ),
           ),
@@ -224,7 +217,8 @@ class _ProductDetailBody extends StatelessWidget {
                     title: 'Product Details',
                     children: [
                       if (product.activeIngredient.isNotEmpty)
-                        _DetailRow('Active Ingredient', product.activeIngredient),
+                        _DetailRow(
+                            'Active Ingredient', product.activeIngredient),
                       if (product.concentration.isNotEmpty)
                         _DetailRow('Concentration', product.concentration),
                       if (product.dosageForm.isNotEmpty)
@@ -377,8 +371,8 @@ class _DetailRow extends StatelessWidget {
           SizedBox(
             width: 140,
             child: Text(label,
-                style: const TextStyle(
-                    fontSize: 13, color: AppColors.textMuted)),
+                style:
+                    const TextStyle(fontSize: 13, color: AppColors.textMuted)),
           ),
           Expanded(
             child: Text(value,

@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "882762523758",
+    "project_id": "elezaby-6cfd9",
+    "storage_bucket": "elezaby-6cfd9.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:882762523758:android:88a884906ce9cc0e97f27f",
+        "android_client_info": {
+          "package_name": "com.example.elezaby"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "882762523758-1p27963i3nnkakoai3aj1teqe0tcn653.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.elezaby",
+            "certificate_hash": "e23c20618930c446db800ee06bc40ea4afdf968a"
+          }
+        },
+        {
+          "client_id": "882762523758-sp9qmjrvji5dgn0ha7ko5eem31bggfvo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAF_abwrqHLWG6mUk7umo0NZ11mZfyC5uk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "882762523758-sp9qmjrvji5dgn0ha7ko5eem31bggfvo.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "882762523758-rq3pt6nnfhq4ced8r1u4mgn4k8sc45h4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.elezaby"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

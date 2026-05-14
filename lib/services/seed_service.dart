@@ -44,16 +44,66 @@ class SeedService {
 
   Future<void> _seedCategories() async {
     final cats = [
-      {'id': 'cardiovascular', 'name': 'Cardiovascular', 'emoji': '❤️', 'sortOrder': 1},
-      {'id': 'psychiatric_neuro', 'name': 'Psychiatric & Neurology', 'emoji': '🧠', 'sortOrder': 2},
-      {'id': 'respiratory_allergy', 'name': 'Respiratory & Allergy', 'emoji': '🌬️', 'sortOrder': 3},
-      {'id': 'diabetes_metabolism', 'name': 'Diabetes & Metabolism', 'emoji': '💉', 'sortOrder': 4},
-      {'id': 'pain_inflammation', 'name': 'Pain & Inflammation', 'emoji': '💊', 'sortOrder': 5},
-      {'id': 'antibiotics', 'name': 'Antibiotics & Antifungals', 'emoji': '🦠', 'sortOrder': 6},
-      {'id': 'gastrointestinal', 'name': 'Gastrointestinal', 'emoji': '🫃', 'sortOrder': 7},
-      {'id': 'vitamins_supplements', 'name': 'Vitamins & Supplements', 'emoji': '🌟', 'sortOrder': 8},
-      {'id': 'dermatology', 'name': 'Dermatology & Hair Care', 'emoji': '🧴', 'sortOrder': 9},
-      {'id': 'oncology', 'name': 'Oncology & Hormones', 'emoji': '🎗️', 'sortOrder': 10},
+      {
+        'id': 'cardiovascular',
+        'name': 'Cardiovascular',
+        'emoji': '❤️',
+        'sortOrder': 1
+      },
+      {
+        'id': 'psychiatric_neuro',
+        'name': 'Psychiatric & Neurology',
+        'emoji': '🧠',
+        'sortOrder': 2
+      },
+      {
+        'id': 'respiratory_allergy',
+        'name': 'Respiratory & Allergy',
+        'emoji': '🌬️',
+        'sortOrder': 3
+      },
+      {
+        'id': 'diabetes_metabolism',
+        'name': 'Diabetes & Metabolism',
+        'emoji': '💉',
+        'sortOrder': 4
+      },
+      {
+        'id': 'pain_inflammation',
+        'name': 'Pain & Inflammation',
+        'emoji': '💊',
+        'sortOrder': 5
+      },
+      {
+        'id': 'antibiotics',
+        'name': 'Antibiotics & Antifungals',
+        'emoji': '🦠',
+        'sortOrder': 6
+      },
+      {
+        'id': 'gastrointestinal',
+        'name': 'Gastrointestinal',
+        'emoji': '🫃',
+        'sortOrder': 7
+      },
+      {
+        'id': 'vitamins_supplements',
+        'name': 'Vitamins & Supplements',
+        'emoji': '🌟',
+        'sortOrder': 8
+      },
+      {
+        'id': 'dermatology',
+        'name': 'Dermatology & Hair Care',
+        'emoji': '🧴',
+        'sortOrder': 9
+      },
+      {
+        'id': 'oncology',
+        'name': 'Oncology & Hormones',
+        'emoji': '🎗️',
+        'sortOrder': 10
+      },
       {'id': 'other', 'name': 'Other', 'emoji': '🏥', 'sortOrder': 11},
     ];
     final batch = _db.batch();
@@ -78,11 +128,14 @@ class SeedService {
         'docId': 'prod_13772',
         'name': 'allerban 1mg/5ml syrup 100 ml',
         'nameArabic': 'الليربان شراب 1مجم/5مل 100 مل',
-        'description': 'allerban 1mg/5ml syrup 100 ml - ketotifen. Syrup 1mg/5ml',
+        'description':
+            'allerban 1mg/5ml syrup 100 ml - ketotifen. Syrup 1mg/5ml',
         'price': 33.0,
-        'imageUrl': 'https://www.rosheta.com/upload/a94edd5c0014e7f1e6e3105b3a3d821732624536f6e07ff70f800f353d269d88.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/a94edd5c0014e7f1e6e3105b3a3d821732624536f6e07ff70f800f353d269d88.webp',
         'categoryId': 'respiratory_allergy',
-        'subcategoryId': '',
+        'subcategoryId': 'ra_antihistamines',
+        'subSubcategoryId': 'ra_anti_h2',
         'barcode': '6223003201982',
         'activeIngredient': 'ketotifen',
         'concentration': '1mg/5ml',
@@ -92,7 +145,12 @@ class SeedService {
         'stock': 200,
         'rewardPoints': 3,
         'isOffer': true,
-        'usageSteps': ['Shake well before use', 'Measure the exact dose with the provided cup', 'Take as prescribed by your doctor', 'Store at room temperature unless instructed otherwise'],
+        'usageSteps': [
+          'Shake well before use',
+          'Measure the exact dose with the provided cup',
+          'Take as prescribed by your doctor',
+          'Store at room temperature unless instructed otherwise'
+        ],
       },
       {
         'docId': 'prod_378',
@@ -100,9 +158,11 @@ class SeedService {
         'nameArabic': 'اليربان اس.ار 2مجم 20 قرص',
         'description': 'allerban s.r. 2 mg 20 tabs - ketotifen. Tablet 20 mg',
         'price': 38.0,
-        'imageUrl': 'https://www.rosheta.com/upload/697622c99c7cab6ed04d50ddbab3d4566c9097885bacf18b1ec4052adb712b1c.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/697622c99c7cab6ed04d50ddbab3d4566c9097885bacf18b1ec4052adb712b1c.webp',
         'categoryId': 'respiratory_allergy',
-        'subcategoryId': '',
+        'subcategoryId': 'ra_antihistamines',
+        'subSubcategoryId': 'ra_anti_h2',
         'barcode': '6223003200671',
         'activeIngredient': 'ketotifen',
         'concentration': '20 mg',
@@ -112,7 +172,12 @@ class SeedService {
         'stock': 198,
         'rewardPoints': 3,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_721',
@@ -120,9 +185,11 @@ class SeedService {
         'nameArabic': 'اناركول 30 قرص',
         'description': 'anarcol 50mg 30 f.c. tab - naltrexone. Tablet 50 mg',
         'price': 777.0,
-        'imageUrl': 'https://www.rosheta.com/upload/8ba8219c8b4f070436e3e3d26bccb9f3ffe148411a1ee5d9414829f99c209e03.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/8ba8219c8b4f070436e3e3d26bccb9f3ffe148411a1ee5d9414829f99c209e03.webp',
         'categoryId': 'pain_inflammation',
-        'subcategoryId': '',
+        'subcategoryId': 'pi_opioid_related',
+        'subSubcategoryId': 'pi_opioid_antagonist',
         'barcode': '6223003200435',
         'activeIngredient': 'naltrexone',
         'concentration': '50 mg',
@@ -132,7 +199,12 @@ class SeedService {
         'stock': 49,
         'rewardPoints': 77,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_832',
@@ -140,9 +212,11 @@ class SeedService {
         'nameArabic': 'ابيتويد 20 مجم 30 قرص',
         'description': 'apetoid 20mg 30 f.c.tab - leflunomide. Tablet 20 mg',
         'price': 180.0,
-        'imageUrl': 'https://www.rosheta.com/upload/fdc2c37a591b90b7e3a8a166f595ce810e69ef0a7f99768e56a30980c3fbf40a.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/fdc2c37a591b90b7e3a8a166f595ce810e69ef0a7f99768e56a30980c3fbf40a.webp',
         'categoryId': 'pain_inflammation',
-        'subcategoryId': '',
+        'subcategoryId': 'pi_antirheumatic',
+        'subSubcategoryId': 'pi_ar_dmard',
         'barcode': '6223003200817',
         'activeIngredient': 'leflunomide',
         'concentration': '20 mg',
@@ -152,17 +226,25 @@ class SeedService {
         'stock': 85,
         'rewardPoints': 18,
         'isOffer': false,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_839',
         'name': 'apexidone 0.5mg 30 f.c.tab',
         'nameArabic': 'ابيكسيدون 0.5مجم 30 قرص',
-        'description': 'apexidone 0.5mg 30 f.c.tab - risperidone. Tablet 0.5 mg',
+        'description':
+            'apexidone 0.5mg 30 f.c.tab - risperidone. Tablet 0.5 mg',
         'price': 49.5,
-        'imageUrl': 'https://www.rosheta.com/upload/aafe694e6913fa98538df381a97d13673a10eaa11da175deb8177439ce3a63b1.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/aafe694e6913fa98538df381a97d13673a10eaa11da175deb8177439ce3a63b1.webp',
         'categoryId': 'psychiatric_neuro',
-        'subcategoryId': '',
+        'subcategoryId': 'pn_antipsychotics',
+        'subSubcategoryId': 'pn_atypical',
         'barcode': '6223003202514',
         'activeIngredient': 'risperidone',
         'concentration': '0.5 mg',
@@ -172,7 +254,12 @@ class SeedService {
         'stock': 102,
         'rewardPoints': 4,
         'isOffer': false,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_842',
@@ -180,9 +267,11 @@ class SeedService {
         'nameArabic': 'ابيكسيدون 1مجم 20 قرص',
         'description': 'apexidone 1mg 20 f.c.tab - risperidone. Tablet 1 mg',
         'price': 54.0,
-        'imageUrl': 'https://www.rosheta.com/upload/dc3f54cdefc88495ace9a2b2621b291344a57ab09b259700921509f7c30a804d.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/dc3f54cdefc88495ace9a2b2621b291344a57ab09b259700921509f7c30a804d.webp',
         'categoryId': 'psychiatric_neuro',
-        'subcategoryId': '',
+        'subcategoryId': 'pn_antipsychotics',
+        'subSubcategoryId': 'pn_atypical',
         'barcode': '6223003200596',
         'activeIngredient': 'risperidone',
         'concentration': '1 mg',
@@ -192,17 +281,25 @@ class SeedService {
         'stock': 63,
         'rewardPoints': 5,
         'isOffer': false,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_840',
         'name': 'apexidone 1mg/ml syrup 100 ml',
         'nameArabic': 'ابيكسيدون 1مجم/مل شراب 100 مل',
-        'description': 'apexidone 1mg/ml syrup 100 ml - risperidone. Syrup 1mg/ml',
+        'description':
+            'apexidone 1mg/ml syrup 100 ml - risperidone. Syrup 1mg/ml',
         'price': 60.0,
-        'imageUrl': 'https://www.rosheta.com/upload/dc3f54cdefc88495ace9a2b2621b291344a57ab09b259700921509f7c30a804d.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/dc3f54cdefc88495ace9a2b2621b291344a57ab09b259700921509f7c30a804d.webp',
         'categoryId': 'psychiatric_neuro',
-        'subcategoryId': '',
+        'subcategoryId': 'pn_antipsychotics',
+        'subSubcategoryId': 'pn_atypical',
         'barcode': '6223003202576',
         'activeIngredient': 'risperidone',
         'concentration': '1mg/ml',
@@ -212,7 +309,12 @@ class SeedService {
         'stock': 63,
         'rewardPoints': 6,
         'isOffer': false,
-        'usageSteps': ['Shake well before use', 'Measure the exact dose with the provided cup', 'Take as prescribed by your doctor', 'Store at room temperature unless instructed otherwise'],
+        'usageSteps': [
+          'Shake well before use',
+          'Measure the exact dose with the provided cup',
+          'Take as prescribed by your doctor',
+          'Store at room temperature unless instructed otherwise'
+        ],
       },
       {
         'docId': 'prod_14287',
@@ -220,9 +322,11 @@ class SeedService {
         'nameArabic': 'ابيكسيدون 2مجم 20 قرص',
         'description': 'apexidone 2mg 20 f.c.tab - risperidone. Tablet 2 mg',
         'price': 75.0,
-        'imageUrl': 'https://www.rosheta.com/upload/eb738c32fe547890baf2b0cf030573d6376eef8355375d0fb4980ca302ea3285.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/eb738c32fe547890baf2b0cf030573d6376eef8355375d0fb4980ca302ea3285.webp',
         'categoryId': 'psychiatric_neuro',
-        'subcategoryId': '',
+        'subcategoryId': 'pn_antipsychotics',
+        'subSubcategoryId': 'pn_atypical',
         'barcode': '6223003200879',
         'activeIngredient': 'risperidone',
         'concentration': '2 mg',
@@ -232,7 +336,12 @@ class SeedService {
         'stock': 64,
         'rewardPoints': 7,
         'isOffer': false,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_845',
@@ -240,9 +349,11 @@ class SeedService {
         'nameArabic': 'ابيكسيدون 3مجم 30 قرص',
         'description': 'apexidone 3mg 30 f.c.tab - risperidone. Tablet 30 mg',
         'price': 126.0,
-        'imageUrl': 'https://www.rosheta.com/upload/4c49d1c2efc5f1347d30dbba29d3c3e022e723da020e502d4add17855da00c58.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/4c49d1c2efc5f1347d30dbba29d3c3e022e723da020e502d4add17855da00c58.webp',
         'categoryId': 'psychiatric_neuro',
-        'subcategoryId': '',
+        'subcategoryId': 'pn_antipsychotics',
+        'subSubcategoryId': 'pn_atypical',
         'barcode': '6223003200633',
         'activeIngredient': 'risperidone',
         'concentration': '30 mg',
@@ -252,7 +363,12 @@ class SeedService {
         'stock': 73,
         'rewardPoints': 12,
         'isOffer': false,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_847',
@@ -260,9 +376,11 @@ class SeedService {
         'nameArabic': 'ابيكسيدون 4مجم 30 قرص',
         'description': 'apexidone 4mg 30 f.c.tab - risperidone. Tablet 4 mg',
         'price': 126.0,
-        'imageUrl': 'https://www.rosheta.com/upload/58b1d03a6b802b1953c28d46ebe7ac16980352be8df2f9a510dbdea18277044e.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/58b1d03a6b802b1953c28d46ebe7ac16980352be8df2f9a510dbdea18277044e.webp',
         'categoryId': 'psychiatric_neuro',
-        'subcategoryId': '',
+        'subcategoryId': 'pn_antipsychotics',
+        'subSubcategoryId': 'pn_atypical',
         'barcode': '6223003200909',
         'activeIngredient': 'risperidone',
         'concentration': '4 mg',
@@ -272,7 +390,12 @@ class SeedService {
         'stock': 55,
         'rewardPoints': 12,
         'isOffer': false,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_14308',
@@ -280,9 +403,11 @@ class SeedService {
         'nameArabic': 'ابيليبكس 10 مجم 30 قرص',
         'description': 'apilipex 10 mg 30 f.c.tab - aripiprazole. Tablet 10 mg',
         'price': 90.0,
-        'imageUrl': 'https://www.rosheta.com/upload/c_img/a633fa2bd75e6aa560893c89e03cb865.jpg',
+        'imageUrl':
+            'https://www.rosheta.com/upload/c_img/a633fa2bd75e6aa560893c89e03cb865.jpg',
         'categoryId': 'psychiatric_neuro',
-        'subcategoryId': '',
+        'subcategoryId': 'pn_antipsychotics',
+        'subSubcategoryId': 'pn_atypical',
         'barcode': '6223003205003',
         'activeIngredient': 'aripiprazole',
         'concentration': '10 mg',
@@ -292,17 +417,25 @@ class SeedService {
         'stock': 37,
         'rewardPoints': 9,
         'isOffer': false,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_14310',
         'name': 'apilipex 30 mg 30 f.c. tab',
         'nameArabic': 'ابيليبكس 30 مجم 30 قرص',
-        'description': 'apilipex 30 mg 30 f.c. tab - aripiprazole. Tablet 30 mg',
+        'description':
+            'apilipex 30 mg 30 f.c. tab - aripiprazole. Tablet 30 mg',
         'price': 120.0,
-        'imageUrl': 'https://www.rosheta.com/upload/c_img/a633fa2bd75e6aa560893c89e03cb865.jpg',
+        'imageUrl':
+            'https://www.rosheta.com/upload/c_img/a633fa2bd75e6aa560893c89e03cb865.jpg',
         'categoryId': 'psychiatric_neuro',
-        'subcategoryId': '',
+        'subcategoryId': 'pn_antipsychotics',
+        'subSubcategoryId': 'pn_atypical',
         'barcode': '6223003205065',
         'activeIngredient': 'aripiprazole',
         'concentration': '30 mg',
@@ -312,7 +445,12 @@ class SeedService {
         'stock': 31,
         'rewardPoints': 12,
         'isOffer': false,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_14311',
@@ -320,9 +458,11 @@ class SeedService {
         'nameArabic': 'ابيليبكس 5 مجم 30 قرص',
         'description': 'apilipex 5 mg 30 f.c.tab - aripiprazole. Tablet 5 mg',
         'price': 69.0,
-        'imageUrl': 'https://www.rosheta.com/upload/c_img/a633fa2bd75e6aa560893c89e03cb865.jpg',
+        'imageUrl':
+            'https://www.rosheta.com/upload/c_img/a633fa2bd75e6aa560893c89e03cb865.jpg',
         'categoryId': 'psychiatric_neuro',
-        'subcategoryId': '',
+        'subcategoryId': 'pn_antipsychotics',
+        'subSubcategoryId': 'pn_atypical',
         'barcode': '6223003204976',
         'activeIngredient': 'aripiprazole',
         'concentration': '5 mg',
@@ -332,7 +472,12 @@ class SeedService {
         'stock': 47,
         'rewardPoints': 6,
         'isOffer': false,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_14391',
@@ -340,9 +485,11 @@ class SeedService {
         'nameArabic': 'اريميدكس 1مجم 28 قرص',
         'description': 'arimidex 1 mg 28 tab - anastrozole. Tablet 1 mg',
         'price': 706.0,
-        'imageUrl': 'https://www.rosheta.com/upload/25759b9af3a2ab4227533b0ce15eb9bdf67460f4666c7a5269e8053face58529.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/25759b9af3a2ab4227533b0ce15eb9bdf67460f4666c7a5269e8053face58529.webp',
         'categoryId': 'oncology',
-        'subcategoryId': '',
+        'subcategoryId': 'on_hormonal',
+        'subSubcategoryId': 'on_aromatase',
         'barcode': '6223003270377',
         'activeIngredient': 'anastrozole',
         'concentration': '1 mg',
@@ -352,19 +499,28 @@ class SeedService {
         'stock': 141,
         'rewardPoints': 70,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_16728',
         'name': 'artisoy 30 tabs',
         'nameArabic': 'ارتيسوي 30 قرص',
-        'description': 'artisoy 30 tabs - glucose amine hcl+avocadosoyaben unsaponifible+chondroitin+vit c+vit e+manganese. Tablet',
+        'description':
+            'artisoy 30 tabs - glucose amine hcl+avocadosoyaben unsaponifible+chondroitin+vit c+vit e+manganese. Tablet',
         'price': 240.0,
-        'imageUrl': 'https://apexpharmaeg.com/wp-content/uploads/2024/03/Artisoy-pack-02-2048x1448.png',
+        'imageUrl':
+            'https://apexpharmaeg.com/wp-content/uploads/2024/03/Artisoy-pack-02-2048x1448.png',
         'categoryId': 'vitamins_supplements',
-        'subcategoryId': '',
+        'subcategoryId': 'vs_joint',
+        'subSubcategoryId': 'vs_joint_gen',
         'barcode': '6223003208394',
-        'activeIngredient': 'glucose amine hcl+avocadosoyaben unsaponifible+chondroitin+vit c+vit e+manganese',
+        'activeIngredient':
+            'glucose amine hcl+avocadosoyaben unsaponifible+chondroitin+vit c+vit e+manganese',
         'concentration': '',
         'dosageForm': 'Tablet',
         'manufacturer': 'apex pharma',
@@ -372,17 +528,25 @@ class SeedService {
         'stock': 99,
         'rewardPoints': 24,
         'isOffer': false,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_1057',
         'name': 'atacand 16mg 14 f.c. tab',
         'nameArabic': 'اتاكاند 16مجم 14 قرص',
-        'description': 'atacand 16mg 14 f.c. tab - candesartan cilexetil. Tablet 16 mg',
+        'description':
+            'atacand 16mg 14 f.c. tab - candesartan cilexetil. Tablet 16 mg',
         'price': 116.0,
-        'imageUrl': 'https://www.rosheta.com/upload/f1b31f15e1b3a92299cd1e10b44142a989243c64399c45940889066ef5dbceda.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/f1b31f15e1b3a92299cd1e10b44142a989243c64399c45940889066ef5dbceda.webp',
         'categoryId': 'cardiovascular',
-        'subcategoryId': '',
+        'subcategoryId': 'cv_antihypertensives',
+        'subSubcategoryId': 'cv_arb',
         'barcode': '6223003270032',
         'activeIngredient': 'candesartan cilexetil',
         'concentration': '16 mg',
@@ -392,17 +556,25 @@ class SeedService {
         'stock': 121,
         'rewardPoints': 11,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_1058',
         'name': 'atacand 4mg 14 tab',
         'nameArabic': 'اتاكاند 4مجم 14 قرص',
-        'description': 'atacand 4mg 14 tab - candesartan cilexetil. Tablet 4 mg',
+        'description':
+            'atacand 4mg 14 tab - candesartan cilexetil. Tablet 4 mg',
         'price': 39.75,
-        'imageUrl': 'https://www.rosheta.com/upload/f1b31f15e1b3a92299cd1e10b44142a989243c64399c45940889066ef5dbceda.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/f1b31f15e1b3a92299cd1e10b44142a989243c64399c45940889066ef5dbceda.webp',
         'categoryId': 'cardiovascular',
-        'subcategoryId': '',
+        'subcategoryId': 'cv_antihypertensives',
+        'subSubcategoryId': 'cv_arb',
         'barcode': '6223003270001',
         'activeIngredient': 'candesartan cilexetil',
         'concentration': '4 mg',
@@ -412,17 +584,25 @@ class SeedService {
         'stock': 64,
         'rewardPoints': 3,
         'isOffer': false,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_1060',
         'name': 'atacand 8mg 14 tab',
         'nameArabic': 'اتاكاند 8مجم 14 قرص',
-        'description': 'atacand 8mg 14 tab - candesartan cilexetil. Tablet 8 mg',
+        'description':
+            'atacand 8mg 14 tab - candesartan cilexetil. Tablet 8 mg',
         'price': 83.0,
-        'imageUrl': 'https://www.rosheta.com/upload/f1b31f15e1b3a92299cd1e10b44142a989243c64399c45940889066ef5dbceda.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/f1b31f15e1b3a92299cd1e10b44142a989243c64399c45940889066ef5dbceda.webp',
         'categoryId': 'cardiovascular',
-        'subcategoryId': '',
+        'subcategoryId': 'cv_antihypertensives',
+        'subSubcategoryId': 'cv_arb',
         'barcode': '6223003270025',
         'activeIngredient': 'candesartan cilexetil',
         'concentration': '8 mg',
@@ -432,17 +612,25 @@ class SeedService {
         'stock': 93,
         'rewardPoints': 8,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_14514',
         'name': 'atacand 8mg 28 tab',
         'nameArabic': 'اتاكاند 8 مجم 28 قرص',
-        'description': 'atacand 8mg 28 tab - candesartan cilexetil. Tablet 8 mg',
+        'description':
+            'atacand 8mg 28 tab - candesartan cilexetil. Tablet 8 mg',
         'price': 166.0,
-        'imageUrl': 'https://www.rosheta.com/upload/f1b31f15e1b3a92299cd1e10b44142a989243c64399c45940889066ef5dbceda.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/f1b31f15e1b3a92299cd1e10b44142a989243c64399c45940889066ef5dbceda.webp',
         'categoryId': 'cardiovascular',
-        'subcategoryId': '',
+        'subcategoryId': 'cv_antihypertensives',
+        'subSubcategoryId': 'cv_arb',
         'barcode': '6223003270025',
         'activeIngredient': 'candesartan cilexetil',
         'concentration': '8 mg',
@@ -452,17 +640,25 @@ class SeedService {
         'stock': 35,
         'rewardPoints': 16,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_1056',
         'name': 'atacand plus 16/12.5 mg 14 tabs',
         'nameArabic': 'اتاكاند بلس 12.5/16مجم 14 قرص',
-        'description': 'atacand plus 16/12.5 mg 14 tabs - candesartan cilexetil+hydrochlorothiazide. Tablet 16/12.5 mg',
+        'description':
+            'atacand plus 16/12.5 mg 14 tabs - candesartan cilexetil+hydrochlorothiazide. Tablet 16/12.5 mg',
         'price': 116.0,
-        'imageUrl': 'https://www.rosheta.com/upload/f1b31f15e1b3a92299cd1e10b44142a989243c64399c45940889066ef5dbceda.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/f1b31f15e1b3a92299cd1e10b44142a989243c64399c45940889066ef5dbceda.webp',
         'categoryId': 'cardiovascular',
-        'subcategoryId': '',
+        'subcategoryId': 'cv_antihypertensives',
+        'subSubcategoryId': 'cv_combo',
         'barcode': '6223003270049',
         'activeIngredient': 'candesartan cilexetil+hydrochlorothiazide',
         'concentration': '16/12.5 mg',
@@ -472,7 +668,12 @@ class SeedService {
         'stock': 85,
         'rewardPoints': 11,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_1079',
@@ -480,9 +681,11 @@ class SeedService {
         'nameArabic': 'اتوموكسابكس 10 مجم 30 كبسولة',
         'description': 'atomoxapex 10mg 30 caps - atomoxetine. Capsule 10 mg',
         'price': 129.0,
-        'imageUrl': 'https://www.rosheta.com/upload/5c5182a1675f943c2a46b41ada293297693fca4f457995cfc10443a010ab8533.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/5c5182a1675f943c2a46b41ada293297693fca4f457995cfc10443a010ab8533.webp',
         'categoryId': 'psychiatric_neuro',
-        'subcategoryId': '',
+        'subcategoryId': 'pn_adhd',
+        'subSubcategoryId': 'pn_adhd_gen',
         'barcode': '6223003203290',
         'activeIngredient': 'atomoxetine',
         'concentration': '10 mg',
@@ -492,7 +695,12 @@ class SeedService {
         'stock': 50,
         'rewardPoints': 12,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_1085',
@@ -500,9 +708,11 @@ class SeedService {
         'nameArabic': 'اتوموكسابكس 18 مجم 30 كبسولة',
         'description': 'atomoxapex 18mg 30 caps - atomoxetine. Capsule 18 mg',
         'price': 171.0,
-        'imageUrl': 'https://www.rosheta.com/upload/a124eca8af6abadeb036a4ab01316612ff50fc497fe074942d9804e39530608c.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/a124eca8af6abadeb036a4ab01316612ff50fc497fe074942d9804e39530608c.webp',
         'categoryId': 'psychiatric_neuro',
-        'subcategoryId': '',
+        'subcategoryId': 'pn_adhd',
+        'subSubcategoryId': 'pn_adhd_gen',
         'barcode': '6223003203320',
         'activeIngredient': 'atomoxetine',
         'concentration': '18 mg',
@@ -512,7 +722,12 @@ class SeedService {
         'stock': 39,
         'rewardPoints': 17,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_1081',
@@ -520,9 +735,11 @@ class SeedService {
         'nameArabic': 'اتوموكسابكس 25 مجم 30 كبسولة',
         'description': 'atomoxapex 25mg 30 caps - atomoxetine. Capsule 25 mg',
         'price': 252.0,
-        'imageUrl': 'https://www.rosheta.com/upload/606ed6cf21fadc5927cdebb1fa7218c6dbc03ea4df5c63211e0d0ac9a39b5348.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/606ed6cf21fadc5927cdebb1fa7218c6dbc03ea4df5c63211e0d0ac9a39b5348.webp',
         'categoryId': 'psychiatric_neuro',
-        'subcategoryId': '',
+        'subcategoryId': 'pn_adhd',
+        'subSubcategoryId': 'pn_adhd_gen',
         'barcode': '6223003203351',
         'activeIngredient': 'atomoxetine',
         'concentration': '25 mg',
@@ -532,7 +749,12 @@ class SeedService {
         'stock': 50,
         'rewardPoints': 25,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_1082',
@@ -540,9 +762,11 @@ class SeedService {
         'nameArabic': 'اتوموكسابكس 40 مجم 30 قرص',
         'description': 'atomoxapex 40mg 30 caps - atomoxetine. Capsule 40 mg',
         'price': 333.0,
-        'imageUrl': 'https://www.rosheta.com/upload/6683e013f0893f8b182f1dff6535a7889118133bd18e1a28137bf07b03407ad2.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/6683e013f0893f8b182f1dff6535a7889118133bd18e1a28137bf07b03407ad2.webp',
         'categoryId': 'psychiatric_neuro',
-        'subcategoryId': '',
+        'subcategoryId': 'pn_adhd',
+        'subSubcategoryId': 'pn_adhd_gen',
         'barcode': '6223003203382',
         'activeIngredient': 'atomoxetine',
         'concentration': '40 mg',
@@ -552,17 +776,25 @@ class SeedService {
         'stock': 59,
         'rewardPoints': 33,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_32461',
         'name': 'atomoxapex 4mg/ml syrup 100 ml',
         'nameArabic': 'اتوموكسابكس 4 مجم /مل شراب 100 مل',
-        'description': 'atomoxapex 4mg/ml syrup 100 ml - atomoxetine. Syrup 4 mg/ml',
+        'description':
+            'atomoxapex 4mg/ml syrup 100 ml - atomoxetine. Syrup 4 mg/ml',
         'price': 120.0,
-        'imageUrl': 'https://www.rosheta.com/upload/0c5974fda70cca6e657c2a6704df3f748562f36a118e8edf3d56b5a5c126d3f0.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/0c5974fda70cca6e657c2a6704df3f748562f36a118e8edf3d56b5a5c126d3f0.webp',
         'categoryId': 'psychiatric_neuro',
-        'subcategoryId': '',
+        'subcategoryId': 'pn_adhd',
+        'subSubcategoryId': 'pn_adhd_gen',
         'barcode': '6223003206741',
         'activeIngredient': 'atomoxetine',
         'concentration': '4 mg/ml',
@@ -572,7 +804,12 @@ class SeedService {
         'stock': 79,
         'rewardPoints': 12,
         'isOffer': true,
-        'usageSteps': ['Shake well before use', 'Measure the exact dose with the provided cup', 'Take as prescribed by your doctor', 'Store at room temperature unless instructed otherwise'],
+        'usageSteps': [
+          'Shake well before use',
+          'Measure the exact dose with the provided cup',
+          'Take as prescribed by your doctor',
+          'Store at room temperature unless instructed otherwise'
+        ],
       },
       {
         'docId': 'prod_1084',
@@ -580,9 +817,11 @@ class SeedService {
         'nameArabic': 'اتوموكسابكس 60 مجم 30 كبسولة',
         'description': 'atomoxapex 60 mg 30 cap - atomoxetine. Capsule 60 mg',
         'price': 414.0,
-        'imageUrl': 'https://www.rosheta.com/upload/b59ced3fc045c68027c15cb8e888825fcb6c717d1a2dd29a932522b05d178930.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/b59ced3fc045c68027c15cb8e888825fcb6c717d1a2dd29a932522b05d178930.webp',
         'categoryId': 'psychiatric_neuro',
-        'subcategoryId': '',
+        'subcategoryId': 'pn_adhd',
+        'subSubcategoryId': 'pn_adhd_gen',
         'barcode': '6223003203412',
         'activeIngredient': 'atomoxetine',
         'concentration': '60 mg',
@@ -592,7 +831,12 @@ class SeedService {
         'stock': 45,
         'rewardPoints': 41,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_1282',
@@ -600,9 +844,11 @@ class SeedService {
         'nameArabic': 'بامبيك 10مجم 30 قرص',
         'description': 'bambec 10mg 30 tab - bambuterol. Tablet',
         'price': 45.0,
-        'imageUrl': 'https://www.rosheta.com/upload/58120383d8d78fb90426a43e684ef1cc42553ae43215e04bfc5abee73e2722b9.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/58120383d8d78fb90426a43e684ef1cc42553ae43215e04bfc5abee73e2722b9.webp',
         'categoryId': 'respiratory_allergy',
-        'subcategoryId': '',
+        'subcategoryId': 'ra_bronchodilators',
+        'subSubcategoryId': 'ra_bronch_tab',
         'barcode': '6223003270339',
         'activeIngredient': 'bambuterol',
         'concentration': '',
@@ -612,7 +858,12 @@ class SeedService {
         'stock': 27,
         'rewardPoints': 4,
         'isOffer': false,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_1426',
@@ -620,9 +871,11 @@ class SeedService {
         'nameArabic': 'بيتاكور 80مجم 30 قرص',
         'description': 'betacor 80mg 30 tab - sotalol. Tablet 80 mg',
         'price': 75.0,
-        'imageUrl': 'https://www.rosheta.com/upload/9be51005f8fe8a245be8743c447ed078f2ffa49010e8cfe153707028d27e2222.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/9be51005f8fe8a245be8743c447ed078f2ffa49010e8cfe153707028d27e2222.webp',
         'categoryId': 'cardiovascular',
-        'subcategoryId': '',
+        'subcategoryId': 'cv_antihypertensives',
+        'subSubcategoryId': 'cv_bb',
         'barcode': '6223003208257',
         'activeIngredient': 'sotalol',
         'concentration': '80 mg',
@@ -632,17 +885,25 @@ class SeedService {
         'stock': 194,
         'rewardPoints': 7,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_30201',
         'name': 'bladogra xr 25 mg 30 f.c. tabs',
         'nameArabic': 'بلادوجرا اكس ار 25مجم 30 قرص',
-        'description': 'bladogra xr 25 mg 30 f.c. tabs - mirabegron. Tablet 25 mg',
+        'description':
+            'bladogra xr 25 mg 30 f.c. tabs - mirabegron. Tablet 25 mg',
         'price': 255.0,
-        'imageUrl': 'https://www.rosheta.com/upload/57410fa43a327b71e2cda3b5759dc2ea935953a5e09c0769933a52df45990b71.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/57410fa43a327b71e2cda3b5759dc2ea935953a5e09c0769933a52df45990b71.webp',
         'categoryId': 'gastrointestinal',
-        'subcategoryId': '',
+        'subcategoryId': 'gi_bladder',
+        'subSubcategoryId': 'gi_bladder_gen',
         'barcode': '6223003206956',
         'activeIngredient': 'mirabegron',
         'concentration': '25 mg',
@@ -652,17 +913,25 @@ class SeedService {
         'stock': 120,
         'rewardPoints': 25,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_15358',
         'name': 'bladogra xr 50mg 30 f.c. tabs',
         'nameArabic': 'بلادوجرا اكس ار 50مجم 30 قرص',
-        'description': 'bladogra xr 50mg 30 f.c. tabs - mirabegron. Tablet 50 mg',
+        'description':
+            'bladogra xr 50mg 30 f.c. tabs - mirabegron. Tablet 50 mg',
         'price': 357.0,
-        'imageUrl': 'https://www.rosheta.com/upload/57410fa43a327b71e2cda3b5759dc2ea935953a5e09c0769933a52df45990b71.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/57410fa43a327b71e2cda3b5759dc2ea935953a5e09c0769933a52df45990b71.webp',
         'categoryId': 'gastrointestinal',
-        'subcategoryId': '',
+        'subcategoryId': 'gi_bladder',
+        'subSubcategoryId': 'gi_bladder_gen',
         'barcode': '6223003205867',
         'activeIngredient': 'mirabegron',
         'concentration': '50 mg',
@@ -672,7 +941,12 @@ class SeedService {
         'stock': 193,
         'rewardPoints': 35,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_8509',
@@ -680,9 +954,11 @@ class SeedService {
         'nameArabic': 'بريليك 90مجم 56 قرص',
         'description': 'brilique 90mg 56 f.c. tabs - ticagrelor. Tablet 90 mg',
         'price': 1064.0,
-        'imageUrl': 'https://www.rosheta.com/upload/906c02d2fa7b8f1631699601f74be028b0bc8e2a4d9a0c7a7d198644b8f7a339.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/906c02d2fa7b8f1631699601f74be028b0bc8e2a4d9a0c7a7d198644b8f7a339.webp',
         'categoryId': 'cardiovascular',
-        'subcategoryId': '',
+        'subcategoryId': 'cv_anticoagulants',
+        'subSubcategoryId': 'cv_antiplatelet',
         'barcode': '6223003270537',
         'activeIngredient': 'ticagrelor',
         'concentration': '90 mg',
@@ -692,7 +968,12 @@ class SeedService {
         'stock': 200,
         'rewardPoints': 106,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_1870',
@@ -700,9 +981,11 @@ class SeedService {
         'nameArabic': 'كالسيدول 1 مكجم 30 كبسولة',
         'description': 'calcidol 1 mcg 30 caps - alfacalcidol. Capsule 1 mcg',
         'price': 153.0,
-        'imageUrl': 'https://www.rosheta.com/upload/93b3d8976dc3a69346ff41e8a306a800e2eb07096f9da2762528f0b88cc97647.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/93b3d8976dc3a69346ff41e8a306a800e2eb07096f9da2762528f0b88cc97647.webp',
         'categoryId': 'vitamins_supplements',
-        'subcategoryId': '',
+        'subcategoryId': 'vs_vitamins',
+        'subSubcategoryId': 'vs_vit_gen',
         'barcode': '6223003202484',
         'activeIngredient': 'alfacalcidol',
         'concentration': '1 mcg',
@@ -712,7 +995,12 @@ class SeedService {
         'stock': 27,
         'rewardPoints': 15,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_15784',
@@ -720,9 +1008,11 @@ class SeedService {
         'nameArabic': 'سي-ابيكس 500مجم 10 اقراص',
         'description': 'c-apex 500 mg 10 tab - vitamin c. Tablet 500 mg',
         'price': 25.0,
-        'imageUrl': 'https://taypharmacies.com/wp-content/uploads/2022/10/125502.png',
+        'imageUrl':
+            'https://taypharmacies.com/wp-content/uploads/2022/10/125502.png',
         'categoryId': 'vitamins_supplements',
-        'subcategoryId': '',
+        'subcategoryId': 'vs_vitamins',
+        'subSubcategoryId': 'vs_vit_gen',
         'barcode': '6223003206475',
         'activeIngredient': 'vitamin c',
         'concentration': '500 mg',
@@ -732,7 +1022,12 @@ class SeedService {
         'stock': 26,
         'rewardPoints': 2,
         'isOffer': false,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_15799',
@@ -740,9 +1035,11 @@ class SeedService {
         'nameArabic': 'كابسين 0.025% كريم 30 جم',
         'description': 'capsin 0.025% cream 30 gm - capsaicin. Cream 0.00025',
         'price': 9.0,
-        'imageUrl': 'https://www.rosheta.com/upload/2dcb5de0c9da60669d43ffbd879e4256349b24d6993aaf39aaf5d4e06fc08ef1.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/2dcb5de0c9da60669d43ffbd879e4256349b24d6993aaf39aaf5d4e06fc08ef1.webp',
         'categoryId': 'pain_inflammation',
-        'subcategoryId': '',
+        'subcategoryId': 'pi_topical_pain',
+        'subSubcategoryId': 'pi_top_gen',
         'barcode': '6223003204341',
         'activeIngredient': 'capsaicin',
         'concentration': '0.00025',
@@ -752,7 +1049,12 @@ class SeedService {
         'stock': 26,
         'rewardPoints': 1,
         'isOffer': false,
-        'usageSteps': ['Clean and dry the affected area before applying', 'Apply a thin layer to the affected area', 'Wash hands before and after application', 'Use as directed by your doctor'],
+        'usageSteps': [
+          'Clean and dry the affected area before applying',
+          'Apply a thin layer to the affected area',
+          'Wash hands before and after application',
+          'Use as directed by your doctor'
+        ],
       },
       {
         'docId': 'prod_2024',
@@ -760,9 +1062,11 @@ class SeedService {
         'nameArabic': 'كابسين 0.075 % 30 جرام كريم',
         'description': 'capsin75 cream - capsaicin. Cream 0.00075',
         'price': 16.8,
-        'imageUrl': 'https://www.rosheta.com/upload/de39d56c30e80b6f292f19c4271e5f91c38829bfe28aa4039bad8cb1f951a85f.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/de39d56c30e80b6f292f19c4271e5f91c38829bfe28aa4039bad8cb1f951a85f.webp',
         'categoryId': 'pain_inflammation',
-        'subcategoryId': '',
+        'subcategoryId': 'pi_topical_pain',
+        'subSubcategoryId': 'pi_top_gen',
         'barcode': '6223003204310',
         'activeIngredient': 'capsaicin',
         'concentration': '0.00075',
@@ -772,17 +1076,25 @@ class SeedService {
         'stock': 25,
         'rewardPoints': 1,
         'isOffer': false,
-        'usageSteps': ['Clean and dry the affected area before applying', 'Apply a thin layer to the affected area', 'Wash hands before and after application', 'Use as directed by your doctor'],
+        'usageSteps': [
+          'Clean and dry the affected area before applying',
+          'Apply a thin layer to the affected area',
+          'Wash hands before and after application',
+          'Use as directed by your doctor'
+        ],
       },
       {
         'docId': 'prod_2030',
         'name': 'carbapex 100 mg 30 chewable tabs',
         'nameArabic': 'كاربابكس 100مجم 30 قرص',
-        'description': 'carbapex 100 mg 30 chewable tabs - carbamazepine. Tablet 100 mg',
+        'description':
+            'carbapex 100 mg 30 chewable tabs - carbamazepine. Tablet 100 mg',
         'price': 19.5,
-        'imageUrl': 'https://www.rosheta.com/upload/637fada785bd39664245b8664ce9528adbc03ea4df5c63211e0d0ac9a39b5348.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/637fada785bd39664245b8664ce9528adbc03ea4df5c63211e0d0ac9a39b5348.webp',
         'categoryId': 'psychiatric_neuro',
-        'subcategoryId': '',
+        'subcategoryId': 'pn_antiepileptics',
+        'subSubcategoryId': 'pn_ae',
         'barcode': '6223003202231',
         'activeIngredient': 'carbamazepine',
         'concentration': '100 mg',
@@ -792,7 +1104,12 @@ class SeedService {
         'stock': 32,
         'rewardPoints': 1,
         'isOffer': false,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_2033',
@@ -800,9 +1117,11 @@ class SeedService {
         'nameArabic': 'كاربابكس 200مجم 30 قرص',
         'description': 'carbapex 200 mg 30 tabs - carbamazepine. Tablet 200 mg',
         'price': 24.0,
-        'imageUrl': 'https://www.rosheta.com/upload/637fada785bd39664245b8664ce9528adbc03ea4df5c63211e0d0ac9a39b5348.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/637fada785bd39664245b8664ce9528adbc03ea4df5c63211e0d0ac9a39b5348.webp',
         'categoryId': 'psychiatric_neuro',
-        'subcategoryId': '',
+        'subcategoryId': 'pn_antiepileptics',
+        'subSubcategoryId': 'pn_ae',
         'barcode': '6223003202262',
         'activeIngredient': 'carbamazepine',
         'concentration': '200 mg',
@@ -812,17 +1131,25 @@ class SeedService {
         'stock': 42,
         'rewardPoints': 2,
         'isOffer': false,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_2035',
         'name': 'carbapex 200 mg cr 30 tabs',
         'nameArabic': 'كاربابكس 200 سي ار مجم 30 قرص',
-        'description': 'carbapex 200 mg cr 30 tabs - carbamazepine. Tablet 200 mg',
+        'description':
+            'carbapex 200 mg cr 30 tabs - carbamazepine. Tablet 200 mg',
         'price': 81.0,
-        'imageUrl': 'https://www.rosheta.com/upload/637fada785bd39664245b8664ce9528adbc03ea4df5c63211e0d0ac9a39b5348.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/637fada785bd39664245b8664ce9528adbc03ea4df5c63211e0d0ac9a39b5348.webp',
         'categoryId': 'psychiatric_neuro',
-        'subcategoryId': '',
+        'subcategoryId': 'pn_antiepileptics',
+        'subSubcategoryId': 'pn_ae',
         'barcode': '6223003202293',
         'activeIngredient': 'carbamazepine',
         'concentration': '200 mg',
@@ -832,17 +1159,25 @@ class SeedService {
         'stock': 39,
         'rewardPoints': 8,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_2034',
         'name': 'carbapex 400 mg cr 30 tabs',
         'nameArabic': 'كاربابكس سي ار 400مجم 30 قرص',
-        'description': 'carbapex 400 mg cr 30 tabs - carbamazepine. Tablet 400 mg',
+        'description':
+            'carbapex 400 mg cr 30 tabs - carbamazepine. Tablet 400 mg',
         'price': 111.0,
-        'imageUrl': 'https://www.rosheta.com/upload/637fada785bd39664245b8664ce9528adbc03ea4df5c63211e0d0ac9a39b5348.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/637fada785bd39664245b8664ce9528adbc03ea4df5c63211e0d0ac9a39b5348.webp',
         'categoryId': 'psychiatric_neuro',
-        'subcategoryId': '',
+        'subcategoryId': 'pn_antiepileptics',
+        'subSubcategoryId': 'pn_ae',
         'barcode': '6223003202323',
         'activeIngredient': 'carbamazepine',
         'concentration': '400 mg',
@@ -852,7 +1187,12 @@ class SeedService {
         'stock': 56,
         'rewardPoints': 11,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_2130',
@@ -860,9 +1200,11 @@ class SeedService {
         'nameArabic': 'كارفيد 25مجم 20 قرص',
         'description': 'carvid 25mg 20 tab - carvedilol. Tablet 25 mg',
         'price': 54.0,
-        'imageUrl': 'https://www.rosheta.com/upload/1a16564eda3e9f5a54d2ce505315a53f896099eff029e9baac834c50cceec0b2.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/1a16564eda3e9f5a54d2ce505315a53f896099eff029e9baac834c50cceec0b2.webp',
         'categoryId': 'cardiovascular',
-        'subcategoryId': '',
+        'subcategoryId': 'cv_antihypertensives',
+        'subSubcategoryId': 'cv_bb',
         'barcode': '6223003201302',
         'activeIngredient': 'carvedilol',
         'concentration': '25 mg',
@@ -872,7 +1214,12 @@ class SeedService {
         'stock': 103,
         'rewardPoints': 5,
         'isOffer': false,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_2131',
@@ -880,9 +1227,11 @@ class SeedService {
         'nameArabic': 'كارفيد 25مجم 30 قرص',
         'description': 'carvid 25mg 30 tab - carvedilol. Tablet 25 mg',
         'price': 81.0,
-        'imageUrl': 'https://www.rosheta.com/upload/1a16564eda3e9f5a54d2ce505315a53f896099eff029e9baac834c50cceec0b2.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/1a16564eda3e9f5a54d2ce505315a53f896099eff029e9baac834c50cceec0b2.webp',
         'categoryId': 'cardiovascular',
-        'subcategoryId': '',
+        'subcategoryId': 'cv_antihypertensives',
+        'subSubcategoryId': 'cv_bb',
         'barcode': '6223003208691',
         'activeIngredient': 'carvedilol',
         'concentration': '25 mg',
@@ -892,7 +1241,12 @@ class SeedService {
         'stock': 56,
         'rewardPoints': 8,
         'isOffer': false,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_2132',
@@ -900,9 +1254,11 @@ class SeedService {
         'nameArabic': 'كارفيد 6.25مجم 20 قرص',
         'description': 'carvid 6.25mg 20 tab - carvedilol. Tablet 6.25 mg',
         'price': 30.0,
-        'imageUrl': 'https://www.rosheta.com/upload/1a16564eda3e9f5a54d2ce505315a53f896099eff029e9baac834c50cceec0b2.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/1a16564eda3e9f5a54d2ce505315a53f896099eff029e9baac834c50cceec0b2.webp',
         'categoryId': 'cardiovascular',
-        'subcategoryId': '',
+        'subcategoryId': 'cv_antihypertensives',
+        'subSubcategoryId': 'cv_bb',
         'barcode': '6223003201333',
         'activeIngredient': 'carvedilol',
         'concentration': '6.25 mg',
@@ -912,7 +1268,12 @@ class SeedService {
         'stock': 173,
         'rewardPoints': 3,
         'isOffer': false,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_2133',
@@ -920,9 +1281,11 @@ class SeedService {
         'nameArabic': 'كارفيد 6.25مجم 30 قرص',
         'description': 'carvid 6.25mg 30 tab - carvedilol. Tablet 6.25 mg',
         'price': 45.0,
-        'imageUrl': 'https://www.rosheta.com/upload/1a16564eda3e9f5a54d2ce505315a53f896099eff029e9baac834c50cceec0b2.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/1a16564eda3e9f5a54d2ce505315a53f896099eff029e9baac834c50cceec0b2.webp',
         'categoryId': 'cardiovascular',
-        'subcategoryId': '',
+        'subcategoryId': 'cv_antihypertensives',
+        'subSubcategoryId': 'cv_bb',
         'barcode': '6223003208677',
         'activeIngredient': 'carvedilol',
         'concentration': '6.25 mg',
@@ -932,7 +1295,12 @@ class SeedService {
         'stock': 106,
         'rewardPoints': 4,
         'isOffer': false,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_15926',
@@ -940,9 +1308,11 @@ class SeedService {
         'nameArabic': 'كازودكس 50 مجم 28 قرص',
         'description': 'casodex 50 mg 28 tabs - bicalutamide. Tablet 50 mg',
         'price': 940.0,
-        'imageUrl': 'https://www.rosheta.com/upload/7f4ce0eb9c7753da26ff483cb89e42fedd0a62dba5660d1d81b9805db4c1fdae.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/7f4ce0eb9c7753da26ff483cb89e42fedd0a62dba5660d1d81b9805db4c1fdae.webp',
         'categoryId': 'oncology',
-        'subcategoryId': '',
+        'subcategoryId': 'on_hormonal',
+        'subSubcategoryId': 'on_anti_androgen',
         'barcode': '6223003270223',
         'activeIngredient': 'bicalutamide',
         'concentration': '50 mg',
@@ -952,17 +1322,25 @@ class SeedService {
         'stock': 60,
         'rewardPoints': 94,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_2405',
         'name': 'cerebromap 200 mg 30 caps',
         'nameArabic': 'سيربروماب 200مجم 30 قرص',
-        'description': 'cerebromap 200 mg 30 caps - naftidrofuryl. Capsule 200 mg',
+        'description':
+            'cerebromap 200 mg 30 caps - naftidrofuryl. Capsule 200 mg',
         'price': 225.0,
-        'imageUrl': 'https://www.rosheta.com/upload/761a30df1e6de85986d279ccec30227a00f8ae98726212cfa1ad874ce3501323.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/761a30df1e6de85986d279ccec30227a00f8ae98726212cfa1ad874ce3501323.webp',
         'categoryId': 'cardiovascular',
-        'subcategoryId': '',
+        'subcategoryId': 'cv_peripheral',
+        'subSubcategoryId': 'cv_periph_vasodilator',
         'barcode': '6223003403966',
         'activeIngredient': 'naftidrofuryl',
         'concentration': '200 mg',
@@ -972,7 +1350,12 @@ class SeedService {
         'stock': 200,
         'rewardPoints': 22,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_2822',
@@ -980,9 +1363,11 @@ class SeedService {
         'nameArabic': 'كلوزابكس 100مجم 50 قرص',
         'description': 'clozapex 100mg 50 tab - clozapine. Tablet 100 mg',
         'price': 135.0,
-        'imageUrl': 'https://www.rosheta.com/upload/29fbc8eef8ae2843884d1028cc5491de93467db67b3d5c5c4022ba16d12b3d19.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/29fbc8eef8ae2843884d1028cc5491de93467db67b3d5c5c4022ba16d12b3d19.webp',
         'categoryId': 'psychiatric_neuro',
-        'subcategoryId': '',
+        'subcategoryId': 'pn_antipsychotics',
+        'subSubcategoryId': 'pn_atypical',
         'barcode': '6223003200718',
         'activeIngredient': 'clozapine',
         'concentration': '100 mg',
@@ -992,7 +1377,12 @@ class SeedService {
         'stock': 189,
         'rewardPoints': 13,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_2823',
@@ -1000,9 +1390,11 @@ class SeedService {
         'nameArabic': 'كلوزابكس 25مجم 50 قرص',
         'description': 'clozapex 25mg 50 tab - clozapine. Tablet 25 mg',
         'price': 50.0,
-        'imageUrl': 'https://www.rosheta.com/upload/7caa4202caf3b07e78d6b67a9bb89999971129d0f33b8f2498f12c9ba296d6fd.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/7caa4202caf3b07e78d6b67a9bb89999971129d0f33b8f2498f12c9ba296d6fd.webp',
         'categoryId': 'psychiatric_neuro',
-        'subcategoryId': '',
+        'subcategoryId': 'pn_antipsychotics',
+        'subSubcategoryId': 'pn_atypical',
         'barcode': '6223003200756',
         'activeIngredient': 'clozapine',
         'concentration': '25 mg',
@@ -1012,7 +1404,12 @@ class SeedService {
         'stock': 107,
         'rewardPoints': 5,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_16680',
@@ -1020,9 +1417,11 @@ class SeedService {
         'nameArabic': 'كمدورمير 10مجم 30 قرص',
         'description': 'comedormir 10mg 30 tab - oxazepam. Tablet 10 mg',
         'price': 15.3,
-        'imageUrl': 'https://www.rosheta.com/upload/167faa9994945f66169eaf29c990b37bfdef8f0c6ed53c99505b191891e15e95.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/167faa9994945f66169eaf29c990b37bfdef8f0c6ed53c99505b191891e15e95.webp',
         'categoryId': 'psychiatric_neuro',
-        'subcategoryId': '',
+        'subcategoryId': 'pn_anxiolytics',
+        'subSubcategoryId': 'pn_anx',
         'barcode': '6223003202071',
         'activeIngredient': 'oxazepam',
         'concentration': '10 mg',
@@ -1032,7 +1431,12 @@ class SeedService {
         'stock': 23,
         'rewardPoints': 1,
         'isOffer': false,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_3151',
@@ -1040,9 +1444,11 @@ class SeedService {
         'nameArabic': 'كريستور 10مجم 28 قرص',
         'description': 'crestor 10mg 28 f.c. tab - rosuvastatin. Tablet 10 mg',
         'price': 368.0,
-        'imageUrl': 'https://www.rosheta.com/upload/415d27e7870d44583a1d5044bb7b7185b83fc3259fe1bcccaaf3e850ed2fbef4.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/415d27e7870d44583a1d5044bb7b7185b83fc3259fe1bcccaaf3e850ed2fbef4.webp',
         'categoryId': 'cardiovascular',
-        'subcategoryId': '',
+        'subcategoryId': 'cv_statins',
+        'subSubcategoryId': 'cv_statin_only',
         'barcode': '6223003270445',
         'activeIngredient': 'rosuvastatin',
         'concentration': '10 mg',
@@ -1052,7 +1458,12 @@ class SeedService {
         'stock': 200,
         'rewardPoints': 36,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_3153',
@@ -1060,9 +1471,11 @@ class SeedService {
         'nameArabic': 'كريستور 20 مجم 14 قرص',
         'description': 'crestor 20 mg 14 f.c.tabs - rosuvastatin. Tablet 20 mg',
         'price': 300.0,
-        'imageUrl': 'https://www.rosheta.com/upload/415d27e7870d44583a1d5044bb7b7185b83fc3259fe1bcccaaf3e850ed2fbef4.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/415d27e7870d44583a1d5044bb7b7185b83fc3259fe1bcccaaf3e850ed2fbef4.webp',
         'categoryId': 'cardiovascular',
-        'subcategoryId': '',
+        'subcategoryId': 'cv_statins',
+        'subSubcategoryId': 'cv_statin_only',
         'barcode': '6223003270483',
         'activeIngredient': 'rosuvastatin',
         'concentration': '20 mg',
@@ -1072,7 +1485,12 @@ class SeedService {
         'stock': 126,
         'rewardPoints': 30,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_3154',
@@ -1080,9 +1498,11 @@ class SeedService {
         'nameArabic': 'كريستور 5 مجم 7 قرص',
         'description': 'crestor 5mg 7 f.c. tab - rosuvastatin. Tablet 5 mg',
         'price': 66.0,
-        'imageUrl': 'https://www.rosheta.com/upload/415d27e7870d44583a1d5044bb7b7185b83fc3259fe1bcccaaf3e850ed2fbef4.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/415d27e7870d44583a1d5044bb7b7185b83fc3259fe1bcccaaf3e850ed2fbef4.webp',
         'categoryId': 'cardiovascular',
-        'subcategoryId': '',
+        'subcategoryId': 'cv_statins',
+        'subSubcategoryId': 'cv_statin_only',
         'barcode': '6223003270261',
         'activeIngredient': 'rosuvastatin',
         'concentration': '5 mg',
@@ -1092,17 +1512,25 @@ class SeedService {
         'stock': 34,
         'rewardPoints': 6,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_17153',
         'name': 'decancit s.r 20 f.c.tab',
         'nameArabic': 'ديكانست اس ار 20 قرص',
-        'description': 'decancit s.r 20 f.c.tab - cetirizine+pseudoephedrine. Tablet',
+        'description':
+            'decancit s.r 20 f.c.tab - cetirizine+pseudoephedrine. Tablet',
         'price': 42.0,
-        'imageUrl': 'https://www.rosheta.com/upload/3e3996a7623a8f7d85dd8713f7c9e91dc138b01c8edc5ffe086030dec0ff9313.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/3e3996a7623a8f7d85dd8713f7c9e91dc138b01c8edc5ffe086030dec0ff9313.webp',
         'categoryId': 'respiratory_allergy',
-        'subcategoryId': '',
+        'subcategoryId': 'ra_coldflu',
+        'subSubcategoryId': 'ra_cf_gen',
         'barcode': '6223003204792',
         'activeIngredient': 'cetirizine+pseudoephedrine',
         'concentration': '',
@@ -1112,7 +1540,12 @@ class SeedService {
         'stock': 200,
         'rewardPoints': 4,
         'isOffer': false,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_3431',
@@ -1120,9 +1553,11 @@ class SeedService {
         'nameArabic': 'ديبرام 20مجم 20 قرص',
         'description': 'depram 20mg 20 f.c. tab - citalopram. Tablet 20 mg',
         'price': 104.0,
-        'imageUrl': 'https://www.rosheta.com/upload/6cd1645dad00684cdb7f5589314e8775f66e3313defc8e69278a218f356d81f2.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/6cd1645dad00684cdb7f5589314e8775f66e3313defc8e69278a218f356d81f2.webp',
         'categoryId': 'psychiatric_neuro',
-        'subcategoryId': '',
+        'subcategoryId': 'pn_antidepressants',
+        'subSubcategoryId': 'pn_ssri',
         'barcode': '6223003201159',
         'activeIngredient': 'citalopram',
         'concentration': '20 mg',
@@ -1132,7 +1567,12 @@ class SeedService {
         'stock': 103,
         'rewardPoints': 10,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_32727',
@@ -1140,9 +1580,11 @@ class SeedService {
         'nameArabic': 'ديبريم 40مجم10 قرص',
         'description': 'depram 40mg 10 f.c. tab. - citalopram. Tablet 40 mg',
         'price': 40.0,
-        'imageUrl': 'https://www.rosheta.com/upload/f1d87aa18859ee58fb7d6d62e0df42160ad5fcf693adc15386fd1deb8afcf769.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/f1d87aa18859ee58fb7d6d62e0df42160ad5fcf693adc15386fd1deb8afcf769.webp',
         'categoryId': 'psychiatric_neuro',
-        'subcategoryId': '',
+        'subcategoryId': 'pn_antidepressants',
+        'subSubcategoryId': 'pn_ssri',
         'barcode': '6223003201098',
         'activeIngredient': 'citalopram',
         'concentration': '40 mg',
@@ -1152,7 +1594,12 @@ class SeedService {
         'stock': 32,
         'rewardPoints': 4,
         'isOffer': false,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_3432',
@@ -1160,9 +1607,11 @@ class SeedService {
         'nameArabic': 'ديبرام 40مجم 20 قرص',
         'description': 'depram 40mg 20 f.c. tab - citalopram. Tablet 40 mg',
         'price': 140.0,
-        'imageUrl': 'https://www.rosheta.com/upload/f1d87aa18859ee58fb7d6d62e0df42160ad5fcf693adc15386fd1deb8afcf769.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/f1d87aa18859ee58fb7d6d62e0df42160ad5fcf693adc15386fd1deb8afcf769.webp',
         'categoryId': 'psychiatric_neuro',
-        'subcategoryId': '',
+        'subcategoryId': 'pn_antidepressants',
+        'subSubcategoryId': 'pn_ssri',
         'barcode': '6223003207762',
         'activeIngredient': 'citalopram',
         'concentration': '40 mg',
@@ -1172,17 +1621,25 @@ class SeedService {
         'stock': 78,
         'rewardPoints': 14,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_17548',
         'name': 'diacurimap 10 mg 30 f.c. tabs',
         'nameArabic': 'دياكيوريماب 10مجم 30 قرص',
-        'description': 'diacurimap 10 mg 30 f.c. tabs - empagliflozin. Tablet 10 mg',
+        'description':
+            'diacurimap 10 mg 30 f.c. tabs - empagliflozin. Tablet 10 mg',
         'price': 204.0,
-        'imageUrl': 'https://www.rosheta.com/upload/2f9775f74791dc09c34e0e92375baf5b247d03f94a1920250dd23b7cd3efc743.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/2f9775f74791dc09c34e0e92375baf5b247d03f94a1920250dd23b7cd3efc743.webp',
         'categoryId': 'diabetes_metabolism',
-        'subcategoryId': '',
+        'subcategoryId': 'dm_antidiabetics',
+        'subSubcategoryId': 'dm_sglt2',
         'barcode': '6223003206352',
         'activeIngredient': 'empagliflozin',
         'concentration': '10 mg',
@@ -1192,17 +1649,25 @@ class SeedService {
         'stock': 158,
         'rewardPoints': 20,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_17549',
         'name': 'diacurimap 25 mg 30 f.c. tabs',
         'nameArabic': 'دياكيوريماب 25مجم 30 قرص',
-        'description': 'diacurimap 25 mg 30 f.c. tabs - empagliflozin. Tablet 25 mg',
+        'description':
+            'diacurimap 25 mg 30 f.c. tabs - empagliflozin. Tablet 25 mg',
         'price': 204.0,
-        'imageUrl': 'https://www.rosheta.com/upload/2f9775f74791dc09c34e0e92375baf5b247d03f94a1920250dd23b7cd3efc743.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/2f9775f74791dc09c34e0e92375baf5b247d03f94a1920250dd23b7cd3efc743.webp',
         'categoryId': 'diabetes_metabolism',
-        'subcategoryId': '',
+        'subcategoryId': 'dm_antidiabetics',
+        'subSubcategoryId': 'dm_sglt2',
         'barcode': '6223003206444',
         'activeIngredient': 'empagliflozin',
         'concentration': '25 mg',
@@ -1212,17 +1677,25 @@ class SeedService {
         'stock': 187,
         'rewardPoints': 20,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_21825',
         'name': 'diacurimap plus 25/5 mg 30 f.c. tabs',
         'nameArabic': 'دياكيوريماب بلس 25/5 مجم 30 قرص',
-        'description': 'diacurimap plus 25/5 mg 30 f.c. tabs - empagliflozin+linagliptin. Tablet 25/5 ml',
+        'description':
+            'diacurimap plus 25/5 mg 30 f.c. tabs - empagliflozin+linagliptin. Tablet 25/5 ml',
         'price': 354.0,
-        'imageUrl': 'https://www.rosheta.com/upload/2f9775f74791dc09c34e0e92375baf5b247d03f94a1920250dd23b7cd3efc743.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/2f9775f74791dc09c34e0e92375baf5b247d03f94a1920250dd23b7cd3efc743.webp',
         'categoryId': 'diabetes_metabolism',
-        'subcategoryId': '',
+        'subcategoryId': 'dm_antidiabetics',
+        'subSubcategoryId': 'dm_sglt2',
         'barcode': '6223003208226',
         'activeIngredient': 'empagliflozin+linagliptin',
         'concentration': '25/5 ml',
@@ -1232,17 +1705,25 @@ class SeedService {
         'stock': 106,
         'rewardPoints': 35,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_18109',
         'name': 'eflotism 13.9 % topical cream 15 gm',
         'nameArabic': 'ايفلوتيزم 13.9% كريم 15 جرام',
-        'description': 'eflotism 13.9 % topical cream 15 gm - eflornithine. Cream 0.139',
+        'description':
+            'eflotism 13.9 % topical cream 15 gm - eflornithine. Cream 0.139',
         'price': 100.0,
-        'imageUrl': 'https://www.rosheta.com/upload/33bfc9e5bb8c96b05b1be7c834362609b93152c235dea2cc6aa47d728660c646.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/33bfc9e5bb8c96b05b1be7c834362609b93152c235dea2cc6aa47d728660c646.webp',
         'categoryId': 'antibiotics',
-        'subcategoryId': '',
+        'subcategoryId': 'ab_derm_topicals',
+        'subSubcategoryId': 'ab_derm_hair_inhibitor',
         'barcode': '6223003204648',
         'activeIngredient': 'eflornithine',
         'concentration': '0.139',
@@ -1252,17 +1733,25 @@ class SeedService {
         'stock': 36,
         'rewardPoints': 10,
         'isOffer': false,
-        'usageSteps': ['Clean and dry the affected area before applying', 'Apply a thin layer to the affected area', 'Wash hands before and after application', 'Use as directed by your doctor'],
+        'usageSteps': [
+          'Clean and dry the affected area before applying',
+          'Apply a thin layer to the affected area',
+          'Wash hands before and after application',
+          'Use as directed by your doctor'
+        ],
       },
       {
         'docId': 'prod_32786',
         'name': 'elballerge 30mg/5ml susp. 100 ml',
         'nameArabic': 'الباليرج 30مجم/5مل معلق 100 مل',
-        'description': 'elballerge 30mg/5ml susp. 100 ml - fexofenadine. Suspension 30mg/5ml',
+        'description':
+            'elballerge 30mg/5ml susp. 100 ml - fexofenadine. Suspension 30mg/5ml',
         'price': 33.0,
-        'imageUrl': 'https://taypharmacies.com/wp-content/uploads/2024/03/2024-08-18T161123.663.png',
+        'imageUrl':
+            'https://taypharmacies.com/wp-content/uploads/2024/03/2024-08-18T161123.663.png',
         'categoryId': 'respiratory_allergy',
-        'subcategoryId': '',
+        'subcategoryId': 'ra_antihistamines',
+        'subSubcategoryId': 'ra_anti_h2',
         'barcode': '6223003206598',
         'activeIngredient': 'fexofenadine',
         'concentration': '30mg/5ml',
@@ -1272,17 +1761,25 @@ class SeedService {
         'stock': 98,
         'rewardPoints': 3,
         'isOffer': true,
-        'usageSteps': ['Shake well before use', 'Measure the exact dose with the provided cup', 'Take as prescribed by your doctor', 'Store at room temperature unless instructed otherwise'],
+        'usageSteps': [
+          'Shake well before use',
+          'Measure the exact dose with the provided cup',
+          'Take as prescribed by your doctor',
+          'Store at room temperature unless instructed otherwise'
+        ],
       },
       {
         'docId': 'prod_30457',
         'name': 'elbaluran 120 mg 30 f.c. tabs',
         'nameArabic': 'البالوران  120مجم 30 قرص',
-        'description': 'elbaluran 120 mg 30 f.c. tabs - lurasidone. Tablet 120 mg',
+        'description':
+            'elbaluran 120 mg 30 f.c. tabs - lurasidone. Tablet 120 mg',
         'price': 580.5,
-        'imageUrl': 'https://api.c0umyt3cda-pharmaove1-p1-public.model-t.cc.commerce.ondemand.com/medias/000000000000033589.webp?context=bWFzdGVyfGltYWdlc3wxOTEyN3xpbWFnZS9qcGVnfGFERXdMMmcxTXk4eE1UTTFOekEyTnpRME5ESTFOQzh3TURBd01EQXdNREF3TURBd016TTFPRGt1ZDJWaWNBfGZjMGE4YWU5ODM4MGZmYTZjMDAyYjZhYjBjYmRiYWM3Yjg4ZjA1ZjM1NTNjYzIzODQzNzIxMDEzM2UyMWQxY2U',
+        'imageUrl':
+            'https://api.c0umyt3cda-pharmaove1-p1-public.model-t.cc.commerce.ondemand.com/medias/000000000000033589.webp?context=bWFzdGVyfGltYWdlc3wxOTEyN3xpbWFnZS9qcGVnfGFERXdMMmcxTXk4eE1UTTFOekEyTnpRME5ESTFOQzh3TURBd01EQXdNREF3TURBd016TTFPRGt1ZDJWaWNBfGZjMGE4YWU5ODM4MGZmYTZjMDAyYjZhYjBjYmRiYWM3Yjg4ZjA1ZjM1NTNjYzIzODQzNzIxMDEzM2UyMWQxY2U',
         'categoryId': 'psychiatric_neuro',
-        'subcategoryId': '',
+        'subcategoryId': 'pn_antipsychotics',
+        'subSubcategoryId': 'pn_atypical',
         'barcode': '6223003207267',
         'activeIngredient': 'lurasidone',
         'concentration': '120 mg',
@@ -1292,17 +1789,25 @@ class SeedService {
         'stock': 34,
         'rewardPoints': 58,
         'isOffer': false,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_30458',
         'name': 'elbaluran 20 mg 30 f.c. tabs',
         'nameArabic': 'البالوران 20مجم 30 قرص',
-        'description': 'elbaluran 20 mg 30 f.c. tabs - lurasidone. Tablet 20 mg',
+        'description':
+            'elbaluran 20 mg 30 f.c. tabs - lurasidone. Tablet 20 mg',
         'price': 165.0,
-        'imageUrl': 'https://masterapi.witheldokan.com/storage/seif-pharmacies/uploads/607583.webp',
+        'imageUrl':
+            'https://masterapi.witheldokan.com/storage/seif-pharmacies/uploads/607583.webp',
         'categoryId': 'psychiatric_neuro',
-        'subcategoryId': '',
+        'subcategoryId': 'pn_antipsychotics',
+        'subSubcategoryId': 'pn_atypical',
         'barcode': '6223003207137',
         'activeIngredient': 'lurasidone',
         'concentration': '20 mg',
@@ -1312,7 +1817,12 @@ class SeedService {
         'stock': 38,
         'rewardPoints': 16,
         'isOffer': false,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_4052',
@@ -1320,9 +1830,11 @@ class SeedService {
         'nameArabic': 'البافيت شراب فيتامينات متعددة 60 مل',
         'description': 'elbavit syrup 60 ml - minerals+vitamins. Syrup',
         'price': 39.0,
-        'imageUrl': 'https://www.rosheta.com/upload/226f16bfe9afe88973adade1dac96f129d349216f285d17d784e766398b39e26.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/226f16bfe9afe88973adade1dac96f129d349216f285d17d784e766398b39e26.webp',
         'categoryId': 'vitamins_supplements',
-        'subcategoryId': '',
+        'subcategoryId': 'vs_multivitamins',
+        'subSubcategoryId': 'vs_mvi_gen',
         'barcode': '6223003202118',
         'activeIngredient': 'minerals+vitamins',
         'concentration': '',
@@ -1332,7 +1844,12 @@ class SeedService {
         'stock': 93,
         'rewardPoints': 3,
         'isOffer': true,
-        'usageSteps': ['Shake well before use', 'Measure the exact dose with the provided cup', 'Take as prescribed by your doctor', 'Store at room temperature unless instructed otherwise'],
+        'usageSteps': [
+          'Shake well before use',
+          'Measure the exact dose with the provided cup',
+          'Take as prescribed by your doctor',
+          'Store at room temperature unless instructed otherwise'
+        ],
       },
       {
         'docId': 'prod_4053',
@@ -1340,9 +1857,11 @@ class SeedService {
         'nameArabic': 'البافيت حديد شراب 60 مل',
         'description': 'elbavit with iron syrup 60 ml - vitamins+iron. Syrup',
         'price': 40.0,
-        'imageUrl': 'https://www.rosheta.com/upload/226f16bfe9afe88973adade1dac96f129d349216f285d17d784e766398b39e26.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/226f16bfe9afe88973adade1dac96f129d349216f285d17d784e766398b39e26.webp',
         'categoryId': 'cardiovascular',
-        'subcategoryId': '',
+        'subcategoryId': 'cv_other',
+        'subSubcategoryId': 'cv_other_general',
         'barcode': '6223003205928',
         'activeIngredient': 'vitamins+iron',
         'concentration': '',
@@ -1352,7 +1871,12 @@ class SeedService {
         'stock': 120,
         'rewardPoints': 4,
         'isOffer': true,
-        'usageSteps': ['Shake well before use', 'Measure the exact dose with the provided cup', 'Take as prescribed by your doctor', 'Store at room temperature unless instructed otherwise'],
+        'usageSteps': [
+          'Shake well before use',
+          'Measure the exact dose with the provided cup',
+          'Take as prescribed by your doctor',
+          'Store at room temperature unless instructed otherwise'
+        ],
       },
       {
         'docId': 'prod_18496',
@@ -1360,9 +1884,11 @@ class SeedService {
         'nameArabic': 'ايرالونير 25مجم 20 قرص',
         'description': 'eraloner 25 mg 20 f.c.tab - eplerenone. Tablet 25 mg',
         'price': 136.0,
-        'imageUrl': 'https://www.rosheta.com/upload/c21bdac0a43c0392ef26b329d27654e34e2fc8802cadcc880da9063a1a43db27.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/c21bdac0a43c0392ef26b329d27654e34e2fc8802cadcc880da9063a1a43db27.webp',
         'categoryId': 'cardiovascular',
-        'subcategoryId': '',
+        'subcategoryId': 'cv_diuretics',
+        'subSubcategoryId': 'cv_diu_kspare',
         'barcode': '6223003205331',
         'activeIngredient': 'eplerenone',
         'concentration': '25 mg',
@@ -1372,7 +1898,12 @@ class SeedService {
         'stock': 200,
         'rewardPoints': 13,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_18497',
@@ -1380,9 +1911,11 @@ class SeedService {
         'nameArabic': 'ايرالونير 50مجم 20 قرص',
         'description': 'eraloner 50 mg 20 f.c. tab - eplerenone. Tablet 50 mg',
         'price': 198.0,
-        'imageUrl': 'https://www.rosheta.com/upload/c21bdac0a43c0392ef26b329d27654e34e2fc8802cadcc880da9063a1a43db27.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/c21bdac0a43c0392ef26b329d27654e34e2fc8802cadcc880da9063a1a43db27.webp',
         'categoryId': 'cardiovascular',
-        'subcategoryId': '',
+        'subcategoryId': 'cv_diuretics',
+        'subSubcategoryId': 'cv_diu_kspare',
         'barcode': '6223003205355',
         'activeIngredient': 'eplerenone',
         'concentration': '50 mg',
@@ -1392,7 +1925,12 @@ class SeedService {
         'stock': 68,
         'rewardPoints': 19,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_18498',
@@ -1400,9 +1938,11 @@ class SeedService {
         'nameArabic': 'ايراستابكس 20مجم 30 قرص',
         'description': 'erastapex 20 mg 30 f.c.tab - olmesartan. Tablet 20 mg',
         'price': 75.0,
-        'imageUrl': 'https://www.rosheta.com/upload/b01c5472b566ed70bd88826a68210bff7a9244235d4caf589e6e95d5c36395dc.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/b01c5472b566ed70bd88826a68210bff7a9244235d4caf589e6e95d5c36395dc.webp',
         'categoryId': 'cardiovascular',
-        'subcategoryId': '',
+        'subcategoryId': 'cv_antihypertensives',
+        'subSubcategoryId': 'cv_arb',
         'barcode': '6223003202729',
         'activeIngredient': 'olmesartan',
         'concentration': '20 mg',
@@ -1412,7 +1952,12 @@ class SeedService {
         'stock': 200,
         'rewardPoints': 7,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_4331',
@@ -1420,9 +1965,11 @@ class SeedService {
         'nameArabic': 'ايراستابكس 40مجم 30 قرص',
         'description': 'erastapex 40mg 30 tablets - olmesartan. Tablet 40 mg',
         'price': 96.0,
-        'imageUrl': 'https://www.rosheta.com/upload/b01c5472b566ed70bd88826a68210bff7a9244235d4caf589e6e95d5c36395dc.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/b01c5472b566ed70bd88826a68210bff7a9244235d4caf589e6e95d5c36395dc.webp',
         'categoryId': 'cardiovascular',
-        'subcategoryId': '',
+        'subcategoryId': 'cv_antihypertensives',
+        'subSubcategoryId': 'cv_arb',
         'barcode': '6223003202750',
         'activeIngredient': 'olmesartan',
         'concentration': '40 mg',
@@ -1432,17 +1979,25 @@ class SeedService {
         'stock': 117,
         'rewardPoints': 9,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_4328',
         'name': 'erastapex co 10/40mg 30 f.c. tabs',
         'nameArabic': 'ايراستابكس كو 10/40مجم 30 قرص',
-        'description': 'erastapex co 10/40mg 30 f.c. tabs - olmesartan+amlodipine. Tablet 10/40 mg',
+        'description':
+            'erastapex co 10/40mg 30 f.c. tabs - olmesartan+amlodipine. Tablet 10/40 mg',
         'price': 165.0,
-        'imageUrl': 'https://www.rosheta.com/upload/b01c5472b566ed70bd88826a68210bff7a9244235d4caf589e6e95d5c36395dc.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/b01c5472b566ed70bd88826a68210bff7a9244235d4caf589e6e95d5c36395dc.webp',
         'categoryId': 'cardiovascular',
-        'subcategoryId': '',
+        'subcategoryId': 'cv_antihypertensives',
+        'subSubcategoryId': 'cv_combo',
         'barcode': '6223003205669',
         'activeIngredient': 'olmesartan+amlodipine',
         'concentration': '10/40 mg',
@@ -1452,17 +2007,25 @@ class SeedService {
         'stock': 148,
         'rewardPoints': 16,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_4330',
         'name': 'erastapex co 5/20mg 30 f.c. tabs',
         'nameArabic': 'ايراستابكس كو 5/20 مجم 30 قرص',
-        'description': 'erastapex co 5/20mg 30 f.c. tabs - olmesartan+amlodipine. Tablet 5/20 mg',
+        'description':
+            'erastapex co 5/20mg 30 f.c. tabs - olmesartan+amlodipine. Tablet 5/20 mg',
         'price': 114.0,
-        'imageUrl': 'https://www.rosheta.com/upload/b01c5472b566ed70bd88826a68210bff7a9244235d4caf589e6e95d5c36395dc.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/b01c5472b566ed70bd88826a68210bff7a9244235d4caf589e6e95d5c36395dc.webp',
         'categoryId': 'cardiovascular',
-        'subcategoryId': '',
+        'subcategoryId': 'cv_antihypertensives',
+        'subSubcategoryId': 'cv_combo',
         'barcode': '6223003202743',
         'activeIngredient': 'olmesartan+amlodipine',
         'concentration': '5/20 mg',
@@ -1472,17 +2035,25 @@ class SeedService {
         'stock': 200,
         'rewardPoints': 11,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_4332',
         'name': 'erastapex co 5/40mg 30 f.c. tabs',
         'nameArabic': 'ايراستابكس كو 5/40 مجم 30 قرص',
-        'description': 'erastapex co 5/40mg 30 f.c. tabs - olmesartan+amlodipine. Tablet 5/40 mg',
+        'description':
+            'erastapex co 5/40mg 30 f.c. tabs - olmesartan+amlodipine. Tablet 5/40 mg',
         'price': 144.0,
-        'imageUrl': 'https://www.rosheta.com/upload/b01c5472b566ed70bd88826a68210bff7a9244235d4caf589e6e95d5c36395dc.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/b01c5472b566ed70bd88826a68210bff7a9244235d4caf589e6e95d5c36395dc.webp',
         'categoryId': 'cardiovascular',
-        'subcategoryId': '',
+        'subcategoryId': 'cv_antihypertensives',
+        'subSubcategoryId': 'cv_combo',
         'barcode': '6223003205638',
         'activeIngredient': 'olmesartan+amlodipine',
         'concentration': '5/40 mg',
@@ -1492,17 +2063,25 @@ class SeedService {
         'stock': 100,
         'rewardPoints': 14,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_4334',
         'name': 'erastapex plus 20mg/12.5mg 30 tab',
         'nameArabic': 'ايراستابكس بلس 20/12.5مجم 30 قرص',
-        'description': 'erastapex plus 20mg/12.5mg 30 tab - olmesratan+hydrochlorothiazide. Tablet 20mg/12.5 mg',
+        'description':
+            'erastapex plus 20mg/12.5mg 30 tab - olmesratan+hydrochlorothiazide. Tablet 20mg/12.5 mg',
         'price': 78.0,
-        'imageUrl': 'https://www.rosheta.com/upload/b01c5472b566ed70bd88826a68210bff7a9244235d4caf589e6e95d5c36395dc.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/b01c5472b566ed70bd88826a68210bff7a9244235d4caf589e6e95d5c36395dc.webp',
         'categoryId': 'cardiovascular',
-        'subcategoryId': '',
+        'subcategoryId': 'cv_antihypertensives',
+        'subSubcategoryId': 'cv_combo',
         'barcode': '6223003202781',
         'activeIngredient': 'olmesratan+hydrochlorothiazide',
         'concentration': '20mg/12.5 mg',
@@ -1512,17 +2091,25 @@ class SeedService {
         'stock': 200,
         'rewardPoints': 7,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_4336',
         'name': 'erastapex plus 40mg/12.5mg 30 tab',
         'nameArabic': 'ايراستابكس بلس 40/12.5مجم 30 قرص',
-        'description': 'erastapex plus 40mg/12.5mg 30 tab - olmesartan+hydrochlorothiazide. Tablet 40mg/12.5 mg',
+        'description':
+            'erastapex plus 40mg/12.5mg 30 tab - olmesartan+hydrochlorothiazide. Tablet 40mg/12.5 mg',
         'price': 96.0,
-        'imageUrl': 'https://www.rosheta.com/upload/b01c5472b566ed70bd88826a68210bff7a9244235d4caf589e6e95d5c36395dc.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/b01c5472b566ed70bd88826a68210bff7a9244235d4caf589e6e95d5c36395dc.webp',
         'categoryId': 'cardiovascular',
-        'subcategoryId': '',
+        'subcategoryId': 'cv_antihypertensives',
+        'subSubcategoryId': 'cv_combo',
         'barcode': '6223003202811',
         'activeIngredient': 'olmesartan+hydrochlorothiazide',
         'concentration': '40mg/12.5 mg',
@@ -1532,17 +2119,25 @@ class SeedService {
         'stock': 192,
         'rewardPoints': 9,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_4333',
         'name': 'erastapex trio 10/40/25mg 30 f.c. tabs',
         'nameArabic': 'ايراستابكس تريو 10/40/25مجم 30 قرص',
-        'description': 'erastapex trio 10/40/25mg 30 f.c. tabs - amlodipine+olmesartan+hydrochlorothiazide. Tablet 10/40/25 mg',
+        'description':
+            'erastapex trio 10/40/25mg 30 f.c. tabs - amlodipine+olmesartan+hydrochlorothiazide. Tablet 10/40/25 mg',
         'price': 162.0,
-        'imageUrl': 'https://www.rosheta.com/upload/b01c5472b566ed70bd88826a68210bff7a9244235d4caf589e6e95d5c36395dc.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/b01c5472b566ed70bd88826a68210bff7a9244235d4caf589e6e95d5c36395dc.webp',
         'categoryId': 'cardiovascular',
-        'subcategoryId': '',
+        'subcategoryId': 'cv_antihypertensives',
+        'subSubcategoryId': 'cv_combo',
         'barcode': '6223003205577',
         'activeIngredient': 'amlodipine+olmesartan+hydrochlorothiazide',
         'concentration': '10/40/25 mg',
@@ -1552,17 +2147,25 @@ class SeedService {
         'stock': 200,
         'rewardPoints': 16,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_4335',
         'name': 'erastapex trio 5/20/12.5mg 30 f.c. tab',
         'nameArabic': 'ايراستابكس تريو 5/20/12.5مجم 30 قرص',
-        'description': 'erastapex trio 5/20/12.5mg 30 f.c. tab - olmesratan+amlodipine+hydrochlorothiazide. Tablet 5/20/12.5 mg',
+        'description':
+            'erastapex trio 5/20/12.5mg 30 f.c. tab - olmesratan+amlodipine+hydrochlorothiazide. Tablet 5/20/12.5 mg',
         'price': 114.0,
-        'imageUrl': 'https://www.rosheta.com/upload/b01c5472b566ed70bd88826a68210bff7a9244235d4caf589e6e95d5c36395dc.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/b01c5472b566ed70bd88826a68210bff7a9244235d4caf589e6e95d5c36395dc.webp',
         'categoryId': 'cardiovascular',
-        'subcategoryId': '',
+        'subcategoryId': 'cv_antihypertensives',
+        'subSubcategoryId': 'cv_combo',
         'barcode': '6223003205546',
         'activeIngredient': 'olmesratan+amlodipine+hydrochlorothiazide',
         'concentration': '5/20/12.5 mg',
@@ -1572,17 +2175,25 @@ class SeedService {
         'stock': 200,
         'rewardPoints': 11,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_18507',
         'name': 'erastapex trio 5/40/12.5mg 30 f.c. tabs',
         'nameArabic': 'ايراستابكس تريو 5/40/12.5مجم 30 قرص',
-        'description': 'erastapex trio 5/40/12.5mg 30 f.c. tabs - amlodipine+olmesartan+hydrochlorothiazide. Tablet 5/40/12.5 mg',
+        'description':
+            'erastapex trio 5/40/12.5mg 30 f.c. tabs - amlodipine+olmesartan+hydrochlorothiazide. Tablet 5/40/12.5 mg',
         'price': 144.0,
-        'imageUrl': 'https://www.rosheta.com/upload/b01c5472b566ed70bd88826a68210bff7a9244235d4caf589e6e95d5c36395dc.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/b01c5472b566ed70bd88826a68210bff7a9244235d4caf589e6e95d5c36395dc.webp',
         'categoryId': 'cardiovascular',
-        'subcategoryId': '',
+        'subcategoryId': 'cv_antihypertensives',
+        'subSubcategoryId': 'cv_combo',
         'barcode': '6223003206567',
         'activeIngredient': 'amlodipine+olmesartan+hydrochlorothiazide',
         'concentration': '5/40/12.5 mg',
@@ -1592,17 +2203,25 @@ class SeedService {
         'stock': 124,
         'rewardPoints': 14,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_4413',
         'name': 'estero-map 10mg 20 f.c. tab',
         'nameArabic': 'استيرو-ماب 10مجم 20 قرص',
-        'description': 'estero-map 10mg 20 f.c. tab - rosuvastatin. Tablet 10 mg',
+        'description':
+            'estero-map 10mg 20 f.c. tab - rosuvastatin. Tablet 10 mg',
         'price': 88.0,
-        'imageUrl': 'https://www.rosheta.com/upload/f2c078063e3e8739570a110325210dcd586da9ab47372025b35fb5c405f9b434.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/f2c078063e3e8739570a110325210dcd586da9ab47372025b35fb5c405f9b434.webp',
         'categoryId': 'cardiovascular',
-        'subcategoryId': '',
+        'subcategoryId': 'cv_statins',
+        'subSubcategoryId': 'cv_statin_only',
         'barcode': '6223003205843',
         'activeIngredient': 'rosuvastatin',
         'concentration': '10 mg',
@@ -1612,17 +2231,25 @@ class SeedService {
         'stock': 34,
         'rewardPoints': 8,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_18582',
         'name': 'estero-map 10mg 30 f.c.tab',
         'nameArabic': 'استيرو-ماب 10مجم 30 قرص',
-        'description': 'estero-map 10mg 30 f.c.tab - rosuvastatin. Tablet 10 mg',
+        'description':
+            'estero-map 10mg 30 f.c.tab - rosuvastatin. Tablet 10 mg',
         'price': 132.0,
-        'imageUrl': 'https://www.rosheta.com/upload/f2c078063e3e8739570a110325210dcd586da9ab47372025b35fb5c405f9b434.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/f2c078063e3e8739570a110325210dcd586da9ab47372025b35fb5c405f9b434.webp',
         'categoryId': 'cardiovascular',
-        'subcategoryId': '',
+        'subcategoryId': 'cv_statins',
+        'subSubcategoryId': 'cv_statin_only',
         'barcode': '6223003207854',
         'activeIngredient': 'rosuvastatin',
         'concentration': '10 mg',
@@ -1632,17 +2259,25 @@ class SeedService {
         'stock': 52,
         'rewardPoints': 13,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_4414',
         'name': 'estero-map 20mg 20 f.c. tab',
         'nameArabic': 'استيروماب 20مجم 20 قرص',
-        'description': 'estero-map 20mg 20 f.c. tab - rosuvastatin. Tablet 20 mg',
+        'description':
+            'estero-map 20mg 20 f.c. tab - rosuvastatin. Tablet 20 mg',
         'price': 94.0,
-        'imageUrl': 'https://www.rosheta.com/upload/f2c078063e3e8739570a110325210dcd586da9ab47372025b35fb5c405f9b434.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/f2c078063e3e8739570a110325210dcd586da9ab47372025b35fb5c405f9b434.webp',
         'categoryId': 'cardiovascular',
-        'subcategoryId': '',
+        'subcategoryId': 'cv_statins',
+        'subSubcategoryId': 'cv_statin_only',
         'barcode': '6223003205812',
         'activeIngredient': 'rosuvastatin',
         'concentration': '20 mg',
@@ -1652,17 +2287,25 @@ class SeedService {
         'stock': 35,
         'rewardPoints': 9,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_18583',
         'name': 'estero-map 20mg 30 f.c. tab',
         'nameArabic': 'استيرو-ماب 20مجم 30 قرص',
-        'description': 'estero-map 20mg 30 f.c. tab - rosuvastatin. Tablet 20 mg',
+        'description':
+            'estero-map 20mg 30 f.c. tab - rosuvastatin. Tablet 20 mg',
         'price': 141.0,
-        'imageUrl': 'https://www.rosheta.com/upload/f2c078063e3e8739570a110325210dcd586da9ab47372025b35fb5c405f9b434.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/f2c078063e3e8739570a110325210dcd586da9ab47372025b35fb5c405f9b434.webp',
         'categoryId': 'cardiovascular',
-        'subcategoryId': '',
+        'subcategoryId': 'cv_statins',
+        'subSubcategoryId': 'cv_statin_only',
         'barcode': '6223003207823',
         'activeIngredient': 'rosuvastatin',
         'concentration': '20 mg',
@@ -1672,7 +2315,12 @@ class SeedService {
         'stock': 41,
         'rewardPoints': 14,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_4514',
@@ -1680,9 +2328,11 @@ class SeedService {
         'nameArabic': 'اكسامايد 10مجم 30 قرص',
         'description': 'examide 10 mg 30 tabs - torsemide. Tablet 10 mg',
         'price': 117.0,
-        'imageUrl': 'https://www.rosheta.com/upload/2db5f8e8095f34154a7706604b2d8cb6edd22bb6524295c2bafec54328dfbb15.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/2db5f8e8095f34154a7706604b2d8cb6edd22bb6524295c2bafec54328dfbb15.webp',
         'categoryId': 'cardiovascular',
-        'subcategoryId': '',
+        'subcategoryId': 'cv_diuretics',
+        'subSubcategoryId': 'cv_diu_loop',
         'barcode': '6223003201920',
         'activeIngredient': 'torsemide',
         'concentration': '10 mg',
@@ -1692,7 +2342,12 @@ class SeedService {
         'stock': 200,
         'rewardPoints': 11,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_4516',
@@ -1700,9 +2355,11 @@ class SeedService {
         'nameArabic': 'اكساميد 100مجم 20 قرص',
         'description': 'examide 100 mg 20 tabs - torsemide. Tablet 100 mg',
         'price': 144.0,
-        'imageUrl': 'https://www.rosheta.com/upload/8ef85252e7548c3aa8dc876c91a05bee5f18c6f5c673ce90bfbbe0873727a616.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/8ef85252e7548c3aa8dc876c91a05bee5f18c6f5c673ce90bfbbe0873727a616.webp',
         'categoryId': 'cardiovascular',
-        'subcategoryId': '',
+        'subcategoryId': 'cv_diuretics',
+        'subSubcategoryId': 'cv_diu_loop',
         'barcode': '6223003207106',
         'activeIngredient': 'torsemide',
         'concentration': '100 mg',
@@ -1712,17 +2369,25 @@ class SeedService {
         'stock': 63,
         'rewardPoints': 14,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_18679',
         'name': 'examide 10mg/ml amp. for i.v inj',
         'nameArabic': 'اكساميد 10مجم/مل امبول',
-        'description': 'examide 10mg/ml amp. for i.v inj - torsemide. Ampoule 10 mg/ml',
+        'description':
+            'examide 10mg/ml amp. for i.v inj - torsemide. Ampoule 10 mg/ml',
         'price': 14.5,
-        'imageUrl': 'https://www.rosheta.com/upload/8ef85252e7548c3aa8dc876c91a05bee5f18c6f5c673ce90bfbbe0873727a616.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/8ef85252e7548c3aa8dc876c91a05bee5f18c6f5c673ce90bfbbe0873727a616.webp',
         'categoryId': 'cardiovascular',
-        'subcategoryId': '',
+        'subcategoryId': 'cv_diuretics',
+        'subSubcategoryId': 'cv_diu_loop',
         'barcode': '6223003204761',
         'activeIngredient': 'torsemide',
         'concentration': '10 mg/ml',
@@ -1732,7 +2397,12 @@ class SeedService {
         'stock': 47,
         'rewardPoints': 1,
         'isOffer': true,
-        'usageSteps': ['For use by healthcare professionals only', 'Administer as prescribed by your doctor', 'Use aseptic technique', 'Discard unused portion after use'],
+        'usageSteps': [
+          'For use by healthcare professionals only',
+          'Administer as prescribed by your doctor',
+          'Use aseptic technique',
+          'Discard unused portion after use'
+        ],
       },
       {
         'docId': 'prod_4517',
@@ -1740,9 +2410,11 @@ class SeedService {
         'nameArabic': 'اكساميد 20مجم 20 قرص',
         'description': 'examide 20 mg 20 tabs - torsemide. Tablet 20 mg',
         'price': 106.0,
-        'imageUrl': 'https://www.rosheta.com/upload/a6d4fd361bfebf54a674c108307a6932e8f6fd63429988f17f10d66ffc39394e.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/a6d4fd361bfebf54a674c108307a6932e8f6fd63429988f17f10d66ffc39394e.webp',
         'categoryId': 'cardiovascular',
-        'subcategoryId': '',
+        'subcategoryId': 'cv_diuretics',
+        'subSubcategoryId': 'cv_diu_loop',
         'barcode': '6223003201951',
         'activeIngredient': 'torsemide',
         'concentration': '20 mg',
@@ -1752,7 +2424,12 @@ class SeedService {
         'stock': 200,
         'rewardPoints': 10,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_18681',
@@ -1760,9 +2437,11 @@ class SeedService {
         'nameArabic': 'اكساميد 5مجم 30 قرص',
         'description': 'examide 5mg 30 tabs - torsemide. Tablet 5 mg',
         'price': 66.0,
-        'imageUrl': 'https://www.rosheta.com/upload/cb52713ea8f1d8f1cec7a38c56361e43a3bae4894127b27e6044869d5ff0d419.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/cb52713ea8f1d8f1cec7a38c56361e43a3bae4894127b27e6044869d5ff0d419.webp',
         'categoryId': 'cardiovascular',
-        'subcategoryId': '',
+        'subcategoryId': 'cv_diuretics',
+        'subSubcategoryId': 'cv_diu_loop',
         'barcode': '6223003204198',
         'activeIngredient': 'torsemide',
         'concentration': '5 mg',
@@ -1772,17 +2451,25 @@ class SeedService {
         'stock': 183,
         'rewardPoints': 6,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_4576',
         'name': 'ezacard 100 mg 30 e.c. tabs',
         'nameArabic': 'ايزاكارد 100مجم 30 قرص',
-        'description': 'ezacard 100 mg 30 e.c. tabs - acetylsalicylic acid. Tablet 100 mg',
+        'description':
+            'ezacard 100 mg 30 e.c. tabs - acetylsalicylic acid. Tablet 100 mg',
         'price': 51.0,
-        'imageUrl': 'https://www.rosheta.com/upload/18d83c5a5c68fb78d1a4cc2655fb6c66bad3664dcd153c379a092425ed73607c.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/18d83c5a5c68fb78d1a4cc2655fb6c66bad3664dcd153c379a092425ed73607c.webp',
         'categoryId': 'pain_inflammation',
-        'subcategoryId': '',
+        'subcategoryId': 'pi_analgesics',
+        'subSubcategoryId': 'pi_anal_gen',
         'barcode': '6223003207434',
         'activeIngredient': 'acetylsalicylic acid',
         'concentration': '100 mg',
@@ -1792,17 +2479,25 @@ class SeedService {
         'stock': 175,
         'rewardPoints': 5,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_4575',
         'name': 'ezacard 75 mg 30 e.c. tabs',
         'nameArabic': 'ايزاكارد 75مجم 30 قرص',
-        'description': 'ezacard 75 mg 30 e.c. tabs - acetylsalicylic acid. Tablet 75 mg',
+        'description':
+            'ezacard 75 mg 30 e.c. tabs - acetylsalicylic acid. Tablet 75 mg',
         'price': 51.0,
-        'imageUrl': 'https://www.rosheta.com/upload/18d83c5a5c68fb78d1a4cc2655fb6c66bad3664dcd153c379a092425ed73607c.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/18d83c5a5c68fb78d1a4cc2655fb6c66bad3664dcd153c379a092425ed73607c.webp',
         'categoryId': 'pain_inflammation',
-        'subcategoryId': '',
+        'subcategoryId': 'pi_analgesics',
+        'subSubcategoryId': 'pi_anal_gen',
         'barcode': '6223003201364',
         'activeIngredient': 'acetylsalicylic acid',
         'concentration': '75 mg',
@@ -1812,7 +2507,12 @@ class SeedService {
         'stock': 200,
         'rewardPoints': 5,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_4580',
@@ -1820,9 +2520,11 @@ class SeedService {
         'nameArabic': 'ايزادوكسين 20 قرص',
         'description': 'ezadoxine 20 tab - meclizine+vitamin b6. Tablet',
         'price': 12.0,
-        'imageUrl': 'https://www.rosheta.com/upload/e4cf2cc5038040208e458abc5df8c457cf131f035ebb6c75dcacb73a1508b8a0.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/e4cf2cc5038040208e458abc5df8c457cf131f035ebb6c75dcacb73a1508b8a0.webp',
         'categoryId': 'gastrointestinal',
-        'subcategoryId': '',
+        'subcategoryId': 'gi_antiemetics',
+        'subSubcategoryId': 'gi_anti_em',
         'barcode': '6223003201272',
         'activeIngredient': 'meclizine+vitamin b6',
         'concentration': '',
@@ -1832,7 +2534,12 @@ class SeedService {
         'stock': 25,
         'rewardPoints': 1,
         'isOffer': false,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_4582',
@@ -1840,9 +2547,11 @@ class SeedService {
         'nameArabic': 'ايزاليك 20% كريم 30 جم',
         'description': 'ezalic 20% cream 30 gm - azelaic acid. Cream 0.2',
         'price': 26.4,
-        'imageUrl': 'https://www.rosheta.com/upload/c5ae52eddb83286056202bd0d4a3db8be69fc838b6138dde219b646a2158bfb4.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/c5ae52eddb83286056202bd0d4a3db8be69fc838b6138dde219b646a2158bfb4.webp',
         'categoryId': 'respiratory_allergy',
-        'subcategoryId': '',
+        'subcategoryId': 'ra_coldflu',
+        'subSubcategoryId': 'ra_cf_gen',
         'barcode': '6223003203689',
         'activeIngredient': 'azelaic acid',
         'concentration': '0.2',
@@ -1852,19 +2561,28 @@ class SeedService {
         'stock': 26,
         'rewardPoints': 2,
         'isOffer': false,
-        'usageSteps': ['Clean and dry the affected area before applying', 'Apply a thin layer to the affected area', 'Wash hands before and after application', 'Use as directed by your doctor'],
+        'usageSteps': [
+          'Clean and dry the affected area before applying',
+          'Apply a thin layer to the affected area',
+          'Wash hands before and after application',
+          'Use as directed by your doctor'
+        ],
       },
       {
         'docId': 'prod_4585',
         'name': 'ezamol-c 20 tab',
         'nameArabic': 'ايزامول-سي 20 قرص',
-        'description': 'ezamol-c 20 tab - caffeine+paracetamol(acetaminophen)+phenylephrine+terpine hydrate+vitamin c. Tablet',
+        'description':
+            'ezamol-c 20 tab - caffeine+paracetamol(acetaminophen)+phenylephrine+terpine hydrate+vitamin c. Tablet',
         'price': 24.0,
-        'imageUrl': 'https://www.rosheta.com/upload/d47b722cea646c6edcff23d568015322182a9b2788999ba3fdadb150bc63ae71.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/d47b722cea646c6edcff23d568015322182a9b2788999ba3fdadb150bc63ae71.webp',
         'categoryId': 'respiratory_allergy',
-        'subcategoryId': '',
+        'subcategoryId': 'ra_coldflu',
+        'subSubcategoryId': 'ra_cf_gen',
         'barcode': '6223003201425',
-        'activeIngredient': 'caffeine+paracetamol(acetaminophen)+phenylephrine+terpine hydrate+vitamin c',
+        'activeIngredient':
+            'caffeine+paracetamol(acetaminophen)+phenylephrine+terpine hydrate+vitamin c',
         'concentration': '',
         'dosageForm': 'Tablet',
         'manufacturer': 'multi-apex',
@@ -1872,7 +2590,12 @@ class SeedService {
         'stock': 187,
         'rewardPoints': 2,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_4586',
@@ -1880,9 +2603,11 @@ class SeedService {
         'nameArabic': 'ايزانال كريم 30 جم',
         'description': 'ezanal top. cream 30 gm - lidocaine+prilocaine. Cream',
         'price': 21.6,
-        'imageUrl': 'https://www.rosheta.com/upload/98b71b41a2843a44f7ae9bceade90df9e0f43a5d460f10bbef5cabeeb9151240.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/98b71b41a2843a44f7ae9bceade90df9e0f43a5d460f10bbef5cabeeb9151240.webp',
         'categoryId': 'pain_inflammation',
-        'subcategoryId': '',
+        'subcategoryId': 'pi_local_anaesthetics',
+        'subSubcategoryId': 'pi_la_gen',
         'barcode': '6223003203658',
         'activeIngredient': 'lidocaine+prilocaine',
         'concentration': '',
@@ -1892,7 +2617,12 @@ class SeedService {
         'stock': 23,
         'rewardPoints': 2,
         'isOffer': false,
-        'usageSteps': ['Clean and dry the affected area before applying', 'Apply a thin layer to the affected area', 'Wash hands before and after application', 'Use as directed by your doctor'],
+        'usageSteps': [
+          'Clean and dry the affected area before applying',
+          'Apply a thin layer to the affected area',
+          'Wash hands before and after application',
+          'Use as directed by your doctor'
+        ],
       },
       {
         'docId': 'prod_4588',
@@ -1900,9 +2630,11 @@ class SeedService {
         'nameArabic': 'ايزابريل 10مجم 20قرص',
         'description': 'ezapril 10mg 20 tablets - enalapril. Tablet 10 mg',
         'price': 36.0,
-        'imageUrl': 'https://www.rosheta.com/upload/85817585787571c77ed75f3a6cb3fb9ac3bf3bb8f0f533d3492a733c7ef3f6a1.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/85817585787571c77ed75f3a6cb3fb9ac3bf3bb8f0f533d3492a733c7ef3f6a1.webp',
         'categoryId': 'cardiovascular',
-        'subcategoryId': '',
+        'subcategoryId': 'cv_antihypertensives',
+        'subSubcategoryId': 'cv_ace',
         'barcode': '6223003201210',
         'activeIngredient': 'enalapril',
         'concentration': '10 mg',
@@ -1912,7 +2644,12 @@ class SeedService {
         'stock': 85,
         'rewardPoints': 3,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_4605',
@@ -1920,9 +2657,11 @@ class SeedService {
         'nameArabic': 'ايزابريل 10مجم 30 قرص',
         'description': 'ezapril 10mg 30 tablets - enalapril. Tablet 10 mg',
         'price': 54.0,
-        'imageUrl': 'https://www.rosheta.com/upload/85817585787571c77ed75f3a6cb3fb9ac3bf3bb8f0f533d3492a733c7ef3f6a1.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/85817585787571c77ed75f3a6cb3fb9ac3bf3bb8f0f533d3492a733c7ef3f6a1.webp',
         'categoryId': 'cardiovascular',
-        'subcategoryId': '',
+        'subcategoryId': 'cv_antihypertensives',
+        'subSubcategoryId': 'cv_ace',
         'barcode': '6223003208639',
         'activeIngredient': 'enalapril',
         'concentration': '10 mg',
@@ -1932,7 +2671,12 @@ class SeedService {
         'stock': 72,
         'rewardPoints': 5,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_4591',
@@ -1940,9 +2684,11 @@ class SeedService {
         'nameArabic': 'ايزابريل 20 مجم 20 قرص',
         'description': 'ezapril 20mg 20 tab - enalapril. Tablet 20 mg',
         'price': 46.0,
-        'imageUrl': 'https://www.rosheta.com/upload/85817585787571c77ed75f3a6cb3fb9ac3bf3bb8f0f533d3492a733c7ef3f6a1.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/85817585787571c77ed75f3a6cb3fb9ac3bf3bb8f0f533d3492a733c7ef3f6a1.webp',
         'categoryId': 'cardiovascular',
-        'subcategoryId': '',
+        'subcategoryId': 'cv_antihypertensives',
+        'subSubcategoryId': 'cv_ace',
         'barcode': '6223003204587',
         'activeIngredient': 'enalapril',
         'concentration': '20 mg',
@@ -1952,7 +2698,12 @@ class SeedService {
         'stock': 48,
         'rewardPoints': 4,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_8030',
@@ -1960,9 +2711,11 @@ class SeedService {
         'nameArabic': 'ايزابريل 20 مجم 30 قرص',
         'description': 'ezapril 20mg 30 tab - enalapril. Tablet 20 mg',
         'price': 69.0,
-        'imageUrl': 'https://www.rosheta.com/upload/85817585787571c77ed75f3a6cb3fb9ac3bf3bb8f0f533d3492a733c7ef3f6a1.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/85817585787571c77ed75f3a6cb3fb9ac3bf3bb8f0f533d3492a733c7ef3f6a1.webp',
         'categoryId': 'cardiovascular',
-        'subcategoryId': '',
+        'subcategoryId': 'cv_antihypertensives',
+        'subSubcategoryId': 'cv_ace',
         'barcode': '6223003208653',
         'activeIngredient': 'enalapril',
         'concentration': '20 mg',
@@ -1972,17 +2725,25 @@ class SeedService {
         'stock': 42,
         'rewardPoints': 6,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_4593',
         'name': 'ezapril-co 20/12.5mg 20 tabs',
         'nameArabic': 'ايزابريل-كو 20/12.5مجم 20 قرص',
-        'description': 'ezapril-co 20/12.5mg 20 tabs - enalapril+hydrochlorothiazide. Tablet 20/12.5 mg',
+        'description':
+            'ezapril-co 20/12.5mg 20 tabs - enalapril+hydrochlorothiazide. Tablet 20/12.5 mg',
         'price': 48.0,
-        'imageUrl': 'https://www.rosheta.com/upload/85817585787571c77ed75f3a6cb3fb9ac3bf3bb8f0f533d3492a733c7ef3f6a1.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/85817585787571c77ed75f3a6cb3fb9ac3bf3bb8f0f533d3492a733c7ef3f6a1.webp',
         'categoryId': 'cardiovascular',
-        'subcategoryId': '',
+        'subcategoryId': 'cv_antihypertensives',
+        'subSubcategoryId': 'cv_combo',
         'barcode': '6223003201241',
         'activeIngredient': 'enalapril+hydrochlorothiazide',
         'concentration': '20/12.5 mg',
@@ -1992,17 +2753,25 @@ class SeedService {
         'stock': 88,
         'rewardPoints': 4,
         'isOffer': false,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_4592',
         'name': 'ezapril-co 20/12.5mg 30 tabs',
         'nameArabic': 'ايزابريل-كو 20/12.5مجم 30 قرص',
-        'description': 'ezapril-co 20/12.5mg 30 tabs - enalapril+hydrochlorothiazide. Tablet 20/12.5 mg',
+        'description':
+            'ezapril-co 20/12.5mg 30 tabs - enalapril+hydrochlorothiazide. Tablet 20/12.5 mg',
         'price': 72.0,
-        'imageUrl': 'https://www.rosheta.com/upload/85817585787571c77ed75f3a6cb3fb9ac3bf3bb8f0f533d3492a733c7ef3f6a1.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/85817585787571c77ed75f3a6cb3fb9ac3bf3bb8f0f533d3492a733c7ef3f6a1.webp',
         'categoryId': 'cardiovascular',
-        'subcategoryId': '',
+        'subcategoryId': 'cv_antihypertensives',
+        'subSubcategoryId': 'cv_combo',
         'barcode': '6223003208615',
         'activeIngredient': 'enalapril+hydrochlorothiazide',
         'concentration': '20/12.5 mg',
@@ -2012,7 +2781,12 @@ class SeedService {
         'stock': 177,
         'rewardPoints': 7,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_5201',
@@ -2020,9 +2794,11 @@ class SeedService {
         'nameArabic': 'فانجيبان 1% جل 15جرام',
         'description': 'fungiban 1% top. gel 15 gm - terbinafine. Gel 0.01',
         'price': 10.5,
-        'imageUrl': 'https://www.rosheta.com/upload/b8945223176fbca39284213383120b4effb77872648a2f5d34347ae46adeaf21.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/b8945223176fbca39284213383120b4effb77872648a2f5d34347ae46adeaf21.webp',
         'categoryId': 'antibiotics',
-        'subcategoryId': '',
+        'subcategoryId': 'ab_antifungals',
+        'subSubcategoryId': 'ab_af_gen',
         'barcode': '6223003201890',
         'activeIngredient': 'terbinafine',
         'concentration': '0.01',
@@ -2032,7 +2808,12 @@ class SeedService {
         'stock': 26,
         'rewardPoints': 1,
         'isOffer': false,
-        'usageSteps': ['Clean and dry the affected area before applying', 'Apply a thin layer to the affected area', 'Wash hands before and after application', 'Use as directed by your doctor'],
+        'usageSteps': [
+          'Clean and dry the affected area before applying',
+          'Apply a thin layer to the affected area',
+          'Wash hands before and after application',
+          'Use as directed by your doctor'
+        ],
       },
       {
         'docId': 'prod_11332',
@@ -2040,9 +2821,11 @@ class SeedService {
         'nameArabic': 'جاستروبيكسي 10 مجم 28 قرص',
         'description': 'gastropexy 10 mg 28 tabs - vonoprazan. Tablet 10 mg',
         'price': 118.0,
-        'imageUrl': 'https://taypharmacies.com/wp-content/uploads/2024/05/2024-10-07T162843.372.png',
+        'imageUrl':
+            'https://taypharmacies.com/wp-content/uploads/2024/05/2024-10-07T162843.372.png',
         'categoryId': 'gastrointestinal',
-        'subcategoryId': '',
+        'subcategoryId': 'gi_acid',
+        'subSubcategoryId': 'gi_ppi',
         'barcode': '6223003208516',
         'activeIngredient': 'vonoprazan',
         'concentration': '10 mg',
@@ -2052,7 +2835,12 @@ class SeedService {
         'stock': 42,
         'rewardPoints': 11,
         'isOffer': false,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_5378',
@@ -2060,9 +2848,11 @@ class SeedService {
         'nameArabic': 'جاستروبيكسي 20 مجم 28 قرص',
         'description': 'gastropexy 20 mg 28 tabs - vonoprazan. Tablet 20 mg',
         'price': 194.0,
-        'imageUrl': 'https://doctormpharmacy.com/cdn/shop/files/123791.png?v=1755367387',
+        'imageUrl':
+            'https://doctormpharmacy.com/cdn/shop/files/123791.png?v=1755367387',
         'categoryId': 'gastrointestinal',
-        'subcategoryId': '',
+        'subcategoryId': 'gi_acid',
+        'subSubcategoryId': 'gi_ppi',
         'barcode': '6223003208515',
         'activeIngredient': 'vonoprazan',
         'concentration': '20 mg',
@@ -2072,7 +2862,12 @@ class SeedService {
         'stock': 153,
         'rewardPoints': 19,
         'isOffer': false,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_19751',
@@ -2080,9 +2875,11 @@ class SeedService {
         'nameArabic': 'جيرما-فروتي بودرة',
         'description': 'germa-fruity powder - wheat germ oil+fruit mix. Powder',
         'price': 35.0,
-        'imageUrl': 'https://cdn-med-images.vezeeta.com/Products/a658c810-2364-4e2a-b336-6fac9a89f10c.jpeg',
+        'imageUrl':
+            'https://cdn-med-images.vezeeta.com/Products/a658c810-2364-4e2a-b336-6fac9a89f10c.jpeg',
         'categoryId': 'vitamins_supplements',
-        'subcategoryId': '',
+        'subcategoryId': 'vs_multivitamins',
+        'subSubcategoryId': 'vs_mvi_gen',
         'barcode': '6223003448523',
         'activeIngredient': 'wheat germ oil+fruit mix',
         'concentration': '',
@@ -2092,17 +2889,25 @@ class SeedService {
         'stock': 23,
         'rewardPoints': 3,
         'isOffer': false,
-        'usageSteps': ['Dissolve contents in a glass of water', 'Drink immediately after dissolving', 'Take as prescribed by your doctor', 'Store in a cool, dry place'],
+        'usageSteps': [
+          'Dissolve contents in a glass of water',
+          'Drink immediately after dissolving',
+          'Take as prescribed by your doctor',
+          'Store in a cool, dry place'
+        ],
       },
       {
         'docId': 'prod_5812',
         'name': 'gynoconazol 0.4% vag. cream 30 gm',
         'nameArabic': 'جينوكونازول 0.4% كريم مهبلي 30 جم',
-        'description': 'gynoconazol 0.4% vag. cream 30 gm - terconazole. Cream 0.004',
+        'description':
+            'gynoconazol 0.4% vag. cream 30 gm - terconazole. Cream 0.004',
         'price': 36.0,
-        'imageUrl': 'https://www.rosheta.com/upload/d8406f507bd021c7ab2ad7ccc8b194c3f3a55eb2e1d2318834e08c4367a90849.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/d8406f507bd021c7ab2ad7ccc8b194c3f3a55eb2e1d2318834e08c4367a90849.webp',
         'categoryId': 'antibiotics',
-        'subcategoryId': '',
+        'subcategoryId': 'ab_antifungals',
+        'subSubcategoryId': 'ab_af_gen',
         'barcode': '6223003201579',
         'activeIngredient': 'terconazole',
         'concentration': '0.004',
@@ -2112,17 +2917,25 @@ class SeedService {
         'stock': 68,
         'rewardPoints': 3,
         'isOffer': true,
-        'usageSteps': ['Clean and dry the affected area before applying', 'Apply a thin layer to the affected area', 'Wash hands before and after application', 'Use as directed by your doctor'],
+        'usageSteps': [
+          'Clean and dry the affected area before applying',
+          'Apply a thin layer to the affected area',
+          'Wash hands before and after application',
+          'Use as directed by your doctor'
+        ],
       },
       {
         'docId': 'prod_5810',
         'name': 'gynoconazol 0.8% vaginal cream 30 gm',
         'nameArabic': 'جينوكونازول 0.8% كريم مهبلي 30 جرام',
-        'description': 'gynoconazol 0.8% vaginal cream 30 gm - terconazole. Cream 0.008',
+        'description':
+            'gynoconazol 0.8% vaginal cream 30 gm - terconazole. Cream 0.008',
         'price': 46.0,
-        'imageUrl': 'https://www.rosheta.com/upload/d8406f507bd021c7ab2ad7ccc8b194c3f3a55eb2e1d2318834e08c4367a90849.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/d8406f507bd021c7ab2ad7ccc8b194c3f3a55eb2e1d2318834e08c4367a90849.webp',
         'categoryId': 'antibiotics',
-        'subcategoryId': '',
+        'subcategoryId': 'ab_antifungals',
+        'subSubcategoryId': 'ab_af_gen',
         'barcode': '6223003201616',
         'activeIngredient': 'terconazole',
         'concentration': '0.008',
@@ -2132,17 +2945,25 @@ class SeedService {
         'stock': 141,
         'rewardPoints': 4,
         'isOffer': true,
-        'usageSteps': ['Clean and dry the affected area before applying', 'Apply a thin layer to the affected area', 'Wash hands before and after application', 'Use as directed by your doctor'],
+        'usageSteps': [
+          'Clean and dry the affected area before applying',
+          'Apply a thin layer to the affected area',
+          'Wash hands before and after application',
+          'Use as directed by your doctor'
+        ],
       },
       {
         'docId': 'prod_5811',
         'name': 'gynoconazol 80mg 3 vag. supp',
         'nameArabic': 'جينوكونازول 80مجم 3 اقماع لبوس مهبلي',
-        'description': 'gynoconazol 80mg 3 vag. supp - terconazole. Suppository 80 mg',
+        'description':
+            'gynoconazol 80mg 3 vag. supp - terconazole. Suppository 80 mg',
         'price': 53.0,
-        'imageUrl': 'https://www.rosheta.com/upload/d8406f507bd021c7ab2ad7ccc8b194c3f3a55eb2e1d2318834e08c4367a90849.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/d8406f507bd021c7ab2ad7ccc8b194c3f3a55eb2e1d2318834e08c4367a90849.webp',
         'categoryId': 'antibiotics',
-        'subcategoryId': '',
+        'subcategoryId': 'ab_antifungals',
+        'subSubcategoryId': 'ab_af_gen',
         'barcode': '6223003202422',
         'activeIngredient': 'terconazole',
         'concentration': '80 mg',
@@ -2152,17 +2973,25 @@ class SeedService {
         'stock': 197,
         'rewardPoints': 5,
         'isOffer': true,
-        'usageSteps': ['Wash hands thoroughly before use', 'Remove wrapper carefully', 'Insert as directed by your doctor', 'Remain lying down for a few minutes after use'],
+        'usageSteps': [
+          'Wash hands thoroughly before use',
+          'Remove wrapper carefully',
+          'Insert as directed by your doctor',
+          'Remain lying down for a few minutes after use'
+        ],
       },
       {
         'docId': 'prod_20627',
         'name': 'hykomap 10 rectal supp',
         'nameArabic': 'هيكوماب لبوس شرجي 10 اقماع',
-        'description': 'hykomap 10 rectal supp - cinchocaine+policresulen. Suppository',
+        'description':
+            'hykomap 10 rectal supp - cinchocaine+policresulen. Suppository',
         'price': 18.0,
-        'imageUrl': 'https://www.rosheta.com/upload/f69c0710cd8328190183056007a07ad05cbab8aee845d0f3563224ee4c7b432a.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/f69c0710cd8328190183056007a07ad05cbab8aee845d0f3563224ee4c7b432a.webp',
         'categoryId': 'gastrointestinal',
-        'subcategoryId': '',
+        'subcategoryId': 'gi_haemorrhoids',
+        'subSubcategoryId': 'gi_haem_gen',
         'barcode': '6223003205096',
         'activeIngredient': 'cinchocaine+policresulen',
         'concentration': '',
@@ -2172,17 +3001,25 @@ class SeedService {
         'stock': 58,
         'rewardPoints': 1,
         'isOffer': false,
-        'usageSteps': ['Wash hands thoroughly before use', 'Remove wrapper carefully', 'Insert as directed by your doctor', 'Remain lying down for a few minutes after use'],
+        'usageSteps': [
+          'Wash hands thoroughly before use',
+          'Remove wrapper carefully',
+          'Insert as directed by your doctor',
+          'Remain lying down for a few minutes after use'
+        ],
       },
       {
         'docId': 'prod_20628',
         'name': 'hykomap rectal oint. 15 gm',
         'nameArabic': 'هيكوماب مرهم 15 جم',
-        'description': 'hykomap rectal oint. 15 gm - cinchocaine+policresulen. Ointment',
+        'description':
+            'hykomap rectal oint. 15 gm - cinchocaine+policresulen. Ointment',
         'price': 12.75,
-        'imageUrl': 'https://www.rosheta.com/upload/f69c0710cd8328190183056007a07ad05cbab8aee845d0f3563224ee4c7b432a.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/f69c0710cd8328190183056007a07ad05cbab8aee845d0f3563224ee4c7b432a.webp',
         'categoryId': 'gastrointestinal',
-        'subcategoryId': '',
+        'subcategoryId': 'gi_haemorrhoids',
+        'subSubcategoryId': 'gi_haem_gen',
         'barcode': '6223003205218',
         'activeIngredient': 'cinchocaine+policresulen',
         'concentration': '',
@@ -2192,17 +3029,25 @@ class SeedService {
         'stock': 54,
         'rewardPoints': 1,
         'isOffer': false,
-        'usageSteps': ['Clean and dry the affected area before applying', 'Apply a thin layer to the affected area', 'Wash hands before and after application', 'Use as directed by your doctor'],
+        'usageSteps': [
+          'Clean and dry the affected area before applying',
+          'Apply a thin layer to the affected area',
+          'Wash hands before and after application',
+          'Use as directed by your doctor'
+        ],
       },
       {
         'docId': 'prod_20718',
         'name': 'iksaront 2.5 mg 30 f.c. tablets',
         'nameArabic': 'اكسارونت 2.5مجم 30 قرص',
-        'description': 'iksaront 2.5 mg 30 f.c. tablets - apixaban. Tablet 2.5 mg',
+        'description':
+            'iksaront 2.5 mg 30 f.c. tablets - apixaban. Tablet 2.5 mg',
         'price': 330.0,
-        'imageUrl': 'https://www.rosheta.com/upload/cf4d604cee8521d33010de63ed0c082506e943bdd6aed63fc56c2af01b108a25.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/cf4d604cee8521d33010de63ed0c082506e943bdd6aed63fc56c2af01b108a25.webp',
         'categoryId': 'cardiovascular',
-        'subcategoryId': '',
+        'subcategoryId': 'cv_anticoagulants',
+        'subSubcategoryId': 'cv_doac',
         'barcode': '6223003205508',
         'activeIngredient': 'apixaban',
         'concentration': '2.5 mg',
@@ -2212,7 +3057,12 @@ class SeedService {
         'stock': 149,
         'rewardPoints': 33,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_20719',
@@ -2220,9 +3070,11 @@ class SeedService {
         'nameArabic': 'اكسارونت 5مجم 30 قرص',
         'description': 'iksaront 5 mg 30 f.c. tabs - apixaban. Tablet 5 mg',
         'price': 357.0,
-        'imageUrl': 'https://www.rosheta.com/upload/cf4d604cee8521d33010de63ed0c082506e943bdd6aed63fc56c2af01b108a25.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/cf4d604cee8521d33010de63ed0c082506e943bdd6aed63fc56c2af01b108a25.webp',
         'categoryId': 'cardiovascular',
-        'subcategoryId': '',
+        'subcategoryId': 'cv_anticoagulants',
+        'subSubcategoryId': 'cv_doac',
         'barcode': '6223003205898',
         'activeIngredient': 'apixaban',
         'concentration': '5 mg',
@@ -2232,17 +3084,25 @@ class SeedService {
         'stock': 115,
         'rewardPoints': 35,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_20726',
         'name': 'imdur 60mg s.r 30 f.c. tab',
         'nameArabic': 'امديور 60مجم اس ار 30 قرص',
-        'description': 'imdur 60mg s.r 30 f.c. tab - isosorbide-5-mononitrate. Tablet 60 mg',
+        'description':
+            'imdur 60mg s.r 30 f.c. tab - isosorbide-5-mononitrate. Tablet 60 mg',
         'price': 40.0,
-        'imageUrl': 'https://www.rosheta.com/upload/635cfee09e65d67cee3e0bf75ba316d6f92b4611b99728ffe6b0064196731111.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/635cfee09e65d67cee3e0bf75ba316d6f92b4611b99728ffe6b0064196731111.webp',
         'categoryId': 'cardiovascular',
-        'subcategoryId': '',
+        'subcategoryId': 'cv_antianginals',
+        'subSubcategoryId': 'cv_ang_nitrate',
         'barcode': '6223003270322',
         'activeIngredient': 'isosorbide-5-mononitrate',
         'concentration': '60 mg',
@@ -2252,7 +3112,12 @@ class SeedService {
         'stock': 30,
         'rewardPoints': 4,
         'isOffer': false,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_20773',
@@ -2260,9 +3125,11 @@ class SeedService {
         'nameArabic': 'اندرال 10مجم 50 قرص',
         'description': 'inderal 10 mg 50 tabs - propranolol. Tablet 10 mg',
         'price': 75.0,
-        'imageUrl': 'https://www.rosheta.com/upload/5dd5daff5f842fc34c2af968efa64211ad47a85945c9fc5878be1c89e1754a2b.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/5dd5daff5f842fc34c2af968efa64211ad47a85945c9fc5878be1c89e1754a2b.webp',
         'categoryId': 'cardiovascular',
-        'subcategoryId': '',
+        'subcategoryId': 'cv_antihypertensives',
+        'subSubcategoryId': 'cv_bb',
         'barcode': '6223003270148',
         'activeIngredient': 'propranolol',
         'concentration': '10 mg',
@@ -2272,7 +3139,12 @@ class SeedService {
         'stock': 200,
         'rewardPoints': 7,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_6445',
@@ -2280,9 +3152,11 @@ class SeedService {
         'nameArabic': 'اندرال 40مجم 50 قرص',
         'description': 'inderal 40mg 50 tablets - propranolol. Tablet 40 mg',
         'price': 100.0,
-        'imageUrl': 'https://www.rosheta.com/upload/e325ca9ae788897e764d8f71a67267aa53a41b85d0ddaf65b3c28b37fee89c55.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/e325ca9ae788897e764d8f71a67267aa53a41b85d0ddaf65b3c28b37fee89c55.webp',
         'categoryId': 'cardiovascular',
-        'subcategoryId': '',
+        'subcategoryId': 'cv_antihypertensives',
+        'subSubcategoryId': 'cv_bb',
         'barcode': '6223003270155',
         'activeIngredient': 'propranolol',
         'concentration': '40 mg',
@@ -2292,7 +3166,12 @@ class SeedService {
         'stock': 175,
         'rewardPoints': 10,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_6678',
@@ -2300,9 +3179,11 @@ class SeedService {
         'nameArabic': 'اترابكس 100مجم 15 كبسولة',
         'description': 'itrapex 100mg 15 caps - itraconazole. Capsule 100 mg',
         'price': 141.0,
-        'imageUrl': 'https://www.rosheta.com/upload/7da3a8db7ea4af103d7ad820383bb75b9f5460751dbf4b1c048e0042c83359bf.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/7da3a8db7ea4af103d7ad820383bb75b9f5460751dbf4b1c048e0042c83359bf.webp',
         'categoryId': 'antibiotics',
-        'subcategoryId': '',
+        'subcategoryId': 'ab_antifungals',
+        'subSubcategoryId': 'ab_af_gen',
         'barcode': '6223003201722',
         'activeIngredient': 'itraconazole',
         'concentration': '100 mg',
@@ -2312,7 +3193,12 @@ class SeedService {
         'stock': 171,
         'rewardPoints': 14,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_21070',
@@ -2320,9 +3206,11 @@ class SeedService {
         'nameArabic': 'اترابكس 100مجم 4 كبسولات',
         'description': 'itrapex 100mg 4 caps - itraconazole. Capsule 100 mg',
         'price': 38.0,
-        'imageUrl': 'https://www.rosheta.com/upload/7da3a8db7ea4af103d7ad820383bb75b9f5460751dbf4b1c048e0042c83359bf.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/7da3a8db7ea4af103d7ad820383bb75b9f5460751dbf4b1c048e0042c83359bf.webp',
         'categoryId': 'antibiotics',
-        'subcategoryId': '',
+        'subcategoryId': 'ab_antifungals',
+        'subSubcategoryId': 'ab_af_gen',
         'barcode': '6223003201692',
         'activeIngredient': 'itraconazole',
         'concentration': '100 mg',
@@ -2332,17 +3220,25 @@ class SeedService {
         'stock': 73,
         'rewardPoints': 3,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_21213',
         'name': 'k1 apex 10mg 30 chewable tab',
         'nameArabic': 'ك1 ابيكس 10مجم 30 قرص مضغ',
-        'description': 'k1 apex 10mg 30 chewable tab - vitamin k1. Tablet 10 mg',
+        'description':
+            'k1 apex 10mg 30 chewable tab - vitamin k1. Tablet 10 mg',
         'price': 42.0,
-        'imageUrl': 'https://www.rosheta.com/upload/58dc78eacc3d4716f846679d081808e4cd73f9f0ad44c88be901a0bb671176f1.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/58dc78eacc3d4716f846679d081808e4cd73f9f0ad44c88be901a0bb671176f1.webp',
         'categoryId': 'vitamins_supplements',
-        'subcategoryId': '',
+        'subcategoryId': 'vs_vitamins',
+        'subSubcategoryId': 'vs_vit_gen',
         'barcode': '6223003200855',
         'activeIngredient': 'vitamin k1',
         'concentration': '10 mg',
@@ -2352,17 +3248,25 @@ class SeedService {
         'stock': 53,
         'rewardPoints': 4,
         'isOffer': false,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_6961',
         'name': 'kalemapex 15 meq (1620 mg) 30 xr tabs',
         'nameArabic': 'كاليمابكس 15ملي مكافيء ( 1620مجم ) 30 قرص',
-        'description': 'kalemapex 15 meq (1620 mg) 30 xr tabs - potassium citrate. Tablet 15meg(1620 mg)',
+        'description':
+            'kalemapex 15 meq (1620 mg) 30 xr tabs - potassium citrate. Tablet 15meg(1620 mg)',
         'price': 243.0,
-        'imageUrl': 'https://www.rosheta.com/upload/9d27c0a0016c013eee0a90aafe47dcfbe4a42e5c8727678142579e8efc3c2dcb.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/9d27c0a0016c013eee0a90aafe47dcfbe4a42e5c8727678142579e8efc3c2dcb.webp',
         'categoryId': 'gastrointestinal',
-        'subcategoryId': '',
+        'subcategoryId': 'gi_renal',
+        'subSubcategoryId': 'gi_renal_gen',
         'barcode': '6223003207731',
         'activeIngredient': 'potassium citrate',
         'concentration': '15meg(1620 mg)',
@@ -2372,17 +3276,25 @@ class SeedService {
         'stock': 160,
         'rewardPoints': 24,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_10838',
         'name': 'kativarox 100 mg 30 f.c.tabs',
         'nameArabic': 'كاتيفاروكس 100 مجم 30 قرص',
-        'description': 'kativarox 100 mg 30 f.c.tabs - brivaracetam. Tablet 100 mg',
+        'description':
+            'kativarox 100 mg 30 f.c.tabs - brivaracetam. Tablet 100 mg',
         'price': 258.0,
-        'imageUrl': 'https://www.mouradpharmacy.com/web/image/product.product/285556/image_1024/kativarox%2010mg-ml%20100%20ml%20solution%20-%20%D9%83%D8%A7%D8%AA%D9%8A%D9%81%D8%A7%D8%B1%D9%88%D9%83%D8%B3%2010%D9%85%D8%AC%D9%85-%D9%85%D9%84%20100%20%D9%85%D9%84%20%D8%B4%D8%B1%D8%A7%D8%A8?unique=bf407a6',
+        'imageUrl':
+            'https://www.mouradpharmacy.com/web/image/product.product/285556/image_1024/kativarox%2010mg-ml%20100%20ml%20solution%20-%20%D9%83%D8%A7%D8%AA%D9%8A%D9%81%D8%A7%D8%B1%D9%88%D9%83%D8%B3%2010%D9%85%D8%AC%D9%85-%D9%85%D9%84%20100%20%D9%85%D9%84%20%D8%B4%D8%B1%D8%A7%D8%A8?unique=bf407a6',
         'categoryId': 'psychiatric_neuro',
-        'subcategoryId': '',
+        'subcategoryId': 'pn_antiepileptics',
+        'subSubcategoryId': 'pn_ae',
         'barcode': '6223003208318',
         'activeIngredient': 'brivaracetam',
         'concentration': '100 mg',
@@ -2392,17 +3304,25 @@ class SeedService {
         'stock': 111,
         'rewardPoints': 25,
         'isOffer': false,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_2948',
         'name': 'kativarox 10mg/100 ml solution',
         'nameArabic': 'كاتيفاروكس 10مجم/100 مل محلول شراب',
-        'description': 'kativarox 10mg/100 ml solution - brivaracetam. Solution 10mg/100ml',
+        'description':
+            'kativarox 10mg/100 ml solution - brivaracetam. Solution 10mg/100ml',
         'price': 122.0,
-        'imageUrl': 'https://www.mouradpharmacy.com/web/image/product.product/285556/image_1024/kativarox%2010mg-ml%20100%20ml%20solution%20-%20%D9%83%D8%A7%D8%AA%D9%8A%D9%81%D8%A7%D8%B1%D9%88%D9%83%D8%B3%2010%D9%85%D8%AC%D9%85-%D9%85%D9%84%20100%20%D9%85%D9%84%20%D8%B4%D8%B1%D8%A7%D8%A8?unique=bf407a6',
+        'imageUrl':
+            'https://www.mouradpharmacy.com/web/image/product.product/285556/image_1024/kativarox%2010mg-ml%20100%20ml%20solution%20-%20%D9%83%D8%A7%D8%AA%D9%8A%D9%81%D8%A7%D8%B1%D9%88%D9%83%D8%B3%2010%D9%85%D8%AC%D9%85-%D9%85%D9%84%20100%20%D9%85%D9%84%20%D8%B4%D8%B1%D8%A7%D8%A8?unique=bf407a6',
         'categoryId': 'psychiatric_neuro',
-        'subcategoryId': '',
+        'subcategoryId': 'pn_antiepileptics',
+        'subSubcategoryId': 'pn_ae',
         'barcode': '6223003208592',
         'activeIngredient': 'brivaracetam',
         'concentration': '10mg/100ml',
@@ -2412,17 +3332,25 @@ class SeedService {
         'stock': 59,
         'rewardPoints': 12,
         'isOffer': false,
-        'usageSteps': ['Shake well before use', 'Measure the exact dose with the provided cup', 'Take as prescribed by your doctor', 'Store at room temperature unless instructed otherwise'],
+        'usageSteps': [
+          'Shake well before use',
+          'Measure the exact dose with the provided cup',
+          'Take as prescribed by your doctor',
+          'Store at room temperature unless instructed otherwise'
+        ],
       },
       {
         'docId': 'prod_25731',
         'name': 'kativarox 50 mg 30 f.c.tabs',
         'nameArabic': 'كاتيفاروكس 50 مجم 30 قرص',
-        'description': 'kativarox 50 mg 30 f.c.tabs - brivaracetam. Tablet 50 mg',
+        'description':
+            'kativarox 50 mg 30 f.c.tabs - brivaracetam. Tablet 50 mg',
         'price': 258.0,
-        'imageUrl': 'https://www.rosheta.com/upload/237cf5bf104f95bfccc22a48e86adb9ac4cd5fced9d6f5db66f3906c46617578.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/237cf5bf104f95bfccc22a48e86adb9ac4cd5fced9d6f5db66f3906c46617578.webp',
         'categoryId': 'psychiatric_neuro',
-        'subcategoryId': '',
+        'subcategoryId': 'pn_antiepileptics',
+        'subSubcategoryId': 'pn_ae',
         'barcode': '6223003208295',
         'activeIngredient': 'brivaracetam',
         'concentration': '50 mg',
@@ -2432,19 +3360,28 @@ class SeedService {
         'stock': 63,
         'rewardPoints': 25,
         'isOffer': false,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_2377',
         'name': 'lacto-apex 5 - 20 caps',
         'nameArabic': 'لاكتو ايبكس 5 - 20 كبسولة',
-        'description': 'lacto-apex 5 - 20 caps - lactoferrin+vitamin c+vitamin d3+zinc+echinacea purpurea. Capsule',
+        'description':
+            'lacto-apex 5 - 20 caps - lactoferrin+vitamin c+vitamin d3+zinc+echinacea purpurea. Capsule',
         'price': 230.0,
-        'imageUrl': 'https://taypharmacies.com/wp-content/uploads/2023/12/36.png',
+        'imageUrl':
+            'https://taypharmacies.com/wp-content/uploads/2023/12/36.png',
         'categoryId': 'vitamins_supplements',
-        'subcategoryId': '',
+        'subcategoryId': 'vs_immunity',
+        'subSubcategoryId': 'vs_imm_gen',
         'barcode': '6223003206536',
-        'activeIngredient': 'lactoferrin+vitamin c+vitamin d3+zinc+echinacea purpurea',
+        'activeIngredient':
+            'lactoferrin+vitamin c+vitamin d3+zinc+echinacea purpurea',
         'concentration': '',
         'dosageForm': 'Capsule',
         'manufacturer': 'apex pharma',
@@ -2452,19 +3389,28 @@ class SeedService {
         'stock': 81,
         'rewardPoints': 23,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_21536',
         'name': 'lacto-apex 5 - 30 capsules',
         'nameArabic': 'لاكتو-ايبكس 5 - 30 كبسولة',
-        'description': 'lacto-apex 5 - 30 capsules - lactoferrin+vitamin c+vitamin d3+zinc+echinacea purpurea. Capsule',
+        'description':
+            'lacto-apex 5 - 30 capsules - lactoferrin+vitamin c+vitamin d3+zinc+echinacea purpurea. Capsule',
         'price': 230.0,
-        'imageUrl': 'https://taypharmacies.com/wp-content/uploads/2023/12/36.png',
+        'imageUrl':
+            'https://taypharmacies.com/wp-content/uploads/2023/12/36.png',
         'categoryId': 'vitamins_supplements',
-        'subcategoryId': '',
+        'subcategoryId': 'vs_immunity',
+        'subSubcategoryId': 'vs_imm_gen',
         'barcode': '6223003208530',
-        'activeIngredient': 'lactoferrin+vitamin c+vitamin d3+zinc+echinacea purpurea',
+        'activeIngredient':
+            'lactoferrin+vitamin c+vitamin d3+zinc+echinacea purpurea',
         'concentration': '',
         'dosageForm': 'Capsule',
         'manufacturer': 'apex pharma',
@@ -2472,7 +3418,12 @@ class SeedService {
         'stock': 48,
         'rewardPoints': 23,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_21683',
@@ -2480,9 +3431,11 @@ class SeedService {
         'nameArabic': 'ليلافري 10 مجم 30 قرص',
         'description': 'lelafree 10mg 30 tab - bambuterol. Tablet 10 mg',
         'price': 48.0,
-        'imageUrl': 'https://www.rosheta.com/upload/28f36848f91d954424978e236e9c20df2f380ec4f174e59320dd9ed691548e81.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/28f36848f91d954424978e236e9c20df2f380ec4f174e59320dd9ed691548e81.webp',
         'categoryId': 'respiratory_allergy',
-        'subcategoryId': '',
+        'subcategoryId': 'ra_bronchodilators',
+        'subSubcategoryId': 'ra_bronch_tab',
         'barcode': '6223003202354',
         'activeIngredient': 'bambuterol',
         'concentration': '10 mg',
@@ -2492,7 +3445,12 @@ class SeedService {
         'stock': 47,
         'rewardPoints': 4,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_21684',
@@ -2500,9 +3458,11 @@ class SeedService {
         'nameArabic': 'ليلافري 20 مجم 30 قرص',
         'description': 'lelafree 20mg 30 tab - bambuterol. Tablet 20 mg',
         'price': 51.0,
-        'imageUrl': 'https://www.rosheta.com/upload/0a91f27b5cc7aa7d37a682e523b5d6019d0671bf7619e30b63f22b46a0688b4a.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/0a91f27b5cc7aa7d37a682e523b5d6019d0671bf7619e30b63f22b46a0688b4a.webp',
         'categoryId': 'respiratory_allergy',
-        'subcategoryId': '',
+        'subcategoryId': 'ra_bronchodilators',
+        'subSubcategoryId': 'ra_bronch_tab',
         'barcode': '6223003202385',
         'activeIngredient': 'bambuterol',
         'concentration': '20 mg',
@@ -2512,17 +3472,25 @@ class SeedService {
         'stock': 30,
         'rewardPoints': 5,
         'isOffer': false,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_7246',
         'name': 'levepex 1000 mg 30 f.c. tab',
         'nameArabic': 'ليفيبكس 1000مجم 30 قرص',
-        'description': 'levepex 1000 mg 30 f.c. tab - levetiracetam. Tablet 1000 mg',
+        'description':
+            'levepex 1000 mg 30 f.c. tab - levetiracetam. Tablet 1000 mg',
         'price': 288.0,
-        'imageUrl': 'https://www.rosheta.com/upload/146990f838a929551a7a28626c625cc99fdf1f13a212d2a2c35366609c32545d.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/146990f838a929551a7a28626c625cc99fdf1f13a212d2a2c35366609c32545d.webp',
         'categoryId': 'psychiatric_neuro',
-        'subcategoryId': '',
+        'subcategoryId': 'pn_antiepileptics',
+        'subSubcategoryId': 'pn_ae',
         'barcode': '6223003204146',
         'activeIngredient': 'levetiracetam',
         'concentration': '1000 mg',
@@ -2532,17 +3500,25 @@ class SeedService {
         'stock': 32,
         'rewardPoints': 28,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_7251',
         'name': 'levepex 100mg/ml syrup 100ml',
         'nameArabic': 'ليفيبكس 100مجم/مل شراب 100 مل',
-        'description': 'levepex 100mg/ml syrup 100ml - levetiracetam. Syrup 100mg/ml',
+        'description':
+            'levepex 100mg/ml syrup 100ml - levetiracetam. Syrup 100mg/ml',
         'price': 50.0,
-        'imageUrl': 'https://www.rosheta.com/upload/146990f838a929551a7a28626c625cc99fdf1f13a212d2a2c35366609c32545d.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/146990f838a929551a7a28626c625cc99fdf1f13a212d2a2c35366609c32545d.webp',
         'categoryId': 'psychiatric_neuro',
-        'subcategoryId': '',
+        'subcategoryId': 'pn_antiepileptics',
+        'subSubcategoryId': 'pn_ae',
         'barcode': '6223003203054',
         'activeIngredient': 'levetiracetam',
         'concentration': '100mg/ml',
@@ -2552,17 +3528,25 @@ class SeedService {
         'stock': 32,
         'rewardPoints': 5,
         'isOffer': false,
-        'usageSteps': ['Shake well before use', 'Measure the exact dose with the provided cup', 'Take as prescribed by your doctor', 'Store at room temperature unless instructed otherwise'],
+        'usageSteps': [
+          'Shake well before use',
+          'Measure the exact dose with the provided cup',
+          'Take as prescribed by your doctor',
+          'Store at room temperature unless instructed otherwise'
+        ],
       },
       {
         'docId': 'prod_7248',
         'name': 'levepex 500mg 30 f.c. tab',
         'nameArabic': 'ليفيبكس 500مجم 30قرص',
-        'description': 'levepex 500mg 30 f.c. tab - levetiracetam. Tablet 500 mg',
+        'description':
+            'levepex 500mg 30 f.c. tab - levetiracetam. Tablet 500 mg',
         'price': 162.0,
-        'imageUrl': 'https://www.rosheta.com/upload/7bd5080cd47efdf0daa061e1ab8e351d39e16d1bc9977e6435e6f8f334b13802.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/7bd5080cd47efdf0daa061e1ab8e351d39e16d1bc9977e6435e6f8f334b13802.webp',
         'categoryId': 'psychiatric_neuro',
-        'subcategoryId': '',
+        'subcategoryId': 'pn_antiepileptics',
+        'subSubcategoryId': 'pn_ae',
         'barcode': '6223003203085',
         'activeIngredient': 'levetiracetam',
         'concentration': '500 mg',
@@ -2572,17 +3556,25 @@ class SeedService {
         'stock': 35,
         'rewardPoints': 16,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_7250',
         'name': 'levepex 750mg 30 f.c. tab',
         'nameArabic': 'ليفيبكس 750مجم 30 قرص',
-        'description': 'levepex 750mg 30 f.c. tab - levetiracetam. Tablet 750 mg',
+        'description':
+            'levepex 750mg 30 f.c. tab - levetiracetam. Tablet 750 mg',
         'price': 195.0,
-        'imageUrl': 'https://www.rosheta.com/upload/3098f46ab2240d6f484d85c800dea44b37391ee768131ca6f4fd3028a34e0c90.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/3098f46ab2240d6f484d85c800dea44b37391ee768131ca6f4fd3028a34e0c90.webp',
         'categoryId': 'psychiatric_neuro',
-        'subcategoryId': '',
+        'subcategoryId': 'pn_antiepileptics',
+        'subSubcategoryId': 'pn_ae',
         'barcode': '6223003203115',
         'activeIngredient': 'levetiracetam',
         'concentration': '750 mg',
@@ -2592,7 +3584,12 @@ class SeedService {
         'stock': 25,
         'rewardPoints': 19,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_31780',
@@ -2600,9 +3597,11 @@ class SeedService {
         'nameArabic': 'ليفياكول مساج جل 59 جم',
         'description': 'liviacool massage gel 59 gm - menthol. Gel',
         'price': 120.0,
-        'imageUrl': 'https://www.rosheta.com/upload/af2aeda2c270f7f682000fd4028075003006ab308112961c3b34be3ee8adb96d.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/af2aeda2c270f7f682000fd4028075003006ab308112961c3b34be3ee8adb96d.webp',
         'categoryId': 'pain_inflammation',
-        'subcategoryId': '',
+        'subcategoryId': 'pi_topical_pain',
+        'subSubcategoryId': 'pi_top_gen',
         'barcode': '6223003206710',
         'activeIngredient': 'menthol',
         'concentration': '',
@@ -2612,7 +3611,12 @@ class SeedService {
         'stock': 54,
         'rewardPoints': 12,
         'isOffer': true,
-        'usageSteps': ['Clean and dry the affected area before applying', 'Apply a thin layer to the affected area', 'Wash hands before and after application', 'Use as directed by your doctor'],
+        'usageSteps': [
+          'Clean and dry the affected area before applying',
+          'Apply a thin layer to the affected area',
+          'Wash hands before and after application',
+          'Use as directed by your doctor'
+        ],
       },
       {
         'docId': 'prod_21994',
@@ -2620,9 +3624,11 @@ class SeedService {
         'nameArabic': 'لوجي ماكس 30 قرص',
         'description': 'logimax s.r. 30 tab - felodipine+metoprolol. Tablet',
         'price': 105.0,
-        'imageUrl': 'https://www.rosheta.com/upload/453da3680a8ed362e63ccb68ca7596b1eeb74fbbbde863c5e522ee51e1fe5c8a.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/453da3680a8ed362e63ccb68ca7596b1eeb74fbbbde863c5e522ee51e1fe5c8a.webp',
         'categoryId': 'cardiovascular',
-        'subcategoryId': '',
+        'subcategoryId': 'cv_antihypertensives',
+        'subSubcategoryId': 'cv_combo',
         'barcode': '6223003270254',
         'activeIngredient': 'felodipine+metoprolol',
         'concentration': '',
@@ -2632,7 +3638,12 @@ class SeedService {
         'stock': 95,
         'rewardPoints': 10,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_22060',
@@ -2640,9 +3651,11 @@ class SeedService {
         'nameArabic': 'لوزيك 20 مجم 7 كبسولات',
         'description': 'losec 20mg 7 caps - omeprazole. Capsule 20 mg',
         'price': 32.4,
-        'imageUrl': 'https://www.rosheta.com/upload/ab9cc1a16aba49e17345ae3e0663bbbd120af0a0cf383d3aafdb3f6431a5a471.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/ab9cc1a16aba49e17345ae3e0663bbbd120af0a0cf383d3aafdb3f6431a5a471.webp',
         'categoryId': 'gastrointestinal',
-        'subcategoryId': '',
+        'subcategoryId': 'gi_acid',
+        'subSubcategoryId': 'gi_ppi',
         'barcode': '6223003270438',
         'activeIngredient': 'omeprazole',
         'concentration': '20 mg',
@@ -2652,7 +3665,12 @@ class SeedService {
         'stock': 32,
         'rewardPoints': 3,
         'isOffer': false,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_7708',
@@ -2660,9 +3678,11 @@ class SeedService {
         'nameArabic': 'مامي فيت 30 قرص مغلف',
         'description': 'mamyvit 30 f.c. tabs - multivitamins+minerals. Tablet',
         'price': 32.4,
-        'imageUrl': 'https://www.rosheta.com/upload/e4c6a6f1f74541a7cf5ad850ffc124b3c216698b18f866447f46f46023fb84cd.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/e4c6a6f1f74541a7cf5ad850ffc124b3c216698b18f866447f46f46023fb84cd.webp',
         'categoryId': 'vitamins_supplements',
-        'subcategoryId': '',
+        'subcategoryId': 'vs_multivitamins',
+        'subSubcategoryId': 'vs_mvi_gen',
         'barcode': '6223003200978',
         'activeIngredient': 'multivitamins+minerals',
         'concentration': '',
@@ -2672,17 +3692,25 @@ class SeedService {
         'stock': 24,
         'rewardPoints': 3,
         'isOffer': false,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_23672',
         'name': 'mavilor 10mg 30 tab',
         'nameArabic': 'مافيلور 10مجم 30 قرص',
-        'description': 'mavilor 10mg 30 tab - nebivolol hydrochloride. Tablet 10 mg',
+        'description':
+            'mavilor 10mg 30 tab - nebivolol hydrochloride. Tablet 10 mg',
         'price': 159.0,
-        'imageUrl': 'https://www.rosheta.com/upload/2c39a8d1663940c3056c6fe56bf10852aa2fb158188abbc5f1d742af69895d44.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/2c39a8d1663940c3056c6fe56bf10852aa2fb158188abbc5f1d742af69895d44.webp',
         'categoryId': 'cardiovascular',
-        'subcategoryId': '',
+        'subcategoryId': 'cv_antihypertensives',
+        'subSubcategoryId': 'cv_bb',
         'barcode': '6223003207649',
         'activeIngredient': 'nebivolol hydrochloride',
         'concentration': '10 mg',
@@ -2692,17 +3720,25 @@ class SeedService {
         'stock': 88,
         'rewardPoints': 15,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_32219',
         'name': 'mavilor 2.5 mg 30 tab',
         'nameArabic': 'مافيلور 2.5مجم 30 قرص',
-        'description': 'mavilor 2.5 mg 30 tab - nebivolol hydrochloride. Tablet 2.5 mg',
+        'description':
+            'mavilor 2.5 mg 30 tab - nebivolol hydrochloride. Tablet 2.5 mg',
         'price': 72.0,
-        'imageUrl': 'https://www.rosheta.com/upload/2c39a8d1663940c3056c6fe56bf10852aa2fb158188abbc5f1d742af69895d44.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/2c39a8d1663940c3056c6fe56bf10852aa2fb158188abbc5f1d742af69895d44.webp',
         'categoryId': 'cardiovascular',
-        'subcategoryId': '',
+        'subcategoryId': 'cv_antihypertensives',
+        'subSubcategoryId': 'cv_bb',
         'barcode': '6223003207618',
         'activeIngredient': 'nebivolol hydrochloride',
         'concentration': '2.5 mg',
@@ -2712,17 +3748,25 @@ class SeedService {
         'stock': 89,
         'rewardPoints': 7,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_22370',
         'name': 'mavilor 5 mg 30 tabs',
         'nameArabic': 'مافيلور 5مجم  30 قرص',
-        'description': 'mavilor 5 mg 30 tabs - nebivolol hydrochloride. Tablet 5 mg',
+        'description':
+            'mavilor 5 mg 30 tabs - nebivolol hydrochloride. Tablet 5 mg',
         'price': 105.0,
-        'imageUrl': 'https://www.rosheta.com/upload/2c39a8d1663940c3056c6fe56bf10852aa2fb158188abbc5f1d742af69895d44.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/2c39a8d1663940c3056c6fe56bf10852aa2fb158188abbc5f1d742af69895d44.webp',
         'categoryId': 'cardiovascular',
-        'subcategoryId': '',
+        'subcategoryId': 'cv_antihypertensives',
+        'subSubcategoryId': 'cv_bb',
         'barcode': '6223003204884',
         'activeIngredient': 'nebivolol hydrochloride',
         'concentration': '5 mg',
@@ -2732,17 +3776,25 @@ class SeedService {
         'stock': 200,
         'rewardPoints': 10,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_32324',
         'name': 'mavilor plus 5/12.5 mg 30 tabs',
         'nameArabic': 'مافيلور بلس 5/12.5مجم 30 قرص',
-        'description': 'mavilor plus 5/12.5 mg 30 tabs - nebivolol hydrochloride+hydrochlorothiazide. Tablet 5/12.5 mg',
+        'description':
+            'mavilor plus 5/12.5 mg 30 tabs - nebivolol hydrochloride+hydrochlorothiazide. Tablet 5/12.5 mg',
         'price': 108.0,
-        'imageUrl': 'https://www.rosheta.com/upload/2c39a8d1663940c3056c6fe56bf10852aa2fb158188abbc5f1d742af69895d44.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/2c39a8d1663940c3056c6fe56bf10852aa2fb158188abbc5f1d742af69895d44.webp',
         'categoryId': 'cardiovascular',
-        'subcategoryId': '',
+        'subcategoryId': 'cv_antihypertensives',
+        'subSubcategoryId': 'cv_combo',
         'barcode': '6223003207373',
         'activeIngredient': 'nebivolol hydrochloride+hydrochlorothiazide',
         'concentration': '5/12.5 mg',
@@ -2752,17 +3804,25 @@ class SeedService {
         'stock': 93,
         'rewardPoints': 10,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_9592',
         'name': 'mavilor plus 5/25 mg 30 tabs',
         'nameArabic': 'مافيلور بلس 5/25مجم 30 قرص',
-        'description': 'mavilor plus 5/25 mg 30 tabs - nebivolol hydrochloride+hydrochlorothiazide. Tablet 5/25 mg',
+        'description':
+            'mavilor plus 5/25 mg 30 tabs - nebivolol hydrochloride+hydrochlorothiazide. Tablet 5/25 mg',
         'price': 108.0,
-        'imageUrl': 'https://www.rosheta.com/upload/2c39a8d1663940c3056c6fe56bf10852aa2fb158188abbc5f1d742af69895d44.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/2c39a8d1663940c3056c6fe56bf10852aa2fb158188abbc5f1d742af69895d44.webp',
         'categoryId': 'cardiovascular',
-        'subcategoryId': '',
+        'subcategoryId': 'cv_antihypertensives',
+        'subSubcategoryId': 'cv_combo',
         'barcode': '6223003207403',
         'activeIngredient': 'nebivolol hydrochloride+hydrochlorothiazide',
         'concentration': '5/25 mg',
@@ -2772,19 +3832,28 @@ class SeedService {
         'stock': 47,
         'rewardPoints': 10,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_27767',
         'name': 'mi kids lotion 110 ml',
         'nameArabic': 'ماي كيدز لوشن 110 مل',
-        'description': 'mi kids lotion 110 ml - biotin+caffeine+green coffee+saw palmetto+vitamin b6+rice protin+horse chestnut+rosemary+chamomile oil+aloe vera oil+ginseng+menthol+panthenol. Lotion',
+        'description':
+            'mi kids lotion 110 ml - biotin+caffeine+green coffee+saw palmetto+vitamin b6+rice protin+horse chestnut+rosemary+chamomile oil+aloe vera oil+ginseng+menthol+panthenol. Lotion',
         'price': 175.0,
-        'imageUrl': 'https://safelife.website/uploads/images/products/3dbc191af5c8b94399f02b9f93a52e13.jpg',
+        'imageUrl':
+            'https://safelife.website/uploads/images/products/3dbc191af5c8b94399f02b9f93a52e13.jpg',
         'categoryId': 'dermatology',
-        'subcategoryId': '',
+        'subcategoryId': 'dr_hair_care',
+        'subSubcategoryId': 'dr_hl',
         'barcode': '6223003446161',
-        'activeIngredient': 'biotin+caffeine+green coffee+saw palmetto+vitamin b6+rice protin+horse chestnut+rosemary+chamomile oil+aloe vera oil+ginseng+menthol+panthenol',
+        'activeIngredient':
+            'biotin+caffeine+green coffee+saw palmetto+vitamin b6+rice protin+horse chestnut+rosemary+chamomile oil+aloe vera oil+ginseng+menthol+panthenol',
         'concentration': '',
         'dosageForm': 'Lotion',
         'manufacturer': 'safe life',
@@ -2792,19 +3861,28 @@ class SeedService {
         'stock': 39,
         'rewardPoints': 17,
         'isOffer': true,
-        'usageSteps': ['Apply to the affected area', 'Massage gently until absorbed', 'Use as directed by your doctor', 'Keep away from eyes and mucous membranes'],
+        'usageSteps': [
+          'Apply to the affected area',
+          'Massage gently until absorbed',
+          'Use as directed by your doctor',
+          'Keep away from eyes and mucous membranes'
+        ],
       },
       {
         'docId': 'prod_28535',
         'name': 'mi kids shampoo 90 ml',
         'nameArabic': 'ماي كيدز شامبو 90 مل',
-        'description': 'mi kids shampoo 90 ml - biotin+coconut oil+almond oil+panthenol+aloe vera+glycerin. Shampoo',
+        'description':
+            'mi kids shampoo 90 ml - biotin+coconut oil+almond oil+panthenol+aloe vera+glycerin. Shampoo',
         'price': 100.0,
-        'imageUrl': 'https://safelife.website/uploads/images/products/ab28d16e625db0ada454ee7509571fe4.jpg',
+        'imageUrl':
+            'https://safelife.website/uploads/images/products/ab28d16e625db0ada454ee7509571fe4.jpg',
         'categoryId': 'dermatology',
-        'subcategoryId': '',
+        'subcategoryId': 'dr_shampoos',
+        'subSubcategoryId': 'dr_sh_gen',
         'barcode': '6223003445096',
-        'activeIngredient': 'biotin+coconut oil+almond oil+panthenol+aloe vera+glycerin',
+        'activeIngredient':
+            'biotin+coconut oil+almond oil+panthenol+aloe vera+glycerin',
         'concentration': '',
         'dosageForm': 'Shampoo',
         'manufacturer': 'safe life',
@@ -2812,7 +3890,12 @@ class SeedService {
         'stock': 30,
         'rewardPoints': 10,
         'isOffer': false,
-        'usageSteps': ['Apply to wet hair', 'Massage gently into scalp', 'Leave on for recommended time', 'Rinse thoroughly and repeat if necessary'],
+        'usageSteps': [
+          'Apply to wet hair',
+          'Massage gently into scalp',
+          'Leave on for recommended time',
+          'Rinse thoroughly and repeat if necessary'
+        ],
       },
       {
         'docId': 'prod_22954',
@@ -2820,9 +3903,11 @@ class SeedService {
         'nameArabic': 'مودابكس 100مجم 30 قرص',
         'description': 'moodapex 100mg 30 f.c.tab - sertraline. Tablet 10 mg',
         'price': 123.0,
-        'imageUrl': 'https://www.rosheta.com/upload/5fa2daadda0d679d5358075dd4342d06980352be8df2f9a510dbdea18277044e.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/5fa2daadda0d679d5358075dd4342d06980352be8df2f9a510dbdea18277044e.webp',
         'categoryId': 'psychiatric_neuro',
-        'subcategoryId': '',
+        'subcategoryId': 'pn_antidepressants',
+        'subSubcategoryId': 'pn_ssri',
         'barcode': '6223003209193',
         'activeIngredient': 'sertraline',
         'concentration': '10 mg',
@@ -2832,7 +3917,12 @@ class SeedService {
         'stock': 30,
         'rewardPoints': 12,
         'isOffer': false,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_8322',
@@ -2840,9 +3930,11 @@ class SeedService {
         'nameArabic': 'مودابكس 50مجم 30 قرص',
         'description': 'moodapex 50mg 30 f.c.tab - sertraline. Tablet 50 mg',
         'price': 111.0,
-        'imageUrl': 'https://www.rosheta.com/upload/739c29ff83bbf7b1a5d1d08a0a901a9891119abb997cb18e2914f7a10eb4e088.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/739c29ff83bbf7b1a5d1d08a0a901a9891119abb997cb18e2914f7a10eb4e088.webp',
         'categoryId': 'psychiatric_neuro',
-        'subcategoryId': '',
+        'subcategoryId': 'pn_antidepressants',
+        'subSubcategoryId': 'pn_ssri',
         'barcode': '6223003200459',
         'activeIngredient': 'sertraline',
         'concentration': '50 mg',
@@ -2852,17 +3944,25 @@ class SeedService {
         'stock': 200,
         'rewardPoints': 11,
         'isOffer': false,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_7249',
         'name': 'moxidegrin 0.5% eye drops 5 ml',
         'nameArabic': 'موكسي ديجرين 5.% نقط للعين 5 مل',
-        'description': 'moxidegrin 0.5% eye drops 5 ml - moxifloxacin. Eye drops 0.005',
+        'description':
+            'moxidegrin 0.5% eye drops 5 ml - moxifloxacin. Eye drops 0.005',
         'price': 16.5,
-        'imageUrl': 'https://api.c0umyt3cda-pharmaove1-p1-public.model-t.cc.commerce.ondemand.com/medias/000000000000036313.webp?context=bWFzdGVyfGltYWdlc3wxNjg4NXxpbWFnZS9qcGVnfGFHTTJMMmhsWlM4eE1UTTFOekU0TnpFM09EVXlOaTh3TURBd01EQXdNREF3TURBd016WXpNVE11ZDJWaWNBfGQ4ZDNmY2Q1MWUyNTk3NmJkNzY5NzNhNjA3NzYwNzJiZjdhZTJhODg4MWM0MzBmMmVmMDdmMmUwMTRhOWQyYzg',
+        'imageUrl':
+            'https://api.c0umyt3cda-pharmaove1-p1-public.model-t.cc.commerce.ondemand.com/medias/000000000000036313.webp?context=bWFzdGVyfGltYWdlc3wxNjg4NXxpbWFnZS9qcGVnfGFHTTJMMmhsWlM4eE1UTTFOekU0TnpFM09EVXlOaTh3TURBd01EQXdNREF3TURBd016WXpNVE11ZDJWaWNBfGQ4ZDNmY2Q1MWUyNTk3NmJkNzY5NzNhNjA3NzYwNzJiZjdhZTJhODg4MWM0MzBmMmVmMDdmMmUwMTRhOWQyYzg',
         'categoryId': 'antibiotics',
-        'subcategoryId': '',
+        'subcategoryId': 'ab_ophthalmic',
+        'subSubcategoryId': 'ab_eye_fluoro',
         'barcode': '6223003203115',
         'activeIngredient': 'moxifloxacin',
         'concentration': '0.005',
@@ -2872,17 +3972,25 @@ class SeedService {
         'stock': 33,
         'rewardPoints': 1,
         'isOffer': false,
-        'usageSteps': ['Wash hands thoroughly before use', 'Tilt head back and pull lower eyelid down', 'Instill the prescribed number of drops', 'Close eye gently for 1-2 minutes after use'],
+        'usageSteps': [
+          'Wash hands thoroughly before use',
+          'Tilt head back and pull lower eyelid down',
+          'Instill the prescribed number of drops',
+          'Close eye gently for 1-2 minutes after use'
+        ],
       },
       {
         'docId': 'prod_8437',
         'name': 'multi-relax 10mg 20 f.c.tab',
         'nameArabic': 'مالتي ريلاكس 10مجم 20 قرص',
-        'description': 'multi-relax 10mg 20 f.c.tab - cyclobenzaprine. Tablet 10 mg',
+        'description':
+            'multi-relax 10mg 20 f.c.tab - cyclobenzaprine. Tablet 10 mg',
         'price': 42.0,
-        'imageUrl': 'https://www.rosheta.com/upload/e322386b68a4baae04bfe9a28f0b7710525d6985939e61ff74e59b6faa9cd4a2.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/e322386b68a4baae04bfe9a28f0b7710525d6985939e61ff74e59b6faa9cd4a2.webp',
         'categoryId': 'pain_inflammation',
-        'subcategoryId': '',
+        'subcategoryId': 'pi_muscle',
+        'subSubcategoryId': 'pi_mr_gen',
         'barcode': '6223003201081',
         'activeIngredient': 'cyclobenzaprine',
         'concentration': '10 mg',
@@ -2892,17 +4000,25 @@ class SeedService {
         'stock': 200,
         'rewardPoints': 4,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_8438',
         'name': 'multi-relax 5mg 20 f.c. tab',
         'nameArabic': 'مالتي-ريلاكس 5مجم 20 قرص',
-        'description': 'multi-relax 5mg 20 f.c. tab - cyclobenzaprine. Tablet 5 mg',
+        'description':
+            'multi-relax 5mg 20 f.c. tab - cyclobenzaprine. Tablet 5 mg',
         'price': 36.0,
-        'imageUrl': 'https://www.rosheta.com/upload/6d1d5be526d1ba00dc5ff0017b53d5e0dc9f44331ebbdd5def3941453c2ab497.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/6d1d5be526d1ba00dc5ff0017b53d5e0dc9f44331ebbdd5def3941453c2ab497.webp',
         'categoryId': 'pain_inflammation',
-        'subcategoryId': '',
+        'subcategoryId': 'pi_muscle',
+        'subSubcategoryId': 'pi_mr_gen',
         'barcode': '6223003202200',
         'activeIngredient': 'cyclobenzaprine',
         'concentration': '5 mg',
@@ -2912,7 +4028,12 @@ class SeedService {
         'stock': 200,
         'rewardPoints': 3,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_23547',
@@ -2920,9 +4041,11 @@ class SeedService {
         'nameArabic': 'نيكسيوم 10مجم 28 اكياس',
         'description': 'nexium 10 mg 28 sachets - esomeprazole. Sachet 10 mg',
         'price': 364.0,
-        'imageUrl': 'https://masterapi.witheldokan.com/storage/seif-pharmacies/uploads/306392.webp',
+        'imageUrl':
+            'https://masterapi.witheldokan.com/storage/seif-pharmacies/uploads/306392.webp',
         'categoryId': 'gastrointestinal',
-        'subcategoryId': '',
+        'subcategoryId': 'gi_acid',
+        'subSubcategoryId': 'gi_ppi',
         'barcode': '6223003270551',
         'activeIngredient': 'esomeprazole',
         'concentration': '10 mg',
@@ -2932,7 +4055,12 @@ class SeedService {
         'stock': 158,
         'rewardPoints': 36,
         'isOffer': true,
-        'usageSteps': ['Dissolve contents in a glass of water', 'Drink immediately after dissolving', 'Take as prescribed by your doctor', 'Store in a cool, dry place'],
+        'usageSteps': [
+          'Dissolve contents in a glass of water',
+          'Drink immediately after dissolving',
+          'Take as prescribed by your doctor',
+          'Store in a cool, dry place'
+        ],
       },
       {
         'docId': 'prod_23549',
@@ -2940,9 +4068,11 @@ class SeedService {
         'nameArabic': 'نيكسيوم 20مجم 14 قرص',
         'description': 'nexium 20 mg 14 f.c.tabs. - esomeprazole. Tablet 20 mg',
         'price': 98.0,
-        'imageUrl': 'https://www.rosheta.com/upload/88c8b3ea4a9af2112231b6c3d4306a62e1a6c5339a3a3618679897bd2f73e645.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/88c8b3ea4a9af2112231b6c3d4306a62e1a6c5339a3a3618679897bd2f73e645.webp',
         'categoryId': 'gastrointestinal',
-        'subcategoryId': '',
+        'subcategoryId': 'gi_acid',
+        'subSubcategoryId': 'gi_ppi',
         'barcode': '6223003270308',
         'activeIngredient': 'esomeprazole',
         'concentration': '20 mg',
@@ -2952,17 +4082,25 @@ class SeedService {
         'stock': 70,
         'rewardPoints': 9,
         'isOffer': false,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_8908',
         'name': 'nizapex 20mg/gm shampoo 80 ml',
         'nameArabic': 'نيزابكس شامبو 80 مل',
-        'description': 'nizapex 20mg/gm shampoo 80 ml - ketoconazole. Shampoo 20mg/gm',
+        'description':
+            'nizapex 20mg/gm shampoo 80 ml - ketoconazole. Shampoo 20mg/gm',
         'price': 68.0,
-        'imageUrl': 'https://www.rosheta.com/upload/b47d3fca7078a4fcc561ec9e60080d6d291a8cfc4708e7baf0ad32c8fcafb075.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/b47d3fca7078a4fcc561ec9e60080d6d291a8cfc4708e7baf0ad32c8fcafb075.webp',
         'categoryId': 'antibiotics',
-        'subcategoryId': '',
+        'subcategoryId': 'ab_antifungals',
+        'subSubcategoryId': 'ab_af_gen',
         'barcode': '6223003202170',
         'activeIngredient': 'ketoconazole',
         'concentration': '20mg/gm',
@@ -2972,7 +4110,12 @@ class SeedService {
         'stock': 200,
         'rewardPoints': 6,
         'isOffer': true,
-        'usageSteps': ['Apply to wet hair', 'Massage gently into scalp', 'Leave on for recommended time', 'Rinse thoroughly and repeat if necessary'],
+        'usageSteps': [
+          'Apply to wet hair',
+          'Massage gently into scalp',
+          'Leave on for recommended time',
+          'Rinse thoroughly and repeat if necessary'
+        ],
       },
       {
         'docId': 'prod_8949',
@@ -2980,9 +4123,11 @@ class SeedService {
         'nameArabic': 'نولفادكس 10 مجم 30 قرص',
         'description': 'nolvadex 10mg 30 tab - tamoxifen. Tablet 10 mg',
         'price': 160.0,
-        'imageUrl': 'https://www.rosheta.com/upload/f3b602caeb5f5426d362dc1305fb39f43b8e7c5687368e344ec19cddf4056191.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/f3b602caeb5f5426d362dc1305fb39f43b8e7c5687368e344ec19cddf4056191.webp',
         'categoryId': 'oncology',
-        'subcategoryId': '',
+        'subcategoryId': 'on_hormonal',
+        'subSubcategoryId': 'on_anti_estrogen',
         'barcode': '6223003270292',
         'activeIngredient': 'tamoxifen',
         'concentration': '10 mg',
@@ -2992,7 +4137,12 @@ class SeedService {
         'stock': 200,
         'rewardPoints': 16,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_9014',
@@ -3000,9 +4150,11 @@ class SeedService {
         'nameArabic': 'نوربرولاك 75مكجم 10 اقراص',
         'description': 'norprolac 75mcg 10 tab - quinagolide. Tablet 75 mcg',
         'price': 39.0,
-        'imageUrl': 'https://www.rosheta.com/upload/ddc9ab8698da6c36ac5d0863234443293cab9e37ac30b8f8d1cbd53fd21242e1.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/ddc9ab8698da6c36ac5d0863234443293cab9e37ac30b8f8d1cbd53fd21242e1.webp',
         'categoryId': 'diabetes_metabolism',
-        'subcategoryId': '',
+        'subcategoryId': 'dm_endocrine',
+        'subSubcategoryId': 'dm_dopamine_agonist',
         'barcode': '6223003203269',
         'activeIngredient': 'quinagolide',
         'concentration': '75 mcg',
@@ -3012,7 +4164,12 @@ class SeedService {
         'stock': 24,
         'rewardPoints': 3,
         'isOffer': false,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_24000',
@@ -3020,9 +4177,11 @@ class SeedService {
         'nameArabic': 'اولابكس 10مجم 30 قرص',
         'description': 'olapex 10 mg 30 f.c. tabs - olanzapine. Tablet 10 mg',
         'price': 234.0,
-        'imageUrl': 'https://www.rosheta.com/upload/ac378fd261daee775f8526d6c44b9fbda3ac77cd171f911cdefefb04bdf1044b.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/ac378fd261daee775f8526d6c44b9fbda3ac77cd171f911cdefefb04bdf1044b.webp',
         'categoryId': 'psychiatric_neuro',
-        'subcategoryId': '',
+        'subcategoryId': 'pn_antipsychotics',
+        'subSubcategoryId': 'pn_atypical',
         'barcode': '6223003201050',
         'activeIngredient': 'olanzapine',
         'concentration': '10 mg',
@@ -3032,7 +4191,12 @@ class SeedService {
         'stock': 154,
         'rewardPoints': 23,
         'isOffer': false,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_9189',
@@ -3040,9 +4204,11 @@ class SeedService {
         'nameArabic': 'اولابكس 5مجم 30 قرص',
         'description': 'olapex 5 mg 30 f.c.tabs - olanzapine. Tablet 5 mg',
         'price': 160.0,
-        'imageUrl': 'https://www.rosheta.com/upload/3b8639a26969770bb3bfa12fdc00587c5b53e1ba54bbdbf1eda0fd8a85fa477c.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/3b8639a26969770bb3bfa12fdc00587c5b53e1ba54bbdbf1eda0fd8a85fa477c.webp',
         'categoryId': 'psychiatric_neuro',
-        'subcategoryId': '',
+        'subcategoryId': 'pn_antipsychotics',
+        'subSubcategoryId': 'pn_atypical',
         'barcode': '6223003201012',
         'activeIngredient': 'olanzapine',
         'concentration': '5 mg',
@@ -3052,7 +4218,12 @@ class SeedService {
         'stock': 100,
         'rewardPoints': 16,
         'isOffer': false,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_9447',
@@ -3060,9 +4231,11 @@ class SeedService {
         'nameArabic': 'اوست-ماب 60 مجم 20 كبسولة',
         'description': 'ost-map 60mg 20 caps - acemetacin. Capsule 60 mg',
         'price': 54.0,
-        'imageUrl': 'https://www.rosheta.com/upload/b26dcb75dc3c6555dba1c867c3ed572fb11d7ec5bafdfbefdef66900a526eec4.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/b26dcb75dc3c6555dba1c867c3ed572fb11d7ec5bafdfbefdef66900a526eec4.webp',
         'categoryId': 'pain_inflammation',
-        'subcategoryId': '',
+        'subcategoryId': 'pi_nsaids',
+        'subSubcategoryId': 'pi_nsaid_oral',
         'barcode': '6223003204372',
         'activeIngredient': 'acemetacin',
         'concentration': '60 mg',
@@ -3072,17 +4245,25 @@ class SeedService {
         'stock': 101,
         'rewardPoints': 5,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_9495',
         'name': 'oxitropil 1200 mg 60 f.c.tabs',
         'nameArabic': 'اوكسيتروبيل 1200 مجم 60 قرص',
-        'description': 'oxitropil 1200 mg 60 f.c.tabs - piracetam. Tablet 1200 mg',
+        'description':
+            'oxitropil 1200 mg 60 f.c.tabs - piracetam. Tablet 1200 mg',
         'price': 162.0,
-        'imageUrl': 'https://www.rosheta.com/upload/c_img/eee895a523fa2bf00c6df886e370c056.jpg',
+        'imageUrl':
+            'https://www.rosheta.com/upload/c_img/eee895a523fa2bf00c6df886e370c056.jpg',
         'categoryId': 'psychiatric_neuro',
-        'subcategoryId': '',
+        'subcategoryId': 'pn_nootropics',
+        'subSubcategoryId': 'pn_noot_gen',
         'barcode': '6223003204853',
         'activeIngredient': 'piracetam',
         'concentration': '1200 mg',
@@ -3092,17 +4273,25 @@ class SeedService {
         'stock': 196,
         'rewardPoints': 16,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_33383',
         'name': 'paroxedep cr 12.5 mg 30 f.c.tabs',
         'nameArabic': 'باروكسيديب سي ار 12.5مجم 30 قرص',
-        'description': 'paroxedep cr 12.5 mg 30 f.c.tabs - paroxetine. Tablet 12.5 mg',
+        'description':
+            'paroxedep cr 12.5 mg 30 f.c.tabs - paroxetine. Tablet 12.5 mg',
         'price': 81.0,
-        'imageUrl': 'https://www.rosheta.com/upload/216212cf5a9fb0437af9a96f907417316e440c8b0bfb5d50a5ed7d5062450163.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/216212cf5a9fb0437af9a96f907417316e440c8b0bfb5d50a5ed7d5062450163.webp',
         'categoryId': 'psychiatric_neuro',
-        'subcategoryId': '',
+        'subcategoryId': 'pn_antidepressants',
+        'subSubcategoryId': 'pn_ssri',
         'barcode': '6223003206864',
         'activeIngredient': 'paroxetine',
         'concentration': '12.5 mg',
@@ -3112,17 +4301,25 @@ class SeedService {
         'stock': 67,
         'rewardPoints': 8,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_24597',
         'name': 'paroxedep cr 25 mg 10 f.c.tab',
         'nameArabic': 'باروكسيديب 25 مجم سي ار 10 اقراص',
-        'description': 'paroxedep cr 25 mg 10 f.c.tab - paroxetine. Tablet 25 mg',
+        'description':
+            'paroxedep cr 25 mg 10 f.c.tab - paroxetine. Tablet 25 mg',
         'price': 33.0,
-        'imageUrl': 'https://www.rosheta.com/upload/216212cf5a9fb0437af9a96f907417316e440c8b0bfb5d50a5ed7d5062450163.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/216212cf5a9fb0437af9a96f907417316e440c8b0bfb5d50a5ed7d5062450163.webp',
         'categoryId': 'psychiatric_neuro',
-        'subcategoryId': '',
+        'subcategoryId': 'pn_antidepressants',
+        'subSubcategoryId': 'pn_ssri',
         'barcode': '6223003206895',
         'activeIngredient': 'paroxetine',
         'concentration': '25 mg',
@@ -3132,17 +4329,25 @@ class SeedService {
         'stock': 39,
         'rewardPoints': 3,
         'isOffer': false,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_33384',
         'name': 'paroxedep cr 25 mg 30 f.c.tab',
         'nameArabic': 'باروكسيديب سي ار 25مجم 30 قرص',
-        'description': 'paroxedep cr 25 mg 30 f.c.tab - paroxetine. Tablet 25 mg',
+        'description':
+            'paroxedep cr 25 mg 30 f.c.tab - paroxetine. Tablet 25 mg',
         'price': 99.0,
-        'imageUrl': 'https://www.rosheta.com/upload/216212cf5a9fb0437af9a96f907417316e440c8b0bfb5d50a5ed7d5062450163.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/216212cf5a9fb0437af9a96f907417316e440c8b0bfb5d50a5ed7d5062450163.webp',
         'categoryId': 'psychiatric_neuro',
-        'subcategoryId': '',
+        'subcategoryId': 'pn_antidepressants',
+        'subSubcategoryId': 'pn_ssri',
         'barcode': '6223003206239',
         'activeIngredient': 'paroxetine',
         'concentration': '25 mg',
@@ -3152,17 +4357,25 @@ class SeedService {
         'stock': 44,
         'rewardPoints': 9,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_33385',
         'name': 'paroxedep cr 37.5 mg 30 f.c.tabs',
         'nameArabic': 'باروكسيديب سي ار 37.5مجم 30 قرص',
-        'description': 'paroxedep cr 37.5 mg 30 f.c.tabs - paroxetine. Tablet 37.5 mg',
+        'description':
+            'paroxedep cr 37.5 mg 30 f.c.tabs - paroxetine. Tablet 37.5 mg',
         'price': 117.0,
-        'imageUrl': 'https://www.rosheta.com/upload/216212cf5a9fb0437af9a96f907417316e440c8b0bfb5d50a5ed7d5062450163.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/216212cf5a9fb0437af9a96f907417316e440c8b0bfb5d50a5ed7d5062450163.webp',
         'categoryId': 'psychiatric_neuro',
-        'subcategoryId': '',
+        'subcategoryId': 'pn_antidepressants',
+        'subSubcategoryId': 'pn_ssri',
         'barcode': '6223003206260',
         'activeIngredient': 'paroxetine',
         'concentration': '37.5 mg',
@@ -3172,17 +4385,25 @@ class SeedService {
         'stock': 37,
         'rewardPoints': 11,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_25003',
         'name': 'plendil 10mg 30 prolonged release f.c. tab',
         'nameArabic': 'بلينديل 10مجم 30 قرص',
-        'description': 'plendil 10mg 30 prolonged release f.c. tab - felodipine. Tablet 10 mg',
+        'description':
+            'plendil 10mg 30 prolonged release f.c. tab - felodipine. Tablet 10 mg',
         'price': 112.5,
-        'imageUrl': 'https://www.rosheta.com/upload/c71676a0187319e9a8d3de98600c5da402f7d5a42850ca82dfc5a4bdf156fb70.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/c71676a0187319e9a8d3de98600c5da402f7d5a42850ca82dfc5a4bdf156fb70.webp',
         'categoryId': 'cardiovascular',
-        'subcategoryId': '',
+        'subcategoryId': 'cv_antihypertensives',
+        'subSubcategoryId': 'cv_ccb',
         'barcode': '6223003270216',
         'activeIngredient': 'felodipine',
         'concentration': '10 mg',
@@ -3192,17 +4413,25 @@ class SeedService {
         'stock': 51,
         'rewardPoints': 11,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_25004',
         'name': 'plendil 2.5mg 30 prolonged release f.c. tab',
         'nameArabic': 'بلينديل 2.5مجم 30 قرص',
-        'description': 'plendil 2.5mg 30 prolonged release f.c. tab - felodipine. Tablet 2.5 mg',
+        'description':
+            'plendil 2.5mg 30 prolonged release f.c. tab - felodipine. Tablet 2.5 mg',
         'price': 53.0,
-        'imageUrl': 'https://www.rosheta.com/upload/c71676a0187319e9a8d3de98600c5da402f7d5a42850ca82dfc5a4bdf156fb70.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/c71676a0187319e9a8d3de98600c5da402f7d5a42850ca82dfc5a4bdf156fb70.webp',
         'categoryId': 'cardiovascular',
-        'subcategoryId': '',
+        'subcategoryId': 'cv_antihypertensives',
+        'subSubcategoryId': 'cv_ccb',
         'barcode': '6223003270193',
         'activeIngredient': 'felodipine',
         'concentration': '2.5 mg',
@@ -3212,17 +4441,25 @@ class SeedService {
         'stock': 39,
         'rewardPoints': 5,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_25005',
         'name': 'plendil 5mg 30 prolonged release f.c. tab',
         'nameArabic': 'بلينديل 5مجم 30 قرص',
-        'description': 'plendil 5mg 30 prolonged release f.c. tab - felodipine. Tablet 5 mg',
+        'description':
+            'plendil 5mg 30 prolonged release f.c. tab - felodipine. Tablet 5 mg',
         'price': 81.0,
-        'imageUrl': 'https://www.rosheta.com/upload/c71676a0187319e9a8d3de98600c5da402f7d5a42850ca82dfc5a4bdf156fb70.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/c71676a0187319e9a8d3de98600c5da402f7d5a42850ca82dfc5a4bdf156fb70.webp',
         'categoryId': 'cardiovascular',
-        'subcategoryId': '',
+        'subcategoryId': 'cv_antihypertensives',
+        'subSubcategoryId': 'cv_ccb',
         'barcode': '6223003270209',
         'activeIngredient': 'felodipine',
         'concentration': '5 mg',
@@ -3232,7 +4469,12 @@ class SeedService {
         'stock': 70,
         'rewardPoints': 8,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_25171',
@@ -3240,9 +4482,11 @@ class SeedService {
         'nameArabic': 'بريجدين ابيكس 100مجم 20كبسول',
         'description': 'pregdin-apex 100mg 20 caps - pregabalin. Tablet 100 mg',
         'price': 84.0,
-        'imageUrl': 'https://www.rosheta.com/upload/1e725e6621328b00bb7d39dd2615a10d67f7ded0f45794f04fd91d54d08fe907.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/1e725e6621328b00bb7d39dd2615a10d67f7ded0f45794f04fd91d54d08fe907.webp',
         'categoryId': 'psychiatric_neuro',
-        'subcategoryId': '',
+        'subcategoryId': 'pn_antiepileptics',
+        'subSubcategoryId': 'pn_ae',
         'barcode': '6223003202637',
         'activeIngredient': 'pregabalin',
         'concentration': '100 mg',
@@ -3252,17 +4496,25 @@ class SeedService {
         'stock': 26,
         'rewardPoints': 8,
         'isOffer': false,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_25172',
         'name': 'pregdin-apex 300mg 20 caps',
         'nameArabic': 'بريجدين ابيكس 300مجم 20 كبسول',
-        'description': 'pregdin-apex 300mg 20 caps - pregabalin. Capsule 300 mg',
+        'description':
+            'pregdin-apex 300mg 20 caps - pregabalin. Capsule 300 mg',
         'price': 134.0,
-        'imageUrl': 'https://www.rosheta.com/upload/1e725e6621328b00bb7d39dd2615a10d67f7ded0f45794f04fd91d54d08fe907.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/1e725e6621328b00bb7d39dd2615a10d67f7ded0f45794f04fd91d54d08fe907.webp',
         'categoryId': 'psychiatric_neuro',
-        'subcategoryId': '',
+        'subcategoryId': 'pn_antiepileptics',
+        'subSubcategoryId': 'pn_ae',
         'barcode': '6223003202668',
         'activeIngredient': 'pregabalin',
         'concentration': '300 mg',
@@ -3272,7 +4524,12 @@ class SeedService {
         'stock': 24,
         'rewardPoints': 13,
         'isOffer': false,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_25173',
@@ -3280,9 +4537,11 @@ class SeedService {
         'nameArabic': 'بريجدين ابيكس 50مجم 20 كبسول',
         'description': 'pregdin-apex 50mg 20 caps - pregabalin. Capsule 50 mg',
         'price': 64.0,
-        'imageUrl': 'https://www.rosheta.com/upload/b7dd69555ef62b65ea2eaa5fa5357520c38b7755ea13731201e092b7ff986f5d.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/b7dd69555ef62b65ea2eaa5fa5357520c38b7755ea13731201e092b7ff986f5d.webp',
         'categoryId': 'psychiatric_neuro',
-        'subcategoryId': '',
+        'subcategoryId': 'pn_antiepileptics',
+        'subSubcategoryId': 'pn_ae',
         'barcode': '6223003202606',
         'activeIngredient': 'pregabalin',
         'concentration': '50 mg',
@@ -3292,7 +4551,12 @@ class SeedService {
         'stock': 23,
         'rewardPoints': 6,
         'isOffer': false,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_25558',
@@ -3300,9 +4564,11 @@ class SeedService {
         'nameArabic': 'كويتابيكس 100مجم 30 قرص',
         'description': 'quitapex 100mg 30 f.c. tab - quetiapine. Tablet 100 mg',
         'price': 186.0,
-        'imageUrl': 'https://www.rosheta.com/upload/cae187dc7ade2f8137085dac24b1234470552f6a34a0d2ab4c7158138ee07101.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/cae187dc7ade2f8137085dac24b1234470552f6a34a0d2ab4c7158138ee07101.webp',
         'categoryId': 'psychiatric_neuro',
-        'subcategoryId': '',
+        'subcategoryId': 'pn_antipsychotics',
+        'subSubcategoryId': 'pn_atypical',
         'barcode': '6223003204105',
         'activeIngredient': 'quetiapine',
         'concentration': '100 mg',
@@ -3312,7 +4578,12 @@ class SeedService {
         'stock': 157,
         'rewardPoints': 18,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_15916',
@@ -3320,9 +4591,11 @@ class SeedService {
         'nameArabic': 'كويتابيكس 150مجم 30 قرص',
         'description': 'quitapex 150mg 30 f.c. tab - quetiapine. Tablet 150 mg',
         'price': 201.0,
-        'imageUrl': 'https://www.rosheta.com/upload/b66d63233db5d316845727df9d60388b44551d9cb8b23db9ac799145de4ba8ac.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/b66d63233db5d316845727df9d60388b44551d9cb8b23db9ac799145de4ba8ac.webp',
         'categoryId': 'psychiatric_neuro',
-        'subcategoryId': '',
+        'subcategoryId': 'pn_antipsychotics',
+        'subSubcategoryId': 'pn_atypical',
         'barcode': '6223003206178',
         'activeIngredient': 'quetiapine',
         'concentration': '150 mg',
@@ -3332,7 +4605,12 @@ class SeedService {
         'stock': 36,
         'rewardPoints': 20,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_25559',
@@ -3340,9 +4618,11 @@ class SeedService {
         'nameArabic': 'كويتابيكس 200مجم 30 قرص',
         'description': 'quitapex 200mg 30 f.c.tab - quetiapine. Tablet 200 mg',
         'price': 261.0,
-        'imageUrl': 'https://www.rosheta.com/upload/97ab3f4beebdff51df996c93124035b42766c58163fc10cd04d10f36fa8bf1b2.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/97ab3f4beebdff51df996c93124035b42766c58163fc10cd04d10f36fa8bf1b2.webp',
         'categoryId': 'psychiatric_neuro',
-        'subcategoryId': '',
+        'subcategoryId': 'pn_antipsychotics',
+        'subSubcategoryId': 'pn_atypical',
         'barcode': '6223003203504',
         'activeIngredient': 'quetiapine',
         'concentration': '200 mg',
@@ -3352,7 +4632,12 @@ class SeedService {
         'stock': 83,
         'rewardPoints': 26,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_25560',
@@ -3360,9 +4645,11 @@ class SeedService {
         'nameArabic': 'كويتابيكس 25مجم 30 قرص',
         'description': 'quitapex 25mg 30 f.c.tab - quetiapine. Tablet 25 mg',
         'price': 87.0,
-        'imageUrl': 'https://www.rosheta.com/upload/83b91c89cf09292e7722898ab255fcfca008eaf61c8199205d5cdb56f09ed565.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/83b91c89cf09292e7722898ab255fcfca008eaf61c8199205d5cdb56f09ed565.webp',
         'categoryId': 'psychiatric_neuro',
-        'subcategoryId': '',
+        'subcategoryId': 'pn_antipsychotics',
+        'subSubcategoryId': 'pn_atypical',
         'barcode': '6223003203535',
         'activeIngredient': 'quetiapine',
         'concentration': '25 mg',
@@ -3372,17 +4659,25 @@ class SeedService {
         'stock': 200,
         'rewardPoints': 8,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_25561',
         'name': 'quitapex 300mg xr 30 f.c. tab',
         'nameArabic': 'كويتابيكس 300مجم اكس ار 30 قرص',
-        'description': 'quitapex 300mg xr 30 f.c. tab - quetiapine. Tablet 300 mg',
+        'description':
+            'quitapex 300mg xr 30 f.c. tab - quetiapine. Tablet 300 mg',
         'price': 336.0,
-        'imageUrl': 'https://www.rosheta.com/upload/b66d63233db5d316845727df9d60388b44551d9cb8b23db9ac799145de4ba8ac.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/b66d63233db5d316845727df9d60388b44551d9cb8b23db9ac799145de4ba8ac.webp',
         'categoryId': 'psychiatric_neuro',
-        'subcategoryId': '',
+        'subcategoryId': 'pn_antipsychotics',
+        'subSubcategoryId': 'pn_atypical',
         'barcode': '6223003204549',
         'activeIngredient': 'quetiapine',
         'concentration': '300 mg',
@@ -3392,17 +4687,25 @@ class SeedService {
         'stock': 58,
         'rewardPoints': 33,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_25562',
         'name': 'quitapex 400mg xr 30 f.c. tab',
         'nameArabic': 'كويتابيكس 400مجم اكس ار 30 قرص',
-        'description': 'quitapex 400mg xr 30 f.c. tab - quetiapine. Tablet 400 mg',
+        'description':
+            'quitapex 400mg xr 30 f.c. tab - quetiapine. Tablet 400 mg',
         'price': 387.0,
-        'imageUrl': 'https://www.rosheta.com/upload/b66d63233db5d316845727df9d60388b44551d9cb8b23db9ac799145de4ba8ac.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/b66d63233db5d316845727df9d60388b44551d9cb8b23db9ac799145de4ba8ac.webp',
         'categoryId': 'psychiatric_neuro',
-        'subcategoryId': '',
+        'subcategoryId': 'pn_antipsychotics',
+        'subSubcategoryId': 'pn_atypical',
         'barcode': '6223003204556',
         'activeIngredient': 'quetiapine',
         'concentration': '400 mg',
@@ -3412,7 +4715,12 @@ class SeedService {
         'stock': 47,
         'rewardPoints': 38,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_16428',
@@ -3420,9 +4728,11 @@ class SeedService {
         'nameArabic': 'كويتابيكس 50مجم 30 قرص',
         'description': 'quitapex 50mg 30 f.c. tab - quetiapine. Tablet 50 mg',
         'price': 111.0,
-        'imageUrl': 'https://www.rosheta.com/upload/83b91c89cf09292e7722898ab255fcfca008eaf61c8199205d5cdb56f09ed565.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/83b91c89cf09292e7722898ab255fcfca008eaf61c8199205d5cdb56f09ed565.webp',
         'categoryId': 'psychiatric_neuro',
-        'subcategoryId': '',
+        'subcategoryId': 'pn_antipsychotics',
+        'subSubcategoryId': 'pn_atypical',
         'barcode': '6223003206147',
         'activeIngredient': 'quetiapine',
         'concentration': '50 mg',
@@ -3432,7 +4742,12 @@ class SeedService {
         'stock': 47,
         'rewardPoints': 11,
         'isOffer': true,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_25885',
@@ -3440,9 +4755,11 @@ class SeedService {
         'nameArabic': 'ريباجليد 0.5مجم 20 اقراص',
         'description': 'repaglid 0.5 mg 20 tab - repaglinide. Tablet 0.5 mg',
         'price': 11.0,
-        'imageUrl': 'https://www.rosheta.com/upload/57eed4b17889e639e7a465fafc25902ec839bb5ba21be81809f12cd606f508fa.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/57eed4b17889e639e7a465fafc25902ec839bb5ba21be81809f12cd606f508fa.webp',
         'categoryId': 'diabetes_metabolism',
-        'subcategoryId': '',
+        'subcategoryId': 'dm_antidiabetics',
+        'subSubcategoryId': 'dm_glinide',
         'barcode': '6223003201487',
         'activeIngredient': 'repaglinide',
         'concentration': '0.5 mg',
@@ -3452,7 +4769,12 @@ class SeedService {
         'stock': 23,
         'rewardPoints': 1,
         'isOffer': false,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_25886',
@@ -3460,9 +4782,11 @@ class SeedService {
         'nameArabic': 'ريباجليد 1مجم 20 اقراص',
         'description': 'repaglid 1 mg 20 tab - repaglinide. Tablet 1 mg',
         'price': 15.6,
-        'imageUrl': 'https://www.rosheta.com/upload/57eed4b17889e639e7a465fafc25902ec839bb5ba21be81809f12cd606f508fa.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/57eed4b17889e639e7a465fafc25902ec839bb5ba21be81809f12cd606f508fa.webp',
         'categoryId': 'diabetes_metabolism',
-        'subcategoryId': '',
+        'subcategoryId': 'dm_antidiabetics',
+        'subSubcategoryId': 'dm_glinide',
         'barcode': '6223003201517',
         'activeIngredient': 'repaglinide',
         'concentration': '1 mg',
@@ -3472,17 +4796,25 @@ class SeedService {
         'stock': 24,
         'rewardPoints': 1,
         'isOffer': false,
-        'usageSteps': ['Take as prescribed by your doctor', 'Swallow whole with a glass of water', 'Take with or without food unless instructed otherwise', 'Do not exceed the prescribed dose'],
+        'usageSteps': [
+          'Take as prescribed by your doctor',
+          'Swallow whole with a glass of water',
+          'Take with or without food unless instructed otherwise',
+          'Do not exceed the prescribed dose'
+        ],
       },
       {
         'docId': 'prod_26038',
         'name': 'rhinocort aqua 32mcg/dose nasal spray 120 doses',
         'nameArabic': 'رينوكورت أكوا 32 ميكروجرام / جرعة بخاخ للأنف 120 جرعة',
-        'description': 'rhinocort aqua 32mcg/dose nasal spray 120 doses - budesonide. Spray 32 mcg',
+        'description':
+            'rhinocort aqua 32mcg/dose nasal spray 120 doses - budesonide. Spray 32 mcg',
         'price': 83.0,
-        'imageUrl': 'https://www.rosheta.com/upload/d3d1d8b0933568b93291824d0012aaef9ed639eda2eba25064e6de3a4b8df33a.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/d3d1d8b0933568b93291824d0012aaef9ed639eda2eba25064e6de3a4b8df33a.webp',
         'categoryId': 'respiratory_allergy',
-        'subcategoryId': '',
+        'subcategoryId': 'ra_nasal',
+        'subSubcategoryId': 'ra_nasal_steroid',
         'barcode': '6223003270407',
         'activeIngredient': 'budesonide',
         'concentration': '32 mcg',
@@ -3492,17 +4824,25 @@ class SeedService {
         'stock': 63,
         'rewardPoints': 8,
         'isOffer': true,
-        'usageSteps': ['Clear nasal passages before use', 'Shake bottle gently', 'Insert nozzle and spray while inhaling gently', 'Use as prescribed by your doctor'],
+        'usageSteps': [
+          'Clear nasal passages before use',
+          'Shake bottle gently',
+          'Insert nozzle and spray while inhaling gently',
+          'Use as prescribed by your doctor'
+        ],
       },
       {
         'docId': 'prod_26039',
         'name': 'rhinocort aqua 64mcg/dose nasal spray',
         'nameArabic': 'رينوكورت اكوا 64 ميكروجرام / الجرعة اسبراي للانف',
-        'description': 'rhinocort aqua 64mcg/dose nasal spray - budesonide. Spray 64 mcg',
+        'description':
+            'rhinocort aqua 64mcg/dose nasal spray - budesonide. Spray 64 mcg',
         'price': 122.0,
-        'imageUrl': 'https://www.rosheta.com/upload/d3d1d8b0933568b93291824d0012aaef9ed639eda2eba25064e6de3a4b8df33a.webp',
+        'imageUrl':
+            'https://www.rosheta.com/upload/d3d1d8b0933568b93291824d0012aaef9ed639eda2eba25064e6de3a4b8df33a.webp',
         'categoryId': 'respiratory_allergy',
-        'subcategoryId': '',
+        'subcategoryId': 'ra_nasal',
+        'subSubcategoryId': 'ra_nasal_steroid',
         'barcode': '6223003270414',
         'activeIngredient': 'budesonide',
         'concentration': '64 mcg',
@@ -3512,17 +4852,25 @@ class SeedService {
         'stock': 95,
         'rewardPoints': 12,
         'isOffer': true,
-        'usageSteps': ['Clear nasal passages before use', 'Shake bottle gently', 'Insert nozzle and spray while inhaling gently', 'Use as prescribed by your doctor'],
+        'usageSteps': [
+          'Clear nasal passages before use',
+          'Shake bottle gently',
+          'Insert nozzle and spray while inhaling gently',
+          'Use as prescribed by your doctor'
+        ],
       },
       {
         'docId': 'med_001',
         'name': 'Panadol Advance 500mg 24 Tablets',
         'nameArabic': 'بنادول أدفانس 500 مجم 24 قرص',
-        'description': 'Pain reliever and fever reducer commonly used for headache, fever, toothache, muscle aches, cold/flu symptoms, and mild to moderate pain.',
+        'description':
+            'Pain reliever and fever reducer commonly used for headache, fever, toothache, muscle aches, cold/flu symptoms, and mild to moderate pain.',
         'price': 299.0,
-        'imageUrl': 'https://i-cf65.ch-static.com/content/dam/cf-consumer-healthcare/panadol-reborn/en_ME/product-detail/panadol-advance/Panadol-Advance-380x463.png?auto=format',
+        'imageUrl':
+            'https://i-cf65.ch-static.com/content/dam/cf-consumer-healthcare/panadol-reborn/en_ME/product-detail/panadol-advance/Panadol-Advance-380x463.png?auto=format',
         'categoryId': 'pain_inflammation',
-        'subcategoryId': '',
+        'subcategoryId': 'pi_analgesics',
+        'subSubcategoryId': 'pi_anal_gen',
         'barcode': '6221025048233',
         'activeIngredient': 'Paracetamol',
         'concentration': '500 mg',
@@ -3532,17 +4880,24 @@ class SeedService {
         'stock': 50,
         'rewardPoints': 30,
         'isOffer': false,
-        'usageSteps': ['Take by mouth with water.', 'Use as directed on the pack or by a pharmacist.', 'Do not exceed the maximum daily dose.'],
+        'usageSteps': [
+          'Take by mouth with water.',
+          'Use as directed on the pack or by a pharmacist.',
+          'Do not exceed the maximum daily dose.'
+        ],
       },
       {
         'docId': 'med_002',
         'name': 'Brufen 400mg 30 Tablets',
         'nameArabic': 'بروفين 400 مجم 30 قرص',
-        'description': 'Ibuprofen painkiller, anti-inflammatory, and fever reducer used for headache, dental pain, menstrual pain, rheumatic pain, and general pain.',
+        'description':
+            'Ibuprofen painkiller, anti-inflammatory, and fever reducer used for headache, dental pain, menstrual pain, rheumatic pain, and general pain.',
         'price': 78.0,
-        'imageUrl': 'https://www.bloompharmacy.com/cdn/shop/products/brufen-400-mg-30-tablets-449335.jpg?v=1687635232&width=1200',
+        'imageUrl':
+            'https://www.bloompharmacy.com/cdn/shop/products/brufen-400-mg-30-tablets-449335.jpg?v=1687635232&width=1200',
         'categoryId': 'pain_inflammation',
-        'subcategoryId': '',
+        'subcategoryId': 'pi_nsaids',
+        'subSubcategoryId': 'pi_nsaid_oral',
         'barcode': '8002660038265',
         'activeIngredient': 'Ibuprofen',
         'concentration': '400 mg',
@@ -3552,19 +4907,27 @@ class SeedService {
         'stock': 50,
         'rewardPoints': 8,
         'isOffer': false,
-        'usageSteps': ['Take after food.', 'Use only when needed unless prescribed.', 'Avoid regular use without medical advice.'],
+        'usageSteps': [
+          'Take after food.',
+          'Use only when needed unless prescribed.',
+          'Avoid regular use without medical advice.'
+        ],
       },
       {
         'docId': 'med_003',
         'name': 'Congestal 20 Tablets',
         'nameArabic': 'كونجستال 20 قرص',
-        'description': 'Cold and flu medicine used for fever, headache, runny nose, sneezing, nasal congestion, and allergy-related cold symptoms.',
+        'description':
+            'Cold and flu medicine used for fever, headache, runny nose, sneezing, nasal congestion, and allergy-related cold symptoms.',
         'price': 50.0,
-        'imageUrl': 'https://www.bloompharmacy.com/cdn/shop/products/congestal-20-tablets-948249.jpg?v=1687732348&width=1200',
+        'imageUrl':
+            'https://www.bloompharmacy.com/cdn/shop/products/congestal-20-tablets-948249.jpg?v=1687732348&width=1200',
         'categoryId': 'respiratory_allergy',
-        'subcategoryId': '',
+        'subcategoryId': 'ra_coldflu',
+        'subSubcategoryId': 'ra_cf_gen',
         'barcode': '6221051011317',
-        'activeIngredient': 'Paracetamol + Chlorpheniramine Maleate + Pseudoephedrine HCl',
+        'activeIngredient':
+            'Paracetamol + Chlorpheniramine Maleate + Pseudoephedrine HCl',
         'concentration': '650 mg + 4 mg + 60 mg',
         'dosageForm': 'Tablets',
         'manufacturer': 'Sigma',
@@ -3572,17 +4935,24 @@ class SeedService {
         'stock': 50,
         'rewardPoints': 5,
         'isOffer': false,
-        'usageSteps': ['Take after meals.', 'May cause drowsiness because it contains an antihistamine.', 'Avoid combining with other paracetamol products unless advised.'],
+        'usageSteps': [
+          'Take after meals.',
+          'May cause drowsiness because it contains an antihistamine.',
+          'Avoid combining with other paracetamol products unless advised.'
+        ],
       },
       {
         'docId': 'med_004',
         'name': 'Cataflam 50mg 20 Tablets',
         'nameArabic': 'كتافلام 50 مجم 20 قرص',
-        'description': 'Diclofenac potassium NSAID used for pain, inflammation, menstrual pain, dental pain, and rheumatic pain.',
+        'description':
+            'Diclofenac potassium NSAID used for pain, inflammation, menstrual pain, dental pain, and rheumatic pain.',
         'price': 86.0,
-        'imageUrl': 'https://www.bloompharmacy.com/cdn/shop/products/cataflam-50-mg-20-tablets-379761.jpg?v=1687732227&width=1200',
+        'imageUrl':
+            'https://www.bloompharmacy.com/cdn/shop/products/cataflam-50-mg-20-tablets-379761.jpg?v=1687732227&width=1200',
         'categoryId': 'pain_inflammation',
-        'subcategoryId': '',
+        'subcategoryId': 'pi_nsaids',
+        'subSubcategoryId': 'pi_nsaid_oral',
         'barcode': '6223002641895',
         'activeIngredient': 'Diclofenac Potassium',
         'concentration': '50 mg',
@@ -3592,19 +4962,27 @@ class SeedService {
         'stock': 40,
         'rewardPoints': 9,
         'isOffer': false,
-        'usageSteps': ['Take after meals.', 'Do not use with other NSAIDs unless prescribed.', 'Avoid prolonged use without medical advice.'],
+        'usageSteps': [
+          'Take after meals.',
+          'Do not use with other NSAIDs unless prescribed.',
+          'Avoid prolonged use without medical advice.'
+        ],
       },
       {
         'docId': 'med_005',
         'name': 'Voltaren 1% Emulgel 50g',
         'nameArabic': 'فولتارين جل 1% 50 جم',
-        'description': 'Topical anti-inflammatory gel used for muscle, joint, back, sprain, strain, and rheumatic pain.',
+        'description':
+            'Topical anti-inflammatory gel used for muscle, joint, back, sprain, strain, and rheumatic pain.',
         'price': 68.0,
-        'imageUrl': 'https://www.bloompharmacy.com/cdn/shop/products/voltaren-1-emulgel-50-gm-521005.jpg?v=1695316277&width=1200',
+        'imageUrl':
+            'https://www.bloompharmacy.com/cdn/shop/products/voltaren-1-emulgel-50-gm-521005.jpg?v=1695316277&width=1200',
         'categoryId': 'pain_inflammation',
-        'subcategoryId': '',
+        'subcategoryId': 'pi_nsaids',
+        'subSubcategoryId': 'pi_nsaid_topical',
         'barcode': '6223013531628',
-        'activeIngredient': 'Diclofenac Diethylamine equivalent to Diclofenac Sodium',
+        'activeIngredient':
+            'Diclofenac Diethylamine equivalent to Diclofenac Sodium',
         'concentration': '1%',
         'dosageForm': 'Gel',
         'manufacturer': 'GSK / Novartis market pack',
@@ -3612,17 +4990,24 @@ class SeedService {
         'stock': 45,
         'rewardPoints': 7,
         'isOffer': false,
-        'usageSteps': ['Apply a thin layer to the painful area.', 'Massage gently until absorbed.', 'Wash hands after use unless treating hands.'],
+        'usageSteps': [
+          'Apply a thin layer to the painful area.',
+          'Massage gently until absorbed.',
+          'Wash hands after use unless treating hands.'
+        ],
       },
       {
         'docId': 'med_006',
         'name': 'Antinal 200mg 24 Capsules',
         'nameArabic': 'أنتينال 200 مجم 24 كبسولة',
-        'description': 'Nifuroxazide intestinal antibacterial commonly used for diarrhea and bacterial intestinal infections.',
+        'description':
+            'Nifuroxazide intestinal antibacterial commonly used for diarrhea and bacterial intestinal infections.',
         'price': 52.0,
-        'imageUrl': 'https://www.bloompharmacy.com/cdn/shop/products/antinal-200-mg-24-capsules-256020.jpg?v=1687634962&width=1200',
+        'imageUrl':
+            'https://www.bloompharmacy.com/cdn/shop/products/antinal-200-mg-24-capsules-256020.jpg?v=1687634962&width=1200',
         'categoryId': 'gastrointestinal',
-        'subcategoryId': '',
+        'subcategoryId': 'gi_bowel',
+        'subSubcategoryId': 'gi_bowel_gen',
         'barcode': '6221025022431',
         'activeIngredient': 'Nifuroxazide',
         'concentration': '200 mg',
@@ -3632,17 +5017,24 @@ class SeedService {
         'stock': 50,
         'rewardPoints': 5,
         'isOffer': false,
-        'usageSteps': ['Take after meals.', 'Drink enough fluids during diarrhea.', 'Seek medical help if diarrhea is severe or persistent.'],
+        'usageSteps': [
+          'Take after meals.',
+          'Drink enough fluids during diarrhea.',
+          'Seek medical help if diarrhea is severe or persistent.'
+        ],
       },
       {
         'docId': 'med_007',
         'name': 'Strepsils Honey & Lemon 24 Lozenges',
         'nameArabic': 'ستربسلز عسل وليمون 24 قرص استحلاب',
-        'description': 'Medicated honey and lemon lozenges used to soothe sore throat discomfort and mouth/throat irritation.',
+        'description':
+            'Medicated honey and lemon lozenges used to soothe sore throat discomfort and mouth/throat irritation.',
         'price': 186.99,
-        'imageUrl': 'https://anwar.store/cdn/shop/products/Strepsils-Honey-and-Lemon-24-lozenges-Anwar-Store-666.webp?v=1673155748',
+        'imageUrl':
+            'https://anwar.store/cdn/shop/products/Strepsils-Honey-and-Lemon-24-lozenges-Anwar-Store-666.webp?v=1673155748',
         'categoryId': 'respiratory_allergy',
-        'subcategoryId': '',
+        'subcategoryId': 'ra_coldflu',
+        'subSubcategoryId': 'ra_cf_throat',
         'barcode': '6222048703444',
         'activeIngredient': '2,4-Dichlorobenzyl Alcohol + Amylmetacresol',
         'concentration': '1.2 mg + 0.6 mg',
@@ -3652,17 +5044,24 @@ class SeedService {
         'stock': 40,
         'rewardPoints': 19,
         'isOffer': false,
-        'usageSteps': ['Dissolve one lozenge slowly in the mouth.', 'Do not chew or swallow whole.', 'Follow the pack interval between lozenges.'],
+        'usageSteps': [
+          'Dissolve one lozenge slowly in the mouth.',
+          'Do not chew or swallow whole.',
+          'Follow the pack interval between lozenges.'
+        ],
       },
       {
         'docId': 'med_008',
         'name': 'Otrivin Adult Nasal Drops 0.1% 10ml',
         'nameArabic': 'أوتريفين نقط أنف للكبار 0.1% 10 مل',
-        'description': 'Xylometazoline nasal decongestant used for blocked nose and nasal congestion.',
+        'description':
+            'Xylometazoline nasal decongestant used for blocked nose and nasal congestion.',
         'price': 16.0,
-        'imageUrl': 'https://i-cf65.ch-static.com/content/dam/cf-consumer-healthcare/Otrivin/en_ME/Products/Otrivin_0.1_Spray_600x600.png?auto=format',
+        'imageUrl':
+            'https://i-cf65.ch-static.com/content/dam/cf-consumer-healthcare/Otrivin/en_ME/Products/Otrivin_0.1_Spray_600x600.png?auto=format',
         'categoryId': 'respiratory_allergy',
-        'subcategoryId': '',
+        'subcategoryId': 'ra_nasal',
+        'subSubcategoryId': 'ra_nasal_decongestant',
         'barcode': '6223002640539',
         'activeIngredient': 'Xylometazoline Hydrochloride',
         'concentration': '0.1%',
@@ -3672,17 +5071,24 @@ class SeedService {
         'stock': 45,
         'rewardPoints': 2,
         'isOffer': false,
-        'usageSteps': ['Apply drops into each nostril as directed.', 'Do not use for more than a few consecutive days unless advised.', 'Avoid sharing the bottle.'],
+        'usageSteps': [
+          'Apply drops into each nostril as directed.',
+          'Do not use for more than a few consecutive days unless advised.',
+          'Avoid sharing the bottle.'
+        ],
       },
       {
         'docId': 'med_009',
         'name': 'Maalox Lemon 20 Sachets',
         'nameArabic': 'مالوكس ليمون 20 كيس',
-        'description': 'Antacid oral suspension sachets used for heartburn, acidity, acid reflux, and stomach burning.',
+        'description':
+            'Antacid oral suspension sachets used for heartburn, acidity, acid reflux, and stomach burning.',
         'price': 50.0,
-        'imageUrl': 'https://www.soin-et-nature.com/media/cache/shop_product_large_thumbnail_webp/55/22/74949c67d36259c8e66d17da7c4d.jpg',
+        'imageUrl':
+            'https://www.soin-et-nature.com/media/cache/shop_product_large_thumbnail_webp/55/22/74949c67d36259c8e66d17da7c4d.jpg',
         'categoryId': 'gastrointestinal',
-        'subcategoryId': '',
+        'subcategoryId': 'gi_acid',
+        'subSubcategoryId': 'gi_antacid',
         'barcode': '3664798001105',
         'activeIngredient': 'Aluminum Hydroxide + Magnesium Hydroxide',
         'concentration': '460 mg + 400 mg per 5 ml sachet',
@@ -3692,19 +5098,27 @@ class SeedService {
         'stock': 45,
         'rewardPoints': 5,
         'isOffer': false,
-        'usageSteps': ['Massage sachet before opening.', 'Take suspension directly without dilution.', 'Use when heartburn or reflux occurs.'],
+        'usageSteps': [
+          'Massage sachet before opening.',
+          'Take suspension directly without dilution.',
+          'Use when heartburn or reflux occurs.'
+        ],
       },
       {
         'docId': 'med_010',
         'name': 'Gaviscon Double Action Liquid 150ml',
         'nameArabic': 'جافيسكون دبل أكشن شراب 150 مل',
-        'description': 'Oral suspension used for heartburn, indigestion, and acid reflux symptoms by neutralizing acid and forming a protective barrier.',
+        'description':
+            'Oral suspension used for heartburn, indigestion, and acid reflux symptoms by neutralizing acid and forming a protective barrier.',
         'price': 144.0,
-        'imageUrl': 'https://drahmedelezaby.com/wp-content/uploads/2025/03/Gaviscon-Double-Action-Liquid-150ml.webp',
+        'imageUrl':
+            'https://drahmedelezaby.com/wp-content/uploads/2025/03/Gaviscon-Double-Action-Liquid-150ml.webp',
         'categoryId': 'gastrointestinal',
-        'subcategoryId': '',
+        'subcategoryId': 'gi_acid',
+        'subSubcategoryId': 'gi_antacid',
         'barcode': '5000158071889',
-        'activeIngredient': 'Sodium Alginate + Sodium Bicarbonate + Calcium Carbonate',
+        'activeIngredient':
+            'Sodium Alginate + Sodium Bicarbonate + Calcium Carbonate',
         'concentration': '500 mg + 213 mg + 325 mg per 10 ml',
         'dosageForm': 'Oral suspension',
         'manufacturer': 'Reckitt',
@@ -3712,17 +5126,24 @@ class SeedService {
         'stock': 40,
         'rewardPoints': 14,
         'isOffer': false,
-        'usageSteps': ['Shake well before use.', 'Take after meals and before bedtime as directed.', 'Consult a pharmacist if symptoms continue.'],
+        'usageSteps': [
+          'Shake well before use.',
+          'Take after meals and before bedtime as directed.',
+          'Consult a pharmacist if symptoms continue.'
+        ],
       },
       {
         'docId': 'med_011',
         'name': 'Flagyl 500mg 20 Tablets',
         'nameArabic': 'فلاجيل 500 مجم 20 قرص',
-        'description': 'Metronidazole antibiotic/antiprotozoal used for certain bacterial and protozoal infections.',
+        'description':
+            'Metronidazole antibiotic/antiprotozoal used for certain bacterial and protozoal infections.',
         'price': 34.0,
-        'imageUrl': 'https://www.bloompharmacy.com/cdn/shop/products/flagyl-500-mg-20-tablets-500279.jpg?v=1687635467&width=1200',
+        'imageUrl':
+            'https://www.bloompharmacy.com/cdn/shop/products/flagyl-500-mg-20-tablets-500279.jpg?v=1687635467&width=1200',
         'categoryId': 'antibiotics',
-        'subcategoryId': '',
+        'subcategoryId': 'ab_antibiotics',
+        'subSubcategoryId': 'ab_other',
         'barcode': '6223003990602',
         'activeIngredient': 'Metronidazole',
         'concentration': '500 mg',
@@ -3732,7 +5153,11 @@ class SeedService {
         'stock': 35,
         'rewardPoints': 3,
         'isOffer': false,
-        'usageSteps': ['Use only according to a doctor or pharmacist direction.', 'Complete the prescribed course.', 'Avoid alcohol during treatment and shortly after.'],
+        'usageSteps': [
+          'Use only according to a doctor or pharmacist direction.',
+          'Complete the prescribed course.',
+          'Avoid alcohol during treatment and shortly after.'
+        ],
       },
       {
         'docId': 'med_012',
@@ -3740,9 +5165,11 @@ class SeedService {
         'nameArabic': 'أوجمنتين 1 جم 14 قرص',
         'description': 'Prescription antibiotic used for bacterial infections.',
         'price': 210.0,
-        'imageUrl': 'https://www.bloompharmacy.com/cdn/shop/products/augmentin-1-gm-14-tablets-145727.jpg?v=1687635056&width=1200',
+        'imageUrl':
+            'https://www.bloompharmacy.com/cdn/shop/products/augmentin-1-gm-14-tablets-145727.jpg?v=1687635056&width=1200',
         'categoryId': 'antibiotics',
-        'subcategoryId': '',
+        'subcategoryId': 'ab_antibiotics',
+        'subSubcategoryId': 'ab_pen',
         'barcode': '6221045011279',
         'activeIngredient': 'Amoxicillin + Clavulanic Acid',
         'concentration': '875 mg + 125 mg',
@@ -3752,17 +5179,23 @@ class SeedService {
         'stock': 30,
         'rewardPoints': 21,
         'isOffer': false,
-        'usageSteps': ['Use only with a prescription.', 'Take with food to reduce stomach upset.', 'Complete the full prescribed course.'],
+        'usageSteps': [
+          'Use only with a prescription.',
+          'Take with food to reduce stomach upset.',
+          'Complete the full prescribed course.'
+        ],
       },
       {
         'docId': 'med_013',
         'name': 'Amoxil 500mg 12 Capsules',
         'nameArabic': 'أموكسيل 500 مجم 12 كبسولة',
-        'description': 'Amoxicillin penicillin-class antibiotic used for bacterial infections such as ear, throat, respiratory, urinary, and dental infections when prescribed.',
+        'description':
+            'Amoxicillin penicillin-class antibiotic used for bacterial infections such as ear, throat, respiratory, urinary, and dental infections when prescribed.',
         'price': 45.0,
         'imageUrl': 'https://dwaprices.com/upload/1737676919.jpg',
         'categoryId': 'antibiotics',
-        'subcategoryId': '',
+        'subcategoryId': 'ab_antibiotics',
+        'subSubcategoryId': 'ab_pen',
         'barcode': '6221045010050',
         'activeIngredient': 'Amoxicillin',
         'concentration': '500 mg',
@@ -3772,17 +5205,24 @@ class SeedService {
         'stock': 30,
         'rewardPoints': 5,
         'isOffer': false,
-        'usageSteps': ['Use only with a prescription.', 'Take at the prescribed interval.', 'Complete the full course even if symptoms improve.'],
+        'usageSteps': [
+          'Use only with a prescription.',
+          'Take at the prescribed interval.',
+          'Complete the full course even if symptoms improve.'
+        ],
       },
       {
         'docId': 'med_014',
         'name': 'Zyrtec 10mg 20 Tablets',
         'nameArabic': 'زيرتك 10 مجم 20 قرص',
-        'description': 'Cetirizine antihistamine used for allergy, allergic rhinitis, nasal allergy, skin allergy, and hives.',
+        'description':
+            'Cetirizine antihistamine used for allergy, allergic rhinitis, nasal allergy, skin allergy, and hives.',
         'price': 100.0,
-        'imageUrl': 'https://www.bloompharmacy.com/cdn/shop/products/zyrtec-10-mg-20-tablets-382069.jpg?v=1687731891&width=1200',
+        'imageUrl':
+            'https://www.bloompharmacy.com/cdn/shop/products/zyrtec-10-mg-20-tablets-382069.jpg?v=1687731891&width=1200',
         'categoryId': 'respiratory_allergy',
-        'subcategoryId': '',
+        'subcategoryId': 'ra_antihistamines',
+        'subSubcategoryId': 'ra_anti_h2',
         'barcode': '6221045001829',
         'activeIngredient': 'Cetirizine Dihydrochloride',
         'concentration': '10 mg',
@@ -3792,17 +5232,24 @@ class SeedService {
         'stock': 45,
         'rewardPoints': 10,
         'isOffer': false,
-        'usageSteps': ['Take once daily or as directed.', 'May cause drowsiness in some users.', 'Avoid driving if it makes you sleepy.'],
+        'usageSteps': [
+          'Take once daily or as directed.',
+          'May cause drowsiness in some users.',
+          'Avoid driving if it makes you sleepy.'
+        ],
       },
       {
         'docId': 'med_015',
         'name': 'Claritine 10mg 20 Tablets',
         'nameArabic': 'كلاريتين 10 مجم 20 قرص',
-        'description': 'Non-drowsy loratadine antihistamine used for allergy, runny nose, sneezing, and urticaria.',
+        'description':
+            'Non-drowsy loratadine antihistamine used for allergy, runny nose, sneezing, and urticaria.',
         'price': 110.0,
-        'imageUrl': 'https://www.bloompharmacy.com/cdn/shop/products/claritine-10-mg-20-tablets-604347.jpg?v=1703687602&width=1200',
+        'imageUrl':
+            'https://www.bloompharmacy.com/cdn/shop/products/claritine-10-mg-20-tablets-604347.jpg?v=1703687602&width=1200',
         'categoryId': 'respiratory_allergy',
-        'subcategoryId': '',
+        'subcategoryId': 'ra_antihistamines',
+        'subSubcategoryId': 'ra_anti_h2',
         'barcode': '6221042134025',
         'activeIngredient': 'Loratadine',
         'concentration': '10 mg',
@@ -3812,17 +5259,24 @@ class SeedService {
         'stock': 45,
         'rewardPoints': 11,
         'isOffer': false,
-        'usageSteps': ['Take one tablet daily or as directed.', 'Can be taken with or without food.', 'Ask a pharmacist if you have liver or kidney problems.'],
+        'usageSteps': [
+          'Take one tablet daily or as directed.',
+          'Can be taken with or without food.',
+          'Ask a pharmacist if you have liver or kidney problems.'
+        ],
       },
       {
         'docId': 'med_016',
         'name': 'Bisolvon Syrup 115ml',
         'nameArabic': 'بيسولفون شراب 115 مل',
-        'description': 'Bromhexine mucolytic syrup used for productive cough and phlegm.',
+        'description':
+            'Bromhexine mucolytic syrup used for productive cough and phlegm.',
         'price': 35.0,
-        'imageUrl': 'https://www.bloompharmacy.com/cdn/shop/products/bisolvon-syrup-115-ml-537601.jpg?v=1695227648&width=1200',
+        'imageUrl':
+            'https://www.bloompharmacy.com/cdn/shop/products/bisolvon-syrup-115-ml-537601.jpg?v=1695227648&width=1200',
         'categoryId': 'respiratory_allergy',
-        'subcategoryId': '',
+        'subcategoryId': 'ra_cough',
+        'subSubcategoryId': 'ra_cough_mucolytic',
         'barcode': '6223003992194',
         'activeIngredient': 'Bromhexine Hydrochloride',
         'concentration': '4 mg / 5 ml',
@@ -3832,17 +5286,24 @@ class SeedService {
         'stock': 45,
         'rewardPoints': 4,
         'isOffer': false,
-        'usageSteps': ['Shake well before use.', 'Measure the dose using a measuring cup or spoon.', 'Drink fluids to help loosen phlegm.'],
+        'usageSteps': [
+          'Shake well before use.',
+          'Measure the dose using a measuring cup or spoon.',
+          'Drink fluids to help loosen phlegm.'
+        ],
       },
       {
         'docId': 'med_017',
         'name': 'Mucosolvan Syrup 30mg/5ml 100ml',
         'nameArabic': 'ميوكوسولفان شراب 30 مجم/5 مل 100 مل',
-        'description': 'Ambroxol mucolytic/expectorant syrup used for wet cough and phlegm.',
+        'description':
+            'Ambroxol mucolytic/expectorant syrup used for wet cough and phlegm.',
         'price': 34.9,
-        'imageUrl': 'https://m.media-amazon.com/images/I/51HjxgcfYIL._AC_SX679_.jpg',
+        'imageUrl':
+            'https://m.media-amazon.com/images/I/51HjxgcfYIL._AC_SX679_.jpg',
         'categoryId': 'respiratory_allergy',
-        'subcategoryId': '',
+        'subcategoryId': 'ra_cough',
+        'subSubcategoryId': 'ra_cough_mucolytic',
         'barcode': '6221043030357',
         'activeIngredient': 'Ambroxol Hydrochloride',
         'concentration': '30 mg / 5 ml',
@@ -3852,17 +5313,24 @@ class SeedService {
         'stock': 45,
         'rewardPoints': 4,
         'isOffer': false,
-        'usageSteps': ['Shake well before use.', 'Measure the correct dose.', 'Use for wet cough/phlegm, not dry cough unless advised.'],
+        'usageSteps': [
+          'Shake well before use.',
+          'Measure the correct dose.',
+          'Use for wet cough/phlegm, not dry cough unless advised.'
+        ],
       },
       {
         'docId': 'med_018',
         'name': 'Betadine Antiseptic Solution 10% 120ml',
         'nameArabic': 'بيتادين محلول مطهر 10% 120 مل',
-        'description': 'Povidone-iodine antiseptic solution used for minor wounds, cuts, abrasions, and skin disinfection.',
+        'description':
+            'Povidone-iodine antiseptic solution used for minor wounds, cuts, abrasions, and skin disinfection.',
         'price': 16.0,
-        'imageUrl': 'https://pharmazone.com/cdn/shop/files/11060_000_001_cc7eb461-51b1-46c9-bcf5-515d84113eeb.webp?v=1746615790&width=900',
+        'imageUrl':
+            'https://pharmazone.com/cdn/shop/files/11060_000_001_cc7eb461-51b1-46c9-bcf5-515d84113eeb.webp?v=1746615790&width=900',
         'categoryId': 'dermatology',
-        'subcategoryId': '',
+        'subcategoryId': 'dr_antiseptics',
+        'subSubcategoryId': 'dr_antiseptic_gen',
         'barcode': '6224009944101',
         'activeIngredient': 'Povidone-Iodine',
         'concentration': '10%',
@@ -3872,17 +5340,24 @@ class SeedService {
         'stock': 50,
         'rewardPoints': 2,
         'isOffer': false,
-        'usageSteps': ['Clean the affected area.', 'Apply a small amount to the skin or wound area.', 'For external use only.'],
+        'usageSteps': [
+          'Clean the affected area.',
+          'Apply a small amount to the skin or wound area.',
+          'For external use only.'
+        ],
       },
       {
         'docId': 'med_019',
         'name': 'Fucidin 2% Cream 20g',
         'nameArabic': 'فيوسيدين كريم 2% 20 جم',
-        'description': 'Fusidic acid topical antibiotic cream used for bacterial skin infections.',
+        'description':
+            'Fusidic acid topical antibiotic cream used for bacterial skin infections.',
         'price': 69.0,
-        'imageUrl': 'https://www.bloompharmacy.com/cdn/shop/products/fucidin-2-cream-20-gm-343478.jpg?v=1687635467&width=1200',
+        'imageUrl':
+            'https://www.bloompharmacy.com/cdn/shop/products/fucidin-2-cream-20-gm-343478.jpg?v=1687635467&width=1200',
         'categoryId': 'dermatology',
-        'subcategoryId': '',
+        'subcategoryId': 'dr_topical_antibiotics',
+        'subSubcategoryId': 'dr_top_ab_gen',
         'barcode': '6222003702529',
         'activeIngredient': 'Fusidic Acid',
         'concentration': '2%',
@@ -3892,17 +5367,24 @@ class SeedService {
         'stock': 40,
         'rewardPoints': 7,
         'isOffer': false,
-        'usageSteps': ['Apply a thin layer to the affected skin area.', 'Use 2-3 times daily or as directed.', 'For external use only.'],
+        'usageSteps': [
+          'Apply a thin layer to the affected skin area.',
+          'Use 2-3 times daily or as directed.',
+          'For external use only.'
+        ],
       },
       {
         'docId': 'med_020',
         'name': 'Rivo 320mg 200 Tablets',
         'nameArabic': 'ريفو 320 مجم 200 قرص',
-        'description': 'Acetylsalicylic acid product used as pain reliever, fever reducer, anti-inflammatory, and antiplatelet depending on dose and doctor direction.',
+        'description':
+            'Acetylsalicylic acid product used as pain reliever, fever reducer, anti-inflammatory, and antiplatelet depending on dose and doctor direction.',
         'price': 141.0,
-        'imageUrl': 'https://delmar-test.linkedgates.com/images/items/3791-v1.JPEG',
+        'imageUrl':
+            'https://delmar-test.linkedgates.com/images/items/3791-v1.JPEG',
         'categoryId': 'pain_inflammation',
-        'subcategoryId': '',
+        'subcategoryId': 'pi_analgesics',
+        'subSubcategoryId': 'pi_anal_gen',
         'barcode': '6221060001101',
         'activeIngredient': 'Acetylsalicylic Acid',
         'concentration': '320 mg',
@@ -3912,28 +5394,37 @@ class SeedService {
         'stock': 35,
         'rewardPoints': 14,
         'isOffer': false,
-        'usageSteps': ['Take after food unless directed otherwise.', 'Do not use as a blood thinner without medical advice.', 'Avoid in children unless prescribed.'],
+        'usageSteps': [
+          'Take after food unless directed otherwise.',
+          'Do not use as a blood thinner without medical advice.',
+          'Avoid in children unless prescribed.'
+        ],
       },
-
-
     ];
 
     const chunkSize = 400;
     for (int i = 0; i < products.length; i += chunkSize) {
-      final chunk = products.sublist(
-          i, (i + chunkSize > products.length) ? products.length : i + chunkSize);
+      final chunk = products.sublist(i,
+          (i + chunkSize > products.length) ? products.length : i + chunkSize);
       final batch = _db.batch();
       for (final p in chunk) {
         // Use the stable docId so re-seeding updates instead of duplicating.
         final ref = _db.collection('products').doc(p['docId'] as String);
-        final data = Map<String, dynamic>.from(p)
-          ..remove('docId');
+        final data = Map<String, dynamic>.from(p)..remove('docId');
         data['createdAt'] ??= Timestamp.fromDate(DateTime.now());
-        final assignment = classifyProduct(
-          categoryId: (data['categoryId'] as String?) ?? '',
-          activeIngredient: (data['activeIngredient'] as String?) ?? '',
-          dosageForm: (data['dosageForm'] as String?) ?? '',
-        );
+        final hasExplicitAssignment =
+            ((data['subcategoryId'] as String?) ?? '').isNotEmpty &&
+                ((data['subSubcategoryId'] as String?) ?? '').isNotEmpty;
+        final assignment = hasExplicitAssignment
+            ? (
+                sub: data['subcategoryId'] as String,
+                subSub: data['subSubcategoryId'] as String,
+              )
+            : classifyProduct(
+                categoryId: (data['categoryId'] as String?) ?? '',
+                activeIngredient: (data['activeIngredient'] as String?) ?? '',
+                dosageForm: (data['dosageForm'] as String?) ?? '',
+              );
         data['subcategoryId'] = assignment.sub;
         data['subSubcategoryId'] = assignment.subSub;
         batch.set(ref, data, SetOptions(merge: true));

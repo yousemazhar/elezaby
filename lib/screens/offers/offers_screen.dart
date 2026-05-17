@@ -98,7 +98,7 @@ class _OffersScreenState extends State<OffersScreen> {
                 gridDelegate:
                     const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
-                  childAspectRatio: 0.68,
+                  childAspectRatio: 0.82,
                   crossAxisSpacing: 12,
                   mainAxisSpacing: 12,
                 ),

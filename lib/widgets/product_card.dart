@@ -36,7 +36,7 @@ class ProductCard extends StatelessWidget {
             ),
           ],
         ),
-        padding: const EdgeInsets.all(12),
+        padding: const EdgeInsets.fromLTRB(12, 12, 12, 0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -133,7 +133,7 @@ class ProductCard extends StatelessWidget {
                 color: AppColors.textDark,
               ),
             ),
-            const SizedBox(height: 6),
+            const Spacer(),
             if (inCart)
               _QuantityBar(product: product, uid: uid)
             else

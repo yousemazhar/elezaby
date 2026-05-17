@@ -65,48 +65,37 @@ class ProductCard extends StatelessWidget {
                     ),
                   ),
                 ),
-                if (product.rewardPoints > 0)
-                  Positioned(
-                    top: 6,
-                    right: 6,
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 6, vertical: 3),
-                      decoration: BoxDecoration(
-                        color: AppColors.greenLight,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Text(
-                        'Earn ${product.rewardPoints} pts',
-                        style: const TextStyle(
-                          fontSize: 9,
-                          fontWeight: FontWeight.w700,
-                          color: AppColors.green,
+                Positioned(
+                  top: 6,
+                  right: 6,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+
+                      if (product.rewardPoints > 0) ...[
+                        if (product.isOffer &&
+                            (product.offerPercentage ?? 0) > 0)
+                          const SizedBox(height: 4),
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 6, vertical: 3),
+                          decoration: BoxDecoration(
+                            color: AppColors.greenLight,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Text(
+                            'Earn ${product.rewardPoints} pts',
+                            style: const TextStyle(
+                              fontSize: 9,
+                              fontWeight: FontWeight.w700,
+                              color: AppColors.green,
+                            ),
+                          ),
                         ),
-                      ),
-                    ),
+                      ],
+                    ],
                   ),
-                if (product.isOffer)
-                  Positioned(
-                    bottom: 6,
-                    left: 6,
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 6, vertical: 3),
-                      decoration: BoxDecoration(
-                        color: AppColors.red,
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: const Text(
-                        'OFFER',
-                        style: TextStyle(
-                          fontSize: 9,
-                          fontWeight: FontWeight.w700,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                  ),
+                ),
               ],
             ),
             const SizedBox(height: 8),
@@ -125,14 +114,7 @@ class ProductCard extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 4),
-            Text(
-              'EGP ${product.price.toStringAsFixed(0)}',
-              style: const TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w800,
-                color: AppColors.textDark,
-              ),
-            ),
+            _PriceRow(product: product),
             const Spacer(),
             if (inCart)
               _QuantityBar(product: product, uid: uid)
@@ -146,6 +128,49 @@ class ProductCard extends StatelessWidget {
 }
 
 const double _kCartControlHeight = 40;
+
+class _PriceRow extends StatelessWidget {
+  final Product product;
+  const _PriceRow({required this.product});
+
+  @override
+  Widget build(BuildContext context) {
+    final hasDiscount =
+        product.isOffer && (product.offerPercentage ?? 0) > 0;
+    final currentPrice = hasDiscount
+        ? product.price * (1 - product.offerPercentage! / 100)
+        : product.price;
+
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: [
+        Text(
+          'EGP ${currentPrice.toStringAsFixed(0)}',
+          style: const TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.w800,
+            color: AppColors.primary,
+          ),
+        ),
+        if (hasDiscount) ...[
+          const SizedBox(width: 6),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 1),
+            child: Text(
+              'EGP ${product.price.toStringAsFixed(0)}',
+              style: const TextStyle(
+                fontSize: 11,
+                fontWeight: FontWeight.w600,
+                color: AppColors.textMuted,
+                decoration: TextDecoration.lineThrough,
+              ),
+            ),
+          ),
+        ],
+      ],
+    );
+  }
+}
 
 class _AddButton extends StatelessWidget {
   final Product product;

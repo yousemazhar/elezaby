@@ -19,6 +19,7 @@ class Product {
   final int stock;
   final int rewardPoints;
   final bool isOffer;
+  final int? offerPercentage;
   final List<String> usageSteps;
   final DateTime createdAt;
 
@@ -41,6 +42,7 @@ class Product {
     required this.stock,
     required this.rewardPoints,
     required this.isOffer,
+    this.offerPercentage,
     required this.usageSteps,
     required this.createdAt,
   });
@@ -66,6 +68,7 @@ class Product {
       stock: (data['stock'] as num?)?.toInt() ?? 0,
       rewardPoints: (data['rewardPoints'] as num?)?.toInt() ?? 0,
       isOffer: data['isOffer'] as bool? ?? false,
+      offerPercentage: (data['offerPercentage'] as num?)?.toInt(),
       usageSteps: List<String>.from(data['usageSteps'] as List? ?? []),
       createdAt: (data['createdAt'] as Timestamp?)?.toDate() ?? DateTime.now(),
     );
@@ -89,6 +92,7 @@ class Product {
         'stock': stock,
         'rewardPoints': rewardPoints,
         'isOffer': isOffer,
+        'offerPercentage': offerPercentage,
         'usageSteps': usageSteps,
         'createdAt': Timestamp.fromDate(createdAt),
       };

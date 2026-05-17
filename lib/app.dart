@@ -7,6 +7,7 @@ import 'providers/cart_provider.dart';
 import 'providers/product_provider.dart';
 import 'providers/favorites_provider.dart';
 import 'providers/address_provider.dart';
+import 'services/notification_service.dart';
 
 class ElezabyApp extends StatefulWidget {
   const ElezabyApp({super.key});
@@ -33,16 +34,25 @@ class _ElezabyAppState extends State<ElezabyApp> {
     _authProvider.addListener(_onAuthChange);
   }
 
+  String? _lastUid;
+
   void _onAuthChange() {
     final uid = _authProvider.appUser?.uid;
     if (uid != null) {
       _cartProvider.startListening(uid);
       _favoritesProvider.startListening(uid);
       _addressProvider.startListening(uid);
+      NotificationService.instance.registerTokenForUser(uid);
+      _lastUid = uid;
     } else {
       _cartProvider.stopListening();
       _favoritesProvider.stopListening();
       _addressProvider.stopListening();
+      final prev = _lastUid;
+      if (prev != null) {
+        NotificationService.instance.unregisterTokenForUser(prev);
+        _lastUid = null;
+      }
     }
   }
 

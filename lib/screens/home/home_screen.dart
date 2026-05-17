@@ -358,8 +358,11 @@ class _ServicesRow extends StatelessWidget {
     final services = <({String icon, String label, VoidCallback onTap})>[
       (icon: '📷', label: 'Scan / AR', onTap: onScanTap),
       (icon: '📋', label: 'Upload Prescription', onTap: onPrescriptionTap),
-      // TODO: route to mobility aids catalog when available
-      (icon: '♿', label: 'Mobility Aids', onTap: () {}),
+
+      (icon: '♿', label: 'Mobility Aids', onTap: () { context.push('/products', extra: {
+        'categoryId':'mobility_aids' ,
+        'title': 'mobility aids',
+      });}),
     ];
 
     return Padding(

@@ -6,7 +6,7 @@ import '../../providers/auth_provider.dart';
 import '../../providers/product_provider.dart';
 import '../../providers/address_provider.dart';
 import '../../widgets/global_app_bar.dart';
-import '../../widgets/product_image.dart';
+import '../../widgets/product_card.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -175,12 +175,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 delegate: SliverChildBuilderDelegate(
                   (context, i) {
                     final p = products.products[i];
-                    return _SmallProductCard(
-                      name: p.name,
-                      price: p.price,
-                      imageUrl: p.imageUrl,
-                      rewardPoints: p.rewardPoints,
-                      isOffer: p.isOffer,
+                    return ProductCard(
+                      product: p,
                       onTap: () => context.push('/product/${p.id}'),
                     );
                   },
@@ -190,7 +186,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
-                  childAspectRatio: 0.72,
+                  childAspectRatio: 0.70,
                   crossAxisSpacing: 12,
                   mainAxisSpacing: 12,
                 ),
@@ -468,114 +464,3 @@ class _CategoriesRow extends StatelessWidget {
   }
 }
 
-class _SmallProductCard extends StatelessWidget {
-  final String name;
-  final double price;
-  final String imageUrl;
-  final int rewardPoints;
-  final bool isOffer;
-  final VoidCallback onTap;
-
-  const _SmallProductCard({
-    required this.name,
-    required this.price,
-    required this.imageUrl,
-    required this.rewardPoints,
-    required this.isOffer,
-    required this.onTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(24),
-          boxShadow: const [
-            BoxShadow(
-                color: Color(0x140087C8), blurRadius: 12, offset: Offset(0, 2)),
-          ],
-        ),
-        padding: const EdgeInsets.all(12),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Stack(
-              children: [
-                Container(
-                  width: double.infinity,
-                  height: 90,
-                  decoration: BoxDecoration(
-                    color: AppColors.primaryLight,
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                  child: ProductImage(imageUrl: imageUrl, iconSize: 36),
-                ),
-                if (rewardPoints > 0)
-                  Positioned(
-                    top: 6,
-                    right: 6,
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 5, vertical: 2),
-                      decoration: BoxDecoration(
-                        color: AppColors.greenLight,
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: Text(
-                        'Earn $rewardPoints',
-                        style: const TextStyle(
-                            fontSize: 8,
-                            fontWeight: FontWeight.w700,
-                            color: AppColors.green),
-                      ),
-                    ),
-                  ),
-                if (isOffer)
-                  Positioned(
-                    bottom: 6,
-                    left: 6,
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 5, vertical: 2),
-                      decoration: BoxDecoration(
-                        color: AppColors.red,
-                        borderRadius: BorderRadius.circular(6),
-                      ),
-                      child: const Text(
-                        'OFFER',
-                        style: TextStyle(
-                            fontSize: 8,
-                            fontWeight: FontWeight.w700,
-                            color: Colors.white),
-                      ),
-                    ),
-                  ),
-              ],
-            ),
-            const SizedBox(height: 8),
-            Text(
-              name,
-              style: const TextStyle(
-                  fontSize: 12,
-                  fontWeight: FontWeight.w600,
-                  color: AppColors.textDark),
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
-            ),
-            const Spacer(),
-            Text(
-              'EGP ${price.toStringAsFixed(0)}',
-              style: const TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.w800,
-                  color: AppColors.textDark),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}

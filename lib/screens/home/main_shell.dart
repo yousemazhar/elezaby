@@ -4,7 +4,7 @@ import 'home_screen.dart';
 import '../shop/shop_screen.dart';
 import '../favorites/favorites_screen.dart';
 import '../offers/offers_screen.dart';
-import '../profile/profile_screen.dart';
+import '../more/more_screen.dart';
 
 class MainShell extends StatefulWidget {
   const MainShell({super.key});
@@ -21,7 +21,7 @@ class _MainShellState extends State<MainShell> {
     ShopScreen(),
     FavoritesScreen(),
     OffersScreen(),
-    ProfileScreen(),
+    MoreScreen(),
   ];
 
   @override

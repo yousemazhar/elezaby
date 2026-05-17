@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import '../../core/constants/app_colors.dart';
 import '../../providers/auth_provider.dart';
+import '../../providers/favorites_provider.dart';
 import '../../services/seed_service.dart';
 import '../../widgets/global_app_bar.dart';
 import '../../widgets/reward_progress_card.dart';
@@ -13,10 +14,12 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final auth = context.watch<AuthProvider>();
+    final favs = context.watch<FavoritesProvider>();
     final user = auth.appUser;
 
     if (user == null) {
       return Scaffold(
+        appBar: const GlobalAppBar(showBackButton: true),
         body: Center(
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -34,180 +37,70 @@ class ProfileScreen extends StatelessWidget {
       );
     }
 
+    final ordersCount = user.firstOrderCompleted ? 1 : 0;
+    final favoritesCount = favs.favoriteIds.length;
+
     return Scaffold(
-      appBar: const GlobalAppBar(title: 'Profile'),
-      body: CustomScrollView(
-        slivers: [
-          SliverToBoxAdapter(
-            child: Container(
-              decoration: const BoxDecoration(gradient: AppColors.primaryGradient),
-              child: SafeArea(
-                bottom: false,
-                child: Column(
-                  children: [
-                    const SizedBox(height: 20),
-                    // Avatar
-                    Stack(
-                      children: [
-                        Container(
-                          width: 80,
-                          height: 80,
-                          decoration: const BoxDecoration(
-                            gradient: AppColors.primaryGradient135,
-                            shape: BoxShape.circle,
-                            boxShadow: [
-                              BoxShadow(
-                                  color: Color(0x4D0087C8),
-                                  blurRadius: 16,
-                                  offset: Offset(0, 4)),
-                            ],
-                          ),
-                          child: Center(
-                            child: Text(
-                              user.name.isNotEmpty
-                                  ? user.name[0].toUpperCase()
-                                  : 'U',
-                              style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 32,
-                                  fontWeight: FontWeight.w700),
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          bottom: 0,
-                          right: 0,
-                          child: GestureDetector(
-                            onTap: () => _showEditProfile(context),
-                            child: Container(
-                              width: 24,
-                              height: 24,
-                              decoration: const BoxDecoration(
-                                color: AppColors.primary,
-                                shape: BoxShape.circle,
-                                border: Border.fromBorderSide(
-                                    BorderSide(color: Colors.white, width: 2)),
-                              ),
-                              child: const Icon(Icons.edit, size: 12, color: Colors.white),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 10),
-                    Text(
-                      user.name,
-                      style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                          fontWeight: FontWeight.w700),
-                    ),
-                    if (user.phone.isNotEmpty)
-                      Text(
-                        user.phone,
-                        style: const TextStyle(
-                            color: Colors.white70, fontSize: 13),
-                      ),
-                    const SizedBox(height: 20),
-                    Container(
-                      height: 22,
-                      decoration: const BoxDecoration(
-                        color: Colors.white,
-                        borderRadius:
-                            BorderRadius.vertical(top: Radius.circular(18)),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+      appBar: const GlobalAppBar(showBackButton: true),
+      body: ListView(
+        padding: EdgeInsets.zero,
+        children: [
+          const Padding(
+            padding: EdgeInsets.fromLTRB(20, 16, 20, 12),
+            child: Text(
+              'Profile',
+              style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.w700,
+                  color: AppColors.textDark),
             ),
           ),
-          SliverPadding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            sliver: SliverList(
-              delegate: SliverChildListDelegate([
-                // Stats
+          _AvatarBlock(
+            initial: user.name.isNotEmpty ? user.name[0].toUpperCase() : 'U',
+            name: user.name,
+            phone: user.phone,
+            onEdit: () => _showEditProfile(context),
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
                 Row(
                   children: [
-                    _StatCard(
-                        number: '${user.rewardPoints}',
-                        label: 'Reward Points'),
+                    _StatCard(number: '$ordersCount', label: 'My Orders'),
+                    const SizedBox(width: 10),
+                    const _StatCard(number: '0', label: 'My Prescriptions'),
                     const SizedBox(width: 10),
                     _StatCard(
-                        number: user.firstOrderCompleted ? '1+' : '0',
-                        label: 'Orders'),
-                    const SizedBox(width: 10),
-                    _StatCard(
-                        number: user.firstOrderCompleted ? '✓' : '—',
-                        label: 'First Order'),
+                        number: '$favoritesCount', label: 'My Favorites'),
                   ],
                 ),
-                const SizedBox(height: 16),
-                // Reward card
-                RewardProgressCard(points: user.rewardPoints),
-                const SizedBox(height: 16),
-                // Account info
-                Container(
-                  padding: const EdgeInsets.all(16),
-                  decoration: BoxDecoration(
-                    color: AppColors.surface,
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          const Text(
-                            'Account Details',
-                            style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w700,
-                                color: AppColors.textDark),
-                          ),
-                          GestureDetector(
-                            onTap: () => _showEditProfile(context),
-                            child: const Text('Edit',
-                                style: TextStyle(
-                                    color: AppColors.primary,
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w600)),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 12),
-                      _AccountField(label: 'Full Name', value: user.name),
-                      _AccountField(label: 'Email', value: user.email),
-                      if (user.phone.isNotEmpty)
-                        _AccountField(label: 'Phone', value: user.phone),
-                    ],
-                  ),
-                ),
                 const SizedBox(height: 14),
-                // Menu items
-                _ProfileMenuItem(
-                  icon: Icons.shopping_bag_outlined,
-                  label: 'My Orders',
-                  onTap: () => context.push('/orders'),
-                ),
-                _ProfileMenuItem(
-                  icon: Icons.favorite_border_rounded,
-                  label: 'Favourites',
-                  onTap: () => context.push('/favorites'),
-                ),
-                _ProfileMenuItem(
-                  icon: Icons.location_on_outlined,
-                  label: 'Addresses',
+                RewardProgressCard(points: user.rewardPoints),
+                const SizedBox(height: 4),
+                _RowCard(
+                  icon: '📍',
+                  label: 'My Addresses',
                   onTap: () => context.push('/addresses'),
                 ),
-                _ProfileMenuItem(
-                  icon: Icons.notifications_outlined,
-                  label: 'Notifications',
-                  onTap: () => context.push('/notifications'),
+                const _RowCard(
+                  icon: '🛡️',
+                  label: 'My Insurance Profile',
+                  onTap: null,
                 ),
+                Container(
+                  height: 1,
+                  margin: const EdgeInsets.symmetric(vertical: 14),
+                  color: AppColors.divider,
+                ),
+                _AccountDetailsCard(
+                  email: user.email,
+                  phone: user.phone,
+                  onEdit: () => _showEditProfile(context),
+                ),
+                const SizedBox(height: 14),
                 const Divider(color: AppColors.divider, height: 24),
-                // Dev: Seed data
                 _ProfileMenuItem(
                   icon: Icons.cloud_upload_outlined,
                   label: 'Seed Demo Data (Dev)',
@@ -244,10 +137,316 @@ class ProfileScreen extends StatelessWidget {
                   },
                 ),
                 const SizedBox(height: 100),
-              ]),
+              ],
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class _AvatarBlock extends StatelessWidget {
+  final String initial;
+  final String name;
+  final String phone;
+  final VoidCallback onEdit;
+  const _AvatarBlock({
+    required this.initial,
+    required this.name,
+    required this.phone,
+    required this.onEdit,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(20, 8, 20, 20),
+      child: Column(
+        children: [
+          Stack(
+            children: [
+              Container(
+                width: 80,
+                height: 80,
+                decoration: BoxDecoration(
+                  gradient: AppColors.primaryGradient135,
+                  shape: BoxShape.circle,
+                  border: Border.all(color: Colors.white, width: 3),
+                  boxShadow: const [
+                    BoxShadow(
+                      color: Color(0x4D0087C8),
+                      blurRadius: 16,
+                      offset: Offset(0, 4),
+                    ),
+                  ],
+                ),
+                child: Center(
+                  child: Text(
+                    initial,
+                    style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 32,
+                        fontWeight: FontWeight.w700),
+                  ),
+                ),
+              ),
+              Positioned(
+                bottom: 0,
+                right: 0,
+                child: GestureDetector(
+                  onTap: onEdit,
+                  child: Container(
+                    width: 24,
+                    height: 24,
+                    decoration: BoxDecoration(
+                      color: AppColors.primary,
+                      shape: BoxShape.circle,
+                      border: Border.all(color: Colors.white, width: 2),
+                    ),
+                    child: const Icon(Icons.camera_alt,
+                        size: 12, color: Colors.white),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 10),
+          Text(
+            name,
+            style: const TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.w700,
+                color: AppColors.textDark),
+          ),
+          const SizedBox(height: 2),
+          const Text(
+            'Mobile Number',
+            style: TextStyle(fontSize: 12, color: AppColors.textMuted),
+          ),
+          if (phone.isNotEmpty)
+            Text(
+              phone,
+              style: const TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w600,
+                  color: AppColors.textDark),
+            ),
+        ],
+      ),
+    );
+  }
+}
+
+class _StatCard extends StatelessWidget {
+  final String number;
+  final String label;
+  const _StatCard({required this.number, required this.label});
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Container(
+        padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 8),
+        decoration: BoxDecoration(
+          color: AppColors.surface,
+          borderRadius: BorderRadius.circular(16),
+        ),
+        child: Column(
+          children: [
+            Text(
+              number,
+              style: const TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.w800,
+                  color: AppColors.textDark),
+            ),
+            const SizedBox(height: 3),
+            Text(
+              label,
+              style: const TextStyle(
+                  fontSize: 10, color: AppColors.textMuted),
+              textAlign: TextAlign.center,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _RowCard extends StatelessWidget {
+  final String icon;
+  final String label;
+  final VoidCallback? onTap;
+  const _RowCard({required this.icon, required this.label, this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        margin: const EdgeInsets.only(bottom: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 16),
+        decoration: BoxDecoration(
+          color: AppColors.surface,
+          borderRadius: BorderRadius.circular(16),
+        ),
+        child: Row(
+          children: [
+            Container(
+              width: 32,
+              height: 32,
+              decoration: BoxDecoration(
+                color: AppColors.primaryLight,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              alignment: Alignment.center,
+              child: Text(icon, style: const TextStyle(fontSize: 16)),
+            ),
+            const SizedBox(width: 12),
+            Expanded(
+              child: Text(
+                label,
+                style: const TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w600,
+                    color: AppColors.textDark),
+              ),
+            ),
+            const Text('›',
+                style: TextStyle(
+                    fontSize: 16, color: AppColors.textMuted)),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _AccountDetailsCard extends StatelessWidget {
+  final String email;
+  final String phone;
+  final VoidCallback onEdit;
+  const _AccountDetailsCard({
+    required this.email,
+    required this.phone,
+    required this.onEdit,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const Text(
+              'Account details',
+              style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w700,
+                  color: AppColors.textDark),
+            ),
+            GestureDetector(
+              onTap: onEdit,
+              child: const Text(
+                'Edit',
+                style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                    color: AppColors.primary),
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(height: 10),
+        _AccountField(label: 'Email', value: email),
+        const SizedBox(height: 8),
+        if (phone.isNotEmpty) _AccountField(label: 'Phone', value: phone),
+      ],
+    );
+  }
+}
+
+class _AccountField extends StatelessWidget {
+  final String label;
+  final String value;
+  const _AccountField({required this.label, required this.value});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+      decoration: BoxDecoration(
+        color: AppColors.surface,
+        borderRadius: BorderRadius.circular(14),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(label,
+              style: const TextStyle(
+                  fontSize: 11, color: AppColors.textMuted)),
+          const SizedBox(height: 3),
+          Text(value,
+              style: const TextStyle(
+                  fontSize: 14, color: AppColors.textDark)),
+        ],
+      ),
+    );
+  }
+}
+
+class _ProfileMenuItem extends StatelessWidget {
+  final IconData icon;
+  final String label;
+  final VoidCallback onTap;
+  final Color? textColor;
+  const _ProfileMenuItem({
+    required this.icon,
+    required this.label,
+    required this.onTap,
+    this.textColor,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        margin: const EdgeInsets.only(bottom: 10),
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          color: AppColors.surface,
+          borderRadius: BorderRadius.circular(16),
+        ),
+        child: Row(
+          children: [
+            Container(
+              width: 32,
+              height: 32,
+              decoration: BoxDecoration(
+                color: AppColors.primaryLight,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Icon(icon, size: 16, color: AppColors.primary),
+            ),
+            const SizedBox(width: 12),
+            Expanded(
+              child: Text(
+                label,
+                style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w600,
+                    color: textColor ?? AppColors.textDark),
+              ),
+            ),
+            const Icon(Icons.chevron_right, color: AppColors.textMuted),
+          ],
+        ),
       ),
     );
   }
@@ -430,120 +629,6 @@ class _EditField extends StatelessWidget {
           ),
         ),
       ],
-    );
-  }
-}
-
-class _StatCard extends StatelessWidget {
-  final String number;
-  final String label;
-  const _StatCard({required this.number, required this.label});
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 8),
-        decoration: BoxDecoration(
-          color: AppColors.surface,
-          borderRadius: BorderRadius.circular(16),
-        ),
-        child: Column(
-          children: [
-            Text(
-              number,
-              style: const TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.w800,
-                  color: AppColors.textDark),
-            ),
-            const SizedBox(height: 3),
-            Text(
-              label,
-              style: const TextStyle(
-                  fontSize: 10, color: AppColors.textMuted),
-              textAlign: TextAlign.center,
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class _AccountField extends StatelessWidget {
-  final String label;
-  final String value;
-  const _AccountField({required this.label, required this.value});
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 10),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(label,
-              style: const TextStyle(
-                  fontSize: 11, color: AppColors.textMuted)),
-          const SizedBox(height: 2),
-          Text(value,
-              style: const TextStyle(
-                  fontSize: 14, color: AppColors.textDark)),
-        ],
-      ),
-    );
-  }
-}
-
-class _ProfileMenuItem extends StatelessWidget {
-  final IconData icon;
-  final String label;
-  final VoidCallback onTap;
-  final Color? textColor;
-  const _ProfileMenuItem({
-    required this.icon,
-    required this.label,
-    required this.onTap,
-    this.textColor,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        margin: const EdgeInsets.only(bottom: 10),
-        padding: const EdgeInsets.all(16),
-        decoration: BoxDecoration(
-          color: AppColors.surface,
-          borderRadius: BorderRadius.circular(16),
-        ),
-        child: Row(
-          children: [
-            Container(
-              width: 32,
-              height: 32,
-              decoration: BoxDecoration(
-                color: AppColors.primaryLight,
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Icon(icon, size: 16, color: AppColors.primary),
-            ),
-            const SizedBox(width: 12),
-            Expanded(
-              child: Text(
-                label,
-                style: TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.w600,
-                    color: textColor ?? AppColors.textDark),
-              ),
-            ),
-            const Icon(Icons.chevron_right, color: AppColors.textMuted),
-          ],
-        ),
-      ),
     );
   }
 }

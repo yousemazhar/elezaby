@@ -144,7 +144,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 200,
         'rewardPoints': 3,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Shake well before use',
           'Measure the exact dose with the provided cup',
@@ -171,7 +171,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 198,
         'rewardPoints': 3,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -198,7 +198,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 49,
         'rewardPoints': 77,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -498,7 +498,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 141,
         'rewardPoints': 70,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -555,7 +555,7 @@ class SeedService {
         'origin': 'Imported',
         'stock': 121,
         'rewardPoints': 11,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -611,7 +611,7 @@ class SeedService {
         'origin': 'Imported',
         'stock': 93,
         'rewardPoints': 8,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -639,7 +639,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 35,
         'rewardPoints': 16,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -667,7 +667,7 @@ class SeedService {
         'origin': 'Imported',
         'stock': 85,
         'rewardPoints': 11,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -694,7 +694,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 50,
         'rewardPoints': 12,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -721,7 +721,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 39,
         'rewardPoints': 17,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -748,7 +748,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 50,
         'rewardPoints': 25,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -775,7 +775,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 59,
         'rewardPoints': 33,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -803,7 +803,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 79,
         'rewardPoints': 12,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Shake well before use',
           'Measure the exact dose with the provided cup',
@@ -830,7 +830,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 45,
         'rewardPoints': 41,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -884,7 +884,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 194,
         'rewardPoints': 7,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -912,7 +912,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 120,
         'rewardPoints': 25,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -940,7 +940,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 193,
         'rewardPoints': 35,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -967,7 +967,7 @@ class SeedService {
         'origin': 'Imported',
         'stock': 200,
         'rewardPoints': 106,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -994,7 +994,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 27,
         'rewardPoints': 15,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -1158,7 +1158,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 39,
         'rewardPoints': 8,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -1186,7 +1186,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 56,
         'rewardPoints': 11,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -1321,7 +1321,7 @@ class SeedService {
         'origin': 'Imported',
         'stock': 60,
         'rewardPoints': 94,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -1349,7 +1349,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 200,
         'rewardPoints': 22,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -1376,7 +1376,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 189,
         'rewardPoints': 13,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -1403,7 +1403,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 107,
         'rewardPoints': 5,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -1457,7 +1457,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 200,
         'rewardPoints': 36,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -1484,7 +1484,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 126,
         'rewardPoints': 30,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -1511,7 +1511,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 34,
         'rewardPoints': 6,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -1566,7 +1566,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 103,
         'rewardPoints': 10,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -1620,7 +1620,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 78,
         'rewardPoints': 14,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -1648,7 +1648,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 158,
         'rewardPoints': 20,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -1676,7 +1676,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 187,
         'rewardPoints': 20,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -1704,7 +1704,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 106,
         'rewardPoints': 35,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -1760,7 +1760,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 98,
         'rewardPoints': 3,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Shake well before use',
           'Measure the exact dose with the provided cup',
@@ -1843,7 +1843,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 93,
         'rewardPoints': 3,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Shake well before use',
           'Measure the exact dose with the provided cup',
@@ -1870,7 +1870,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 120,
         'rewardPoints': 4,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Shake well before use',
           'Measure the exact dose with the provided cup',
@@ -1897,7 +1897,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 200,
         'rewardPoints': 13,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -1924,7 +1924,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 68,
         'rewardPoints': 19,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -1951,7 +1951,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 200,
         'rewardPoints': 7,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -1978,7 +1978,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 117,
         'rewardPoints': 9,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -2006,7 +2006,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 148,
         'rewardPoints': 16,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -2034,7 +2034,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 200,
         'rewardPoints': 11,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -2062,7 +2062,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 100,
         'rewardPoints': 14,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -2090,7 +2090,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 200,
         'rewardPoints': 7,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -2118,7 +2118,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 192,
         'rewardPoints': 9,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -2146,7 +2146,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 200,
         'rewardPoints': 16,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -2174,7 +2174,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 200,
         'rewardPoints': 11,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -2202,7 +2202,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 124,
         'rewardPoints': 14,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -2230,7 +2230,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 34,
         'rewardPoints': 8,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -2258,7 +2258,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 52,
         'rewardPoints': 13,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -2286,7 +2286,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 35,
         'rewardPoints': 9,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -2314,7 +2314,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 41,
         'rewardPoints': 14,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -2341,7 +2341,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 200,
         'rewardPoints': 11,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -2368,7 +2368,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 63,
         'rewardPoints': 14,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -2396,7 +2396,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 47,
         'rewardPoints': 1,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'For use by healthcare professionals only',
           'Administer as prescribed by your doctor',
@@ -2423,7 +2423,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 200,
         'rewardPoints': 10,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -2450,7 +2450,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 183,
         'rewardPoints': 6,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -2478,7 +2478,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 175,
         'rewardPoints': 5,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -2506,7 +2506,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 200,
         'rewardPoints': 5,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -2589,7 +2589,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 187,
         'rewardPoints': 2,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -2643,7 +2643,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 85,
         'rewardPoints': 3,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -2670,7 +2670,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 72,
         'rewardPoints': 5,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -2697,7 +2697,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 48,
         'rewardPoints': 4,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -2724,7 +2724,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 42,
         'rewardPoints': 6,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -2780,7 +2780,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 177,
         'rewardPoints': 7,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -2916,7 +2916,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 68,
         'rewardPoints': 3,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Clean and dry the affected area before applying',
           'Apply a thin layer to the affected area',
@@ -2944,7 +2944,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 141,
         'rewardPoints': 4,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Clean and dry the affected area before applying',
           'Apply a thin layer to the affected area',
@@ -2972,7 +2972,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 197,
         'rewardPoints': 5,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Wash hands thoroughly before use',
           'Remove wrapper carefully',
@@ -3056,7 +3056,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 149,
         'rewardPoints': 33,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -3083,7 +3083,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 115,
         'rewardPoints': 35,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -3138,7 +3138,7 @@ class SeedService {
         'origin': 'Imported',
         'stock': 200,
         'rewardPoints': 7,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -3165,7 +3165,7 @@ class SeedService {
         'origin': 'Imported',
         'stock': 175,
         'rewardPoints': 10,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -3192,7 +3192,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 171,
         'rewardPoints': 14,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -3219,7 +3219,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 73,
         'rewardPoints': 3,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -3275,7 +3275,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 160,
         'rewardPoints': 24,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -3388,7 +3388,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 81,
         'rewardPoints': 23,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -3417,7 +3417,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 48,
         'rewardPoints': 23,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -3444,7 +3444,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 47,
         'rewardPoints': 4,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -3499,7 +3499,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 32,
         'rewardPoints': 28,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -3555,7 +3555,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 35,
         'rewardPoints': 16,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -3583,7 +3583,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 25,
         'rewardPoints': 19,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -3610,7 +3610,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 54,
         'rewardPoints': 12,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Clean and dry the affected area before applying',
           'Apply a thin layer to the affected area',
@@ -3637,7 +3637,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 95,
         'rewardPoints': 10,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -3719,7 +3719,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 88,
         'rewardPoints': 15,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -3747,7 +3747,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 89,
         'rewardPoints': 7,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -3775,7 +3775,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 200,
         'rewardPoints': 10,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -3803,7 +3803,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 93,
         'rewardPoints': 10,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -3831,7 +3831,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 47,
         'rewardPoints': 10,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -3860,7 +3860,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 39,
         'rewardPoints': 17,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Apply to the affected area',
           'Massage gently until absorbed',
@@ -3999,7 +3999,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 200,
         'rewardPoints': 4,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -4027,7 +4027,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 200,
         'rewardPoints': 3,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -4054,7 +4054,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 158,
         'rewardPoints': 36,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Dissolve contents in a glass of water',
           'Drink immediately after dissolving',
@@ -4109,7 +4109,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 200,
         'rewardPoints': 6,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Apply to wet hair',
           'Massage gently into scalp',
@@ -4136,7 +4136,7 @@ class SeedService {
         'origin': 'Imported',
         'stock': 200,
         'rewardPoints': 16,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -4244,7 +4244,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 101,
         'rewardPoints': 5,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -4272,7 +4272,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 196,
         'rewardPoints': 16,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -4300,7 +4300,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 67,
         'rewardPoints': 8,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -4356,7 +4356,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 44,
         'rewardPoints': 9,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -4384,7 +4384,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 37,
         'rewardPoints': 11,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -4412,7 +4412,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 51,
         'rewardPoints': 11,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -4440,7 +4440,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 39,
         'rewardPoints': 5,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -4468,7 +4468,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 70,
         'rewardPoints': 8,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -4577,7 +4577,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 157,
         'rewardPoints': 18,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -4604,7 +4604,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 36,
         'rewardPoints': 20,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -4631,7 +4631,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 83,
         'rewardPoints': 26,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -4658,7 +4658,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 200,
         'rewardPoints': 8,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -4686,7 +4686,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 58,
         'rewardPoints': 33,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -4714,7 +4714,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 47,
         'rewardPoints': 38,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -4741,7 +4741,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 47,
         'rewardPoints': 11,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Take as prescribed by your doctor',
           'Swallow whole with a glass of water',
@@ -4823,7 +4823,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 63,
         'rewardPoints': 8,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Clear nasal passages before use',
           'Shake bottle gently',
@@ -4851,7 +4851,7 @@ class SeedService {
         'origin': 'Egypt',
         'stock': 95,
         'rewardPoints': 12,
-        'isOffer': true,
+        'isOffer': false,
         'usageSteps': [
           'Clear nasal passages before use',
           'Shake bottle gently',

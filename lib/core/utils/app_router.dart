@@ -19,6 +19,7 @@ import '../../screens/addresses/addresses_screen.dart';
 import '../../screens/orders/orders_screen.dart';
 import '../../screens/notifications/notifications_screen.dart';
 import '../../screens/favorites/favorites_screen.dart';
+import '../../screens/profile/profile_screen.dart';
 
 GoRouter buildRouter(BuildContext context) {
   return GoRouter(
@@ -119,6 +120,10 @@ GoRouter buildRouter(BuildContext context) {
       GoRoute(
         path: '/favorites',
         builder: (_, __) => const FavoritesScreen(),
+      ),
+      GoRoute(
+        path: '/profile',
+        builder: (_, __) => const ProfileScreen(),
       ),
     ],
     errorBuilder: (_, state) => Scaffold(

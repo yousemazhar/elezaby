@@ -102,7 +102,10 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           SliverToBoxAdapter(
-            child: _ServicesRow(onScanTap: () => context.push('/scanner')),
+            child: _ServicesRow(
+              onScanTap: () => context.push('/scanner'),
+              onPrescriptionTap: () => context.push('/prescription-upload'),
+            ),
           ),
           // Categories
           SliverToBoxAdapter(
@@ -348,14 +351,17 @@ class _FirstOrderBanner extends StatelessWidget {
 
 class _ServicesRow extends StatelessWidget {
   final VoidCallback onScanTap;
-  const _ServicesRow({required this.onScanTap});
+  final VoidCallback onPrescriptionTap;
+  const _ServicesRow({
+    required this.onScanTap,
+    required this.onPrescriptionTap,
+  });
 
   @override
   Widget build(BuildContext context) {
     final services = <({String icon, String label, VoidCallback onTap})>[
       (icon: '📷', label: 'Scan / AR', onTap: onScanTap),
-      // TODO: route to prescription upload when available
-      (icon: '📋', label: 'Upload Prescription', onTap: () {}),
+      (icon: '📋', label: 'Upload Prescription', onTap: onPrescriptionTap),
       // TODO: route to mobility aids catalog when available
       (icon: '♿', label: 'Mobility Aids', onTap: () {}),
     ];

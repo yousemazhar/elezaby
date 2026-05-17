@@ -44,6 +44,9 @@ class AppOrder {
   final int rewardPointsEarned;
   final bool isFirstOrder;
   final DateTime createdAt;
+  final String type;
+  final List<String> prescriptionImages;
+  final String notes;
 
   const AppOrder({
     required this.id,
@@ -57,11 +60,17 @@ class AppOrder {
     required this.rewardPointsEarned,
     required this.isFirstOrder,
     required this.createdAt,
+    this.type = 'product',
+    this.prescriptionImages = const [],
+    this.notes = '',
   });
+
+  bool get isPrescription => type == 'prescription';
 
   factory AppOrder.fromFirestore(DocumentSnapshot doc) {
     final data = doc.data() as Map<String, dynamic>;
     final rawItems = data['items'] as List? ?? [];
+    final rawImages = data['prescriptionImages'] as List? ?? [];
     return AppOrder(
       id: doc.id,
       userId: data['userId'] as String? ?? '',
@@ -76,6 +85,10 @@ class AppOrder {
       rewardPointsEarned: (data['rewardPointsEarned'] as num?)?.toInt() ?? 0,
       isFirstOrder: data['isFirstOrder'] as bool? ?? false,
       createdAt: (data['createdAt'] as Timestamp?)?.toDate() ?? DateTime.now(),
+      type: data['type'] as String? ?? 'product',
+      prescriptionImages:
+          rawImages.map((e) => e.toString()).toList(growable: false),
+      notes: data['notes'] as String? ?? '',
     );
   }
 
@@ -90,5 +103,8 @@ class AppOrder {
         'rewardPointsEarned': rewardPointsEarned,
         'isFirstOrder': isFirstOrder,
         'createdAt': Timestamp.fromDate(createdAt),
+        'type': type,
+        'prescriptionImages': prescriptionImages,
+        'notes': notes,
       };
 }

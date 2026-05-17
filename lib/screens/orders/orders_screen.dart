@@ -136,16 +136,41 @@ class _OrderCard extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 8),
-          Text(
-            '${order.items.length} item${order.items.length == 1 ? '' : 's'}',
-            style: const TextStyle(fontSize: 13, color: AppColors.textMuted),
-          ),
+          if (order.isPrescription)
+            Row(
+              children: [
+                const Text('📋', style: TextStyle(fontSize: 14)),
+                const SizedBox(width: 6),
+                Text(
+                  'Prescription · ${order.prescriptionImages.length} image${order.prescriptionImages.length == 1 ? '' : 's'}',
+                  style: const TextStyle(
+                    fontSize: 13,
+                    fontWeight: FontWeight.w600,
+                    color: AppColors.textDark,
+                  ),
+                ),
+              ],
+            )
+          else
+            Text(
+              '${order.items.length} item${order.items.length == 1 ? '' : 's'}',
+              style: const TextStyle(fontSize: 13, color: AppColors.textMuted),
+            ),
           if (order.address.isNotEmpty) ...[
             const SizedBox(height: 2),
             Text(
               order.address,
               style: const TextStyle(fontSize: 12, color: AppColors.textMuted),
               maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+            ),
+          ],
+          if (order.isPrescription && order.notes.isNotEmpty) ...[
+            const SizedBox(height: 4),
+            Text(
+              order.notes,
+              style: const TextStyle(fontSize: 12, color: AppColors.textMuted),
+              maxLines: 2,
               overflow: TextOverflow.ellipsis,
             ),
           ],
@@ -158,13 +183,14 @@ class _OrderCard extends StatelessWidget {
                 style:
                     const TextStyle(fontSize: 12, color: AppColors.textMuted),
               ),
-              Text(
-                'EGP ${order.total.toStringAsFixed(2)}',
-                style: const TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.w800,
-                    color: AppColors.primary),
-              ),
+              if (!order.isPrescription)
+                Text(
+                  'EGP ${order.total.toStringAsFixed(2)}',
+                  style: const TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w800,
+                      color: AppColors.primary),
+                ),
             ],
           ),
           if (order.rewardPointsEarned > 0) ...[

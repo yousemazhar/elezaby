@@ -124,6 +124,38 @@ const kSubcategories = <SubcategoryDef>[
 
   // other
   SubcategoryDef('ot_general', 'other', 'General', '🏥', 1),
+
+  // hair_care
+  SubcategoryDef('hc_shampoo', 'hair_care', 'Shampoo', '🚿', 1),
+
+  // skin_care
+  SubcategoryDef('sc_soap', 'skin_care', 'Soap', '🧼', 1),
+  SubcategoryDef('sc_cream', 'skin_care', 'Cream', '🧴', 2),
+  SubcategoryDef('sc_lotion', 'skin_care', 'Lotion', '🫧', 3),
+  SubcategoryDef('sc_face_wash', 'skin_care', 'Face Wash', '💧', 4),
+  SubcategoryDef('sc_lip_care', 'skin_care', 'Lip Care', '💋', 5),
+
+  // baby_care
+  SubcategoryDef('bc_baby_shampoo', 'baby_care', 'Baby Shampoo', '🚿', 1),
+  SubcategoryDef('bc_baby_cream', 'baby_care', 'Baby Cream', '🧴', 2),
+
+  // personal_care
+  SubcategoryDef(
+      'pc_cotton_products', 'personal_care', 'Cotton Products', '🌿', 1),
+  SubcategoryDef('pc_deodorant', 'personal_care', 'Deodorant', '🌬️', 2),
+
+  // oral_care
+  SubcategoryDef('oc_mouthwash', 'oral_care', 'Mouthwash', '🫧', 1),
+  SubcategoryDef('oc_toothpaste', 'oral_care', 'Toothpaste', '🦷', 2),
+  SubcategoryDef('oc_toothbrush', 'oral_care', 'Toothbrush', '🪥', 3),
+
+  // mens_care
+  SubcategoryDef('mc_razors', 'mens_care', 'Razors', '🪒', 1),
+
+  // mobility_aids
+  SubcategoryDef(
+      'ma_walking_support', 'mobility_aids', 'Walking Support', '🦯', 1),
+  SubcategoryDef('ma_wheelchairs', 'mobility_aids', 'Wheelchairs', '🦽', 2),
 ];
 
 const kSubSubcategories = <SubSubcategoryDef>[
@@ -336,6 +368,66 @@ const kSubSubcategories = <SubSubcategoryDef>[
 
   // other
   SubSubcategoryDef('ot_gen_gen', 'other', 'ot_general', 'General', '🏥', 1),
+
+  // hair_care
+  SubSubcategoryDef(
+      'hc_daily_shampoo', 'hair_care', 'hc_shampoo', 'Daily Shampoo', '🚿', 1),
+  SubSubcategoryDef('hc_anti_dandruff', 'hair_care', 'hc_shampoo',
+      'Anti-Dandruff', '🌿', 2),
+
+  // skin_care
+  SubSubcategoryDef(
+      'sc_beauty_soap', 'skin_care', 'sc_soap', 'Beauty Soap', '🧼', 1),
+  SubSubcategoryDef('sc_antibacterial_soap', 'skin_care', 'sc_soap',
+      'Antibacterial', '🦠', 2),
+  SubSubcategoryDef(
+      'sc_moisturizer', 'skin_care', 'sc_cream', 'Moisturizer', '🧴', 1),
+  SubSubcategoryDef('sc_sensitive_skin', 'skin_care', 'sc_cream',
+      'Sensitive Skin', '🌸', 2),
+  SubSubcategoryDef('sc_petroleum_jelly', 'skin_care', 'sc_cream',
+      'Petroleum Jelly', '💧', 3),
+  SubSubcategoryDef('sc_daily_moisturizer', 'skin_care', 'sc_lotion',
+      'Daily Moisturizer', '🫧', 1),
+  SubSubcategoryDef(
+      'sc_body_lotion', 'skin_care', 'sc_lotion', 'Body Lotion', '🌿', 2),
+  SubSubcategoryDef(
+      'sc_deep_clean', 'skin_care', 'sc_face_wash', 'Deep Clean', '💧', 1),
+  SubSubcategoryDef(
+      'sc_lip_balm', 'skin_care', 'sc_lip_care', 'Lip Balm', '💋', 1),
+
+  // baby_care
+  SubSubcategoryDef('bc_gentle_care', 'baby_care', 'bc_baby_shampoo',
+      'Gentle Care', '🌿', 1),
+  SubSubcategoryDef('bc_diaper_care', 'baby_care', 'bc_baby_cream',
+      'Diaper Care', '🧴', 1),
+
+  // personal_care
+  SubSubcategoryDef('pc_cotton_buds', 'personal_care', 'pc_cotton_products',
+      'Cotton Buds', '🌿', 1),
+  SubSubcategoryDef('pc_cotton_pads', 'personal_care', 'pc_cotton_products',
+      'Cotton Pads', '🌿', 2),
+  SubSubcategoryDef(
+      'pc_roll_on', 'personal_care', 'pc_deodorant', 'Roll-On', '🌬️', 1),
+
+  // oral_care
+  SubSubcategoryDef(
+      'oc_fresh_breath', 'oral_care', 'oc_mouthwash', 'Fresh Breath', '🫧', 1),
+  SubSubcategoryDef('oc_sensitive_teeth', 'oral_care', 'oc_toothpaste',
+      'Sensitive Teeth', '🦷', 1),
+  SubSubcategoryDef('oc_medium_bristle', 'oral_care', 'oc_toothbrush',
+      'Medium Bristle', '🪥', 1),
+
+  // mens_care
+  SubSubcategoryDef('mc_disposable_razors', 'mens_care', 'mc_razors',
+      'Disposable Razors', '🪒', 1),
+
+  // mobility_aids
+  SubSubcategoryDef('ma_walking_canes', 'mobility_aids', 'ma_walking_support',
+      'Walking Canes', '🦯', 1),
+  SubSubcategoryDef('ma_crutches', 'mobility_aids', 'ma_walking_support',
+      'Crutches', '🦯', 2),
+  SubSubcategoryDef('ma_manual_wheelchairs', 'mobility_aids', 'ma_wheelchairs',
+      'Manual Wheelchairs', '🦽', 1),
 ];
 
 /// Assign a (subcategoryId, subSubcategoryId) for a product based on its

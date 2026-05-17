@@ -44,7 +44,7 @@ class ProductCard extends StatelessWidget {
               children: [
                 Container(
                   width: double.infinity,
-                  height: 100,
+                  height: 88,
                   decoration: BoxDecoration(
                     color: AppColors.primaryLight,
                     borderRadius: BorderRadius.circular(16),
@@ -145,6 +145,8 @@ class ProductCard extends StatelessWidget {
   }
 }
 
+const double _kCartControlHeight = 40;
+
 class _AddButton extends StatelessWidget {
   final Product product;
   final String uid;
@@ -158,18 +160,20 @@ class _AddButton extends StatelessWidget {
           : () => context.read<CartProvider>().addToCart(uid, product),
       child: Container(
         width: double.infinity,
-        padding: const EdgeInsets.symmetric(vertical: 8),
+        height: _kCartControlHeight,
+        alignment: Alignment.center,
         decoration: BoxDecoration(
           gradient: AppColors.primaryGradient135,
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(26),
         ),
         child: const Text(
-          'Add to Cart',
+          'ADD TO CART',
           textAlign: TextAlign.center,
           style: TextStyle(
             color: Colors.white,
-            fontSize: 11,
-            fontWeight: FontWeight.w700,
+            fontSize: 12,
+            fontWeight: FontWeight.w800,
+            letterSpacing: 0.6,
           ),
         ),
       ),
@@ -187,44 +191,66 @@ class _QuantityBar extends StatelessWidget {
     final cart = context.watch<CartProvider>();
     final item = cart.items.firstWhere((i) => i.productId == product.id);
     return Container(
+      width: double.infinity,
+      height: _kCartControlHeight,
       decoration: BoxDecoration(
-        gradient: AppColors.primaryGradient135,
-        borderRadius: BorderRadius.circular(20),
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(26),
+        boxShadow: const [
+          BoxShadow(
+            color: Color(0x140087C8),
+            blurRadius: 8,
+            offset: Offset(0, 2),
+          ),
+        ],
       ),
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+      padding: const EdgeInsets.symmetric(horizontal: 4),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          GestureDetector(
+          _CircleStepButton(
+            icon: Icons.remove,
             onTap: () => context
                 .read<CartProvider>()
                 .updateQuantity(uid, item.id, item.quantity - 1),
-            child: const Text(
-              '−',
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
-                  fontWeight: FontWeight.w700),
-            ),
           ),
           Text(
             '${item.quantity}',
             style: const TextStyle(
-                color: Colors.white, fontSize: 14, fontWeight: FontWeight.w700),
+                color: AppColors.textDark,
+                fontSize: 16,
+                fontWeight: FontWeight.w800),
           ),
-          GestureDetector(
+          _CircleStepButton(
+            icon: Icons.add,
             onTap: () => context
                 .read<CartProvider>()
                 .updateQuantity(uid, item.id, item.quantity + 1),
-            child: const Text(
-              '+',
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
-                  fontWeight: FontWeight.w700),
-            ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class _CircleStepButton extends StatelessWidget {
+  final IconData icon;
+  final VoidCallback onTap;
+  const _CircleStepButton({required this.icon, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        width: 32,
+        height: 32,
+        decoration: const BoxDecoration(
+          gradient: AppColors.primaryGradient135,
+          shape: BoxShape.circle,
+        ),
+        alignment: Alignment.center,
+        child: Icon(icon, size: 18, color: Colors.white),
       ),
     );
   }

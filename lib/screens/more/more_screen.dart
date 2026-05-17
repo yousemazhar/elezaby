@@ -51,7 +51,7 @@ class _AccountItem {
   final String trailing;
   final bool hideIcon;
   const _AccountItem(this.icon, this.label, this.onTap,
-      {this.trailing = '▶', this.hideIcon = false});
+      {this.trailing = '►', this.hideIcon = false});
 }
 
 class _AboutItem {

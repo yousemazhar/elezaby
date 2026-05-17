@@ -31,43 +31,7 @@ class _OffersScreenState extends State<OffersScreen> {
       body: Column(
         children: [
           // Banner
-          Container(
-            margin: const EdgeInsets.fromLTRB(16, 16, 16, 8),
-            height: 100,
-            decoration: BoxDecoration(
-              gradient: const LinearGradient(
-                colors: [Color(0xFFf5a77c), Color(0xFFe87fa0)],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-              ),
-              borderRadius: BorderRadius.circular(20),
-            ),
-            padding: const EdgeInsets.all(16),
-            child: const Row(
-              children: [
-                Text('🎉', style: TextStyle(fontSize: 40)),
-                SizedBox(width: 16),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Limited Time Offers',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                          fontWeight: FontWeight.w800),
-                    ),
-                    SizedBox(height: 4),
-                    Text(
-                      'Save on top products today',
-                      style: TextStyle(color: Colors.white70, fontSize: 13),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
+
           if (products.loadingProducts)
             const Expanded(
                 child: Center(child: CircularProgressIndicator()))

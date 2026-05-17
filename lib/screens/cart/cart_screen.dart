@@ -24,26 +24,46 @@ class CartScreen extends StatelessWidget {
       body: Column(
         children: [
           if (cart.items.isEmpty)
-            const Expanded(
+            Expanded(
               child: Center(
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text('🛒', style: TextStyle(fontSize: 64)),
-                    SizedBox(height: 16),
-                    Text(
+                    const Text('🛒', style: TextStyle(fontSize: 64)),
+                    const SizedBox(height: 16),
+                    const Text(
                       'Your cart is empty',
                       style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.w700,
                           color: AppColors.textDark),
                     ),
-                    SizedBox(height: 8),
-                    Text(
-                      'Add products to get started',
-                      style:
-                          TextStyle(fontSize: 14, color: AppColors.textMuted),
+                    const SizedBox(height: 8),
+                    GestureDetector(
+                      onTap: () => context.go('/products'),
+                      child: Container(
+                        margin: const EdgeInsets.symmetric(horizontal: 32),
+                        padding: const EdgeInsets.symmetric(vertical: 16),
+                        decoration: BoxDecoration(
+                          gradient: const LinearGradient(
+                            colors: [AppColors.primary, AppColors.primaryDark],
+                            begin: Alignment.centerLeft,
+                            end: Alignment.centerRight,
+                          ),
+                          borderRadius: BorderRadius.circular(32),
+                        ),
+                        alignment: Alignment.center,
+                        child: const Text(
+                          'Add products to get started',
+                          style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w700,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
                     ),
+
                   ],
                 ),
               ),

@@ -48,10 +48,7 @@ class _AccountItem {
   final String icon;
   final String label;
   final VoidCallback? onTap;
-  final String trailing;
-  final bool hideIcon;
-  const _AccountItem(this.icon, this.label, this.onTap,
-      {this.trailing = '►', this.hideIcon = false});
+  const _AccountItem(this.icon, this.label, this.onTap);
 }
 
 class _AboutItem {
@@ -79,19 +76,6 @@ class _SectionHeader extends StatelessWidget {
   }
 }
 
-class _SectionDivider extends StatelessWidget {
-  const _SectionDivider();
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 1,
-      margin: const EdgeInsets.symmetric(vertical: 20),
-      color: AppColors.divider,
-    );
-  }
-}
-
 class _AccountRow extends StatelessWidget {
   final _AccountItem item;
   const _AccountRow({required this.item});
@@ -109,20 +93,17 @@ class _AccountRow extends StatelessWidget {
         ),
         child: Row(
           children: [
-            if (!item.hideIcon) ...[
-              Container(
-                width: 28,
-                height: 28,
-                decoration: const BoxDecoration(
-                  color: AppColors.primary,
-                  shape: BoxShape.circle,
-                ),
-                alignment: Alignment.center,
-                child:
-                    Text(item.icon, style: const TextStyle(fontSize: 14)),
+            Container(
+              width: 28,
+              height: 28,
+              decoration: const BoxDecoration(
+                color: AppColors.primary,
+                shape: BoxShape.circle,
               ),
-              const SizedBox(width: 14),
-            ],
+              alignment: Alignment.center,
+              child: Text(item.icon, style: const TextStyle(fontSize: 14)),
+            ),
+            const SizedBox(width: 14),
             Expanded(
               child: Text(
                 item.label,
@@ -132,9 +113,8 @@ class _AccountRow extends StatelessWidget {
                     color: AppColors.textDark),
               ),
             ),
-            Text(item.trailing,
-                style: const TextStyle(
-                    fontSize: 13, color: AppColors.textSecondary)),
+            const Text('►',
+                style: TextStyle(fontSize: 13, color: AppColors.textSecondary)),
           ],
         ),
       ),

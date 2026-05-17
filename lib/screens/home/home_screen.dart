@@ -35,9 +35,10 @@ class _HomeScreenState extends State<HomeScreen> {
     final defaultAddress = addressProvider.defaultAddress;
 
     return Scaffold(
-      appBar: const GlobalAppBar(showGreeting: true, showSearch: true),
+      appBar: const GlobalAppBar(showSearch: true),
       body: CustomScrollView(
         slivers: [
+          const SliverToBoxAdapter(child: SizedBox(height: 12)),
           SliverToBoxAdapter(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -210,7 +211,10 @@ class _DeliveryTabs extends StatelessWidget {
         color: const Color(0xFFE9F2F5),
         borderRadius: BorderRadius.circular(18),
       ),
-      child: Row(
+      child:
+
+
+      Row(
         children: [
           _Tab(
               label: 'Home Delivery',
@@ -348,52 +352,55 @@ class _ServicesRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final services = [
-      (icon: '🛡️', label: 'Insurance'),
-      (icon: '📋', label: 'Prescription'),
-      (icon: '🏥', label: 'Clinics'),
-      (icon: '🩺', label: 'Lab Tests'),
-      (icon: '♿', label: 'Mobility'),
-      (icon: '📷', label: 'Scan / AR'),
+    final services = <({String icon, String label, VoidCallback onTap})>[
+      (icon: '📷', label: 'Scan / AR', onTap: onScanTap),
+      // TODO: route to prescription upload when available
+      (icon: '📋', label: 'Upload Prescription', onTap: () {}),
+      // TODO: route to mobility aids catalog when available
+      (icon: '♿', label: 'Mobility Aids', onTap: () {}),
     ];
 
-    return SizedBox(
-      height: 110,
-      child: ListView.separated(
-        scrollDirection: Axis.horizontal,
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        itemCount: services.length,
-        separatorBuilder: (_, __) => const SizedBox(width: 12),
-        itemBuilder: (context, i) {
-          final s = services[i];
-          return GestureDetector(
-            onTap: i == 5 ? onScanTap : null,
-            child: Container(
-              width: 82,
-              decoration: BoxDecoration(
-                color: AppColors.primaryLight,
-                borderRadius: BorderRadius.circular(20),
-              ),
-              padding: const EdgeInsets.symmetric(vertical: 14),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(s.icon, style: const TextStyle(fontSize: 28)),
-                  const SizedBox(height: 8),
-                  Text(
-                    s.label,
-                    style: const TextStyle(
-                      fontSize: 11,
-                      fontWeight: FontWeight.w500,
-                      color: AppColors.textNavy,
-                    ),
-                    textAlign: TextAlign.center,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: Row(
+        children: [
+          for (var i = 0; i < services.length; i++) ...[
+            Expanded(
+              child: GestureDetector(
+                onTap: services[i].onTap,
+                child: Container(
+                  height: 132,
+                  decoration: BoxDecoration(
+                    color: AppColors.primaryLight,
+                    borderRadius: BorderRadius.circular(20),
                   ),
-                ],
+                  padding: const EdgeInsets.symmetric(
+                      vertical: 12, horizontal: 6),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(services[i].icon,
+                          style: const TextStyle(fontSize: 28)),
+                      const SizedBox(height: 8),
+                      Text(
+                        services[i].label,
+                        style: const TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w600,
+                          color: AppColors.textNavy,
+                          height: 1.2,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
+                  ),
+                ),
               ),
             ),
-          );
-        },
+            if (i != services.length - 1) const SizedBox(width: 12),
+          ],
+        ],
       ),
     );
   }

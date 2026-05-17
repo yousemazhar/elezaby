@@ -16,8 +16,8 @@ class AppBottomNav extends StatelessWidget {
     const items = [
       _NavItem(icon: Icons.home_rounded, label: 'Home'),
       _NavItem(icon: Icons.grid_view_rounded, label: 'Shop'),
-      _NavItem(icon: Icons.favorite_border_rounded, label: 'Favourite'),
-      _NavItem(icon: Icons.local_offer_rounded, label: 'Offers'),
+      _NavItem(icon: Icons.favorite_rounded, label: 'Favourite'),
+      _NavItem(icon: Icons.discount_rounded, label: 'Offers'),
       _NavItem(icon: Icons.more_horiz_rounded, label: 'More'),
     ];
 
@@ -44,7 +44,7 @@ class AppBottomNav extends StatelessWidget {
               duration: const Duration(milliseconds: 200),
               padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
               decoration: BoxDecoration(
-                color: active ? AppColors.primary : Colors.transparent,
+                gradient: active ? AppColors.primaryGradient : null,
                 borderRadius: BorderRadius.circular(18),
               ),
               child: Column(
@@ -53,7 +53,7 @@ class AppBottomNav extends StatelessWidget {
                   Icon(
                     items[i].icon,
                     size: 22,
-                    color: active ? Colors.white : AppColors.textMuted,
+                    color: active ? Colors.white : AppColors.primary,
                   ),
                   const SizedBox(height: 3),
                   Text(

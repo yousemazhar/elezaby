@@ -3,14 +3,12 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
 import '../core/constants/app_colors.dart';
-import '../providers/auth_provider.dart';
 import '../providers/cart_provider.dart';
 import 'app_search_bar.dart';
 
 class GlobalAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String? title;
   final bool showBackButton;
-  final bool showGreeting;
   final bool showSearch;
   final TextEditingController? searchController;
   final ValueChanged<String>? onSearchChanged;
@@ -19,25 +17,21 @@ class GlobalAppBar extends StatelessWidget implements PreferredSizeWidget {
     super.key,
     this.title,
     this.showBackButton = false,
-    this.showGreeting = false,
     this.showSearch = false,
     this.searchController,
     this.onSearchChanged,
   });
 
   @override
-  Size get preferredSize => Size.fromHeight(showSearch ? 196 : 112);
+  Size get preferredSize => Size.fromHeight(showSearch ? 168 : 92);
 
   @override
   Widget build(BuildContext context) {
-    final firstName = context
-            .select<AuthProvider, String?>((auth) => auth.appUser?.name)
-            ?.split(' ')
-            .first ??
-        'there';
-
     return Container(
-      decoration: const BoxDecoration(gradient: AppColors.primaryGradient),
+      decoration: const BoxDecoration(
+        gradient: AppColors.primaryGradient,
+        borderRadius: BorderRadius.vertical(bottom: Radius.circular(28)),
+      ),
       child: SafeArea(
         bottom: false,
         child: Column(
@@ -87,38 +81,14 @@ class GlobalAppBar extends StatelessWidget implements PreferredSizeWidget {
                 ),
               ),
             ),
-            if (showGreeting) ...[
-              const SizedBox(height: 6),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    'Good day, $firstName',
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                ),
-              ),
-            ],
             if (showSearch) ...[
-              const SizedBox(height: 10),
+              const SizedBox(height: 12),
               AppSearchBar(
                 controller: searchController,
                 onChanged: onSearchChanged,
               ),
             ],
-            const SizedBox(height: 12),
-            Container(
-              height: 20,
-              decoration: const BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.vertical(top: Radius.circular(18)),
-              ),
-            ),
+            const SizedBox(height: 20),
           ],
         ),
       ),

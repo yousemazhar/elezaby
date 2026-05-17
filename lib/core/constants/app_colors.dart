@@ -5,6 +5,7 @@ class AppColors {
 
   static const Color primary = Color(0xFF0087C8);
   static const Color primaryDark = Color(0xFF006FA8);
+  static const Color primaryDarker = Color(0xFF005A8A);
   static const Color primaryLight = Color(0xFFEAF8FC);
   static const Color primaryLighter = Color(0xFFD5F1FA);
   static const Color bottomNavBg = Color(0xFFDDF5FC);
@@ -28,7 +29,8 @@ class AppColors {
   static const LinearGradient primaryGradient = LinearGradient(
     begin: Alignment.topCenter,
     end: Alignment.bottomCenter,
-    colors: [primary, primaryDark],
+    colors: [primaryDark, primary, primaryDarker],
+    stops: [0.0, 0.55, 1.0],
   );
 
   static const LinearGradient primaryGradient135 = LinearGradient(

@@ -63,10 +63,7 @@ class _SplashScreenState extends State<SplashScreen>
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Container(
-                      width: 100,
-                      height: 100,
                       decoration: BoxDecoration(
-                        color: Colors.white,
                         borderRadius: BorderRadius.circular(28),
                         boxShadow: const [
                           BoxShadow(
@@ -76,9 +73,14 @@ class _SplashScreenState extends State<SplashScreen>
                           ),
                         ],
                       ),
-                      child: const Center(
-                        child: Text('💊',
-                            style: TextStyle(fontSize: 48)),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(28),
+                        child: Image.asset(
+                          'assets/images/app_icon.png',
+                          width: 100,
+                          height: 100,
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
                     const SizedBox(height: 24),

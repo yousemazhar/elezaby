@@ -161,42 +161,10 @@ class _ElezabyLogo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        RichText(
-          text: const TextSpan(
-            children: [
-              TextSpan(
-                text: 'el',
-                style: TextStyle(
-                  fontFamily: 'Georgia',
-                  fontStyle: FontStyle.italic,
-                  fontSize: 20,
-                  fontWeight: FontWeight.w800,
-                  color: Colors.white,
-                ),
-              ),
-              TextSpan(
-                text: 'ezaby',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w800,
-                  color: Colors.white,
-                ),
-              ),
-            ],
-          ),
-        ),
-        const Text(
-          'العزبي',
-          style: TextStyle(
-            fontSize: 11,
-            color: Colors.white70,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-      ],
+    return Image.asset(
+      'assets/images/elezaby_logo_white.png',
+      height: 36,
+      fit: BoxFit.contain,
     );
   }
 }

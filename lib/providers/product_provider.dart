@@ -8,6 +8,8 @@ import '../services/product_service.dart';
 class ProductProvider extends ChangeNotifier {
   final ProductService _service = ProductService();
 
+  Map<String, List<String>> _categoryImages = {};
+  bool _categoryImagesLoaded = false;
   List<Category> _categories = [];
   List<Subcategory> _subcategories = [];
   List<SubSubcategory> _subSubcategories = [];
@@ -19,6 +21,13 @@ class ProductProvider extends ChangeNotifier {
   String? _error;
 
   List<Category> get categories => _categories;
+  Map<String, List<String>> get categoryImages => _categoryImages;
+  bool get categoryImagesLoaded => _categoryImagesLoaded;
+  List<Category> get categoriesWithProducts => _categoryImagesLoaded
+      ? _categories
+          .where((c) => (_categoryImages[c.id] ?? const []).isNotEmpty)
+          .toList()
+      : _categories;
   List<Subcategory> get subcategories => _subcategories;
   List<SubSubcategory> get subSubcategories => _subSubcategories;
   List<Product> get products => _products;
@@ -45,6 +54,21 @@ class ProductProvider extends ChangeNotifier {
       _error = e.toString();
     } finally {
       _loadingCategories = false;
+      notifyListeners();
+    }
+    _loadCategoryImages();
+  }
+
+  Future<void> _loadCategoryImages() async {
+    if (_categories.isEmpty) return;
+    try {
+      _categoryImages = await _service.fetchCategoryProductImages(
+        _categories.map((c) => c.id).toList(),
+      );
+    } catch (_) {
+      // Silent: tiles will fall back to emoji.
+    } finally {
+      _categoryImagesLoaded = true;
       notifyListeners();
     }
   }

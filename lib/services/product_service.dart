@@ -87,6 +87,25 @@ class ProductService {
         .toList();
   }
 
+  Future<Map<String, List<String>>> fetchCategoryProductImages(
+    List<String> categoryIds, {
+    int perCategory = 3,
+  }) async {
+    final results = await Future.wait(categoryIds.map((id) async {
+      final snap = await _db
+          .collection('products')
+          .where('categoryId', isEqualTo: id)
+          .limit(perCategory)
+          .get();
+      final urls = snap.docs
+          .map((d) => (d.data()['imageUrl'] as String?) ?? '')
+          .where((u) => u.isNotEmpty)
+          .toList();
+      return MapEntry(id, urls);
+    }));
+    return Map.fromEntries(results);
+  }
+
   Future<Product?> fetchById(String id) async {
     final doc = await _db.collection('products').doc(id).get();
     if (!doc.exists) return null;

@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
@@ -121,7 +122,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           fontWeight: FontWeight.w700,
                           color: AppColors.textDark)),
                   GestureDetector(
-                    onTap: () => context.push('/products'),
+                    onTap: () => context.push('/shop'),
                     child: const Text('See All ›',
                         style: TextStyle(
                             fontSize: 14,
@@ -133,7 +134,8 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           SliverToBoxAdapter(
-            child: products.loadingCategories
+            child: (products.loadingCategories ||
+                    !products.categoryImagesLoaded)
                 ? const Padding(
                     padding: EdgeInsets.all(16),
                     child: Center(child: CircularProgressIndicator()),
@@ -420,52 +422,150 @@ class _CategoriesRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const fallbackCats = [
-      (emoji: '💊', color: Color(0xFFE8F4F8)),
-      (emoji: '🍼', color: Color(0xFFFFF0E8)),
-      (emoji: '🧴', color: Color(0xFFE8F9EE)),
-      (emoji: '💉', color: Color(0xFFF3EAF8)),
-      (emoji: '🩺', color: Color(0xFFFFF8E8)),
+      (name: 'Medicines', emoji: '💊', color: Color(0xFFE8F4F8)),
+      (name: 'Baby', emoji: '🍼', color: Color(0xFFFFF0E8)),
+      (name: 'Personal Care', emoji: '🧴', color: Color(0xFFE8F9EE)),
+      (name: 'Injections', emoji: '💉', color: Color(0xFFF3EAF8)),
+      (name: 'Medical', emoji: '🩺', color: Color(0xFFFFF8E8)),
     ];
 
-    final cats = products.categories;
-    final count = cats.isNotEmpty ? cats.length : fallbackCats.length;
+    final cats = products.categoriesWithProducts;
+    final useFallback = cats.isEmpty;
+    final count = useFallback ? fallbackCats.length : cats.length;
 
-    return SizedBox(
-      height: 100,
-      child: ListView.separated(
-        scrollDirection: Axis.horizontal,
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        itemCount: count,
-        separatorBuilder: (_, __) => const SizedBox(width: 14),
-        itemBuilder: (context, i) {
-          final emoji = cats.isNotEmpty
-              ? cats[i].emoji
-              : fallbackCats[i % fallbackCats.length].emoji;
-          final color = i < fallbackCats.length
-              ? fallbackCats[i].color
-              : AppColors.primaryLight;
-          final catId = cats.isNotEmpty ? cats[i].id : null;
+    final half = (count / 2).ceil();
+    final topIndexes = List<int>.generate(half, (i) => i);
+    final bottomIndexes =
+        List<int>.generate(count - half, (i) => i + half);
 
-          return GestureDetector(
-            onTap: () => context.push(
-              '/products',
-              extra: catId != null ? {'categoryId': catId} : null,
-            ),
-            child: Container(
-              width: 80,
-              height: 80,
-              decoration: BoxDecoration(
-                color: color,
-                shape: BoxShape.circle,
+    Widget buildRow(List<int> indexes) {
+      return SizedBox(
+        height: 110,
+        child: ListView.separated(
+          scrollDirection: Axis.horizontal,
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          itemCount: indexes.length,
+          separatorBuilder: (_, __) => const SizedBox(width: 14),
+          itemBuilder: (context, idx) {
+            final i = indexes[idx];
+            final emoji = useFallback
+                ? fallbackCats[i % fallbackCats.length].emoji
+                : cats[i].emoji;
+            final name = useFallback
+                ? fallbackCats[i % fallbackCats.length].name
+                : cats[i].name;
+            final color = i < fallbackCats.length
+                ? fallbackCats[i].color
+                : AppColors.primaryLight;
+            final catId = useFallback ? null : cats[i].id;
+            final imageUrls = catId != null
+                ? (products.categoryImages[catId] ?? const <String>[])
+                : const <String>[];
+
+            return GestureDetector(
+              onTap: () => context.push(
+                '/products',
+                extra: catId != null ? {'categoryId': catId} : null,
               ),
-              child: Center(
-                child: Text(emoji, style: const TextStyle(fontSize: 30)),
+              child: SizedBox(
+                width: 80,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    _CategoryAvatar(
+                      imageUrls: imageUrls,
+                      emoji: emoji,
+                      background: color,
+                    ),
+                    const SizedBox(height: 6),
+                    Text(
+                      name,
+                      textAlign: TextAlign.center,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(
+                        fontSize: 11,
+                        fontWeight: FontWeight.w600,
+                        color: AppColors.textDark,
+                        height: 1.15,
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ),
-          );
-        },
-      ),
+            );
+          },
+        ),
+      );
+    }
+
+    return Column(
+      children: [
+        buildRow(topIndexes),
+        const SizedBox(height: 10),
+        if (bottomIndexes.isNotEmpty) buildRow(bottomIndexes),
+      ],
     );
   }
 }
 
+class _CategoryAvatar extends StatefulWidget {
+  final List<String> imageUrls;
+  final String emoji;
+  final Color background;
+  const _CategoryAvatar({
+    required this.imageUrls,
+    required this.emoji,
+    required this.background,
+  });
+
+  @override
+  State<_CategoryAvatar> createState() => _CategoryAvatarState();
+}
+
+class _CategoryAvatarState extends State<_CategoryAvatar> {
+  int _attempt = 0;
+
+  @override
+  void didUpdateWidget(covariant _CategoryAvatar old) {
+    super.didUpdateWidget(old);
+    if (old.imageUrls != widget.imageUrls) _attempt = 0;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final hasImage = _attempt < widget.imageUrls.length;
+    final url = hasImage ? widget.imageUrls[_attempt] : null;
+
+    return Container(
+      width: 64,
+      height: 64,
+      decoration: BoxDecoration(
+        color: widget.background,
+        shape: BoxShape.circle,
+      ),
+      clipBehavior: Clip.antiAlias,
+      child: url != null
+          ? CachedNetworkImage(
+              imageUrl: url,
+              fit: BoxFit.cover,
+              fadeInDuration: const Duration(milliseconds: 150),
+              placeholder: (_, __) => Center(
+                child: Text(widget.emoji, style: const TextStyle(fontSize: 28)),
+              ),
+              errorWidget: (_, __, ___) {
+                WidgetsBinding.instance.addPostFrameCallback((_) {
+                  if (mounted) setState(() => _attempt++);
+                });
+                return Center(
+                  child:
+                      Text(widget.emoji, style: const TextStyle(fontSize: 28)),
+                );
+              },
+            )
+          : Center(
+              child: Text(widget.emoji, style: const TextStyle(fontSize: 28)),
+            ),
+    );
+  }
+}

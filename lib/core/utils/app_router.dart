@@ -8,6 +8,7 @@ import '../../screens/auth/login_screen.dart';
 import '../../screens/auth/signup_screen.dart';
 import '../../screens/auth/forgot_password_screen.dart';
 import '../../screens/home/main_shell.dart';
+import '../../screens/shop/shop_screen.dart';
 import '../../screens/product/product_list_screen.dart';
 import '../../screens/product/product_detail_screen.dart';
 import '../../screens/cart/cart_screen.dart';
@@ -134,6 +135,10 @@ GoRouter buildRouter(BuildContext context) {
       GoRoute(
         path: '/profile',
         builder: (_, __) => const ProfileScreen(),
+      ),
+      GoRoute(
+        path: '/shop',
+        builder: (_, __) => const ShopScreen(),
       ),
     ],
     errorBuilder: (_, state) => Scaffold(

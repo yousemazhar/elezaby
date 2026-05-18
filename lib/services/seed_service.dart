@@ -1,4 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart' show rootBundle;
 import 'seed_taxonomy.dart';
 
 class SeedService {
@@ -161,7 +164,32 @@ class SeedService {
     await batch.commit();
   }
 
+  Future<String> _uploadAssetVideoIfMissing(
+      String assetPath, String storagePath) async {
+    final ref = FirebaseStorage.instance.ref(storagePath);
+    try {
+      return await ref.getDownloadURL();
+    } on FirebaseException catch (e) {
+      if (e.code != 'object-not-found') rethrow;
+    }
+    final data = await rootBundle.load(assetPath);
+    await ref.putData(
+      data.buffer.asUint8List(),
+      SettableMetadata(contentType: 'video/mp4'),
+    );
+    return ref.getDownloadURL();
+  }
+
   Future<void> _seedProducts() async {
+    String paracetamolVideoUrl = '';
+    try {
+      paracetamolVideoUrl = await _uploadAssetVideoIfMissing(
+        'assets/videos/How to Swallow a Pill.mp4',
+        'product_videos/med_001.mp4',
+      );
+    } catch (e) {
+      debugPrint('Seed: failed to upload Paracetamol video: $e');
+    }
     // Each entry has a stable docId derived from the source product id.
     // batch.set() on the same docId is an upsert: adds if missing, updates if present.
     // This means running Seed multiple times never creates duplicates.
@@ -4922,6 +4950,7 @@ class SeedService {
         'stock': 50,
         'rewardPoints': 30,
         'isOffer': false,
+        'videoUrl': paracetamolVideoUrl,
         'usageSteps': [
           'Take by mouth with water.',
           'Use as directed on the pack or by a pharmacist.',

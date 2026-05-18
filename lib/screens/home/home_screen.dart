@@ -105,6 +105,7 @@ class _HomeScreenState extends State<HomeScreen> {
             child: _ServicesRow(
               onScanTap: () => context.push('/scanner'),
               onPrescriptionTap: () => context.push('/prescription-upload'),
+              onArVideoTap: () => context.push('/scanner-video'),
             ),
           ),
           // Categories
@@ -348,64 +349,65 @@ class _FirstOrderBanner extends StatelessWidget {
 class _ServicesRow extends StatelessWidget {
   final VoidCallback onScanTap;
   final VoidCallback onPrescriptionTap;
+  final VoidCallback onArVideoTap;
   const _ServicesRow({
     required this.onScanTap,
     required this.onPrescriptionTap,
+    required this.onArVideoTap,
   });
 
   @override
   Widget build(BuildContext context) {
     final services = <({String icon, String label, VoidCallback onTap})>[
       (icon: '📷', label: 'Scan / AR', onTap: onScanTap),
+      (icon: '🎬', label: 'AR Video', onTap: onArVideoTap),
       (icon: '📋', label: 'Upload Prescription', onTap: onPrescriptionTap),
-
-      (icon: '♿', label: 'Mobility Aids', onTap: () { context.push('/products', extra: {
-        'categoryId':'mobility_aids' ,
-        'title': 'mobility aids',
-      });}),
+      (icon: '♿', label: 'Mobility Aids', onTap: () {
+        context.push('/products', extra: {
+          'categoryId': 'mobility_aids',
+          'title': 'mobility aids',
+        });
+      }),
     ];
 
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: Row(
-        children: [
-          for (var i = 0; i < services.length; i++) ...[
-            Expanded(
-              child: GestureDetector(
-                onTap: services[i].onTap,
-                child: Container(
-                  height: 132,
-                  decoration: BoxDecoration(
-                    color: AppColors.primaryLight,
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  padding: const EdgeInsets.symmetric(
-                      vertical: 12, horizontal: 6),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text(services[i].icon,
-                          style: const TextStyle(fontSize: 28)),
-                      const SizedBox(height: 8),
-                      Text(
-                        services[i].label,
-                        style: const TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w600,
-                          color: AppColors.textNavy,
-                          height: 1.2,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+    return SizedBox(
+      height: 132,
+      child: ListView.separated(
+        scrollDirection: Axis.horizontal,
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        itemCount: services.length,
+        separatorBuilder: (_, __) => const SizedBox(width: 12),
+        itemBuilder: (context, i) => GestureDetector(
+          onTap: services[i].onTap,
+          child: Container(
+            width: 110,
+            decoration: BoxDecoration(
+              color: AppColors.primaryLight,
+              borderRadius: BorderRadius.circular(20),
             ),
-            if (i != services.length - 1) const SizedBox(width: 12),
-          ],
-        ],
+            padding:
+                const EdgeInsets.symmetric(vertical: 12, horizontal: 6),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(services[i].icon,
+                    style: const TextStyle(fontSize: 28)),
+                const SizedBox(height: 8),
+                Text(
+                  services[i].label,
+                  style: const TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.w600,
+                    color: AppColors.textNavy,
+                    height: 1.2,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }

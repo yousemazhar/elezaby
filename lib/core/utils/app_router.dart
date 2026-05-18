@@ -15,6 +15,7 @@ import '../../screens/checkout/checkout_screen.dart';
 import '../../screens/checkout/order_success_screen.dart';
 import '../../screens/prescription/prescription_upload_screen.dart';
 import '../../screens/scanner/scanner_screen.dart';
+import '../../screens/scanner/scanner_video_screen.dart';
 import '../../screens/scanner/scan_result_screen.dart';
 import '../../screens/addresses/addresses_screen.dart';
 import '../../screens/orders/orders_screen.dart';
@@ -98,6 +99,10 @@ GoRouter buildRouter(BuildContext context) {
       GoRoute(
         path: '/scanner',
         builder: (_, __) => const ScannerScreen(),
+      ),
+      GoRoute(
+        path: '/scanner-video',
+        builder: (_, __) => const ScannerVideoScreen(),
       ),
       GoRoute(
         path: '/prescription-upload',

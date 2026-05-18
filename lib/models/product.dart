@@ -21,6 +21,7 @@ class Product {
   final bool isOffer;
   final int? offerPercentage;
   final List<String> usageSteps;
+  final String videoUrl;
   final DateTime createdAt;
 
   const Product({
@@ -44,6 +45,7 @@ class Product {
     required this.isOffer,
     this.offerPercentage,
     required this.usageSteps,
+    this.videoUrl = '',
     required this.createdAt,
   });
 
@@ -70,6 +72,7 @@ class Product {
       isOffer: data['isOffer'] as bool? ?? false,
       offerPercentage: (data['offerPercentage'] as num?)?.toInt(),
       usageSteps: List<String>.from(data['usageSteps'] as List? ?? []),
+      videoUrl: data['videoUrl'] as String? ?? '',
       createdAt: (data['createdAt'] as Timestamp?)?.toDate() ?? DateTime.now(),
     );
   }
@@ -94,6 +97,7 @@ class Product {
         'isOffer': isOffer,
         'offerPercentage': offerPercentage,
         'usageSteps': usageSteps,
+        'videoUrl': videoUrl,
         'createdAt': Timestamp.fromDate(createdAt),
       };
 }

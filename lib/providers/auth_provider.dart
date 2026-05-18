@@ -29,16 +29,24 @@ class AuthProvider extends ChangeNotifier {
   Future<bool> signUp({
     required String email,
     required String password,
-    required String name,
-    required String phone,
+    required String firstName,
+    required String lastName,
+    required String countryCode,
+    required String mobile,
+    String? gender,
+    DateTime? dateOfBirth,
   }) async {
     _setLoading(true);
     try {
       _appUser = await _authService.signUpWithEmail(
         email: email,
         password: password,
-        name: name,
-        phone: phone,
+        firstName: firstName,
+        lastName: lastName,
+        countryCode: countryCode,
+        mobile: mobile,
+        gender: gender,
+        dateOfBirth: dateOfBirth,
       );
       return true;
     } on FirebaseAuthException catch (e) {
@@ -74,6 +82,46 @@ class AuthProvider extends ChangeNotifier {
     }
   }
 
+  Future<bool> signInWithMobile({
+    required String countryCode,
+    required String mobile,
+    required String password,
+  }) async {
+    _setLoading(true);
+    try {
+      _appUser = await _authService.signInWithMobile(
+        countryCode: countryCode,
+        mobile: mobile,
+        password: password,
+      );
+      return _appUser != null;
+    } on FirebaseAuthException catch (e) {
+      _error = _mapAuthError(e.code);
+      return false;
+    } catch (e) {
+      _error = e.toString();
+      return false;
+    } finally {
+      _setLoading(false);
+    }
+  }
+
+  Future<bool> sendPasswordReset(String email) async {
+    _setLoading(true);
+    try {
+      await _authService.sendPasswordReset(email);
+      return true;
+    } on FirebaseAuthException catch (e) {
+      _error = _mapAuthError(e.code);
+      return false;
+    } catch (e) {
+      _error = e.toString();
+      return false;
+    } finally {
+      _setLoading(false);
+    }
+  }
+
   Future<bool> signInWithGoogle() async {
     _setLoading(true);
     try {
@@ -96,7 +144,14 @@ class AuthProvider extends ChangeNotifier {
     try {
       await _authService.updateProfile(
           uid: _appUser!.uid, name: name, phone: phone);
-      _appUser = _appUser!.copyWith(name: name, phone: phone);
+      final parts = name.trim().split(RegExp(r'\s+'));
+      final first = parts.isNotEmpty ? parts.first : '';
+      final last = parts.length > 1 ? parts.sublist(1).join(' ') : '';
+      _appUser = _appUser!.copyWith(
+        firstName: first,
+        lastName: last,
+        phone: phone,
+      );
       notifyListeners();
       return true;
     } catch (e) {
@@ -146,8 +201,9 @@ class AuthProvider extends ChangeNotifier {
       case 'weak-password':
         return 'Password is too weak.';
       case 'user-not-found':
-        return 'No account found with this email.';
+        return 'No account found.';
       case 'wrong-password':
+      case 'invalid-credential':
         return 'Incorrect password.';
       default:
         return 'Authentication failed. Please try again.';

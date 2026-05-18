@@ -189,6 +189,59 @@ export const onOrderCreated = onDocumentCreated(
       successCount: response.successCount,
       failureCount: response.failureCount,
     });
+
+    const rewardPoints = typeof order.rewardPointsEarned === "number"
+      ? order.rewardPointsEarned
+      : 0;
+    if (!isPrescription && rewardPoints > 0) {
+      const pointsResponse = await messaging.sendEachForMulticast({
+        tokens,
+        notification: {
+          title: "You earned reward points!",
+          body: `You've earned ${rewardPoints} point` +
+            `${rewardPoints === 1 ? "" : "s"} from your order. ` +
+            "Keep shopping to earn more!",
+        },
+        data: {
+          orderId: event.params.orderId,
+          type: "reward_points",
+          points: String(rewardPoints),
+        },
+        android: {
+          notification: {
+            channelId: "elezaby_default_channel",
+          },
+        },
+      });
+
+      const stalePoints: Promise<unknown>[] = [];
+      pointsResponse.responses.forEach((r, i) => {
+        if (r.success) return;
+        const code = r.error?.code;
+        if (
+          code === "messaging/invalid-registration-token" ||
+          code === "messaging/registration-token-not-registered"
+        ) {
+          stalePoints.push(
+            db
+              .collection("users")
+              .doc(userId)
+              .collection("fcmTokens")
+              .doc(tokens[i])
+              .delete()
+              .catch(() => undefined),
+          );
+        }
+      });
+      await Promise.all(stalePoints);
+
+      logger.info("Reward points notification sent", {
+        orderId: event.params.orderId,
+        points: rewardPoints,
+        successCount: pointsResponse.successCount,
+        failureCount: pointsResponse.failureCount,
+      });
+    }
   },
 );
 

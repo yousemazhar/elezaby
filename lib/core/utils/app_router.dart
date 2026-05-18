@@ -6,6 +6,7 @@ import '../../providers/auth_provider.dart';
 import '../../screens/splash/splash_screen.dart';
 import '../../screens/auth/login_screen.dart';
 import '../../screens/auth/signup_screen.dart';
+import '../../screens/auth/forgot_password_screen.dart';
 import '../../screens/home/main_shell.dart';
 import '../../screens/product/product_list_screen.dart';
 import '../../screens/product/product_detail_screen.dart';
@@ -29,7 +30,7 @@ GoRouter buildRouter(BuildContext context) {
       final loggedIn = auth.isLoggedIn;
       final loc = state.uri.path;
 
-      final publicRoutes = ['/login', '/signup', '/'];
+      final publicRoutes = ['/login', '/signup', '/forgot-password', '/'];
       if (!loggedIn && !publicRoutes.contains(loc)) {
         return '/login';
       }
@@ -47,6 +48,10 @@ GoRouter buildRouter(BuildContext context) {
       GoRoute(
         path: '/signup',
         builder: (_, __) => const SignupScreen(),
+      ),
+      GoRoute(
+        path: '/forgot-password',
+        builder: (_, __) => const ForgotPasswordScreen(),
       ),
       GoRoute(
         path: '/home',

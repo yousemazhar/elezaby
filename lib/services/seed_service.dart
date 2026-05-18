@@ -150,6 +150,12 @@ class SeedService {
         'emoji': '🦽',
         'sortOrder': 18
       },
+      {
+        'id': 'respiratory_care',
+        'name': 'Respiratory Care',
+        'emoji': '🫁',
+        'sortOrder': 19
+      },
     ];
     final batch = _db.batch();
     for (final c in cats) {
@@ -189,6 +195,24 @@ class SeedService {
       );
     } catch (e) {
       debugPrint('Seed: failed to upload Paracetamol video: $e');
+    }
+    String nasalSprayVideoUrl = '';
+    try {
+      nasalSprayVideoUrl = await _uploadAssetVideoIfMissing(
+        'assets/videos/How to use nasal spray correctly.mp4',
+        'product_videos/nasal_spray.mp4',
+      );
+    } catch (e) {
+      debugPrint('Seed: failed to upload nasal spray video: $e');
+    }
+    String inhalerVideoUrl = '';
+    try {
+      inhalerVideoUrl = await _uploadAssetVideoIfMissing(
+        'assets/videos/How to use an Inhaler - Healthcare ｜ Cartoon Style.mp4',
+        'product_videos/inhaler.mp4',
+      );
+    } catch (e) {
+      debugPrint('Seed: failed to upload inhaler video: $e');
     }
     // Each entry has a stable docId derived from the source product id.
     // batch.set() on the same docId is an upsert: adds if missing, updates if present.
@@ -5123,7 +5147,7 @@ class SeedService {
       },
       {
         'docId': 'med_008',
-        'name': 'Otrivin Adult Nasal Drops 0.1% 10ml',
+        'name': 'Otrivin Adult Nasal spray 0.1% 10ml',
         'nameArabic': 'أوتريفين نقط أنف للكبار 0.1% 10 مل',
         'description':
             'Xylometazoline nasal decongestant used for blocked nose and nasal congestion.',
@@ -5136,14 +5160,14 @@ class SeedService {
         'barcode': '6223002640539',
         'activeIngredient': 'Xylometazoline Hydrochloride',
         'concentration': '0.1%',
-        'dosageForm': 'Nasal drops / spray',
+        'dosageForm': 'Nasal spray',
         'manufacturer': 'Haleon / Novartis market pack',
         'origin': 'Local / Imported market pack',
         'stock': 45,
         'rewardPoints': 2,
         'isOffer': false,
         'usageSteps': [
-          'Apply drops into each nostril as directed.',
+          'Apply spray into each nostril as directed.',
           'Do not use for more than a few consecutive days unless advised.',
           'Avoid sharing the bottle.'
         ],
@@ -6096,6 +6120,90 @@ class SeedService {
           'Clean regularly with dry cloth.',
         ],
       },
+      {
+        'docId': 'prod_029',
+        'name': 'Ventolin Evohaler 100mcg Inhaler',
+        'nameArabic': 'فنتولين إيفوهيلر 100 ميكروجرام',
+        'description':
+            'Metered-dose inhaler used for quick relief of breathing difficulties associated with asthma.',
+        'price': 185.0,
+        'isOffer': false,
+        'offerPercentage': null,
+        'imageUrl':
+            'https://assets.lemonaidhealth.co.uk/web/product_images/Ventolin_Evohaler_100mcg_1Inhaler_400X400.png',
+        'categoryId': 'respiratory_care',
+        'subcategoryId': 'inhalers',
+        'subSubcategoryId': 'bronchodilator_inhalers',
+        'barcode': '5000123456781',
+        'activeIngredient': 'Salbutamol',
+        'concentration': '100 mcg',
+        'dosageForm': 'Inhaler',
+        'manufacturer': 'GSK',
+        'origin': 'Imported',
+        'stock': 18,
+        'rewardPoints': 18,
+        'usageSteps': [
+          'Shake inhaler before use.',
+          'Inhale as directed by physician.',
+          'Replace cap after use.',
+        ],
+      },
+      {
+        'docId': 'prod_030',
+        'name': 'Symbicort Turbuhaler 160/4.5mcg',
+        'nameArabic': 'سيمبيكورت تربوهيلر 160/4.5 ميكروجرام',
+        'description':
+            'Dry powder inhaler used for long-term management of asthma and respiratory conditions.',
+        'price': 420.0,
+        'isOffer': true,
+        'offerPercentage': 10,
+        'imageUrl':
+            'https://farmacityuy.vtexassets.com/arquivos/ids/163245/5871_symbicort-en-polvo-160-mcg-x-60-dosis_Imagen-1.jpg?v=638804260776300000',
+        'categoryId': 'respiratory_care',
+        'subcategoryId': 'inhalers',
+        'subSubcategoryId': 'combination_inhalers',
+        'barcode': '7351234567894',
+        'activeIngredient': 'Budesonide + Formoterol',
+        'concentration': '160/4.5 mcg',
+        'dosageForm': 'Dry Powder Inhaler',
+        'manufacturer': 'AstraZeneca',
+        'origin': 'Imported',
+        'stock': 12,
+        'rewardPoints': 42,
+        'usageSteps': [
+          'Twist base to load dose.',
+          'Inhale deeply through mouthpiece.',
+          'Rinse mouth after use.',
+        ],
+      },
+      {
+        'docId': 'prod_031',
+        'name': 'Seretide Diskus 250mcg',
+        'nameArabic': 'سيريتايد ديسكس 250 ميكروجرام',
+        'description':
+            'Combination inhaler for maintenance treatment of asthma and chronic respiratory conditions.',
+        'price': 510.0,
+        'isOffer': false,
+        'offerPercentage': null,
+        'imageUrl':
+            'https://www.rosepharmacy.com/ph1/wp-content/uploads/2016/09/9746-800x931.png',
+        'categoryId': 'respiratory_care',
+        'subcategoryId': 'inhalers',
+        'subSubcategoryId': 'maintenance_inhalers',
+        'barcode': '5000432112789',
+        'activeIngredient': 'Salmeterol + Fluticasone',
+        'concentration': '250 mcg',
+        'dosageForm': 'Diskus Inhaler',
+        'manufacturer': 'GSK',
+        'origin': 'Imported',
+        'stock': 9,
+        'rewardPoints': 51,
+        'usageSteps': [
+          'Slide lever until click is heard.',
+          'Inhale medication deeply.',
+          'Close device after use.',
+        ],
+      },
     ];
 
     const chunkSize = 400;
@@ -6108,6 +6216,25 @@ class SeedService {
         final ref = _db.collection('products').doc(p['docId'] as String);
         final data = Map<String, dynamic>.from(p)..remove('docId');
         data['createdAt'] ??= Timestamp.fromDate(DateTime.now());
+        final dosage = ((data['dosageForm'] as String?) ?? '').toLowerCase();
+        final name = ((data['name'] as String?) ?? '').toLowerCase();
+        final isPillLike = dosage.contains('tab') ||
+            dosage.contains('pill') ||
+            dosage.contains('caps');
+        final isNasalSpray = dosage.contains('nasal') ||
+            name.contains('nasal spray') ||
+            (dosage.contains('spray') && !dosage.contains('inhaler'));
+        final isInhaler =
+            dosage.contains('inhaler') || name.contains('inhaler');
+        if (((data['videoUrl'] as String?) ?? '').isEmpty) {
+          if (isInhaler && inhalerVideoUrl.isNotEmpty) {
+            data['videoUrl'] = inhalerVideoUrl;
+          } else if (isNasalSpray && nasalSprayVideoUrl.isNotEmpty) {
+            data['videoUrl'] = nasalSprayVideoUrl;
+          } else if (isPillLike && paracetamolVideoUrl.isNotEmpty) {
+            data['videoUrl'] = paracetamolVideoUrl;
+          }
+        }
         final hasExplicitAssignment =
             ((data['subcategoryId'] as String?) ?? '').isNotEmpty &&
                 ((data['subSubcategoryId'] as String?) ?? '').isNotEmpty;

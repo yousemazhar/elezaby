@@ -156,9 +156,20 @@ const kSubcategories = <SubcategoryDef>[
   SubcategoryDef(
       'ma_walking_support', 'mobility_aids', 'Walking Support', '🦯', 1),
   SubcategoryDef('ma_wheelchairs', 'mobility_aids', 'Wheelchairs', '🦽', 2),
+
+  // respiratory_care
+  SubcategoryDef('inhalers', 'respiratory_care', 'Inhalers', '🫁', 1),
 ];
 
 const kSubSubcategories = <SubSubcategoryDef>[
+  // respiratory_care > inhalers
+  SubSubcategoryDef('bronchodilator_inhalers', 'respiratory_care', 'inhalers',
+      'Bronchodilator Inhalers', '🫁', 1),
+  SubSubcategoryDef('combination_inhalers', 'respiratory_care', 'inhalers',
+      'Combination Inhalers', '⚗️', 2),
+  SubSubcategoryDef('maintenance_inhalers', 'respiratory_care', 'inhalers',
+      'Maintenance Inhalers', '🩺', 3),
+
   // cv_antihypertensives
   SubSubcategoryDef('cv_ace', 'cardiovascular', 'cv_antihypertensives',
       'ACE Inhibitors', '🩺', 1),

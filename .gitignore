@@ -3,6 +3,9 @@
 *.log
 *.pyc
 *.swp
+
+# Firebase extension secrets
+extensions/*.secret.local
 .DS_Store
 .atom/
 .build/

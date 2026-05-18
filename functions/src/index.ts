@@ -10,6 +10,100 @@ const messaging = admin.messaging();
 
 const CART_ABANDON_SECONDS = 30;
 
+function escapeHtml(value: string): string {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+async function queueOrderEmail(args: {
+  userSnap: FirebaseFirestore.DocumentSnapshot;
+  order: FirebaseFirestore.DocumentData;
+  orderId: string;
+  isPrescription: boolean;
+}): Promise<void> {
+  const {userSnap, order, orderId, isPrescription} = args;
+  const email = userSnap.get("email") as string | undefined;
+  if (!email || email.trim().length === 0) {
+    logger.info("Skipping email, no address on user", {
+      userId: userSnap.id,
+      orderId,
+    });
+    return;
+  }
+  const name = (userSnap.get("name") as string | undefined)?.trim();
+  const greeting = name && name.length > 0 ? `Hi ${name},` : "Hi,";
+  const address = (order.address as string | undefined) ?? "";
+  const total = typeof order.total === "number" ? order.total : 0;
+  const notes = (order.notes as string | undefined) ?? "";
+
+  const subject = isPrescription
+    ? "We received your prescription"
+    : "Your El Ezaby order is confirmed";
+
+  const textLines: string[] = [greeting, ""];
+  if (isPrescription) {
+    textLines.push(
+      "We received your prescription. Our pharmacist will review it" +
+        " shortly and get back to you with pricing and next steps.",
+    );
+  } else {
+    textLines.push("Thanks for shopping with El Ezaby. Your order is confirmed.");
+    textLines.push(`Total: EGP ${total.toFixed(2)}`);
+  }
+  textLines.push(`Reference: ${orderId}`);
+  if (address) textLines.push(`Delivery address: ${address}`);
+  if (isPrescription && notes) textLines.push(`Your notes: ${notes}`);
+  textLines.push("", "— El Ezaby");
+  const text = textLines.join("\n");
+
+  const htmlParts: string[] = [
+    `<p>${escapeHtml(greeting)}</p>`,
+  ];
+  if (isPrescription) {
+    htmlParts.push(
+      "<p>We received your prescription. Our pharmacist will review it" +
+        " shortly and get back to you with pricing and next steps.</p>",
+    );
+  } else {
+    htmlParts.push(
+      "<p>Thanks for shopping with El Ezaby. Your order is confirmed.</p>",
+      `<p><strong>Total:</strong> EGP ${total.toFixed(2)}</p>`,
+    );
+  }
+  htmlParts.push(
+    `<p><strong>Reference:</strong> ${escapeHtml(orderId)}</p>`,
+  );
+  if (address) {
+    htmlParts.push(
+      `<p><strong>Delivery address:</strong> ${escapeHtml(address)}</p>`,
+    );
+  }
+  if (isPrescription && notes) {
+    htmlParts.push(
+      `<p><strong>Your notes:</strong> ${escapeHtml(notes)}</p>`,
+    );
+  }
+  htmlParts.push("<p>— El Ezaby</p>");
+  const html = htmlParts.join("");
+
+  try {
+    await db.collection("mail").add({
+      to: [email],
+      message: {subject, text, html},
+      createdAt: admin.firestore.FieldValue.serverTimestamp(),
+      orderId,
+      kind: isPrescription ? "prescription" : "order",
+    });
+    logger.info("Email queued", {orderId, userId: userSnap.id});
+  } catch (err) {
+    logger.warn("Failed to queue email", {orderId, err});
+  }
+}
+
 export const onOrderCreated = onDocumentCreated(
   "orders/{orderId}",
   async (event) => {
@@ -33,15 +127,22 @@ export const onOrderCreated = onDocumentCreated(
           ? ` Total: EGP ${order.total.toFixed(2)}.`
           : "");
 
-    const tokensSnap = await db
-      .collection("users")
-      .doc(userId)
-      .collection("fcmTokens")
-      .get();
+    const userRef = db.collection("users").doc(userId);
+    const [tokensSnap, userSnap] = await Promise.all([
+      userRef.collection("fcmTokens").get(),
+      userRef.get(),
+    ]);
 
     const tokens = tokensSnap.docs
       .map((d) => d.get("token") as string | undefined)
       .filter((t): t is string => typeof t === "string" && t.length > 0);
+
+    await queueOrderEmail({
+      userSnap,
+      order,
+      orderId: event.params.orderId,
+      isPrescription,
+    });
 
     if (tokens.length === 0) {
       logger.info("No FCM tokens for user", {userId});

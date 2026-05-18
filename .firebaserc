@@ -1,0 +1,11 @@
+{
+  "projects": {},
+  "targets": {},
+  "etags": {
+    "elezaby-6cfd9": {
+      "extensionInstances": {
+        "firestore-send-email": "40d4fa3132b23fb5533ea2681b698ebf3f4a651953d3ea13eec9108f94b001d0"
+      }
+    }
+  }
+}

@@ -119,9 +119,6 @@ class _ShopScreenState extends State<ShopScreen> {
                   ),
                   child: Column(
                     children: [
-                      Text(cat.emoji,
-                          style: const TextStyle(fontSize: 22)),
-                      const SizedBox(height: 4),
                       Text(
                         cat.name,
                         textAlign: TextAlign.center,
@@ -150,9 +147,6 @@ class _ShopScreenState extends State<ShopScreen> {
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Text(activeCat.emoji,
-                            style: const TextStyle(fontSize: 36)),
-                        const SizedBox(height: 8),
                         Text(activeCat.name,
                             style: const TextStyle(
                                 fontSize: 16,
@@ -235,18 +229,6 @@ class _SubcategoryCard extends StatelessWidget {
               padding: const EdgeInsets.all(14),
               child: Row(
                 children: [
-                  Container(
-                    width: 40,
-                    height: 40,
-                    decoration: BoxDecoration(
-                      color: AppColors.primaryLight,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Center(
-                        child: Text(sub.emoji,
-                            style: const TextStyle(fontSize: 20))),
-                  ),
-                  const SizedBox(width: 10),
                   Expanded(
                     child: Text(
                       sub.name,
@@ -285,31 +267,25 @@ class _SubcategoryCard extends StatelessWidget {
                     final ss = subSubs[i];
                     return GestureDetector(
                       onTap: () => onSubSubTap(ss),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Container(
-                            width: 56,
-                            height: 56,
-                            decoration: BoxDecoration(
-                              color: AppColors.surface,
-                              borderRadius: BorderRadius.circular(12),
-                              border: Border.all(color: AppColors.border),
-                            ),
-                            child: Center(
-                                child: Text(ss.emoji,
-                                    style: const TextStyle(fontSize: 24))),
-                          ),
-                          const SizedBox(height: 6),
-                          Text(
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: AppColors.surface,
+                          borderRadius: BorderRadius.circular(12),
+                          border: Border.all(color: AppColors.border),
+                        ),
+                        padding: const EdgeInsets.all(8),
+                        child: Center(
+                          child: Text(
                             ss.name,
                             style: const TextStyle(
-                                fontSize: 11, color: AppColors.textDark),
+                                fontSize: 12,
+                                fontWeight: FontWeight.w600,
+                                color: AppColors.textDark),
                             textAlign: TextAlign.center,
-                            maxLines: 2,
+                            maxLines: 3,
                             overflow: TextOverflow.ellipsis,
                           ),
-                        ],
+                        ),
                       ),
                     );
                   },

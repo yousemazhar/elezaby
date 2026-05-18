@@ -360,7 +360,7 @@ class _ServicesRow extends StatelessWidget {
   Widget build(BuildContext context) {
     final services = <({String icon, String label, VoidCallback onTap})>[
       (icon: '📷', label: 'Scan / AR', onTap: onScanTap),
-      (icon: '🎬', label: 'AR Video', onTap: onArVideoTap),
+      (icon: '🎬', label: 'Scan for tutorial', onTap: onArVideoTap),
       (icon: '📋', label: 'Upload Prescription', onTap: onPrescriptionTap),
       (icon: '♿', label: 'Mobility Aids', onTap: () {
         context.push('/products', extra: {

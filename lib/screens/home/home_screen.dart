@@ -86,11 +86,9 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
           ),
-          // First Order Reward Banner
-          SliverToBoxAdapter(
-            child: _FirstOrderBanner(
-                completed: auth.appUser?.firstOrderCompleted ?? false),
-          ),
+          // First Order Reward Banner (hidden once completed)
+          if (!(auth.appUser?.firstOrderCompleted ?? false))
+            const SliverToBoxAdapter(child: _FirstOrderBanner()),
           // Services
           const SliverToBoxAdapter(
             child: Padding(
@@ -265,8 +263,7 @@ class _Tab extends StatelessWidget {
 }
 
 class _FirstOrderBanner extends StatelessWidget {
-  final bool completed;
-  const _FirstOrderBanner({required this.completed});
+  const _FirstOrderBanner();
 
   @override
   Widget build(BuildContext context) {
@@ -312,11 +309,9 @@ class _FirstOrderBanner extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 4),
-                Text(
-                  completed
-                      ? 'You\'ve earned 50 points!'
-                      : 'Earn 50 Points on Your First Order!',
-                  style: const TextStyle(
+                const Text(
+                  'Earn 50 Points on Your First Order!',
+                  style: TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.w800,
                     color: Colors.white,
@@ -331,9 +326,9 @@ class _FirstOrderBanner extends StatelessWidget {
                     color: Colors.white.withAlpha(46),
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  child: Text(
-                    completed ? '✅ Reward Claimed' : '🎁 Welcome Reward',
-                    style: const TextStyle(
+                  child: const Text(
+                    '🎁 Welcome Reward',
+                    style: TextStyle(
                         fontSize: 11,
                         fontWeight: FontWeight.w700,
                         color: Colors.white),

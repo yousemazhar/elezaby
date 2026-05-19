@@ -121,10 +121,11 @@ class CartAppBarAction extends StatelessWidget {
               color: backgroundColor,
               borderRadius: BorderRadius.circular(12),
             ),
-            child: Icon(
-              Icons.shopping_bag_outlined,
+            child: Image.asset(
+              'assets/icons/cart.png',
+              width: 22,
+              height: 22,
               color: iconColor,
-              size: 22,
             ),
           ),
           if (itemCount > 0)

@@ -53,7 +53,7 @@ class FreeShippingCard extends StatelessWidget {
                   children: [
                     Text(
                       achieved
-                          ? 'You\'ve unlocked free delivery! 🎉'
+                          ? 'You\'ve unlocked free delivery!'
                           : 'Add EGP ${remaining.toStringAsFixed(0)} for free delivery',
                       style: const TextStyle(
                         fontSize: 13,

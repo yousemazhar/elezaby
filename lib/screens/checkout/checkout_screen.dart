@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import '../../core/constants/app_colors.dart';
+import '../../models/address.dart';
+import '../../providers/address_provider.dart';
 import '../../providers/auth_provider.dart';
 import '../../providers/cart_provider.dart';
 import '../../services/order_service.dart';
@@ -17,17 +19,13 @@ class CheckoutScreen extends StatefulWidget {
 }
 
 class _CheckoutScreenState extends State<CheckoutScreen> {
-  final _addressCtrl =
-      TextEditingController(text: '8 Street 9, Maadi, Cairo');
+  Address? _selected;
   bool _placing = false;
 
-  @override
-  void dispose() {
-    _addressCtrl.dispose();
-    super.dispose();
-  }
-
   Future<void> _placeOrder() async {
+    final selected = _selected;
+    if (selected == null) return;
+
     setState(() => _placing = true);
     try {
       final auth = context.read<AuthProvider>();
@@ -37,7 +35,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
       final order = await OrderService().placeOrder(
         userId: user.uid,
         items: cart.items,
-        address: _addressCtrl.text,
+        address: selected.fullAddress,
         isFirstOrder: !user.firstOrderCompleted,
       );
 
@@ -67,9 +65,36 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
     }
   }
 
+  Future<void> _pickAddress(List<Address> addresses) async {
+    final picked = await showModalBottomSheet<Address>(
+      context: context,
+      backgroundColor: Colors.transparent,
+      isScrollControlled: true,
+      builder: (_) => _AddressPickerSheet(
+        addresses: addresses,
+        selectedId: _selected?.id,
+      ),
+    );
+    if (picked != null && mounted) {
+      setState(() => _selected = picked);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final cart = context.watch<CartProvider>();
+    final addressProvider = context.watch<AddressProvider>();
+    final addresses = addressProvider.addresses;
+
+    // Auto-select default (or first) address once available.
+    if (_selected == null && addresses.isNotEmpty) {
+      _selected = addressProvider.defaultAddress ?? addresses.first;
+    } else if (_selected != null &&
+        !addresses.any((a) => a.id == _selected!.id)) {
+      _selected = addresses.isNotEmpty
+          ? (addressProvider.defaultAddress ?? addresses.first)
+          : null;
+    }
 
     return Scaffold(
       appBar: const GlobalAppBar(title: 'Checkout', showBackButton: true),
@@ -81,14 +106,12 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
               children: [
                 const _SectionTitle('Delivery Address'),
                 const SizedBox(height: 10),
-                TextFormField(
-                  controller: _addressCtrl,
-                  decoration: const InputDecoration(
-                    prefixIcon: Icon(Icons.location_on_outlined,
-                        color: AppColors.primary),
-                    hintText: 'Enter delivery address',
-                  ),
-                  maxLines: 2,
+                _AddressSelector(
+                  selected: _selected,
+                  loading: addressProvider.loading,
+                  hasAddresses: addresses.isNotEmpty,
+                  onChange: () => _pickAddress(addresses),
+                  onAdd: () => context.push('/addresses'),
                 ),
                 const SizedBox(height: 20),
                 const _SectionTitle('Order Summary'),
@@ -185,9 +208,11 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
         padding: const EdgeInsets.fromLTRB(20, 12, 20, 28),
         color: Colors.white,
         child: AppButton(
-          label: 'Place Order  •  EGP ${cart.total.toStringAsFixed(0)}',
+          label: _selected == null
+              ? 'Select Delivery Address'
+              : 'Place Order  •  EGP ${cart.total.toStringAsFixed(0)}',
           loading: _placing,
-          onPressed: _placeOrder,
+          onPressed: _selected == null ? null : _placeOrder,
         ),
       ),
     );
@@ -206,6 +231,245 @@ class _SectionTitle extends StatelessWidget {
           fontSize: 16,
           fontWeight: FontWeight.w700,
           color: AppColors.textDark),
+    );
+  }
+}
+
+class _AddressSelector extends StatelessWidget {
+  final Address? selected;
+  final bool loading;
+  final bool hasAddresses;
+  final VoidCallback onChange;
+  final VoidCallback onAdd;
+
+  const _AddressSelector({
+    required this.selected,
+    required this.loading,
+    required this.hasAddresses,
+    required this.onChange,
+    required this.onAdd,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    if (loading && selected == null) {
+      return Container(
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          color: AppColors.surface,
+          borderRadius: BorderRadius.circular(14),
+        ),
+        child: const Center(
+          child: SizedBox(
+            width: 22,
+            height: 22,
+            child: CircularProgressIndicator(strokeWidth: 2.4),
+          ),
+        ),
+      );
+    }
+
+    if (!hasAddresses) {
+      return GestureDetector(
+        onTap: onAdd,
+        child: Container(
+          padding: const EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            color: AppColors.surface,
+            borderRadius: BorderRadius.circular(14),
+            border: Border.all(color: AppColors.primary, width: 1.2),
+          ),
+          child: const Row(
+            children: [
+              Icon(Icons.add_location_alt_outlined,
+                  color: AppColors.primary),
+              SizedBox(width: 12),
+              Expanded(
+                child: Text(
+                  'Add a delivery address',
+                  style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                      color: AppColors.primary),
+                ),
+              ),
+              Icon(Icons.chevron_right, color: AppColors.primary),
+            ],
+          ),
+        ),
+      );
+    }
+
+    final addr = selected!;
+    return GestureDetector(
+      onTap: onChange,
+      child: Container(
+        padding: const EdgeInsets.all(14),
+        decoration: BoxDecoration(
+          color: AppColors.surface,
+          borderRadius: BorderRadius.circular(14),
+        ),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Icon(Icons.location_on_outlined,
+                color: AppColors.primary),
+            const SizedBox(width: 12),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Text(addr.label,
+                          style: const TextStyle(
+                              fontSize: 13,
+                              fontWeight: FontWeight.w700,
+                              color: AppColors.textDark)),
+                      if (addr.isDefault) ...[
+                        const SizedBox(width: 6),
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 6, vertical: 2),
+                          decoration: BoxDecoration(
+                            color: AppColors.primaryLight,
+                            borderRadius: BorderRadius.circular(6),
+                          ),
+                          child: const Text('Default',
+                              style: TextStyle(
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.w700,
+                                  color: AppColors.primary)),
+                        ),
+                      ],
+                    ],
+                  ),
+                  const SizedBox(height: 4),
+                  Text(addr.fullAddress,
+                      style: const TextStyle(
+                          fontSize: 13, color: AppColors.textMuted)),
+                ],
+              ),
+            ),
+            const SizedBox(width: 8),
+            const Text('Change',
+                style: TextStyle(
+                    fontSize: 13,
+                    fontWeight: FontWeight.w700,
+                    color: AppColors.primary)),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _AddressPickerSheet extends StatelessWidget {
+  final List<Address> addresses;
+  final String? selectedId;
+
+  const _AddressPickerSheet({
+    required this.addresses,
+    required this.selectedId,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: const BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+      ),
+      padding: const EdgeInsets.fromLTRB(20, 16, 20, 24),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Center(
+            child: Container(
+              width: 40,
+              height: 4,
+              decoration: BoxDecoration(
+                color: AppColors.divider,
+                borderRadius: BorderRadius.circular(2),
+              ),
+            ),
+          ),
+          const SizedBox(height: 16),
+          const Text('Choose Delivery Address',
+              style: TextStyle(
+                  fontSize: 17,
+                  fontWeight: FontWeight.w700,
+                  color: AppColors.textDark)),
+          const SizedBox(height: 14),
+          ...addresses.map((a) {
+            final isSel = a.id == selectedId;
+            return Padding(
+              padding: const EdgeInsets.only(bottom: 10),
+              child: GestureDetector(
+                onTap: () => Navigator.of(context).pop(a),
+                child: Container(
+                  padding: const EdgeInsets.all(14),
+                  decoration: BoxDecoration(
+                    color: AppColors.surface,
+                    borderRadius: BorderRadius.circular(14),
+                    border: Border.all(
+                      color: isSel ? AppColors.primary : Colors.transparent,
+                      width: 1.4,
+                    ),
+                  ),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Icon(
+                        isSel
+                            ? Icons.radio_button_checked
+                            : Icons.radio_button_off,
+                        color: isSel
+                            ? AppColors.primary
+                            : AppColors.textMuted,
+                      ),
+                      const SizedBox(width: 12),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(a.label,
+                                style: const TextStyle(
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.w700,
+                                    color: AppColors.textDark)),
+                            const SizedBox(height: 4),
+                            Text(a.fullAddress,
+                                style: const TextStyle(
+                                    fontSize: 13,
+                                    color: AppColors.textMuted)),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            );
+          }),
+          const SizedBox(height: 4),
+          TextButton.icon(
+            onPressed: () {
+              Navigator.of(context).pop();
+              // Navigate to addresses screen for adding new
+              Future.microtask(() {
+                // ignore: use_build_context_synchronously
+                GoRouter.of(context).push('/addresses');
+              });
+            },
+            icon: const Icon(Icons.add, color: AppColors.primary),
+            label: const Text('Add new address',
+                style: TextStyle(
+                    color: AppColors.primary, fontWeight: FontWeight.w700)),
+          ),
+        ],
+      ),
     );
   }
 }

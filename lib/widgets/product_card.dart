@@ -141,23 +141,28 @@ class _PriceRow extends StatelessWidget {
         ? product.price * (1 - product.offerPercentage! / 100)
         : product.price;
 
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.end,
+    return Wrap(
+      crossAxisAlignment: WrapCrossAlignment.end,
+      spacing: 6,
+      runSpacing: 2,
       children: [
         Text(
           'EGP ${currentPrice.toStringAsFixed(0)}',
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
           style: const TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w800,
             color: AppColors.primary,
           ),
         ),
-        if (hasDiscount) ...[
-          const SizedBox(width: 6),
+        if (hasDiscount)
           Padding(
             padding: const EdgeInsets.only(bottom: 1),
             child: Text(
               'EGP ${product.price.toStringAsFixed(0)}',
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
               style: const TextStyle(
                 fontSize: 11,
                 fontWeight: FontWeight.w600,
@@ -166,7 +171,6 @@ class _PriceRow extends StatelessWidget {
               ),
             ),
           ),
-        ],
       ],
     );
   }

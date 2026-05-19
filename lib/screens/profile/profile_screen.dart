@@ -80,12 +80,10 @@ class ProfileScreen extends StatelessWidget {
                 RewardProgressCard(points: user.rewardPoints),
                 const SizedBox(height: 4),
                 _RowCard(
-                  icon: '📍',
                   label: 'My Addresses',
                   onTap: () => context.push('/addresses'),
                 ),
                 const _RowCard(
-                  icon: '🛡️',
                   label: 'My Insurance Profile',
                   onTap: null,
                 ),
@@ -276,10 +274,9 @@ class _StatCard extends StatelessWidget {
 }
 
 class _RowCard extends StatelessWidget {
-  final String icon;
   final String label;
   final VoidCallback? onTap;
-  const _RowCard({required this.icon, required this.label, this.onTap});
+  const _RowCard({required this.label, this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -294,17 +291,6 @@ class _RowCard extends StatelessWidget {
         ),
         child: Row(
           children: [
-            Container(
-              width: 32,
-              height: 32,
-              decoration: BoxDecoration(
-                color: AppColors.primaryLight,
-                borderRadius: BorderRadius.circular(10),
-              ),
-              alignment: Alignment.center,
-              child: Text(icon, style: const TextStyle(fontSize: 16)),
-            ),
-            const SizedBox(width: 12),
             Expanded(
               child: Text(
                 label,

@@ -83,7 +83,7 @@ class CartScreen extends StatelessWidget {
                       ),
                       child: Row(
                         children: [
-                          const Text('⭐', style: TextStyle(fontSize: 20)),
+                          Image.asset('assets/icons/star.png', width: 26, height: 26),
                           const SizedBox(width: 10),
                           Text(
                             'You\'ll earn ${cart.totalRewardPoints} reward points',

@@ -355,16 +355,32 @@ class _ServicesRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final services = <({String icon, String label, VoidCallback onTap})>[
-      (icon: '📷', label: 'Scan / AR', onTap: onScanTap),
-      (icon: '🎬', label: 'Scan for tutorial', onTap: onArVideoTap),
-      (icon: '📋', label: 'Upload Prescription', onTap: onPrescriptionTap),
-      (icon: '♿', label: 'Mobility Aids', onTap: () {
-        context.push('/products', extra: {
-          'categoryId': 'mobility_aids',
-          'title': 'mobility aids',
-        });
-      }),
+    final services = <({Widget icon, String label, VoidCallback onTap})>[
+      (
+        icon: Image.asset('assets/icons/scan_AR.png', width: 52, height: 52),
+        label: 'Scan / AR',
+        onTap: onScanTap,
+      ),
+      (
+        icon: Image.asset('assets/icons/AR_video.png', width: 60, height: 60),
+        label: 'Scan for tutorial',
+        onTap: onArVideoTap,
+      ),
+      (
+        icon: Image.asset('assets/icons/Prescription.png', width: 60, height: 60),
+        label: 'Upload Prescription',
+        onTap: onPrescriptionTap,
+      ),
+      (
+        icon: Image.asset('assets/icons/mobility_aids.png', width: 60, height: 60),
+        label: 'Mobility Aids',
+        onTap: () {
+          context.push('/products', extra: {
+            'categoryId': 'mobility_aids',
+            'title': 'mobility aids',
+          });
+        },
+      ),
     ];
 
     return SizedBox(
@@ -388,8 +404,7 @@ class _ServicesRow extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text(services[i].icon,
-                    style: const TextStyle(fontSize: 28)),
+                services[i].icon,
                 const SizedBox(height: 8),
                 Text(
                   services[i].label,

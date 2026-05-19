@@ -163,7 +163,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                     ),
                     child: Row(
                       children: [
-                        const Text('⭐', style: TextStyle(fontSize: 18)),
+                        Image.asset('assets/icons/star.png', width: 26, height: 26),
                         const SizedBox(width: 8),
                         Text(
                           'You\'ll earn ${cart.totalRewardPoints} reward points',

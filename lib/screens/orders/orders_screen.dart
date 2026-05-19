@@ -139,7 +139,7 @@ class _OrderCard extends StatelessWidget {
           if (order.isPrescription)
             Row(
               children: [
-                const Text('📋', style: TextStyle(fontSize: 14)),
+                Image.asset('assets/icons/Prescription.png', width: 20, height: 20),
                 const SizedBox(width: 6),
                 Text(
                   'Prescription · ${order.prescriptionImages.length} image${order.prescriptionImages.length == 1 ? '' : 's'}',

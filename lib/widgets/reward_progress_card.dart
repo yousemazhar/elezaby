@@ -28,17 +28,8 @@ class RewardProgressCard extends StatelessWidget {
               Container(
                 width: 36,
                 height: 36,
-                decoration: const BoxDecoration(
-                  color: Colors.white,
-                  shape: BoxShape.circle,
-                  boxShadow: [
-                    BoxShadow(
-                        color: Color(0x14000000),
-                        blurRadius: 8,
-                        offset: Offset(0, 2)),
-                  ],
-                ),
-                child: const Center(child: Text('⭐', style: TextStyle(fontSize: 18))),
+
+                child:Image.asset('assets/icons/star.png', width: 17, height: 17),
               ),
               const SizedBox(width: 10),
               const Column(

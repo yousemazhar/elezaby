@@ -37,8 +37,13 @@ class FreeShippingCard extends StatelessWidget {
                   color: AppColors.primaryLight,
                   shape: BoxShape.circle,
                 ),
-                child: const Center(
-                  child: Text('🚚', style: TextStyle(fontSize: 18)),
+                child: Center(
+                  child: Image.asset(
+                    'assets/icons/delivery.png',
+                    width: 22,
+                    height: 22,
+                    color: AppColors.primary,
+                  ),
                 ),
               ),
               const SizedBox(width: 10),

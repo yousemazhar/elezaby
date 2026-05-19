@@ -22,24 +22,29 @@ class OrderSuccessScreen extends StatelessWidget {
               Container(
                 width: 100,
                 height: 100,
-                decoration: const BoxDecoration(
-                  gradient: AppColors.primaryGradient135,
+                decoration: BoxDecoration(
+                  gradient: AppColors.rewardCardGradient,
                   shape: BoxShape.circle,
-                  boxShadow: [
+                  border: Border.all(color: const Color(0x260087C8)),
+                  boxShadow: const [
                     BoxShadow(
-                      color: Color(0x4D0087C8),
+                      color: Color(0x4D73CCEA),
                       blurRadius: 32,
                       offset: Offset(0, 8),
                     ),
                   ],
                 ),
-                child: const Center(
-                  child: Text('✓', style: TextStyle(fontSize: 44, color: Colors.white)),
+                child: Center(
+                  child: Image.asset(
+                    'assets/icons/order.png',
+                    width: 56,
+                    height: 56,
+                  ),
                 ),
               ),
               const SizedBox(height: 20),
               const Text(
-                'Order Confirmed! 🎉',
+                'Order Confirmed!',
                 style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.w800,
@@ -71,7 +76,7 @@ class OrderSuccessScreen extends StatelessWidget {
                   padding: const EdgeInsets.all(20),
                   child: Row(
                     children: [
-                      const Text('⭐', style: TextStyle(fontSize: 32)),
+                      Image.asset('assets/icons/star.png', width: 47, height: 47),
                       const SizedBox(width: 14),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,

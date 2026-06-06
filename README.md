@@ -5,6 +5,8 @@ A Flutter + Firebase pharmacy shopping app modelled on El Ezaby.
 - **Package:** `com.example.elezaby`
 - **Firebase project:** `elezaby-6cfd9`
 
+> ⚠️ **Disclaimer:** This is an independent, non-commercial **university project** built for educational purposes only. It is **not** the official El Ezaby Pharmacy app and is **not affiliated with, endorsed by, sponsored by, or connected to El Ezaby Pharmacies** or any of its affiliates. All products, prices, and transactions are fictional demo data — no real orders, payments, or medications are involved. See [Legal / Disclaimer](#legal--disclaimer) below.
+
 ## Features
 
 - Browse products by category with Arabic/English names
@@ -127,3 +129,16 @@ firebase deploy
 - Run `flutter analyze` after every change — the project requires zero warnings.
 - All async Firebase calls must surface loading / error / empty states.
 - Never block the UI isolate; keep scanning and heavy work off the main thread.
+
+## Legal / Disclaimer
+
+**Notice of Non-Affiliation and Educational Use**
+
+This software ("the App") was developed by students as part of a university course project, for educational and demonstration purposes only. It is a prototype and is **not** a real, official, or commercial product.
+
+- **No affiliation.** The App is not affiliated with, authorized by, endorsed by, sponsored by, or in any way officially connected to El Ezaby Pharmacies, its owners, subsidiaries, or affiliates. Any reference to "El Ezaby" is used purely as a subject of academic study and does not imply any partnership or official relationship.
+- **Trademarks.** "El Ezaby" and any associated names, logos, brand elements, and trademarks are the property of their respective owners. They are referenced here under educational/fair-use principles solely to demonstrate app-development concepts. No claim of ownership is made over these marks.
+- **No real commerce.** All products, prices, stock levels, rewards, and orders shown in the App are fictional, seeded test data. The App does **not** sell or deliver any real products, does **not** process real payments, and does **not** dispense or provide access to any actual medication.
+- **Not medical advice.** Any health, dosage, or medication-usage content is illustrative sample content only and must **not** be relied upon as medical or pharmaceutical advice. Always consult a licensed pharmacist or physician.
+- **No warranty / no liability.** The App is provided "as is," without warranty of any kind. The authors accept no liability for any use of, or reliance on, this educational prototype.
+- **Takedown.** If you are a rights holder and believe this educational project infringes your rights, please contact the authors and the material will be promptly modified or removed.

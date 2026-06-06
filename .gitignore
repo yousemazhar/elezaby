@@ -9,6 +9,9 @@ extensions/*.secret.local
 extensions/*.env
 *.env
 .env
+
+# Branded image assets (logos) — kept local only, not published
+assets/images/
 .DS_Store
 .atom/
 .build/

@@ -6,6 +6,9 @@
 
 # Firebase extension secrets
 extensions/*.secret.local
+extensions/*.env
+*.env
+.env
 .DS_Store
 .atom/
 .build/

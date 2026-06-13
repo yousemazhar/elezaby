@@ -68,10 +68,6 @@ lib/
    flutter run
    ```
 
-## Seeding Demo Data
-
-Use the **Seed Demo Data** button on the Profile screen (dev only). It creates 5 categories + 10 products with test barcodes prefixed `TEST-`.
-
 ## Theme
 
 | Token | Value |

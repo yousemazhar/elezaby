@@ -16,6 +16,50 @@ A Flutter + Firebase pharmacy shopping app modelled on El Ezaby.
 - Google Sign-In + email/password auth
 - Cached product imagery via `cached_network_image`
 
+## 📱 Download APK
+
+You can install and test the latest version of the app using the APK below:
+
+👉 **Android APK:** [Download El Ezaby APK](https://elezaby-6cfd9.web.app/)
+
+### Installation Notes
+- Enable “Install unknown apps” on your Android device if prompted
+- Recommended Android version: 8.0+
+- Sign in using Google or email authentication after installation
+- Requires internet connection for Firebase features
+
+## 🧪 AR Testing Barcodes
+
+Use the following barcodes to test the AR scanning and product recognition feature in the app.
+
+### Product 1: Panadol
+![Panadol Barcode](assets/readme/barcodes/pills.png)
+
+### Product 2: Voltaren
+![Inhaler Barcode](assets/readme/barcodes/inhaler.png)
+
+### Product 3: Nivea Cream
+![Nasal Spray Barcode](assets/readme/barcodes/nasel-spray.png)
+
+> Scan these using the in-app barcode scanner to trigger AR overlays and product details.
+
+## 🎬 Project Presentation
+
+This presentation showcases the full development journey of the El Ezaby app, from initial design to final deployment.
+
+👉 **View Presentation:** https://gamma.app/docs/El-Ezaby--nhpragmugbke82j
+
+### Covers:
+- User research & problem definition
+- UI/UX design process (Figma prototypes)
+- System architecture design
+- Flutter + Firebase implementation
+- AR barcode scanning workflow
+- Testing methodology
+- Deployment (APK + Firebase Hosting)
+
+> The presentation includes the full project pipeline and AR testing instructions (see slide 7 for barcode testing examples).
+
 ## Tech Stack
 
 - **State management:** `provider`

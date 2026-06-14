@@ -38,7 +38,7 @@ Use the following barcodes to test the AR scanning and product recognition featu
 ### Product 2: Inhaler
 ![Inhaler Barcode](assets/readme/barcodes/inhaler.jpeg)
 
-### Product 3: NAsal Spray
+### Product 3: Nasal Spray
 ![Nasal Spray Barcode](assets/readme/barcodes/nasel-spray.png)
 
 > Scan these using the in-app barcode scanner to trigger AR overlays and product details.

@@ -35,10 +35,10 @@ Use the following barcodes to test the AR scanning and product recognition featu
 ### Product 1: Panadol
 ![Panadol Barcode](assets/readme/barcodes/pills.png)
 
-### Product 2: Voltaren
+### Product 2: Inhaler
 ![Inhaler Barcode](assets/readme/barcodes/inhaler.png)
 
-### Product 3: Nivea Cream
+### Product 3: NAsal Spray
 ![Nasal Spray Barcode](assets/readme/barcodes/nasel-spray.png)
 
 > Scan these using the in-app barcode scanner to trigger AR overlays and product details.

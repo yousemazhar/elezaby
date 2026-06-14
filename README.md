@@ -33,10 +33,10 @@ You can install and test the latest version of the app using the APK below:
 Use the following barcodes to test the AR scanning and product recognition feature in the app.
 
 ### Product 1: Panadol
-![Panadol Barcode](assets/readme/barcodes/pills.png)
+![Panadol Barcode](assets/readme/barcodes/pills.jpeg)
 
 ### Product 2: Inhaler
-![Inhaler Barcode](assets/readme/barcodes/inhaler.png)
+![Inhaler Barcode](assets/readme/barcodes/inhaler.jpeg)
 
 ### Product 3: NAsal Spray
 ![Nasal Spray Barcode](assets/readme/barcodes/nasel-spray.png)

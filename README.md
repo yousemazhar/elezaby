@@ -32,7 +32,7 @@ You can install and test the latest version of the app using the APK below:
 
 Use the following barcodes to test the AR scanning and product recognition feature in the app.
 
-### Product 1: Panadol
+### Product 1: Panadol Pills
 ![Panadol Barcode](assets/readme/barcodes/pills.jpeg)
 
 ### Product 2: Inhaler
@@ -41,7 +41,7 @@ Use the following barcodes to test the AR scanning and product recognition featu
 ### Product 3: Nasal Spray
 ![Nasal Spray Barcode](assets/readme/barcodes/nasel-spray.png)
 
-> Scan these using the in-app barcode scanner to trigger AR overlays and product details.
+> Scan these using the in-app barcode scanner to trigger AR overlays, product details, and animated usage instructions.
 
 ## 🎬 Project Presentation
 
